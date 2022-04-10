@@ -22,7 +22,7 @@ _$_MeetingRecordResponseDetail _$$_MeetingRecordResponseDetailFromJson(
               'meetingRecord',
               (v) =>
                   (v as List<dynamic>?)
-                      ?.map((e) => MeetingRecordResponseDetail.fromJson(
+                      ?.map((e) => MeetingRecordDetailResponse.fromJson(
                           e as Map<String, dynamic>))
                       .toList() ??
                   const []),
@@ -70,7 +70,7 @@ _$_MeetingRecordDetail _$$_MeetingRecordDetailFromJson(
               'speechRecord',
               (v) =>
                   (v as List<dynamic>?)
-                      ?.map((e) => MeetingRecordSpeechDetail.fromJson(
+                      ?.map((e) => MeetingRecordDetailSpeech.fromJson(
                           e as Map<String, dynamic>))
                       .toList() ??
                   const []),
@@ -98,13 +98,13 @@ Map<String, dynamic> _$$_MeetingRecordDetailToJson(
       'pdfURL': instance.pdfURL,
     };
 
-_$_MeetingRecordSpeechDetail _$$_MeetingRecordSpeechDetailFromJson(
+_$_MeetingRecordDetailSpeech _$$_MeetingRecordDetailSpeechFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordSpeechDetail',
+      r'_$_MeetingRecordDetailSpeech',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordSpeechDetail(
+        final val = _$_MeetingRecordDetailSpeech(
           speechID: $checkedConvert('speechID', (v) => v as String),
           speechOrder: $checkedConvert('speechOrder', (v) => v as String),
           speaker: $checkedConvert('speaker', (v) => v as String),
@@ -123,8 +123,8 @@ _$_MeetingRecordSpeechDetail _$$_MeetingRecordSpeechDetailFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordSpeechDetailToJson(
-        _$_MeetingRecordSpeechDetail instance) =>
+Map<String, dynamic> _$$_MeetingRecordDetailSpeechToJson(
+        _$_MeetingRecordDetailSpeech instance) =>
     <String, dynamic>{
       'speechID': instance.speechID,
       'speechOrder': instance.speechOrder,
@@ -140,13 +140,13 @@ Map<String, dynamic> _$$_MeetingRecordSpeechDetailToJson(
       'speechURL': instance.speechURL,
     };
 
-_$_MeetingRecordResponseSummary _$$_MeetingRecordResponseSummaryFromJson(
+_$_MeetingRecordSummaryResponse _$$_MeetingRecordSummaryResponseFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordResponseSummary',
+      r'_$_MeetingRecordSummaryResponse',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordResponseSummary(
+        final val = _$_MeetingRecordSummaryResponse(
           numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
           numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
           startRecord: $checkedConvert('startRecord', (v) => v as int),
@@ -165,8 +165,8 @@ _$_MeetingRecordResponseSummary _$$_MeetingRecordResponseSummaryFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordResponseSummaryToJson(
-    _$_MeetingRecordResponseSummary instance) {
+Map<String, dynamic> _$$_MeetingRecordSummaryResponseToJson(
+    _$_MeetingRecordSummaryResponse instance) {
   final val = <String, dynamic>{
     'numberOfRecords': instance.numberOfRecords,
     'numberOfReturn': instance.numberOfReturn,
@@ -204,7 +204,7 @@ _$_MeetingRecordSummary _$$_MeetingRecordSummaryFromJson(
               'speechRecord',
               (v) =>
                   (v as List<dynamic>?)
-                      ?.map((e) => MeetingRecordSpeechSummary.fromJson(
+                      ?.map((e) => MeetingRecordSummarySpeech.fromJson(
                           e as Map<String, dynamic>))
                       .toList() ??
                   const []),
@@ -232,13 +232,13 @@ Map<String, dynamic> _$$_MeetingRecordSummaryToJson(
       'pdfURL': instance.pdfURL,
     };
 
-_$_MeetingRecordSpeechSummary _$$_MeetingRecordSpeechSummaryFromJson(
+_$_MeetingRecordSummarySpeech _$$_MeetingRecordSummarySpeechFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordSpeechSummary',
+      r'_$_MeetingRecordSummarySpeech',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordSpeechSummary(
+        final val = _$_MeetingRecordSummarySpeech(
           speechID: $checkedConvert('speechID', (v) => v as String),
           speechOrder: $checkedConvert('speechOrder', (v) => v as String),
           speaker: $checkedConvert('speaker', (v) => v as String),
@@ -248,8 +248,8 @@ _$_MeetingRecordSpeechSummary _$$_MeetingRecordSpeechSummaryFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordSpeechSummaryToJson(
-        _$_MeetingRecordSpeechSummary instance) =>
+Map<String, dynamic> _$$_MeetingRecordSummarySpeechToJson(
+        _$_MeetingRecordSummarySpeech instance) =>
     <String, dynamic>{
       'speechID': instance.speechID,
       'speechOrder': instance.speechOrder,

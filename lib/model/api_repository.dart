@@ -20,7 +20,7 @@ class ApiRepository {
 
   final ApiConfig config;
 
-  Future<MeetingRecordResponseSummary> getMeetingSummary({
+  Future<MeetingRecordSummaryResponse> getMeetingSummary({
     required Map<String, String> queryParameters,
   }) async {
     final response = await http.get(
@@ -33,12 +33,12 @@ class ApiRepository {
       throw _error(response);
     }
 
-    return MeetingRecordResponseSummary.fromJson(
+    return MeetingRecordSummaryResponse.fromJson(
       json.decode(response.body),
     );
   }
 
-  Future<MeetingRecordResponseDetail> getMeetingDetail({
+  Future<MeetingRecordDetailResponse> getMeetingDetail({
     required Map<String, String> queryParameters,
   }) async {
     final response = await http.get(
@@ -51,7 +51,7 @@ class ApiRepository {
       throw _error(response);
     }
 
-    return MeetingRecordResponseDetail.fromJson(
+    return MeetingRecordDetailResponse.fromJson(
       json.decode(response.body),
     );
   }

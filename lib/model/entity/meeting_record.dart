@@ -6,8 +6,8 @@ part 'meeting_record.g.dart';
 
 /// 会議単位出力
 @freezed
-class MeetingRecordResponseDetail with _$MeetingRecordResponseDetail {
-  const factory MeetingRecordResponseDetail({
+class MeetingRecordDetailResponse with _$MeetingRecordDetailResponse {
+  const factory MeetingRecordDetailResponse({
     /// 総結果件数
     required int numberOfRecords,
 
@@ -21,11 +21,11 @@ class MeetingRecordResponseDetail with _$MeetingRecordResponseDetail {
     required int? nextRecordPosition,
 
     /// 会議一覧
-    @Default([]) List<MeetingRecordResponseDetail> meetingRecord,
+    @Default([]) List<MeetingRecordDetailResponse> meetingRecord,
   }) = _MeetingRecordResponseDetail;
 
-  factory MeetingRecordResponseDetail.fromJson(Map<String, dynamic> json) =>
-      _$MeetingRecordResponseDetailFromJson(json);
+  factory MeetingRecordDetailResponse.fromJson(Map<String, dynamic> json) =>
+      _$MeetingRecordDetailResponseFromJson(json);
 }
 
 @freezed
@@ -61,7 +61,7 @@ class MeetingRecordDetail with _$MeetingRecordDetail {
     @Default(false) bool closing,
 
     /// 発言リスト
-    @Default([]) List<MeetingRecordSpeechDetail> speechRecord,
+    @Default([]) List<MeetingRecordDetailSpeech> speechRecord,
 
     /// 会議録テキスト表示画面のURL
     required String meetingURL,
@@ -75,8 +75,8 @@ class MeetingRecordDetail with _$MeetingRecordDetail {
 }
 
 @freezed
-class MeetingRecordSpeechDetail with _$MeetingRecordSpeechDetail {
-  const factory MeetingRecordSpeechDetail({
+class MeetingRecordDetailSpeech with _$MeetingRecordDetailSpeech {
+  const factory MeetingRecordDetailSpeech({
     /// 発言ID
     required String speechID,
 
@@ -112,16 +112,16 @@ class MeetingRecordSpeechDetail with _$MeetingRecordSpeechDetail {
 
     /// 発言URL
     required String speechURL,
-  }) = _MeetingRecordSpeechDetail;
+  }) = _MeetingRecordDetailSpeech;
 
-  factory MeetingRecordSpeechDetail.fromJson(Map<String, dynamic> json) =>
-      _$MeetingRecordSpeechDetailFromJson(json);
+  factory MeetingRecordDetailSpeech.fromJson(Map<String, dynamic> json) =>
+      _$MeetingRecordDetailSpeechFromJson(json);
 }
 
 /// 会議単位簡易出力
 @freezed
-class MeetingRecordResponseSummary with _$MeetingRecordResponseSummary {
-  const factory MeetingRecordResponseSummary({
+class MeetingRecordSummaryResponse with _$MeetingRecordSummaryResponse {
+  const factory MeetingRecordSummaryResponse({
     /// 総結果件数
     required int numberOfRecords,
 
@@ -136,10 +136,10 @@ class MeetingRecordResponseSummary with _$MeetingRecordResponseSummary {
 
     /// 会議一覧
     @Default([]) List<MeetingRecordSummary> meetingRecord,
-  }) = _MeetingRecordResponseSummary;
+  }) = _MeetingRecordSummaryResponse;
 
-  factory MeetingRecordResponseSummary.fromJson(Map<String, dynamic> json) =>
-      _$MeetingRecordResponseSummaryFromJson(json);
+  factory MeetingRecordSummaryResponse.fromJson(Map<String, dynamic> json) =>
+      _$MeetingRecordSummaryResponseFromJson(json);
 }
 
 @freezed
@@ -175,7 +175,7 @@ class MeetingRecordSummary with _$MeetingRecordSummary {
     @Default(false) bool closing,
 
     /// 発言リスト
-    @Default([]) List<MeetingRecordSpeechSummary> speechRecord,
+    @Default([]) List<MeetingRecordSummarySpeech> speechRecord,
 
     /// 会議録テキスト表示画面のURL
     required String meetingURL,
@@ -189,8 +189,8 @@ class MeetingRecordSummary with _$MeetingRecordSummary {
 }
 
 @freezed
-class MeetingRecordSpeechSummary with _$MeetingRecordSpeechSummary {
-  const factory MeetingRecordSpeechSummary({
+class MeetingRecordSummarySpeech with _$MeetingRecordSummarySpeech {
+  const factory MeetingRecordSummarySpeech({
     /// 発言ID
     required String speechID,
 
@@ -202,8 +202,8 @@ class MeetingRecordSpeechSummary with _$MeetingRecordSpeechSummary {
 
     /// 発言URL
     required String speechURL,
-  }) = _MeetingRecordSpeechSummary;
+  }) = _MeetingRecordSummarySpeech;
 
-  factory MeetingRecordSpeechSummary.fromJson(Map<String, dynamic> json) =>
-      _$MeetingRecordSpeechSummaryFromJson(json);
+  factory MeetingRecordSummarySpeech.fromJson(Map<String, dynamic> json) =>
+      _$MeetingRecordSummarySpeechFromJson(json);
 }
