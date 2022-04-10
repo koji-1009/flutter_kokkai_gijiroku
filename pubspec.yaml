@@ -16,6 +16,7 @@ dependencies:
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^2.0.0-dev.0
 
+  intl: ^0.17.0
   http: ^0.13.0
 
 dev_dependencies:
