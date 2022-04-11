@@ -65,7 +65,6 @@ _$_SpeechRecord _$$_SpeechRecordFromJson(Map<String, dynamic> json) =>
           nameOfMeeting: $checkedConvert('nameOfMeeting', (v) => v as String),
           issue: $checkedConvert('issue', (v) => v as String),
           date: $checkedConvert('date', (v) => v as String),
-          closing: $checkedConvert('closing', (v) => v as bool? ?? false),
           speechOrder: $checkedConvert('speechOrder', (v) => v as int),
           speaker: $checkedConvert('speaker', (v) => v as String),
           speakerYomi:
@@ -97,7 +96,6 @@ Map<String, dynamic> _$$_SpeechRecordToJson(_$_SpeechRecord instance) =>
       'nameOfMeeting': instance.nameOfMeeting,
       'issue': instance.issue,
       'date': instance.date,
-      'closing': instance.closing,
       'speechOrder': instance.speechOrder,
       'speaker': instance.speaker,
       'speakerYomi': instance.speakerYomi,

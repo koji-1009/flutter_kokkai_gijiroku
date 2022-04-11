@@ -329,7 +329,6 @@ class _$SpeechRecordTearOff {
       required String nameOfMeeting,
       required String issue,
       required String date,
-      bool closing = false,
       required int speechOrder,
       required String speaker,
       String speakerYomi = '',
@@ -351,7 +350,6 @@ class _$SpeechRecordTearOff {
       nameOfMeeting: nameOfMeeting,
       issue: issue,
       date: date,
-      closing: closing,
       speechOrder: speechOrder,
       speaker: speaker,
       speakerYomi: speakerYomi,
@@ -401,11 +399,10 @@ mixin _$SpeechRecord {
   String get issue => throw _privateConstructorUsedError;
 
   /// 開催日付
-  String get date => throw _privateConstructorUsedError;
-
-  /// 閉会中フラグ
-  bool get closing => throw _privateConstructorUsedError;
-
+  String get date =>
+      throw _privateConstructorUsedError; // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// @Default(false) bool closing,
   /// 発言番号
   int get speechOrder => throw _privateConstructorUsedError;
 
@@ -460,7 +457,6 @@ abstract class $SpeechRecordCopyWith<$Res> {
       String nameOfMeeting,
       String issue,
       String date,
-      bool closing,
       int speechOrder,
       String speaker,
       String speakerYomi,
@@ -493,7 +489,6 @@ class _$SpeechRecordCopyWithImpl<$Res> implements $SpeechRecordCopyWith<$Res> {
     Object? nameOfMeeting = freezed,
     Object? issue = freezed,
     Object? date = freezed,
-    Object? closing = freezed,
     Object? speechOrder = freezed,
     Object? speaker = freezed,
     Object? speakerYomi = freezed,
@@ -543,10 +538,6 @@ class _$SpeechRecordCopyWithImpl<$Res> implements $SpeechRecordCopyWith<$Res> {
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
-          ? _value.closing
-          : closing // ignore: cast_nullable_to_non_nullable
-              as bool,
       speechOrder: speechOrder == freezed
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
@@ -612,7 +603,6 @@ abstract class _$SpeechRecordCopyWith<$Res>
       String nameOfMeeting,
       String issue,
       String date,
-      bool closing,
       int speechOrder,
       String speaker,
       String speakerYomi,
@@ -647,7 +637,6 @@ class __$SpeechRecordCopyWithImpl<$Res> extends _$SpeechRecordCopyWithImpl<$Res>
     Object? nameOfMeeting = freezed,
     Object? issue = freezed,
     Object? date = freezed,
-    Object? closing = freezed,
     Object? speechOrder = freezed,
     Object? speaker = freezed,
     Object? speakerYomi = freezed,
@@ -697,10 +686,6 @@ class __$SpeechRecordCopyWithImpl<$Res> extends _$SpeechRecordCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
-          ? _value.closing
-          : closing // ignore: cast_nullable_to_non_nullable
-              as bool,
       speechOrder: speechOrder == freezed
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
@@ -762,7 +747,6 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
       required this.nameOfMeeting,
       required this.issue,
       required this.date,
-      this.closing = false,
       required this.speechOrder,
       required this.speaker,
       this.speakerYomi = '',
@@ -814,13 +798,9 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
 
   /// 開催日付
   final String date;
-  @JsonKey()
-  @override
-
-  /// 閉会中フラグ
-  final bool closing;
-  @override
-
+  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// @Default(false) bool closing,
   /// 発言番号
   final int speechOrder;
   @override
@@ -871,7 +851,7 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SpeechRecord(speechID: $speechID, issueID: $issueID, imageKind: $imageKind, searchObject: $searchObject, session: $session, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, issue: $issue, date: $date, closing: $closing, speechOrder: $speechOrder, speaker: $speaker, speakerYomi: $speakerYomi, speakerGroup: $speakerGroup, speakerPosition: $speakerPosition, speakerRole: $speakerRole, speech: $speech, startPage: $startPage, speechURL: $speechURL, meetingURL: $meetingURL, pdfURL: $pdfURL)';
+    return 'SpeechRecord(speechID: $speechID, issueID: $issueID, imageKind: $imageKind, searchObject: $searchObject, session: $session, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, issue: $issue, date: $date, speechOrder: $speechOrder, speaker: $speaker, speakerYomi: $speakerYomi, speakerGroup: $speakerGroup, speakerPosition: $speakerPosition, speakerRole: $speakerRole, speech: $speech, startPage: $startPage, speechURL: $speechURL, meetingURL: $meetingURL, pdfURL: $pdfURL)';
   }
 
   @override
@@ -888,7 +868,6 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
       ..add(DiagnosticsProperty('nameOfMeeting', nameOfMeeting))
       ..add(DiagnosticsProperty('issue', issue))
       ..add(DiagnosticsProperty('date', date))
-      ..add(DiagnosticsProperty('closing', closing))
       ..add(DiagnosticsProperty('speechOrder', speechOrder))
       ..add(DiagnosticsProperty('speaker', speaker))
       ..add(DiagnosticsProperty('speakerYomi', speakerYomi))
@@ -919,7 +898,6 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
                 .equals(other.nameOfMeeting, nameOfMeeting) &&
             const DeepCollectionEquality().equals(other.issue, issue) &&
             const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.closing, closing) &&
             const DeepCollectionEquality()
                 .equals(other.speechOrder, speechOrder) &&
             const DeepCollectionEquality().equals(other.speaker, speaker) &&
@@ -951,7 +929,6 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
         const DeepCollectionEquality().hash(nameOfMeeting),
         const DeepCollectionEquality().hash(issue),
         const DeepCollectionEquality().hash(date),
-        const DeepCollectionEquality().hash(closing),
         const DeepCollectionEquality().hash(speechOrder),
         const DeepCollectionEquality().hash(speaker),
         const DeepCollectionEquality().hash(speakerYomi),
@@ -987,7 +964,6 @@ abstract class _SpeechRecord implements SpeechRecord {
       required String nameOfMeeting,
       required String issue,
       required String date,
-      bool closing,
       required int speechOrder,
       required String speaker,
       String speakerYomi,
@@ -1039,12 +1015,9 @@ abstract class _SpeechRecord implements SpeechRecord {
 
   /// 開催日付
   String get date;
-  @override
-
-  /// 閉会中フラグ
-  bool get closing;
-  @override
-
+  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// @Default(false) bool closing,
   /// 発言番号
   int get speechOrder;
   @override

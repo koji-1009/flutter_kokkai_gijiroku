@@ -65,7 +65,6 @@ _$_MeetingRecordDetail _$$_MeetingRecordDetailFromJson(
           nameOfMeeting: $checkedConvert('nameOfMeeting', (v) => v as String),
           issue: $checkedConvert('issue', (v) => v as String),
           date: $checkedConvert('date', (v) => v as String),
-          closing: $checkedConvert('closing', (v) => v as bool? ?? false),
           speechRecord: $checkedConvert(
               'speechRecord',
               (v) =>
@@ -92,7 +91,6 @@ Map<String, dynamic> _$$_MeetingRecordDetailToJson(
       'nameOfMeeting': instance.nameOfMeeting,
       'issue': instance.issue,
       'date': instance.date,
-      'closing': instance.closing,
       'speechRecord': instance.speechRecord.map((e) => e.toJson()).toList(),
       'meetingURL': instance.meetingURL,
       'pdfURL': instance.pdfURL,
@@ -199,7 +197,6 @@ _$_MeetingRecordSummary _$$_MeetingRecordSummaryFromJson(
           nameOfMeeting: $checkedConvert('nameOfMeeting', (v) => v as String),
           issue: $checkedConvert('issue', (v) => v as String),
           date: $checkedConvert('date', (v) => v as String),
-          closing: $checkedConvert('closing', (v) => v as bool? ?? false),
           speechRecord: $checkedConvert(
               'speechRecord',
               (v) =>
@@ -226,7 +223,6 @@ Map<String, dynamic> _$$_MeetingRecordSummaryToJson(
       'nameOfMeeting': instance.nameOfMeeting,
       'issue': instance.issue,
       'date': instance.date,
-      'closing': instance.closing,
       'speechRecord': instance.speechRecord.map((e) => e.toJson()).toList(),
       'meetingURL': instance.meetingURL,
       'pdfURL': instance.pdfURL,

@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'speech_record.freezed.dart';
-
 part 'speech_record.g.dart';
 
 /// 発言単位出力
@@ -59,8 +58,9 @@ class SpeechRecord with _$SpeechRecord {
     /// 開催日付
     required String date,
 
-    /// 閉会中フラグ
-    @Default(false) bool closing,
+    // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+    // /// 閉会中フラグ
+    // @Default(false) bool closing,
 
     /// 発言番号
     required int speechOrder,

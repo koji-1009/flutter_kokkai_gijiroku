@@ -336,7 +336,6 @@ class _$MeetingRecordDetailTearOff {
       required String nameOfMeeting,
       required String issue,
       required String date,
-      bool closing = false,
       List<MeetingRecordDetailSpeech> speechRecord = const [],
       required String meetingURL,
       String pdfURL = ''}) {
@@ -349,7 +348,6 @@ class _$MeetingRecordDetailTearOff {
       nameOfMeeting: nameOfMeeting,
       issue: issue,
       date: date,
-      closing: closing,
       speechRecord: speechRecord,
       meetingURL: meetingURL,
       pdfURL: pdfURL,
@@ -388,13 +386,12 @@ mixin _$MeetingRecordDetail {
   String get issue => throw _privateConstructorUsedError;
 
   /// 開催日付
-  String get date => throw _privateConstructorUsedError;
-
-  /// 閉会中フラグ
-  /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-  /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool get closing => throw _privateConstructorUsedError;
-
+  String get date =>
+      throw _privateConstructorUsedError; // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+// /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+// @Default(false) bool closing,
   /// 発言リスト
   List<MeetingRecordDetailSpeech> get speechRecord =>
       throw _privateConstructorUsedError;
@@ -425,7 +422,6 @@ abstract class $MeetingRecordDetailCopyWith<$Res> {
       String nameOfMeeting,
       String issue,
       String date,
-      bool closing,
       List<MeetingRecordDetailSpeech> speechRecord,
       String meetingURL,
       String pdfURL});
@@ -450,7 +446,6 @@ class _$MeetingRecordDetailCopyWithImpl<$Res>
     Object? nameOfMeeting = freezed,
     Object? issue = freezed,
     Object? date = freezed,
-    Object? closing = freezed,
     Object? speechRecord = freezed,
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
@@ -488,10 +483,6 @@ class _$MeetingRecordDetailCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
-          ? _value.closing
-          : closing // ignore: cast_nullable_to_non_nullable
-              as bool,
       speechRecord: speechRecord == freezed
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
@@ -524,7 +515,6 @@ abstract class _$MeetingRecordDetailCopyWith<$Res>
       String nameOfMeeting,
       String issue,
       String date,
-      bool closing,
       List<MeetingRecordDetailSpeech> speechRecord,
       String meetingURL,
       String pdfURL});
@@ -551,7 +541,6 @@ class __$MeetingRecordDetailCopyWithImpl<$Res>
     Object? nameOfMeeting = freezed,
     Object? issue = freezed,
     Object? date = freezed,
-    Object? closing = freezed,
     Object? speechRecord = freezed,
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
@@ -589,10 +578,6 @@ class __$MeetingRecordDetailCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
-          ? _value.closing
-          : closing // ignore: cast_nullable_to_non_nullable
-              as bool,
       speechRecord: speechRecord == freezed
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
@@ -623,7 +608,6 @@ class _$_MeetingRecordDetail
       required this.nameOfMeeting,
       required this.issue,
       required this.date,
-      this.closing = false,
       this.speechRecord = const [],
       required this.meetingURL,
       this.pdfURL = ''});
@@ -664,15 +648,11 @@ class _$_MeetingRecordDetail
   /// 開催日付
   final String date;
   @JsonKey()
-  @override
-
-  /// 閉会中フラグ
-  /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-  /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  final bool closing;
-  @JsonKey()
-  @override
-
+  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+// /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+// @Default(false) bool closing,
   /// 発言リスト
   final List<MeetingRecordDetailSpeech> speechRecord;
   @override
@@ -687,7 +667,7 @@ class _$_MeetingRecordDetail
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MeetingRecordDetail(issueID: $issueID, imageKind: $imageKind, searchObject: $searchObject, session: $session, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, issue: $issue, date: $date, closing: $closing, speechRecord: $speechRecord, meetingURL: $meetingURL, pdfURL: $pdfURL)';
+    return 'MeetingRecordDetail(issueID: $issueID, imageKind: $imageKind, searchObject: $searchObject, session: $session, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, issue: $issue, date: $date, speechRecord: $speechRecord, meetingURL: $meetingURL, pdfURL: $pdfURL)';
   }
 
   @override
@@ -703,7 +683,6 @@ class _$_MeetingRecordDetail
       ..add(DiagnosticsProperty('nameOfMeeting', nameOfMeeting))
       ..add(DiagnosticsProperty('issue', issue))
       ..add(DiagnosticsProperty('date', date))
-      ..add(DiagnosticsProperty('closing', closing))
       ..add(DiagnosticsProperty('speechRecord', speechRecord))
       ..add(DiagnosticsProperty('meetingURL', meetingURL))
       ..add(DiagnosticsProperty('pdfURL', pdfURL));
@@ -725,7 +704,6 @@ class _$_MeetingRecordDetail
                 .equals(other.nameOfMeeting, nameOfMeeting) &&
             const DeepCollectionEquality().equals(other.issue, issue) &&
             const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.closing, closing) &&
             const DeepCollectionEquality()
                 .equals(other.speechRecord, speechRecord) &&
             const DeepCollectionEquality()
@@ -744,7 +722,6 @@ class _$_MeetingRecordDetail
       const DeepCollectionEquality().hash(nameOfMeeting),
       const DeepCollectionEquality().hash(issue),
       const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(closing),
       const DeepCollectionEquality().hash(speechRecord),
       const DeepCollectionEquality().hash(meetingURL),
       const DeepCollectionEquality().hash(pdfURL));
@@ -771,7 +748,6 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
       required String nameOfMeeting,
       required String issue,
       required String date,
-      bool closing,
       List<MeetingRecordDetailSpeech> speechRecord,
       required String meetingURL,
       String pdfURL}) = _$_MeetingRecordDetail;
@@ -811,14 +787,11 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
 
   /// 開催日付
   String get date;
-  @override
-
-  /// 閉会中フラグ
-  /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-  /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool get closing;
-  @override
-
+  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+// /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+// @Default(false) bool closing,
   /// 発言リスト
   List<MeetingRecordDetailSpeech> get speechRecord;
   @override
@@ -1668,7 +1641,6 @@ class _$MeetingRecordSummaryTearOff {
       required String nameOfMeeting,
       required String issue,
       required String date,
-      bool closing = false,
       List<MeetingRecordSummarySpeech> speechRecord = const [],
       required String meetingURL,
       String pdfURL = ''}) {
@@ -1681,7 +1653,6 @@ class _$MeetingRecordSummaryTearOff {
       nameOfMeeting: nameOfMeeting,
       issue: issue,
       date: date,
-      closing: closing,
       speechRecord: speechRecord,
       meetingURL: meetingURL,
       pdfURL: pdfURL,
@@ -1720,13 +1691,12 @@ mixin _$MeetingRecordSummary {
   String get issue => throw _privateConstructorUsedError;
 
   /// 開催日付
-  String get date => throw _privateConstructorUsedError;
-
-  /// 閉会中フラグ
-  /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-  /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool get closing => throw _privateConstructorUsedError;
-
+  String get date =>
+      throw _privateConstructorUsedError; // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+// /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+// @Default(false) bool closing,
   /// 発言リスト
   List<MeetingRecordSummarySpeech> get speechRecord =>
       throw _privateConstructorUsedError;
@@ -1757,7 +1727,6 @@ abstract class $MeetingRecordSummaryCopyWith<$Res> {
       String nameOfMeeting,
       String issue,
       String date,
-      bool closing,
       List<MeetingRecordSummarySpeech> speechRecord,
       String meetingURL,
       String pdfURL});
@@ -1782,7 +1751,6 @@ class _$MeetingRecordSummaryCopyWithImpl<$Res>
     Object? nameOfMeeting = freezed,
     Object? issue = freezed,
     Object? date = freezed,
-    Object? closing = freezed,
     Object? speechRecord = freezed,
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
@@ -1820,10 +1788,6 @@ class _$MeetingRecordSummaryCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
-          ? _value.closing
-          : closing // ignore: cast_nullable_to_non_nullable
-              as bool,
       speechRecord: speechRecord == freezed
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
@@ -1856,7 +1820,6 @@ abstract class _$MeetingRecordSummaryCopyWith<$Res>
       String nameOfMeeting,
       String issue,
       String date,
-      bool closing,
       List<MeetingRecordSummarySpeech> speechRecord,
       String meetingURL,
       String pdfURL});
@@ -1883,7 +1846,6 @@ class __$MeetingRecordSummaryCopyWithImpl<$Res>
     Object? nameOfMeeting = freezed,
     Object? issue = freezed,
     Object? date = freezed,
-    Object? closing = freezed,
     Object? speechRecord = freezed,
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
@@ -1921,10 +1883,6 @@ class __$MeetingRecordSummaryCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
-          ? _value.closing
-          : closing // ignore: cast_nullable_to_non_nullable
-              as bool,
       speechRecord: speechRecord == freezed
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
@@ -1955,7 +1913,6 @@ class _$_MeetingRecordSummary
       required this.nameOfMeeting,
       required this.issue,
       required this.date,
-      this.closing = false,
       this.speechRecord = const [],
       required this.meetingURL,
       this.pdfURL = ''});
@@ -1996,15 +1953,11 @@ class _$_MeetingRecordSummary
   /// 開催日付
   final String date;
   @JsonKey()
-  @override
-
-  /// 閉会中フラグ
-  /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-  /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  final bool closing;
-  @JsonKey()
-  @override
-
+  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+// /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+// @Default(false) bool closing,
   /// 発言リスト
   final List<MeetingRecordSummarySpeech> speechRecord;
   @override
@@ -2019,7 +1972,7 @@ class _$_MeetingRecordSummary
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MeetingRecordSummary(issueID: $issueID, imageKind: $imageKind, searchObject: $searchObject, session: $session, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, issue: $issue, date: $date, closing: $closing, speechRecord: $speechRecord, meetingURL: $meetingURL, pdfURL: $pdfURL)';
+    return 'MeetingRecordSummary(issueID: $issueID, imageKind: $imageKind, searchObject: $searchObject, session: $session, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, issue: $issue, date: $date, speechRecord: $speechRecord, meetingURL: $meetingURL, pdfURL: $pdfURL)';
   }
 
   @override
@@ -2035,7 +1988,6 @@ class _$_MeetingRecordSummary
       ..add(DiagnosticsProperty('nameOfMeeting', nameOfMeeting))
       ..add(DiagnosticsProperty('issue', issue))
       ..add(DiagnosticsProperty('date', date))
-      ..add(DiagnosticsProperty('closing', closing))
       ..add(DiagnosticsProperty('speechRecord', speechRecord))
       ..add(DiagnosticsProperty('meetingURL', meetingURL))
       ..add(DiagnosticsProperty('pdfURL', pdfURL));
@@ -2057,7 +2009,6 @@ class _$_MeetingRecordSummary
                 .equals(other.nameOfMeeting, nameOfMeeting) &&
             const DeepCollectionEquality().equals(other.issue, issue) &&
             const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.closing, closing) &&
             const DeepCollectionEquality()
                 .equals(other.speechRecord, speechRecord) &&
             const DeepCollectionEquality()
@@ -2076,7 +2027,6 @@ class _$_MeetingRecordSummary
       const DeepCollectionEquality().hash(nameOfMeeting),
       const DeepCollectionEquality().hash(issue),
       const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(closing),
       const DeepCollectionEquality().hash(speechRecord),
       const DeepCollectionEquality().hash(meetingURL),
       const DeepCollectionEquality().hash(pdfURL));
@@ -2103,7 +2053,6 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
       required String nameOfMeeting,
       required String issue,
       required String date,
-      bool closing,
       List<MeetingRecordSummarySpeech> speechRecord,
       required String meetingURL,
       String pdfURL}) = _$_MeetingRecordSummary;
@@ -2143,14 +2092,11 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
 
   /// 開催日付
   String get date;
-  @override
-
-  /// 閉会中フラグ
-  /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-  /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool get closing;
-  @override
-
+  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// /// 閉会中フラグ
+// /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+// /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+// @Default(false) bool closing,
   /// 発言リスト
   List<MeetingRecordSummarySpeech> get speechRecord;
   @override

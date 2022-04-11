@@ -55,10 +55,11 @@ class MeetingRecordDetail with _$MeetingRecordDetail {
     /// 開催日付
     required String date,
 
-    /// 閉会中フラグ
-    /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-    /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-    @Default(false) bool closing,
+    // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+    // /// 閉会中フラグ
+    // /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+    // /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+    // @Default(false) bool closing,
 
     /// 発言リスト
     @Default([]) List<MeetingRecordDetailSpeech> speechRecord,
@@ -169,10 +170,11 @@ class MeetingRecordSummary with _$MeetingRecordSummary {
     /// 開催日付
     required String date,
 
-    /// 閉会中フラグ
-    /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
-    /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-    @Default(false) bool closing,
+    // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+    // /// 閉会中フラグ
+    // /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
+    // /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
+    // @Default(false) bool closing,
 
     /// 発言リスト
     @Default([]) List<MeetingRecordSummarySpeech> speechRecord,
