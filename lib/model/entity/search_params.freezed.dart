@@ -19,9 +19,7 @@ class _$SearchParamsTearOff {
   const _$SearchParamsTearOff();
 
   _SearchParams call(
-      {int startRecord = 1,
-      int? maximumRecords,
-      NameOfHouse? nameOfHouse,
+      {NameOfHouse? nameOfHouse,
       String? nameOfMeeting,
       String? any,
       String? speaker,
@@ -42,8 +40,6 @@ class _$SearchParamsTearOff {
       int? issueFrom,
       int? issueTo}) {
     return _SearchParams(
-      startRecord: startRecord,
-      maximumRecords: maximumRecords,
       nameOfHouse: nameOfHouse,
       nameOfMeeting: nameOfMeeting,
       any: any,
@@ -73,16 +69,18 @@ const $SearchParams = _$SearchParamsTearOff();
 
 /// @nodoc
 mixin _$SearchParams {
-  /// 開始位置
-  /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
-  /// 省略時のデフォルト値は「1」
-  int get startRecord => throw _privateConstructorUsedError;
+/*
+    presenterで対応するため、2項目はparamsから除外
+    /// 開始位置
+    /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
+    /// 省略時のデフォルト値は「1」
+    @Default(1) int startRecord,
 
-  /// 一回の最大取得件数
-  /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
-  /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
-  int? get maximumRecords => throw _privateConstructorUsedError;
-
+    /// 一回の最大取得件数
+    /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
+    /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
+    int? maximumRecords,
+    */
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
   /// 省略可（省略時は検索条件に含めない）。また、指定可能な値以外を指定した場合も、検索条件に含めない。
@@ -194,9 +192,7 @@ abstract class $SearchParamsCopyWith<$Res> {
           SearchParams value, $Res Function(SearchParams) then) =
       _$SearchParamsCopyWithImpl<$Res>;
   $Res call(
-      {int startRecord,
-      int? maximumRecords,
-      NameOfHouse? nameOfHouse,
+      {NameOfHouse? nameOfHouse,
       String? nameOfMeeting,
       String? any,
       String? speaker,
@@ -228,8 +224,6 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? startRecord = freezed,
-    Object? maximumRecords = freezed,
     Object? nameOfHouse = freezed,
     Object? nameOfMeeting = freezed,
     Object? any = freezed,
@@ -252,14 +246,6 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
     Object? issueTo = freezed,
   }) {
     return _then(_value.copyWith(
-      startRecord: startRecord == freezed
-          ? _value.startRecord
-          : startRecord // ignore: cast_nullable_to_non_nullable
-              as int,
-      maximumRecords: maximumRecords == freezed
-          ? _value.maximumRecords
-          : maximumRecords // ignore: cast_nullable_to_non_nullable
-              as int?,
       nameOfHouse: nameOfHouse == freezed
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
@@ -352,9 +338,7 @@ abstract class _$SearchParamsCopyWith<$Res>
       __$SearchParamsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int startRecord,
-      int? maximumRecords,
-      NameOfHouse? nameOfHouse,
+      {NameOfHouse? nameOfHouse,
       String? nameOfMeeting,
       String? any,
       String? speaker,
@@ -388,8 +372,6 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? startRecord = freezed,
-    Object? maximumRecords = freezed,
     Object? nameOfHouse = freezed,
     Object? nameOfMeeting = freezed,
     Object? any = freezed,
@@ -412,14 +394,6 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
     Object? issueTo = freezed,
   }) {
     return _then(_SearchParams(
-      startRecord: startRecord == freezed
-          ? _value.startRecord
-          : startRecord // ignore: cast_nullable_to_non_nullable
-              as int,
-      maximumRecords: maximumRecords == freezed
-          ? _value.maximumRecords
-          : maximumRecords // ignore: cast_nullable_to_non_nullable
-              as int?,
       nameOfHouse: nameOfHouse == freezed
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
@@ -508,9 +482,7 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
 
 class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   const _$_SearchParams(
-      {this.startRecord = 1,
-      this.maximumRecords,
-      this.nameOfHouse,
+      {this.nameOfHouse,
       this.nameOfMeeting,
       this.any,
       this.speaker,
@@ -531,21 +503,18 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
       this.issueFrom,
       this.issueTo});
 
-  @JsonKey()
-  @override
+  @override /*
+    presenterで対応するため、2項目はparamsから除外
+    /// 開始位置
+    /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
+    /// 省略時のデフォルト値は「1」
+    @Default(1) int startRecord,
 
-  /// 開始位置
-  /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
-  /// 省略時のデフォルト値は「1」
-  final int startRecord;
-  @override
-
-  /// 一回の最大取得件数
-  /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
-  /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
-  final int? maximumRecords;
-  @override
-
+    /// 一回の最大取得件数
+    /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
+    /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
+    int? maximumRecords,
+    */
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
   /// 省略可（省略時は検索条件に含めない）。また、指定可能な値以外を指定した場合も、検索条件に含めない。
@@ -667,7 +636,7 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SearchParams(startRecord: $startRecord, maximumRecords: $maximumRecords, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, any: $any, speaker: $speaker, from: $from, until: $until, supplementAndAppendix: $supplementAndAppendix, contentsAndIndex: $contentsAndIndex, searchRange: $searchRange, closing: $closing, speechNumber: $speechNumber, speakerPosition: $speakerPosition, speakerGroup: $speakerGroup, speakerRole: $speakerRole, speechID: $speechID, issueID: $issueID, sessionFrom: $sessionFrom, sessionTo: $sessionTo, issueFrom: $issueFrom, issueTo: $issueTo)';
+    return 'SearchParams(nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, any: $any, speaker: $speaker, from: $from, until: $until, supplementAndAppendix: $supplementAndAppendix, contentsAndIndex: $contentsAndIndex, searchRange: $searchRange, closing: $closing, speechNumber: $speechNumber, speakerPosition: $speakerPosition, speakerGroup: $speakerGroup, speakerRole: $speakerRole, speechID: $speechID, issueID: $issueID, sessionFrom: $sessionFrom, sessionTo: $sessionTo, issueFrom: $issueFrom, issueTo: $issueTo)';
   }
 
   @override
@@ -675,8 +644,6 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'SearchParams'))
-      ..add(DiagnosticsProperty('startRecord', startRecord))
-      ..add(DiagnosticsProperty('maximumRecords', maximumRecords))
       ..add(DiagnosticsProperty('nameOfHouse', nameOfHouse))
       ..add(DiagnosticsProperty('nameOfMeeting', nameOfMeeting))
       ..add(DiagnosticsProperty('any', any))
@@ -704,10 +671,6 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SearchParams &&
-            const DeepCollectionEquality()
-                .equals(other.startRecord, startRecord) &&
-            const DeepCollectionEquality()
-                .equals(other.maximumRecords, maximumRecords) &&
             const DeepCollectionEquality()
                 .equals(other.nameOfHouse, nameOfHouse) &&
             const DeepCollectionEquality()
@@ -743,8 +706,6 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(startRecord),
-        const DeepCollectionEquality().hash(maximumRecords),
         const DeepCollectionEquality().hash(nameOfHouse),
         const DeepCollectionEquality().hash(nameOfMeeting),
         const DeepCollectionEquality().hash(any),
@@ -775,9 +736,7 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
 
 abstract class _SearchParams implements SearchParams {
   const factory _SearchParams(
-      {int startRecord,
-      int? maximumRecords,
-      NameOfHouse? nameOfHouse,
+      {NameOfHouse? nameOfHouse,
       String? nameOfMeeting,
       String? any,
       String? speaker,
@@ -798,20 +757,18 @@ abstract class _SearchParams implements SearchParams {
       int? issueFrom,
       int? issueTo}) = _$_SearchParams;
 
-  @override
+  @override /*
+    presenterで対応するため、2項目はparamsから除外
+    /// 開始位置
+    /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
+    /// 省略時のデフォルト値は「1」
+    @Default(1) int startRecord,
 
-  /// 開始位置
-  /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
-  /// 省略時のデフォルト値は「1」
-  int get startRecord;
-  @override
-
-  /// 一回の最大取得件数
-  /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
-  /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
-  int? get maximumRecords;
-  @override
-
+    /// 一回の最大取得件数
+    /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
+    /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
+    int? maximumRecords,
+    */
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
   /// 省略可（省略時は検索条件に含めない）。また、指定可能な値以外を指定した場合も、検索条件に含めない。

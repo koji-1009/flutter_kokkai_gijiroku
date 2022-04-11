@@ -106,7 +106,7 @@ _$_MeetingRecordDetailSpeech _$$_MeetingRecordDetailSpeechFromJson(
       ($checkedConvert) {
         final val = _$_MeetingRecordDetailSpeech(
           speechID: $checkedConvert('speechID', (v) => v as String),
-          speechOrder: $checkedConvert('speechOrder', (v) => v as String),
+          speechOrder: $checkedConvert('speechOrder', (v) => v as int),
           speaker: $checkedConvert('speaker', (v) => v as String),
           speakerYomi: $checkedConvert('speakerYomi', (v) => v as String),
           speakerGroup: $checkedConvert('speakerGroup', (v) => v as String),
@@ -240,7 +240,7 @@ _$_MeetingRecordSummarySpeech _$$_MeetingRecordSummarySpeechFromJson(
       ($checkedConvert) {
         final val = _$_MeetingRecordSummarySpeech(
           speechID: $checkedConvert('speechID', (v) => v as String),
-          speechOrder: $checkedConvert('speechOrder', (v) => v as String),
+          speechOrder: $checkedConvert('speechOrder', (v) => v as int),
           speaker: $checkedConvert('speaker', (v) => v as String),
           speechURL: $checkedConvert('speechURL', (v) => v as String),
         );

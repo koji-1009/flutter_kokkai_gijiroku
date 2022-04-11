@@ -846,7 +846,7 @@ class _$MeetingRecordDetailSpeechTearOff {
 
   _MeetingRecordDetailSpeech call(
       {required String speechID,
-      required String speechOrder,
+      required int speechOrder,
       required String speaker,
       required String speakerYomi,
       required String speakerGroup,
@@ -887,7 +887,7 @@ mixin _$MeetingRecordDetailSpeech {
   String get speechID => throw _privateConstructorUsedError;
 
   /// 発言番号
-  String get speechOrder => throw _privateConstructorUsedError;
+  int get speechOrder => throw _privateConstructorUsedError;
 
   /// 発言者名
   String get speaker => throw _privateConstructorUsedError;
@@ -932,7 +932,7 @@ abstract class $MeetingRecordDetailSpeechCopyWith<$Res> {
       _$MeetingRecordDetailSpeechCopyWithImpl<$Res>;
   $Res call(
       {String speechID,
-      String speechOrder,
+      int speechOrder,
       String speaker,
       String speakerYomi,
       String speakerGroup,
@@ -977,7 +977,7 @@ class _$MeetingRecordDetailSpeechCopyWithImpl<$Res>
       speechOrder: speechOrder == freezed
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       speaker: speaker == freezed
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
@@ -1031,7 +1031,7 @@ abstract class _$MeetingRecordDetailSpeechCopyWith<$Res>
   @override
   $Res call(
       {String speechID,
-      String speechOrder,
+      int speechOrder,
       String speaker,
       String speakerYomi,
       String speakerGroup,
@@ -1079,7 +1079,7 @@ class __$MeetingRecordDetailSpeechCopyWithImpl<$Res>
       speechOrder: speechOrder == freezed
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       speaker: speaker == freezed
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
@@ -1153,7 +1153,7 @@ class _$_MeetingRecordDetailSpeech
   @override
 
   /// 発言番号
-  final String speechOrder;
+  final int speechOrder;
   @override
 
   /// 発言者名
@@ -1277,7 +1277,7 @@ class _$_MeetingRecordDetailSpeech
 abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   const factory _MeetingRecordDetailSpeech(
       {required String speechID,
-      required String speechOrder,
+      required int speechOrder,
       required String speaker,
       required String speakerYomi,
       required String speakerGroup,
@@ -1299,7 +1299,7 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   @override
 
   /// 発言番号
-  String get speechOrder;
+  int get speechOrder;
   @override
 
   /// 発言者名
@@ -2178,7 +2178,7 @@ class _$MeetingRecordSummarySpeechTearOff {
 
   _MeetingRecordSummarySpeech call(
       {required String speechID,
-      required String speechOrder,
+      required int speechOrder,
       required String speaker,
       required String speechURL}) {
     return _MeetingRecordSummarySpeech(
@@ -2203,7 +2203,7 @@ mixin _$MeetingRecordSummarySpeech {
   String get speechID => throw _privateConstructorUsedError;
 
   /// 発言番号
-  String get speechOrder => throw _privateConstructorUsedError;
+  int get speechOrder => throw _privateConstructorUsedError;
 
   /// 発言者名
   String get speaker => throw _privateConstructorUsedError;
@@ -2223,7 +2223,7 @@ abstract class $MeetingRecordSummarySpeechCopyWith<$Res> {
           $Res Function(MeetingRecordSummarySpeech) then) =
       _$MeetingRecordSummarySpeechCopyWithImpl<$Res>;
   $Res call(
-      {String speechID, String speechOrder, String speaker, String speechURL});
+      {String speechID, int speechOrder, String speaker, String speechURL});
 }
 
 /// @nodoc
@@ -2250,7 +2250,7 @@ class _$MeetingRecordSummarySpeechCopyWithImpl<$Res>
       speechOrder: speechOrder == freezed
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       speaker: speaker == freezed
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
@@ -2272,7 +2272,7 @@ abstract class _$MeetingRecordSummarySpeechCopyWith<$Res>
       __$MeetingRecordSummarySpeechCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String speechID, String speechOrder, String speaker, String speechURL});
+      {String speechID, int speechOrder, String speaker, String speechURL});
 }
 
 /// @nodoc
@@ -2302,7 +2302,7 @@ class __$MeetingRecordSummarySpeechCopyWithImpl<$Res>
       speechOrder: speechOrder == freezed
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       speaker: speaker == freezed
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
@@ -2336,7 +2336,7 @@ class _$_MeetingRecordSummarySpeech
   @override
 
   /// 発言番号
-  final String speechOrder;
+  final int speechOrder;
   @override
 
   /// 発言者名
@@ -2398,7 +2398,7 @@ abstract class _MeetingRecordSummarySpeech
     implements MeetingRecordSummarySpeech {
   const factory _MeetingRecordSummarySpeech(
       {required String speechID,
-      required String speechOrder,
+      required int speechOrder,
       required String speaker,
       required String speechURL}) = _$_MeetingRecordSummarySpeech;
 
@@ -2412,7 +2412,7 @@ abstract class _MeetingRecordSummarySpeech
   @override
 
   /// 発言番号
-  String get speechOrder;
+  int get speechOrder;
   @override
 
   /// 発言者名

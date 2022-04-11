@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -98,7 +99,7 @@ class HomeScreen extends HookWidget {
               );
 
               searchParam.value = searchParam.value.copyWith(
-                from: selectDate,
+                until: selectDate,
               );
               untilDateController.text =
                   selectDate != null ? dateFormatter.format(selectDate) : '';
@@ -307,7 +308,28 @@ class HomeScreen extends HookWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('検索'),
         icon: const Icon(Icons.search_outlined),
-        onPressed: () {},
+        onPressed: () {
+          switch (mode.value) {
+            case SearchMode.meetingDetail:
+              context.pushNamed(
+                'meetingDetail',
+                queryParams: searchParam.value.query,
+              );
+              break;
+            case SearchMode.meetingSummary:
+              context.pushNamed(
+                'meetingSummary',
+                queryParams: searchParam.value.query,
+              );
+              break;
+            case SearchMode.speech:
+              context.pushNamed(
+                'speech',
+                queryParams: searchParam.value.query,
+              );
+              break;
+          }
+        },
       ),
     );
   }

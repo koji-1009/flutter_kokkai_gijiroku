@@ -98,6 +98,8 @@ extension SpeakerRoleExt on SpeakerRole {
 @freezed
 class SearchParams with _$SearchParams {
   const factory SearchParams({
+    /*
+    presenterで対応するため、2項目はparamsから除外
     /// 開始位置
     /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
     /// 省略時のデフォルト値は「1」
@@ -107,6 +109,7 @@ class SearchParams with _$SearchParams {
     /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
     /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
     int? maximumRecords,
+    */
 
     /// 院名
     /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
@@ -212,13 +215,6 @@ class SearchParams with _$SearchParams {
 
 extension SearchParamsExt on SearchParams {
   Map<String, String> get query => {
-        /// required
-        'recordPacking': 'json',
-        'startRecord': startRecord.toString(),
-
-        /// optional
-        if (maximumRecords != null)
-          'maximumRecords': maximumRecords!.toString(),
         if (nameOfHouse != null && nameOfHouse != NameOfHouse.none)
           'nameOfHouse': nameOfHouse!.value!,
         if (nameOfMeeting != null) 'nameOfMeeting': nameOfMeeting!,
@@ -229,7 +225,7 @@ extension SearchParamsExt on SearchParams {
         if (supplementAndAppendix != null)
           'supplementAndAppendix': supplementAndAppendix!.toString(),
         if (contentsAndIndex != null)
-          'contentsAndIndex': maximumRecords!.toString(),
+          'contentsAndIndex': contentsAndIndex!.toString(),
         if (searchRange != null && searchRange != SearchRange.none)
           'SearchRange': searchRange!.value!,
         if (closing != null) 'closing': closing!.toString(),

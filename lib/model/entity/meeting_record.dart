@@ -81,7 +81,7 @@ class MeetingRecordDetailSpeech with _$MeetingRecordDetailSpeech {
     required String speechID,
 
     /// 発言番号
-    required String speechOrder,
+    required int speechOrder,
 
     /// 発言者名
     required String speaker,
@@ -195,7 +195,7 @@ class MeetingRecordSummarySpeech with _$MeetingRecordSummarySpeech {
     required String speechID,
 
     /// 発言番号
-    required String speechOrder,
+    required int speechOrder,
 
     /// 発言者名
     required String speaker,

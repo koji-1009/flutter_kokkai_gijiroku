@@ -19,42 +19,48 @@ class ApiPresenter {
 
   final ApiRepository apiRepository;
 
-  Future<MeetingRecordSummaryResponse> meetingSummary({
-    required SearchParams params,
-  }) {
-    if (params.maximumRecords != null) {
-      assert(params.maximumRecords! >= 1);
-      assert(params.maximumRecords! <= 100);
-    }
-
-    return apiRepository.getMeetingSummary(
-      queryParameters: params.query,
-    );
-  }
-
   Future<MeetingRecordDetailResponse> meetingDetail({
-    required SearchParams params,
-  }) {
-    if (params.maximumRecords != null) {
-      assert(params.maximumRecords! >= 1);
-      assert(params.maximumRecords! <= 10);
-    }
+    required int page,
+    required Map<String, String> params,
+  }) =>
+      apiRepository.getMeetingDetail(
+        queryParameters: {
+          ...params,
+          ...{
+            'recordPacking': 'json',
+            'startRecord': page.toString(),
+            'maximumRecords': '10',
+          },
+        },
+      );
 
-    return apiRepository.getMeetingDetail(
-      queryParameters: params.query,
-    );
-  }
+  Future<MeetingRecordSummaryResponse> meetingSummary({
+    required int page,
+    required Map<String, String> params,
+  }) =>
+      apiRepository.getMeetingSummary(
+        queryParameters: {
+          ...params,
+          ...{
+            'recordPacking': 'json',
+            'startRecord': page.toString(),
+            'maximumRecords': '100',
+          },
+        },
+      );
 
   Future<SpeechRecordResponse> speech({
-    required SearchParams params,
-  }) {
-    if (params.maximumRecords != null) {
-      assert(params.maximumRecords! >= 1);
-      assert(params.maximumRecords! <= 100);
-    }
-
-    return apiRepository.getSpeech(
-      queryParameters: params.query,
-    );
-  }
+    required int page,
+    required Map<String, String> params,
+  }) =>
+      apiRepository.getSpeech(
+        queryParameters: {
+          ...params,
+          ...{
+            'recordPacking': 'json',
+            'startRecord': page.toString(),
+            'maximumRecords': '100',
+          },
+        },
+      );
 }
