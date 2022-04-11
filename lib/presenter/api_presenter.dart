@@ -1,6 +1,5 @@
 import 'package:flutter_kokkai_gijiroku/model/api_repository.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
-import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
