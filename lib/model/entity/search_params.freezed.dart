@@ -34,7 +34,7 @@ class _$SearchParamsTearOff {
       int? speechNumber,
       String? speakerPosition,
       String? speakerGroup,
-      String? speakerRole,
+      SpeakerRole? speakerRole,
       String? speechID,
       String? issueID,
       int? sessionFrom,
@@ -151,7 +151,7 @@ mixin _$SearchParams {
   /// 発言者役割
   /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
   /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-  String? get speakerRole => throw _privateConstructorUsedError;
+  SpeakerRole? get speakerRole => throw _privateConstructorUsedError;
 
   /// 発言ID
   /// 発言を一意に識別するIDとして、「会議録ID（パラメータ名：issueID。21桁の英数字）_発言番号（会議録テキスト表示画面で表示されている各発言に付されている、先頭に0を埋めて3桁にした数字。4桁の場合は4桁の数字）」の書式で指定可能（例：「100105254X00119470520_000」）。完全一致検索。
@@ -209,7 +209,7 @@ abstract class $SearchParamsCopyWith<$Res> {
       int? speechNumber,
       String? speakerPosition,
       String? speakerGroup,
-      String? speakerRole,
+      SpeakerRole? speakerRole,
       String? speechID,
       String? issueID,
       int? sessionFrom,
@@ -315,7 +315,7 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
       speakerRole: speakerRole == freezed
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as SpeakerRole?,
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -367,7 +367,7 @@ abstract class _$SearchParamsCopyWith<$Res>
       int? speechNumber,
       String? speakerPosition,
       String? speakerGroup,
-      String? speakerRole,
+      SpeakerRole? speakerRole,
       String? speechID,
       String? issueID,
       int? sessionFrom,
@@ -475,7 +475,7 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
       speakerRole: speakerRole == freezed
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as SpeakerRole?,
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -627,7 +627,7 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   /// 発言者役割
   /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
   /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-  final String? speakerRole;
+  final SpeakerRole? speakerRole;
   @override
 
   /// 発言ID
@@ -790,7 +790,7 @@ abstract class _SearchParams implements SearchParams {
       int? speechNumber,
       String? speakerPosition,
       String? speakerGroup,
-      String? speakerRole,
+      SpeakerRole? speakerRole,
       String? speechID,
       String? issueID,
       int? sessionFrom,
@@ -893,7 +893,7 @@ abstract class _SearchParams implements SearchParams {
   /// 発言者役割
   /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
   /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-  String? get speakerRole;
+  SpeakerRole? get speakerRole;
   @override
 
   /// 発言ID

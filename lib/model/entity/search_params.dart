@@ -57,6 +57,28 @@ extension _SearchRangeExt on SearchRange {
   }
 }
 
+enum SpeakerRole {
+  /// 証人
+  swornWitness,
+  /// 参考人
+  unswornWitness,
+  /// 公述人
+  publicSpeaker,
+}
+
+extension _SpeakerRoleExt on SpeakerRole {
+  String get value {
+    switch (this) {
+      case SpeakerRole.swornWitness:
+        return '証人';
+      case SpeakerRole.unswornWitness:
+        return '参考人';
+      case SpeakerRole.publicSpeaker:
+        return '公述人';
+    }
+  }
+}
+
 @freezed
 class SearchParams with _$SearchParams {
   const factory SearchParams({
@@ -138,7 +160,7 @@ class SearchParams with _$SearchParams {
     /// 発言者役割
     /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
     /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-    String? speakerRole,
+    SpeakerRole? speakerRole,
 
     /// 発言ID
     /// 発言を一意に識別するIDとして、「会議録ID（パラメータ名：issueID。21桁の英数字）_発言番号（会議録テキスト表示画面で表示されている各発言に付されている、先頭に0を埋めて3桁にした数字。4桁の場合は4桁の数字）」の書式で指定可能（例：「100105254X00119470520_000」）。完全一致検索。
@@ -198,7 +220,7 @@ extension SearchParamsExt on SearchParams {
         if (speechNumber != null) 'speechNumber': speechNumber!.toString(),
         if (speakerPosition != null) 'speakerPosition': speakerPosition!,
         if (speakerGroup != null) 'speakerGroup': speakerGroup!,
-        if (speakerRole != null) 'speakerRole': speakerRole!,
+        if (speakerRole != null) 'speakerRole': speakerRole!.value,
         if (speechID != null) 'speechID': speechID!,
         if (issueID != null) 'issueID': issueID!,
         if (sessionFrom != null) 'sessionFrom': sessionFrom!.toString(),
