@@ -3,6 +3,7 @@ import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 final _router = GoRouter(
@@ -63,6 +64,14 @@ class App extends StatelessWidget {
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,
       title: '国会 議事録検索システム(非公式)',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('ja'),
+      ],
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.teal,
