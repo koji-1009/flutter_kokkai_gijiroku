@@ -22,7 +22,7 @@ _$_MeetingRecordResponseDetail _$$_MeetingRecordResponseDetailFromJson(
               'meetingRecord',
               (v) =>
                   (v as List<dynamic>?)
-                      ?.map((e) => MeetingRecordDetailResponse.fromJson(
+                      ?.map((e) => MeetingRecordDetail.fromJson(
                           e as Map<String, dynamic>))
                       .toList() ??
                   const []),

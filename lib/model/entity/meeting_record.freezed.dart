@@ -28,7 +28,7 @@ class _$MeetingRecordDetailResponseTearOff {
       required int numberOfReturn,
       required int startRecord,
       required int? nextRecordPosition,
-      List<MeetingRecordDetailResponse> meetingRecord = const []}) {
+      List<MeetingRecordDetail> meetingRecord = const []}) {
     return _MeetingRecordResponseDetail(
       numberOfRecords: numberOfRecords,
       numberOfReturn: numberOfReturn,
@@ -61,7 +61,7 @@ mixin _$MeetingRecordDetailResponse {
   int? get nextRecordPosition => throw _privateConstructorUsedError;
 
   /// 会議一覧
-  List<MeetingRecordDetailResponse> get meetingRecord =>
+  List<MeetingRecordDetail> get meetingRecord =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ abstract class $MeetingRecordDetailResponseCopyWith<$Res> {
       int numberOfReturn,
       int startRecord,
       int? nextRecordPosition,
-      List<MeetingRecordDetailResponse> meetingRecord});
+      List<MeetingRecordDetail> meetingRecord});
 }
 
 /// @nodoc
@@ -121,7 +121,7 @@ class _$MeetingRecordDetailResponseCopyWithImpl<$Res>
       meetingRecord: meetingRecord == freezed
           ? _value.meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
-              as List<MeetingRecordDetailResponse>,
+              as List<MeetingRecordDetail>,
     ));
   }
 }
@@ -139,7 +139,7 @@ abstract class _$MeetingRecordResponseDetailCopyWith<$Res>
       int numberOfReturn,
       int startRecord,
       int? nextRecordPosition,
-      List<MeetingRecordDetailResponse> meetingRecord});
+      List<MeetingRecordDetail> meetingRecord});
 }
 
 /// @nodoc
@@ -183,7 +183,7 @@ class __$MeetingRecordResponseDetailCopyWithImpl<$Res>
       meetingRecord: meetingRecord == freezed
           ? _value.meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
-              as List<MeetingRecordDetailResponse>,
+              as List<MeetingRecordDetail>,
     ));
   }
 }
@@ -223,7 +223,7 @@ class _$_MeetingRecordResponseDetail
   @override
 
   /// 会議一覧
-  final List<MeetingRecordDetailResponse> meetingRecord;
+  final List<MeetingRecordDetail> meetingRecord;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -287,7 +287,7 @@ abstract class _MeetingRecordResponseDetail
           required int numberOfReturn,
           required int startRecord,
           required int? nextRecordPosition,
-          List<MeetingRecordDetailResponse> meetingRecord}) =
+          List<MeetingRecordDetail> meetingRecord}) =
       _$_MeetingRecordResponseDetail;
 
   factory _MeetingRecordResponseDetail.fromJson(Map<String, dynamic> json) =
@@ -312,7 +312,7 @@ abstract class _MeetingRecordResponseDetail
   @override
 
   /// 会議一覧
-  List<MeetingRecordDetailResponse> get meetingRecord;
+  List<MeetingRecordDetail> get meetingRecord;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordResponseDetailCopyWith<_MeetingRecordResponseDetail>

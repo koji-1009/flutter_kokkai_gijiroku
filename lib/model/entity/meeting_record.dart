@@ -21,7 +21,7 @@ class MeetingRecordDetailResponse with _$MeetingRecordDetailResponse {
     required int? nextRecordPosition,
 
     /// 会議一覧
-    @Default([]) List<MeetingRecordDetailResponse> meetingRecord,
+    @Default([]) List<MeetingRecordDetail> meetingRecord,
   }) = _MeetingRecordResponseDetail;
 
   factory MeetingRecordDetailResponse.fromJson(Map<String, dynamic> json) =>
