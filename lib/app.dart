@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
 import 'package:go_router/go_router.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

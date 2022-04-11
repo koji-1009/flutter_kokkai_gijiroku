@@ -1,10 +1,13 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_params.freezed.dart';
 
 enum NameOfHouse {
+  /// none
+  none,
+
   /// 衆議院
   houseOfRepresentatives,
 
@@ -15,25 +18,29 @@ enum NameOfHouse {
   bothHouses,
 
   /// 両院協議会
-  conferenceOfBothHouses,
+  /// 両院と両院協議会のリクエスト結果は同一のため、両院のみ使用
+  // conferenceOfBothHouses,
 }
 
-extension _NameOfHouseExt on NameOfHouse {
-  String get value {
+extension NameOfHouseExt on NameOfHouse {
+  String? get value {
     switch (this) {
+      case NameOfHouse.none:
+        return null;
       case NameOfHouse.houseOfRepresentatives:
         return '衆議院';
       case NameOfHouse.houseOfCouncilors:
         return '参議院';
       case NameOfHouse.bothHouses:
         return '両院';
-      case NameOfHouse.conferenceOfBothHouses:
-        return '両院協議会';
     }
   }
 }
 
 enum SearchRange {
+  /// none
+  none,
+
   /// 冒頭
   begging,
 
@@ -44,9 +51,11 @@ enum SearchRange {
   all,
 }
 
-extension _SearchRangeExt on SearchRange {
-  String get value {
+extension SearchRangeExt on SearchRange {
+  String? get value {
     switch (this) {
+      case SearchRange.none:
+        return null;
       case SearchRange.begging:
         return '冒頭';
       case SearchRange.text:
@@ -58,17 +67,24 @@ extension _SearchRangeExt on SearchRange {
 }
 
 enum SpeakerRole {
+  /// none
+  none,
+
   /// 証人
   swornWitness,
+
   /// 参考人
   unswornWitness,
+
   /// 公述人
   publicSpeaker,
 }
 
-extension _SpeakerRoleExt on SpeakerRole {
-  String get value {
+extension SpeakerRoleExt on SpeakerRole {
+  String? get value {
     switch (this) {
+      case SpeakerRole.none:
+        return null;
       case SpeakerRole.swornWitness:
         return '証人';
       case SpeakerRole.unswornWitness:
@@ -194,8 +210,6 @@ class SearchParams with _$SearchParams {
   }) = _SearchParams;
 }
 
-final _dateFormatter = DateFormat('yyyy-MM-dd');
-
 extension SearchParamsExt on SearchParams {
   Map<String, String> get query => {
         /// required
@@ -205,22 +219,25 @@ extension SearchParamsExt on SearchParams {
         /// optional
         if (maximumRecords != null)
           'maximumRecords': maximumRecords!.toString(),
-        if (nameOfHouse != null) 'nameOfHouse': nameOfHouse!.value,
+        if (nameOfHouse != null && nameOfHouse != NameOfHouse.none)
+          'nameOfHouse': nameOfHouse!.value!,
         if (nameOfMeeting != null) 'nameOfMeeting': nameOfMeeting!,
         if (any != null) 'any': any!,
         if (speaker != null) 'speaker': speaker!,
-        if (from != null) 'from': _dateFormatter.format(from!),
-        if (until != null) 'until': _dateFormatter.format(until!),
+        if (from != null) 'from': dateFormatter.format(from!),
+        if (until != null) 'until': dateFormatter.format(until!),
         if (supplementAndAppendix != null)
           'supplementAndAppendix': supplementAndAppendix!.toString(),
         if (contentsAndIndex != null)
           'contentsAndIndex': maximumRecords!.toString(),
-        if (searchRange != null) 'SearchRange': searchRange!.value,
+        if (searchRange != null && searchRange != SearchRange.none)
+          'SearchRange': searchRange!.value!,
         if (closing != null) 'closing': closing!.toString(),
         if (speechNumber != null) 'speechNumber': speechNumber!.toString(),
         if (speakerPosition != null) 'speakerPosition': speakerPosition!,
         if (speakerGroup != null) 'speakerGroup': speakerGroup!,
-        if (speakerRole != null) 'speakerRole': speakerRole!.value,
+        if (speakerRole != null && speakerRole != NameOfHouse.none)
+          'speakerRole': speakerRole!.value!,
         if (speechID != null) 'speechID': speechID!,
         if (issueID != null) 'issueID': issueID!,
         if (sessionFrom != null) 'sessionFrom': sessionFrom!.toString(),
