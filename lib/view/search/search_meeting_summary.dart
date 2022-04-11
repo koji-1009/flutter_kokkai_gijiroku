@@ -47,6 +47,7 @@ class SearchMeetingSummaryScreen extends HookConsumerWidget {
         builderDelegate: PagedChildBuilderDelegate(
           itemBuilder: (_, item, __) => ListTile(
             title: Text(item.nameOfMeeting),
+            subtitle: SelectableText(item.pdfURL),
           ),
         ),
       ),
