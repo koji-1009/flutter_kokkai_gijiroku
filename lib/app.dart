@@ -58,6 +58,7 @@ final _router = GoRouter(
       ],
     ),
   ],
+  urlPathStrategy: UrlPathStrategy.path,
 );
 
 class App extends StatelessWidget {
