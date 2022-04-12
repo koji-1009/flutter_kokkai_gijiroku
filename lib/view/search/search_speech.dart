@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
+import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
+import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -41,14 +43,36 @@ class SearchSpeechScreen extends HookConsumerWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(),
-      body: PagedListView<int, SpeechRecord>(
-        pagingController: controller,
-        builderDelegate: PagedChildBuilderDelegate(
-          itemBuilder: (_, item, __) => ListTile(
-            title: Text(item.nameOfMeeting),
-            subtitle: SelectableText(item.pdfURL),
+      appBar: AppBar(
+        title: Text(SearchMode.speech.value),
+      ),
+      body: Scrollbar(
+        child: PagedListView<int, SpeechRecord>.separated(
+          pagingController: controller,
+          builderDelegate: PagedChildBuilderDelegate(
+            itemBuilder: (_, item, __) => Column(
+              children: [
+                InkWell(
+                  child: ListTile(
+                    title: Text(
+                      '${item.speaker}, '
+                      '${item.nameOfMeeting}, '
+                      '${ymdFormatter.format(DateTime.parse(item.date))}',
+                    ),
+                    subtitle: Text(
+                      item.speech,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  onTap: () {
+                    // todo
+                  },
+                ),
+              ],
+            ),
           ),
+          separatorBuilder: (context, index) => const Divider(),
         ),
       ),
     );
