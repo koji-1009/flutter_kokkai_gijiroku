@@ -13,7 +13,7 @@ class HomeScreen extends HookWidget {
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).breakpointMargin;
 
-    final mode = useState(SearchMode.meetingDetail);
+    final mode = useState(SearchMode.meetingSummary);
     final searchParam = useState(const SearchParams());
 
     final fromDateController = useTextEditingController();

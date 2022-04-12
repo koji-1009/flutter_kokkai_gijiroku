@@ -28,7 +28,7 @@ class ApiPresenter {
           ...{
             'recordPacking': 'json',
             'startRecord': page.toString(),
-            'maximumRecords': '10',
+            'maximumRecords': '20',
           },
         },
       );
@@ -43,7 +43,7 @@ class ApiPresenter {
           ...{
             'recordPacking': 'json',
             'startRecord': page.toString(),
-            'maximumRecords': '100',
+            'maximumRecords': '20',
           },
         },
       );
@@ -58,7 +58,7 @@ class ApiPresenter {
           ...{
             'recordPacking': 'json',
             'startRecord': page.toString(),
-            'maximumRecords': '100',
+            'maximumRecords': '20',
           },
         },
       );
