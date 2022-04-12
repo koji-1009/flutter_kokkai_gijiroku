@@ -315,7 +315,17 @@ class HomeScreen extends HookWidget {
               param.from!.isAfter(param.until!)) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('日付の指定が不正です。'),
+                content: Text('日付の指定が不正です'),
+              ),
+            );
+            return;
+          }
+          if ((param.any == null || param.any!.isEmpty) &&
+              (param.speaker == null || param.speaker!.isEmpty) &&
+              (param.nameOfMeeting == null || param.nameOfMeeting!.isEmpty)) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('検索語/会議名/発言者名のいずれかを入力してください'),
               ),
             );
             return;
