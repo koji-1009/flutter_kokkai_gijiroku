@@ -16,56 +16,44 @@ final _router = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: 'search',
-          redirect: (_) => '/',
-          routes: [
-            GoRoute(
-              path: 'detail',
-              name: 'searchMeetingDetail',
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
-                child: SearchMeetingDetailScreen(
-                  params: state.queryParams,
-                ),
-              ),
+          path: 'search/detail',
+          name: 'searchMeetingDetail',
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            child: SearchMeetingDetailScreen(
+              params: state.queryParams,
             ),
-            GoRoute(
-              path: 'summary',
-              name: 'searchMeetingSummary',
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
-                child: SearchMeetingSummaryScreen(
-                  params: state.queryParams,
-                ),
-              ),
-            ),
-            GoRoute(
-              path: 'speech',
-              name: 'searchSpeech',
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
-                child: SearchSpeechScreen(
-                  params: state.queryParams,
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
         GoRoute(
-          path: 'status',
-          redirect: (_) => '/',
-          routes: [
-            GoRoute(
-              path: ':speechID',
-              name: 'statusSpeech',
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
-                child: SpearchDetailScreen(
-                  speechID: state.params['speechID']!,
-                ),
-              ),
+          path: 'search/summary',
+          name: 'searchMeetingSummary',
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            child: SearchMeetingSummaryScreen(
+              params: state.queryParams,
             ),
-          ],
+          ),
+        ),
+        GoRoute(
+          path: 'search/speech',
+          name: 'searchSpeech',
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            child: SearchSpeechScreen(
+              params: state.queryParams,
+            ),
+          ),
+        ),
+        GoRoute(
+          path: 'status/:speechID',
+          name: 'statusSpeech',
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            child: SpearchDetailScreen(
+              speechID: state.params['speechID']!,
+            ),
+          ),
         ),
       ],
     ),
