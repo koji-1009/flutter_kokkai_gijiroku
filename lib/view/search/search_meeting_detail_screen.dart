@@ -4,6 +4,7 @@ import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -24,10 +25,11 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
     controller.addPageRequestListener(
       (pageKey) async {
         try {
-          final response = await ref.read(apiPresenterProvider).meetingDetail(
-                page: pageKey,
-                params: params,
-              );
+          final response =
+              await ref.read(apiPresenterProvider).meetingDetailList(
+                    page: pageKey,
+                    params: params,
+                  );
 
           final newItems = response.meetingRecord;
           final nextPageKey = response.nextRecordPosition;
@@ -79,13 +81,18 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
                   ),
                 ),
                 ...item.speechRecord.map(
-                      (e) => InkWell(
+                  (e) => InkWell(
                     child: ListTile(
                       title: Text(e.speaker),
                       subtitle: Text(e.speechID),
                     ),
                     onTap: () {
-                      // todo
+                      context.pushNamed(
+                        'statusSpeech',
+                        params: {
+                          'speechID': e.speechID,
+                        },
+                      );
                     },
                   ),
                 ),

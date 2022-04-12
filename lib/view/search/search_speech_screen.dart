@@ -4,6 +4,7 @@ import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -24,7 +25,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
     controller.addPageRequestListener(
       (pageKey) async {
         try {
-          final response = await ref.read(apiPresenterProvider).speech(
+          final response = await ref.read(apiPresenterProvider).speechList(
                 page: pageKey,
                 params: params,
               );
@@ -66,7 +67,12 @@ class SearchSpeechScreen extends HookConsumerWidget {
                     ),
                   ),
                   onTap: () {
-                    // todo
+                    context.pushNamed(
+                      'statusSpeech',
+                      params: {
+                        'speechID': item.speechID,
+                      },
+                    );
                   },
                 ),
               ],

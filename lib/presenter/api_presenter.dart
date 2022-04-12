@@ -18,7 +18,7 @@ class ApiPresenter {
 
   final ApiRepository apiRepository;
 
-  Future<MeetingRecordDetailResponse> meetingDetail({
+  Future<MeetingRecordDetailResponse> meetingDetailList({
     required int page,
     required Map<String, String> params,
   }) =>
@@ -33,7 +33,7 @@ class ApiPresenter {
         },
       );
 
-  Future<MeetingRecordSummaryResponse> meetingSummary({
+  Future<MeetingRecordSummaryResponse> meetingSummaryList({
     required int page,
     required Map<String, String> params,
   }) =>
@@ -48,7 +48,7 @@ class ApiPresenter {
         },
       );
 
-  Future<SpeechRecordResponse> speech({
+  Future<SpeechRecordResponse> speechList({
     required int page,
     required Map<String, String> params,
   }) =>
@@ -60,6 +60,17 @@ class ApiPresenter {
             'startRecord': page.toString(),
             'maximumRecords': '100',
           },
+        },
+      );
+
+  Future<SpeechRecordResponse> speech({
+    required String speechID,
+  }) =>
+      apiRepository.getSpeech(
+        queryParameters: {
+          'recordPacking': 'json',
+          'speechID': speechID,
+          'maximumRecords': '1',
         },
       );
 }

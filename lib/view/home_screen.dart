@@ -324,19 +324,19 @@ class HomeScreen extends HookWidget {
           switch (mode.value) {
             case SearchMode.meetingDetail:
               context.pushNamed(
-                'meetingDetail',
+                'searchMeetingDetail',
                 queryParams: searchParam.value.query,
               );
               break;
             case SearchMode.meetingSummary:
               context.pushNamed(
-                'meetingSummary',
+                'searchMeetingSummary',
                 queryParams: searchParam.value.query,
               );
               break;
             case SearchMode.speech:
               context.pushNamed(
-                'speech',
+                'searchSpeech',
                 queryParams: searchParam.value.query,
               );
               break;

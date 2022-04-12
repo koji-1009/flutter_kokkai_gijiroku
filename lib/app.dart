@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_speech.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,7 +21,7 @@ final _router = GoRouter(
           routes: [
             GoRoute(
               path: 'detail',
-              name: 'meetingDetail',
+              name: 'searchMeetingDetail',
               pageBuilder: (context, state) => MaterialPage(
                 key: state.pageKey,
                 child: SearchMeetingDetailScreen(
@@ -30,7 +31,7 @@ final _router = GoRouter(
             ),
             GoRoute(
               path: 'summary',
-              name: 'meetingSummary',
+              name: 'searchMeetingSummary',
               pageBuilder: (context, state) => MaterialPage(
                 key: state.pageKey,
                 child: SearchMeetingSummaryScreen(
@@ -40,11 +41,27 @@ final _router = GoRouter(
             ),
             GoRoute(
               path: 'speech',
-              name: 'speech',
+              name: 'searchSpeech',
               pageBuilder: (context, state) => MaterialPage(
                 key: state.pageKey,
                 child: SearchSpeechScreen(
                   params: state.queryParams,
+                ),
+              ),
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'status',
+          redirect: (_) => '/',
+          routes: [
+            GoRoute(
+              path: ':speechID',
+              name: 'statusSpeech',
+              pageBuilder: (context, state) => MaterialPage(
+                key: state.pageKey,
+                child: SpearchDetailScreen(
+                  speechID: state.params['speechID']!,
                 ),
               ),
             ),
