@@ -309,6 +309,18 @@ class HomeScreen extends HookWidget {
         label: const Text('検索'),
         icon: const Icon(Icons.search_outlined),
         onPressed: () {
+          final param = searchParam.value;
+          if (param.from != null &&
+              param.until != null &&
+              param.from!.isAfter(param.until!)) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('日付の指定が不正です。'),
+              ),
+            );
+            return;
+          }
+
           switch (mode.value) {
             case SearchMode.meetingDetail:
               context.pushNamed(
