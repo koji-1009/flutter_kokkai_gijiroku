@@ -22,6 +22,23 @@ class HomeScreen extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('議事録検索'),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => const [
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text("ライセンス"),
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 0) {
+                showLicensePage(
+                  context: context,
+                );
+              }
+            },
+          ),
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.only(
