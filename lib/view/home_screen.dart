@@ -93,7 +93,7 @@ class HomeScreen extends HookWidget {
                 from: selectDate,
               );
               fromDateController.text =
-                  selectDate != null ? dateFormatter.format(selectDate) : '';
+                  selectDate != null ? selectDate.yMMMMEd : '';
             },
           ),
           const SizedBox(
@@ -119,7 +119,7 @@ class HomeScreen extends HookWidget {
                 until: selectDate,
               );
               untilDateController.text =
-                  selectDate != null ? dateFormatter.format(selectDate) : '';
+                  selectDate != null ? selectDate.yMMMMEd : '';
             },
           ),
           const Divider(),

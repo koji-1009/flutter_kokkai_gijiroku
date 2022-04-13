@@ -25,10 +25,11 @@ class SearchMeetingSummaryScreen extends HookConsumerWidget {
     controller.addPageRequestListener(
       (pageKey) async {
         try {
-          final response = await ref.read(apiPresenterProvider).meetingSummaryList(
-                page: pageKey,
-                params: params,
-              );
+          final response =
+              await ref.read(apiPresenterProvider).meetingSummaryList(
+                    page: pageKey,
+                    params: params,
+                  );
 
           final newItems = response.meetingRecord;
           final nextPageKey = response.nextRecordPosition;
@@ -63,17 +64,9 @@ class SearchMeetingSummaryScreen extends HookConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            item.nameOfHouse,
-                          ),
-                          Text(
-                            item.nameOfMeeting,
-                          ),
-                          Text(
-                            ymdFormatter.format(
-                              DateTime.parse(item.date),
-                            ),
-                          ),
+                          Text(item.nameOfHouse),
+                          Text(item.nameOfMeeting),
+                          Text(item.date.yMMMEd),
                         ],
                       ),
                     ],

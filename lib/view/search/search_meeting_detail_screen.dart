@@ -64,17 +64,9 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            item.nameOfHouse,
-                          ),
-                          Text(
-                            item.nameOfMeeting,
-                          ),
-                          Text(
-                            ymdFormatter.format(
-                              DateTime.parse(item.date),
-                            ),
-                          ),
+                          Text(item.nameOfHouse),
+                          Text(item.nameOfMeeting),
+                          Text(item.date.yMMMEd),
                         ],
                       ),
                     ],

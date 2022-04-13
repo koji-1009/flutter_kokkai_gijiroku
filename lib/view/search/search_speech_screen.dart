@@ -58,7 +58,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
                     title: Text(
                       '${item.speaker}, '
                       '${item.nameOfMeeting}, '
-                      '${ymdFormatter.format(DateTime.parse(item.date))}',
+                      '${item.date.yMMMEd}',
                     ),
                     subtitle: Text(
                       item.speech,
