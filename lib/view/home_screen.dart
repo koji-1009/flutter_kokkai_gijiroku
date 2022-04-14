@@ -102,7 +102,7 @@ class HomeScreen extends HookWidget {
                   1,
                   1,
                 ),
-                firstDate: DateTime.utc(1968, 1, 1),
+                firstDate: DateTime.utc(1980, 1, 1),
                 lastDate: now,
               );
 
@@ -128,7 +128,7 @@ class HomeScreen extends HookWidget {
               final selectDate = await showDatePicker(
                 context: context,
                 initialDate: now,
-                firstDate: DateTime.utc(1969, 1, 1),
+                firstDate: DateTime.utc(1981, 1, 1),
                 lastDate: now,
               );
 
