@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 enum _HomeAction {
   license,
   github,
+  ndl,
 }
 
 class HomeScreen extends HookWidget {
@@ -39,6 +40,10 @@ class HomeScreen extends HookWidget {
                 value: _HomeAction.github,
                 child: Text('GitHub'),
               ),
+              PopupMenuItem(
+                value: _HomeAction.ndl,
+                child: Text('検索用APIの仕様'),
+              ),
             ],
             onSelected: (value) async {
               switch (value) {
@@ -50,6 +55,11 @@ class HomeScreen extends HookWidget {
                 case _HomeAction.github:
                   await launch(
                     'https://github.com/koji-1009/flutter_kokkai_gijiroku',
+                  );
+                  break;
+                case _HomeAction.ndl:
+                  await launch(
+                    'https://kokkai.ndl.go.jp/api.html',
                   );
                   break;
               }
