@@ -227,9 +227,6 @@ class HomeScreen extends HookWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 8,
-          ),
           Row(
             children: [
               const Text('閉会中指定'),
