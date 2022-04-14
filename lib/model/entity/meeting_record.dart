@@ -88,16 +88,16 @@ class MeetingRecordDetailSpeech with _$MeetingRecordDetailSpeech {
     required String speaker,
 
     /// 発言者よみ
-    required String speakerYomi,
+    @Default('') String speakerYomi,
 
     /// 発言者所属会派
-    required String speakerGroup,
+    @Default('') String speakerGroup,
 
     /// 発言者肩書き
-    required String speakerPosition,
+    @Default('') String speakerPosition,
 
     /// 発言者役割
-    required String speakerRole,
+    @Default('') String speakerRole,
 
     /// 発言
     required String speech,

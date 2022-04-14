@@ -106,11 +106,14 @@ _$_MeetingRecordDetailSpeech _$$_MeetingRecordDetailSpeechFromJson(
           speechID: $checkedConvert('speechID', (v) => v as String),
           speechOrder: $checkedConvert('speechOrder', (v) => v as int),
           speaker: $checkedConvert('speaker', (v) => v as String),
-          speakerYomi: $checkedConvert('speakerYomi', (v) => v as String),
-          speakerGroup: $checkedConvert('speakerGroup', (v) => v as String),
+          speakerYomi:
+              $checkedConvert('speakerYomi', (v) => v as String? ?? ''),
+          speakerGroup:
+              $checkedConvert('speakerGroup', (v) => v as String? ?? ''),
           speakerPosition:
-              $checkedConvert('speakerPosition', (v) => v as String),
-          speakerRole: $checkedConvert('speakerRole', (v) => v as String),
+              $checkedConvert('speakerPosition', (v) => v as String? ?? ''),
+          speakerRole:
+              $checkedConvert('speakerRole', (v) => v as String? ?? ''),
           speech: $checkedConvert('speech', (v) => v as String),
           startPage: $checkedConvert('startPage', (v) => v as int),
           createTime: $checkedConvert('createTime', (v) => v as String),

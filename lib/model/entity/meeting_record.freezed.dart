@@ -821,10 +821,10 @@ class _$MeetingRecordDetailSpeechTearOff {
       {required String speechID,
       required int speechOrder,
       required String speaker,
-      required String speakerYomi,
-      required String speakerGroup,
-      required String speakerPosition,
-      required String speakerRole,
+      String speakerYomi = '',
+      String speakerGroup = '',
+      String speakerPosition = '',
+      String speakerRole = '',
       required String speech,
       required int startPage,
       required String createTime,
@@ -1106,10 +1106,10 @@ class _$_MeetingRecordDetailSpeech
       {required this.speechID,
       required this.speechOrder,
       required this.speaker,
-      required this.speakerYomi,
-      required this.speakerGroup,
-      required this.speakerPosition,
-      required this.speakerRole,
+      this.speakerYomi = '',
+      this.speakerGroup = '',
+      this.speakerPosition = '',
+      this.speakerRole = '',
       required this.speech,
       required this.startPage,
       required this.createTime,
@@ -1131,18 +1131,22 @@ class _$_MeetingRecordDetailSpeech
 
   /// 発言者名
   final String speaker;
+  @JsonKey()
   @override
 
   /// 発言者よみ
   final String speakerYomi;
+  @JsonKey()
   @override
 
   /// 発言者所属会派
   final String speakerGroup;
+  @JsonKey()
   @override
 
   /// 発言者肩書き
   final String speakerPosition;
+  @JsonKey()
   @override
 
   /// 発言者役割
@@ -1252,10 +1256,10 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
       {required String speechID,
       required int speechOrder,
       required String speaker,
-      required String speakerYomi,
-      required String speakerGroup,
-      required String speakerPosition,
-      required String speakerRole,
+      String speakerYomi,
+      String speakerGroup,
+      String speakerPosition,
+      String speakerRole,
       required String speech,
       required int startPage,
       required String createTime,
