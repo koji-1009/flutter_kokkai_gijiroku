@@ -1,6 +1,7 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
@@ -43,8 +44,22 @@ class SearchMeetingSummaryScreen extends HookConsumerWidget {
           } else {
             controller.appendPage(newItems, nextPageKey);
           }
-        } catch (error) {
+        } on ApiExceptionError catch (error) {
+          controller.error = error.message;
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(error.message),
+            ),
+          );
+        } on Exception catch (error) {
           controller.error = error;
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(error.toString()),
+            ),
+          );
         }
       },
     );

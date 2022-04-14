@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_kokkai_gijiroku/model/api_config.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:xml/xml.dart';
 
 final apiRepositoryProvider = Provider(
   (ref) => ApiRepository(
@@ -76,11 +78,27 @@ class ApiRepository {
 
   Exception _error(http.Response response) {
     if (response.body.isNotEmpty) {
-      final error = ApiExceptionError.fromJson(
-        json.decode(response.body),
-      );
+      try {
+        final error = ApiExceptionError.fromJson(
+          json.decode(response.body),
+        );
 
-      return error;
+        return error;
+      } on FormatException catch (e) {
+        debugPrint(e.toString());
+
+        try {
+          // json形式で返ってこないため、xmlとしてハンドリングする
+          final document = XmlDocument.parse(response.body);
+          final messageList = document.findAllElements('message').first;
+
+          return ApiExceptionError(
+            message: messageList.nodes.first.text,
+          );
+        } on Exception catch (e) {
+          debugPrint(e.toString());
+        }
+      }
     }
 
     return const ApiException.other();
