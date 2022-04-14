@@ -1,3 +1,4 @@
+import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
@@ -18,6 +19,8 @@ class SearchMeetingSummaryScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final margin = MediaQuery.of(context).breakpointMargin;
+
     final controller = usePagingController<int, MeetingRecordSummary>(
       firstPageKey: 1,
     );
@@ -50,6 +53,10 @@ class SearchMeetingSummaryScreen extends HookConsumerWidget {
       ),
       body: Scrollbar(
         child: PagedListView<int, MeetingRecordSummary>.separated(
+          padding: EdgeInsets.symmetric(
+            vertical: 8,
+            horizontal: margin,
+          ),
           pagingController: controller,
           builderDelegate: PagedChildBuilderDelegate(
             itemBuilder: (_, item, __) => Column(
