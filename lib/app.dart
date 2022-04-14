@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kokkai_gijiroku/view/about_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
@@ -12,9 +13,7 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => HomeScreen(
-        key: state.pageKey,
-      ),
+      builder: (context, state) => const HomeScreen(),
       routes: [
         GoRoute(
           path: 'search/detail',
@@ -67,6 +66,11 @@ final _router = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/about',
+      name: 'about',
+      builder: (context, state) => const AboutScreen(),
     ),
   ],
   urlPathStrategy: UrlPathStrategy.path,

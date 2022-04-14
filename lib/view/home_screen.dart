@@ -11,6 +11,7 @@ enum _HomeAction {
   license,
   github,
   ndl,
+  about,
 }
 
 class HomeScreen extends HookWidget {
@@ -44,6 +45,10 @@ class HomeScreen extends HookWidget {
                 value: _HomeAction.ndl,
                 child: Text('検索用APIの仕様'),
               ),
+              PopupMenuItem(
+                value: _HomeAction.about,
+                child: Text('このサイトについて'),
+              ),
             ],
             onSelected: (value) async {
               switch (value) {
@@ -61,6 +66,9 @@ class HomeScreen extends HookWidget {
                   await launch(
                     'https://kokkai.ndl.go.jp/api.html',
                   );
+                  break;
+                case _HomeAction.about:
+                  context.pushNamed('about');
                   break;
               }
             },
