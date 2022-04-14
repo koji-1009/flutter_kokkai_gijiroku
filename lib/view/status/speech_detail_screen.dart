@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -87,6 +88,21 @@ class SpeechDetailScreen extends HookConsumerWidget {
               Text('肩書き: ${data.speakerPosition}'),
               const Divider(),
               Text(data.speech),
+              const Divider(),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(48),
+                ),
+                onPressed: () {
+                  context.pushNamed(
+                    'statusIssue',
+                    params: {
+                      'issueID': data.issueID,
+                    },
+                  );
+                },
+                child: const Text('会議'),
+              ),
             ],
           ),
         ),

@@ -73,4 +73,17 @@ class ApiPresenter {
           'maximumRecords': '1',
         },
       );
+
+  Future<SpeechRecordResponse> issueDetail({
+    required int page,
+    required String issueID,
+  }) =>
+      apiRepository.getSpeech(
+        queryParameters: {
+          'recordPacking': 'json',
+          'issueID': issueID,
+          'startRecord': page.toString(),
+          'maximumRecords': '20',
+        },
+      );
 }

@@ -3,6 +3,7 @@ import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -46,12 +47,22 @@ final _router = GoRouter(
           ),
         ),
         GoRoute(
-          path: 'status/:speechID',
+          path: 'speech/:speechID',
           name: 'statusSpeech',
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             child: SpeechDetailScreen(
               speechID: state.params['speechID']!,
+            ),
+          ),
+        ),
+        GoRoute(
+          path: 'issue/:issueID',
+          name: 'statusIssue',
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            child: IssueDetailScreen(
+              issueID: state.params['issueID']!,
             ),
           ),
         ),
