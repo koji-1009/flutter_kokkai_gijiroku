@@ -5,6 +5,12 @@ import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+enum _HomeAction {
+  license,
+  github,
+}
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,18 +29,29 @@ class HomeScreen extends HookWidget {
       appBar: AppBar(
         title: const Text('議事録検索'),
         actions: [
-          PopupMenuButton(
+          PopupMenuButton<_HomeAction>(
             itemBuilder: (context) => const [
-              PopupMenuItem<int>(
-                value: 0,
-                child: Text("ライセンス"),
+              PopupMenuItem(
+                value: _HomeAction.license,
+                child: Text('ライセンス'),
+              ),
+              PopupMenuItem(
+                value: _HomeAction.github,
+                child: Text('GitHub'),
               ),
             ],
-            onSelected: (value) {
-              if (value == 0) {
-                showLicensePage(
-                  context: context,
-                );
+            onSelected: (value) async {
+              switch (value) {
+                case _HomeAction.license:
+                  showLicensePage(
+                    context: context,
+                  );
+                  break;
+                case _HomeAction.github:
+                  await launch(
+                    'https://github.com/koji-1009/flutter_kokkai_gijiroku',
+                  );
+                  break;
               }
             },
           ),
