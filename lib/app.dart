@@ -16,6 +16,11 @@ final _router = GoRouter(
       builder: (context, state) => const HomeScreen(),
       routes: [
         GoRoute(
+          path: 'about',
+          name: 'about',
+          builder: (context, state) => const AboutScreen(),
+        ),
+        GoRoute(
           path: 'search/detail',
           name: 'searchMeetingDetail',
           pageBuilder: (context, state) => MaterialPage(
@@ -66,11 +71,6 @@ final _router = GoRouter(
           ),
         ),
       ],
-    ),
-    GoRoute(
-      path: '/about',
-      name: 'about',
-      builder: (context, state) => const AboutScreen(),
     ),
   ],
   urlPathStrategy: UrlPathStrategy.path,
