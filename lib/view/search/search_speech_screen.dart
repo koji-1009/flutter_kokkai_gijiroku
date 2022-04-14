@@ -1,10 +1,10 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
-import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -20,6 +20,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).breakpointMargin;
+    final title = useState('');
 
     final controller = usePagingController<int, SpeechRecord>(
       firstPageKey: 1,
@@ -33,6 +34,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
                 params: params,
               );
 
+          title.value = '総結果件数: ${response.numberOfRecords}';
           final newItems = response.speechRecord;
           final nextPageKey = response.nextRecordPosition;
           if (nextPageKey == null) {
@@ -48,7 +50,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(SearchMode.speech.value),
+        title: Text(title.value),
       ),
       body: Scrollbar(
         child: PagedListView<int, SpeechRecord>.separated(
