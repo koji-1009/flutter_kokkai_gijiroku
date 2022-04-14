@@ -1,5 +1,5 @@
 name: flutter_kokkai_gijiroku
-description: A new Flutter project.
+description: 国会会議録検索システム 検索用API 非公式クライアントアプリケーション
 publish_to: 'none'
 version: 1.0.0+1
 
