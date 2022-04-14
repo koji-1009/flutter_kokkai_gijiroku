@@ -78,16 +78,16 @@ class SpeechDetailScreen extends HookConsumerWidget {
                 text: '発言URL: ${data.speechURL}',
               ),
               const Divider(),
-              Text('院名: ${data.nameOfHouse}'),
-              Text('会議名: ${data.nameOfMeeting}'),
-              Text('日付:  ${data.date.yMMMEd}'),
+              SelectableText('院名: ${data.nameOfHouse}\n'
+                  '会議名: ${data.nameOfMeeting}\n'
+                  '日付:  ${data.date.yMMMEd}'),
               const Divider(),
-              Text('名前: ${data.speaker}(${data.speakerYomi})'),
-              Text('所属会派: ${data.speakerGroup}'),
-              Text('役割: ${data.speakerRole}'),
-              Text('肩書き: ${data.speakerPosition}'),
+              SelectableText('名前: ${data.speaker}(${data.speakerYomi})\n'
+                  '所属会派: ${data.speakerGroup}\n'
+                  '役割: ${data.speakerRole}\n'
+                  '肩書き: ${data.speakerPosition}'),
               const Divider(),
-              Text(data.speech),
+              SelectableText(data.speech),
               const Divider(),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
