@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
 
+  static String screenName = 'about';
+
   @override
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).breakpointMargin;
@@ -52,7 +54,8 @@ class AboutScreen extends StatelessWidget {
               const Text('当アプリケーションへの機能追加要望などは、'
                   'GitHubのIssueまでお寄せください。'),
               Linkify(
-                text: 'https://github.com/koji-1009/flutter_kokkai_gijiroku/issues',
+                text:
+                    'https://github.com/koji-1009/flutter_kokkai_gijiroku/issues',
                 onOpen: (link) => launch(link.url),
               ),
             ],

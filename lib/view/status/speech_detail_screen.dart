@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
+import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,6 +14,8 @@ class SpeechDetailScreen extends HookConsumerWidget {
     Key? key,
     required this.speechID,
   }) : super(key: key);
+
+  static String screenName = 'statusSpeech';
 
   final String speechID;
 
@@ -95,7 +98,7 @@ class SpeechDetailScreen extends HookConsumerWidget {
                 ),
                 onPressed: () {
                   context.pushNamed(
-                    'statusIssue',
+                    IssueDetailScreen.screenName,
                     params: {
                       'issueID': data.issueID,
                     },

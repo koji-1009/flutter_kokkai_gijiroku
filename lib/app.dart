@@ -17,12 +17,12 @@ final _router = GoRouter(
       routes: [
         GoRoute(
           path: 'about',
-          name: 'about',
+          name: AboutScreen.screenName,
           builder: (context, state) => const AboutScreen(),
         ),
         GoRoute(
           path: 'search/detail',
-          name: 'searchMeetingDetail',
+          name: SearchMeetingDetailScreen.screenName,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             child: SearchMeetingDetailScreen(
@@ -32,7 +32,7 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: 'search/summary',
-          name: 'searchMeetingSummary',
+          name: SearchMeetingSummaryScreen.screenName,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             child: SearchMeetingSummaryScreen(
@@ -42,7 +42,7 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: 'search/speech',
-          name: 'searchSpeech',
+          name: SearchSpeechScreen.screenName,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             child: SearchSpeechScreen(
@@ -52,7 +52,7 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: 'speech/:speechID',
-          name: 'statusSpeech',
+          name: SpeechDetailScreen.screenName,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             child: SpeechDetailScreen(
@@ -62,7 +62,7 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: 'issue/:issueID',
-          name: 'statusIssue',
+          name: IssueDetailScreen.screenName,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             child: IssueDetailScreen(

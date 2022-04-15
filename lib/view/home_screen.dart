@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
+import 'package:flutter_kokkai_gijiroku/view/about_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -68,7 +72,7 @@ class HomeScreen extends HookWidget {
                   );
                   break;
                 case _HomeAction.about:
-                  context.pushNamed('about');
+                  context.pushNamed(AboutScreen.screenName);
                   break;
               }
             },
@@ -383,19 +387,19 @@ class HomeScreen extends HookWidget {
           switch (mode.value) {
             case SearchMode.meetingDetail:
               context.pushNamed(
-                'searchMeetingDetail',
+                SearchMeetingDetailScreen.screenName,
                 queryParams: searchParam.value.query,
               );
               break;
             case SearchMode.meetingSummary:
               context.pushNamed(
-                'searchMeetingSummary',
+                SearchMeetingSummaryScreen.screenName,
                 queryParams: searchParam.value.query,
               );
               break;
             case SearchMode.speech:
               context.pushNamed(
-                'searchSpeech',
+                SearchSpeechScreen.screenName,
                 queryParams: searchParam.value.query,
               );
               break;

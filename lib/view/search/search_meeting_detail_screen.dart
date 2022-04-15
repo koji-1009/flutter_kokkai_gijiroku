@@ -6,6 +6,7 @@ import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
+import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -15,6 +16,8 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
     Key? key,
     required this.params,
   }) : super(key: key);
+
+  static String screenName = 'searchMeetingDetail';
 
   final Map<String, String> params;
 
@@ -104,7 +107,7 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
                     ),
                     onTap: () {
                       context.pushNamed(
-                        'statusSpeech',
+                        SpeechDetailScreen.screenName,
                         params: {
                           'speechID': e.speechID,
                         },
