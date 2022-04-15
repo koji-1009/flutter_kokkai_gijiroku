@@ -305,7 +305,7 @@ class _$ApiExceptionOther
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'ApiException.other'));
+    properties.add(DiagnosticsProperty('type', 'ApiException.other'));
   }
 
   @override

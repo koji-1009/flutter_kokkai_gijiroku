@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 
 part 'search_params.freezed.dart';
 
@@ -213,8 +213,6 @@ class SearchParams with _$SearchParams {
   }) = _SearchParams;
 }
 
-final _dateFormatter = DateFormat('yyyy-MM-dd');
-
 extension SearchParamsExt on SearchParams {
   Map<String, String> get query => {
         if (nameOfHouse != null && nameOfHouse != NameOfHouse.none)
@@ -222,8 +220,8 @@ extension SearchParamsExt on SearchParams {
         if (nameOfMeeting != null) 'nameOfMeeting': nameOfMeeting!,
         if (any != null) 'any': any!,
         if (speaker != null) 'speaker': speaker!,
-        if (from != null) 'from': _dateFormatter.format(from!),
-        if (until != null) 'until': _dateFormatter.format(until!),
+        if (from != null) 'from': from!.localDate,
+        if (until != null) 'until': until!.localDate,
         if (supplementAndAppendix != null)
           'supplementAndAppendix': supplementAndAppendix!.toString(),
         if (contentsAndIndex != null)
