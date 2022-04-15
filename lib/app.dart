@@ -8,6 +8,7 @@ import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final _router = GoRouter(
   routes: [
@@ -93,16 +94,28 @@ class App extends StatelessWidget {
       supportedLocales: const [
         Locale('ja'),
       ],
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.teal,
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.teal,
-        brightness: Brightness.dark,
-      ),
+      theme: () {
+        final base = ThemeData(
+          useMaterial3: true,
+          colorSchemeSeed: Colors.teal,
+          brightness: Brightness.light,
+        );
+
+        return base.copyWith(
+          textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
+        );
+      }(),
+      darkTheme: () {
+        final base = ThemeData(
+          useMaterial3: true,
+          colorSchemeSeed: Colors.teal,
+          brightness: Brightness.dark,
+        );
+
+        return base.copyWith(
+          textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
+        );
+      }(),
     );
   }
 }
