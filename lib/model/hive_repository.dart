@@ -18,6 +18,10 @@ class HiveRepository {
 
   final Box<Map<String, dynamic>> box;
 
+  Future<void> clear() async {
+    box.clear();
+  }
+
   Future<Map<String, dynamic>?> get(String key) async {
     return box.get(key);
   }

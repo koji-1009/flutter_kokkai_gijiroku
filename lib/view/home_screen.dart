@@ -8,21 +8,24 @@ import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/cache_clear_dialog.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 enum _HomeAction {
+  cache,
   license,
   github,
   ndl,
   about,
 }
 
-class HomeScreen extends HookWidget {
+class HomeScreen extends HookConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).breakpointMargin;
 
     final mode = useState(SearchMode.speech);
@@ -37,6 +40,10 @@ class HomeScreen extends HookWidget {
         actions: [
           PopupMenuButton<_HomeAction>(
             itemBuilder: (context) => const [
+              PopupMenuItem(
+                value: _HomeAction.cache,
+                child: Text('検索キャッシュ削除'),
+              ),
               PopupMenuItem(
                 value: _HomeAction.license,
                 child: Text('ライセンス'),
@@ -56,6 +63,12 @@ class HomeScreen extends HookWidget {
             ],
             onSelected: (value) async {
               switch (value) {
+                case _HomeAction.cache:
+                  showDialog(
+                    context: context,
+                    builder: (context) => const CacheClearDialog(),
+                  );
+                  break;
                 case _HomeAction.license:
                   showLicensePage(
                     context: context,
@@ -72,7 +85,9 @@ class HomeScreen extends HookWidget {
                   );
                   break;
                 case _HomeAction.about:
-                  context.pushNamed(AboutScreen.screenName);
+                  context.pushNamed(
+                    AboutScreen.screenName,
+                  );
                   break;
               }
             },
