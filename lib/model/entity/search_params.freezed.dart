@@ -19,22 +19,22 @@ class _$SearchParamsTearOff {
   const _$SearchParamsTearOff();
 
   _SearchParams call(
-      {NameOfHouse? nameOfHouse,
-      String? nameOfMeeting,
-      String? any,
-      String? speaker,
+      {NameOfHouse nameOfHouse = NameOfHouse.none,
+      String nameOfMeeting = '',
+      String any = '',
+      String speaker = '',
       DateTime? from,
       DateTime? until,
-      bool? supplementAndAppendix,
-      bool? contentsAndIndex,
-      SearchRange? searchRange,
-      bool? closing,
+      bool supplementAndAppendix = false,
+      bool contentsAndIndex = false,
+      SearchRange searchRange = SearchRange.none,
+      bool closing = false,
       int? speechNumber,
-      String? speakerPosition,
-      String? speakerGroup,
-      SpeakerRole? speakerRole,
-      String? speechID,
-      String? issueID,
+      String speakerPosition = '',
+      String speakerGroup = '',
+      SpeakerRole speakerRole = SpeakerRole.none,
+      String speechID = '',
+      String issueID = '',
       int? sessionFrom,
       int? sessionTo,
       int? issueFrom,
@@ -69,37 +69,25 @@ const $SearchParams = _$SearchParamsTearOff();
 
 /// @nodoc
 mixin _$SearchParams {
-/*
-    presenterで対応するため、2項目はparamsから除外
-    /// 開始位置
-    /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
-    /// 省略時のデフォルト値は「1」
-    @Default(1) int startRecord,
-
-    /// 一回の最大取得件数
-    /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
-    /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
-    int? maximumRecords,
-    */
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
   /// 省略可（省略時は検索条件に含めない）。また、指定可能な値以外を指定した場合も、検索条件に含めない。
-  NameOfHouse? get nameOfHouse => throw _privateConstructorUsedError;
+  NameOfHouse get nameOfHouse => throw _privateConstructorUsedError;
 
   /// 会議名
   /// 本会議、委員会等の会議名（ひらがな可）を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のOR検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get nameOfMeeting => throw _privateConstructorUsedError;
+  String get nameOfMeeting => throw _privateConstructorUsedError;
 
   /// 検索語
   /// 発言内容等に含まれる言葉を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のAND検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get any => throw _privateConstructorUsedError;
+  String get any => throw _privateConstructorUsedError;
 
   /// 発言者名
   /// 発言者名（議員名はひらがな可）を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のOR検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get speaker => throw _privateConstructorUsedError;
+  String get speaker => throw _privateConstructorUsedError;
 
   /// 開会日付／始点
   /// 検索対象とする会議の開催日の始点を「YYYY-MM-DD」の形式で指定可能。
@@ -114,22 +102,22 @@ mixin _$SearchParams {
   /// 追録・附録指定
   /// 検索対象を追録・附録に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool? get supplementAndAppendix => throw _privateConstructorUsedError;
+  bool get supplementAndAppendix => throw _privateConstructorUsedError;
 
   /// 目次・索引指定
   /// 検索対象を目次・索引に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool? get contentsAndIndex => throw _privateConstructorUsedError;
+  bool get contentsAndIndex => throw _privateConstructorUsedError;
 
   /// 議事冒頭・本文指定
   /// 検索語（パラメータ名：any）を指定して検索する際の検索対象箇所を「冒頭」「本文」「冒頭・本文」のいずれかで指定可能。
   /// 省略可（省略時は「冒頭・本文」が指定されたものとして検索する）。検索語を指定しなかった時は検索条件には含めない。
-  SearchRange? get searchRange => throw _privateConstructorUsedError;
+  SearchRange get searchRange => throw _privateConstructorUsedError;
 
   /// 閉会中指定
   /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool? get closing => throw _privateConstructorUsedError;
+  bool get closing => throw _privateConstructorUsedError;
 
   /// 発言番号
   /// 発言番号を0以上の整数（例：発言番号10の場合は「speechNumber=10」）で指定可能。完全一致検索。
@@ -139,27 +127,27 @@ mixin _$SearchParams {
   /// 発言者肩書き
   /// 発言者の肩書きを指定可能。部分一致検索。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get speakerPosition => throw _privateConstructorUsedError;
+  String get speakerPosition => throw _privateConstructorUsedError;
 
   /// 発言者所属会派
   /// 発言者の所属会派を指定可能。部分一致検索（なお、登録されているデータは正式名称のみ）。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get speakerGroup => throw _privateConstructorUsedError;
+  String get speakerGroup => throw _privateConstructorUsedError;
 
   /// 発言者役割
   /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
   /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-  SpeakerRole? get speakerRole => throw _privateConstructorUsedError;
+  SpeakerRole get speakerRole => throw _privateConstructorUsedError;
 
   /// 発言ID
   /// 発言を一意に識別するIDとして、「会議録ID（パラメータ名：issueID。21桁の英数字）_発言番号（会議録テキスト表示画面で表示されている各発言に付されている、先頭に0を埋めて3桁にした数字。4桁の場合は4桁の数字）」の書式で指定可能（例：「100105254X00119470520_000」）。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）。書式が適切でない場合にはエラーになる。
-  String? get speechID => throw _privateConstructorUsedError;
+  String get speechID => throw _privateConstructorUsedError;
 
   /// 会議録ID
   /// 会議録（冊子）を一意に識別するIDとして、会議録テキスト表示画面の「会議録テキストURLを表示」リンクで表示される21桁の英数字で指定可能（例：「100105254X00119470520」）。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）。書式が適切でない場合にはエラーになる。
-  String? get issueID => throw _privateConstructorUsedError;
+  String get issueID => throw _privateConstructorUsedError;
 
   /// 国会回次From
   /// 検索対象とする国会回次の始まり（開始回）を3桁までの自然数で指定可能。国会回次Toと組み合わせて指定した場合には範囲指定検索、国会回次From単独で指定した場合は当該の回次のみを完全一致検索。
@@ -192,22 +180,22 @@ abstract class $SearchParamsCopyWith<$Res> {
           SearchParams value, $Res Function(SearchParams) then) =
       _$SearchParamsCopyWithImpl<$Res>;
   $Res call(
-      {NameOfHouse? nameOfHouse,
-      String? nameOfMeeting,
-      String? any,
-      String? speaker,
+      {NameOfHouse nameOfHouse,
+      String nameOfMeeting,
+      String any,
+      String speaker,
       DateTime? from,
       DateTime? until,
-      bool? supplementAndAppendix,
-      bool? contentsAndIndex,
-      SearchRange? searchRange,
-      bool? closing,
+      bool supplementAndAppendix,
+      bool contentsAndIndex,
+      SearchRange searchRange,
+      bool closing,
       int? speechNumber,
-      String? speakerPosition,
-      String? speakerGroup,
-      SpeakerRole? speakerRole,
-      String? speechID,
-      String? issueID,
+      String speakerPosition,
+      String speakerGroup,
+      SpeakerRole speakerRole,
+      String speechID,
+      String issueID,
       int? sessionFrom,
       int? sessionTo,
       int? issueFrom,
@@ -249,19 +237,19 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
       nameOfHouse: nameOfHouse == freezed
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
-              as NameOfHouse?,
+              as NameOfHouse,
       nameOfMeeting: nameOfMeeting == freezed
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       any: any == freezed
           ? _value.any
           : any // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       speaker: speaker == freezed
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -273,19 +261,19 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
       supplementAndAppendix: supplementAndAppendix == freezed
           ? _value.supplementAndAppendix
           : supplementAndAppendix // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       contentsAndIndex: contentsAndIndex == freezed
           ? _value.contentsAndIndex
           : contentsAndIndex // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       searchRange: searchRange == freezed
           ? _value.searchRange
           : searchRange // ignore: cast_nullable_to_non_nullable
-              as SearchRange?,
+              as SearchRange,
       closing: closing == freezed
           ? _value.closing
           : closing // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       speechNumber: speechNumber == freezed
           ? _value.speechNumber
           : speechNumber // ignore: cast_nullable_to_non_nullable
@@ -293,23 +281,23 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
       speakerPosition: speakerPosition == freezed
           ? _value.speakerPosition
           : speakerPosition // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       speakerGroup: speakerGroup == freezed
           ? _value.speakerGroup
           : speakerGroup // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       speakerRole: speakerRole == freezed
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
-              as SpeakerRole?,
+              as SpeakerRole,
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       issueID: issueID == freezed
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       sessionFrom: sessionFrom == freezed
           ? _value.sessionFrom
           : sessionFrom // ignore: cast_nullable_to_non_nullable
@@ -338,22 +326,22 @@ abstract class _$SearchParamsCopyWith<$Res>
       __$SearchParamsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {NameOfHouse? nameOfHouse,
-      String? nameOfMeeting,
-      String? any,
-      String? speaker,
+      {NameOfHouse nameOfHouse,
+      String nameOfMeeting,
+      String any,
+      String speaker,
       DateTime? from,
       DateTime? until,
-      bool? supplementAndAppendix,
-      bool? contentsAndIndex,
-      SearchRange? searchRange,
-      bool? closing,
+      bool supplementAndAppendix,
+      bool contentsAndIndex,
+      SearchRange searchRange,
+      bool closing,
       int? speechNumber,
-      String? speakerPosition,
-      String? speakerGroup,
-      SpeakerRole? speakerRole,
-      String? speechID,
-      String? issueID,
+      String speakerPosition,
+      String speakerGroup,
+      SpeakerRole speakerRole,
+      String speechID,
+      String issueID,
       int? sessionFrom,
       int? sessionTo,
       int? issueFrom,
@@ -397,19 +385,19 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
       nameOfHouse: nameOfHouse == freezed
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
-              as NameOfHouse?,
+              as NameOfHouse,
       nameOfMeeting: nameOfMeeting == freezed
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       any: any == freezed
           ? _value.any
           : any // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       speaker: speaker == freezed
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -421,19 +409,19 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
       supplementAndAppendix: supplementAndAppendix == freezed
           ? _value.supplementAndAppendix
           : supplementAndAppendix // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       contentsAndIndex: contentsAndIndex == freezed
           ? _value.contentsAndIndex
           : contentsAndIndex // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       searchRange: searchRange == freezed
           ? _value.searchRange
           : searchRange // ignore: cast_nullable_to_non_nullable
-              as SearchRange?,
+              as SearchRange,
       closing: closing == freezed
           ? _value.closing
           : closing // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       speechNumber: speechNumber == freezed
           ? _value.speechNumber
           : speechNumber // ignore: cast_nullable_to_non_nullable
@@ -441,23 +429,23 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
       speakerPosition: speakerPosition == freezed
           ? _value.speakerPosition
           : speakerPosition // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       speakerGroup: speakerGroup == freezed
           ? _value.speakerGroup
           : speakerGroup // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       speakerRole: speakerRole == freezed
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
-              as SpeakerRole?,
+              as SpeakerRole,
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       issueID: issueID == freezed
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       sessionFrom: sessionFrom == freezed
           ? _value.sessionFrom
           : sessionFrom // ignore: cast_nullable_to_non_nullable
@@ -482,61 +470,55 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
 
 class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   const _$_SearchParams(
-      {this.nameOfHouse,
-      this.nameOfMeeting,
-      this.any,
-      this.speaker,
+      {this.nameOfHouse = NameOfHouse.none,
+      this.nameOfMeeting = '',
+      this.any = '',
+      this.speaker = '',
       this.from,
       this.until,
-      this.supplementAndAppendix,
-      this.contentsAndIndex,
-      this.searchRange,
-      this.closing,
+      this.supplementAndAppendix = false,
+      this.contentsAndIndex = false,
+      this.searchRange = SearchRange.none,
+      this.closing = false,
       this.speechNumber,
-      this.speakerPosition,
-      this.speakerGroup,
-      this.speakerRole,
-      this.speechID,
-      this.issueID,
+      this.speakerPosition = '',
+      this.speakerGroup = '',
+      this.speakerRole = SpeakerRole.none,
+      this.speechID = '',
+      this.issueID = '',
       this.sessionFrom,
       this.sessionTo,
       this.issueFrom,
       this.issueTo});
 
-  @override /*
-    presenterで対応するため、2項目はparamsから除外
-    /// 開始位置
-    /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
-    /// 省略時のデフォルト値は「1」
-    @Default(1) int startRecord,
+  @JsonKey()
+  @override
 
-    /// 一回の最大取得件数
-    /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
-    /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
-    int? maximumRecords,
-    */
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
   /// 省略可（省略時は検索条件に含めない）。また、指定可能な値以外を指定した場合も、検索条件に含めない。
-  final NameOfHouse? nameOfHouse;
+  final NameOfHouse nameOfHouse;
+  @JsonKey()
   @override
 
   /// 会議名
   /// 本会議、委員会等の会議名（ひらがな可）を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のOR検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  final String? nameOfMeeting;
+  final String nameOfMeeting;
+  @JsonKey()
   @override
 
   /// 検索語
   /// 発言内容等に含まれる言葉を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のAND検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  final String? any;
+  final String any;
+  @JsonKey()
   @override
 
   /// 発言者名
   /// 発言者名（議員名はひらがな可）を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のOR検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  final String? speaker;
+  final String speaker;
   @override
 
   /// 開会日付／始点
@@ -549,66 +531,75 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   /// 検索対象とする会議の開催日の終点を「YYYY-MM-DD」の形式で指定可能。
   /// 省略可（省略時は「9999-12-31」が指定されたものとして検索する）。
   final DateTime? until;
+  @JsonKey()
   @override
 
   /// 追録・附録指定
   /// 検索対象を追録・附録に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  final bool? supplementAndAppendix;
+  final bool supplementAndAppendix;
+  @JsonKey()
   @override
 
   /// 目次・索引指定
   /// 検索対象を目次・索引に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  final bool? contentsAndIndex;
+  final bool contentsAndIndex;
+  @JsonKey()
   @override
 
   /// 議事冒頭・本文指定
   /// 検索語（パラメータ名：any）を指定して検索する際の検索対象箇所を「冒頭」「本文」「冒頭・本文」のいずれかで指定可能。
   /// 省略可（省略時は「冒頭・本文」が指定されたものとして検索する）。検索語を指定しなかった時は検索条件には含めない。
-  final SearchRange? searchRange;
+  final SearchRange searchRange;
+  @JsonKey()
   @override
 
   /// 閉会中指定
   /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  final bool? closing;
+  final bool closing;
   @override
 
   /// 発言番号
   /// 発言番号を0以上の整数（例：発言番号10の場合は「speechNumber=10」）で指定可能。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）
   final int? speechNumber;
+  @JsonKey()
   @override
 
   /// 発言者肩書き
   /// 発言者の肩書きを指定可能。部分一致検索。
   /// 省略可（省略時は検索条件に含めない）。
-  final String? speakerPosition;
+  final String speakerPosition;
+  @JsonKey()
   @override
 
   /// 発言者所属会派
   /// 発言者の所属会派を指定可能。部分一致検索（なお、登録されているデータは正式名称のみ）。
   /// 省略可（省略時は検索条件に含めない）。
-  final String? speakerGroup;
+  final String speakerGroup;
+  @JsonKey()
   @override
 
   /// 発言者役割
   /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
   /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-  final SpeakerRole? speakerRole;
+  final SpeakerRole speakerRole;
+  @JsonKey()
   @override
 
   /// 発言ID
   /// 発言を一意に識別するIDとして、「会議録ID（パラメータ名：issueID。21桁の英数字）_発言番号（会議録テキスト表示画面で表示されている各発言に付されている、先頭に0を埋めて3桁にした数字。4桁の場合は4桁の数字）」の書式で指定可能（例：「100105254X00119470520_000」）。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）。書式が適切でない場合にはエラーになる。
-  final String? speechID;
+  final String speechID;
+  @JsonKey()
   @override
 
   /// 会議録ID
   /// 会議録（冊子）を一意に識別するIDとして、会議録テキスト表示画面の「会議録テキストURLを表示」リンクで表示される21桁の英数字で指定可能（例：「100105254X00119470520」）。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）。書式が適切でない場合にはエラーになる。
-  final String? issueID;
+  final String issueID;
   @override
 
   /// 国会回次From
@@ -736,61 +727,51 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
 
 abstract class _SearchParams implements SearchParams {
   const factory _SearchParams(
-      {NameOfHouse? nameOfHouse,
-      String? nameOfMeeting,
-      String? any,
-      String? speaker,
+      {NameOfHouse nameOfHouse,
+      String nameOfMeeting,
+      String any,
+      String speaker,
       DateTime? from,
       DateTime? until,
-      bool? supplementAndAppendix,
-      bool? contentsAndIndex,
-      SearchRange? searchRange,
-      bool? closing,
+      bool supplementAndAppendix,
+      bool contentsAndIndex,
+      SearchRange searchRange,
+      bool closing,
       int? speechNumber,
-      String? speakerPosition,
-      String? speakerGroup,
-      SpeakerRole? speakerRole,
-      String? speechID,
-      String? issueID,
+      String speakerPosition,
+      String speakerGroup,
+      SpeakerRole speakerRole,
+      String speechID,
+      String issueID,
       int? sessionFrom,
       int? sessionTo,
       int? issueFrom,
       int? issueTo}) = _$_SearchParams;
 
-  @override /*
-    presenterで対応するため、2項目はparamsから除外
-    /// 開始位置
-    /// 検索結果の取得開始位置を「1～検索件数」の範囲で指定可能。
-    /// 省略時のデフォルト値は「1」
-    @Default(1) int startRecord,
+  @override
 
-    /// 一回の最大取得件数
-    /// 一回のリクエストで取得できるレコード数を、会議単位簡易出力、発言単位出力の場合は「1～100」、会議単位出力の場合は「1～10」の範囲で指定可能。
-    /// 省略時のデフォルト値は、会議単位簡易出力、発言単位出力の場合は「30」、会議単位出力の場合は「3」
-    int? maximumRecords,
-    */
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
   /// 省略可（省略時は検索条件に含めない）。また、指定可能な値以外を指定した場合も、検索条件に含めない。
-  NameOfHouse? get nameOfHouse;
+  NameOfHouse get nameOfHouse;
   @override
 
   /// 会議名
   /// 本会議、委員会等の会議名（ひらがな可）を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のOR検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get nameOfMeeting;
+  String get nameOfMeeting;
   @override
 
   /// 検索語
   /// 発言内容等に含まれる言葉を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のAND検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get any;
+  String get any;
   @override
 
   /// 発言者名
   /// 発言者名（議員名はひらがな可）を指定可能。部分一致検索。半角スペース（U+0020）を区切り文字として複数指定した場合は、指定した語のOR検索となる。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get speaker;
+  String get speaker;
   @override
 
   /// 開会日付／始点
@@ -808,25 +789,25 @@ abstract class _SearchParams implements SearchParams {
   /// 追録・附録指定
   /// 検索対象を追録・附録に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool? get supplementAndAppendix;
+  bool get supplementAndAppendix;
   @override
 
   /// 目次・索引指定
   /// 検索対象を目次・索引に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool? get contentsAndIndex;
+  bool get contentsAndIndex;
   @override
 
   /// 議事冒頭・本文指定
   /// 検索語（パラメータ名：any）を指定して検索する際の検索対象箇所を「冒頭」「本文」「冒頭・本文」のいずれかで指定可能。
   /// 省略可（省略時は「冒頭・本文」が指定されたものとして検索する）。検索語を指定しなかった時は検索条件には含めない。
-  SearchRange? get searchRange;
+  SearchRange get searchRange;
   @override
 
   /// 閉会中指定
   /// 検索対象を閉会中の会議録に限定するか否かを「true」「false」で指定可能。
   /// 省略可（省略時は「false」（限定しない）が指定されたものとして検索する）。
-  bool? get closing;
+  bool get closing;
   @override
 
   /// 発言番号
@@ -838,31 +819,31 @@ abstract class _SearchParams implements SearchParams {
   /// 発言者肩書き
   /// 発言者の肩書きを指定可能。部分一致検索。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get speakerPosition;
+  String get speakerPosition;
   @override
 
   /// 発言者所属会派
   /// 発言者の所属会派を指定可能。部分一致検索（なお、登録されているデータは正式名称のみ）。
   /// 省略可（省略時は検索条件に含めない）。
-  String? get speakerGroup;
+  String get speakerGroup;
   @override
 
   /// 発言者役割
   /// 発言者の役割として「証人」「参考人」「公述人」のいずれかを指定可能。
   /// 省略可（省略時は検索条件に含めない）。指定可能な値以外を指定した場合はエラーになる。
-  SpeakerRole? get speakerRole;
+  SpeakerRole get speakerRole;
   @override
 
   /// 発言ID
   /// 発言を一意に識別するIDとして、「会議録ID（パラメータ名：issueID。21桁の英数字）_発言番号（会議録テキスト表示画面で表示されている各発言に付されている、先頭に0を埋めて3桁にした数字。4桁の場合は4桁の数字）」の書式で指定可能（例：「100105254X00119470520_000」）。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）。書式が適切でない場合にはエラーになる。
-  String? get speechID;
+  String get speechID;
   @override
 
   /// 会議録ID
   /// 会議録（冊子）を一意に識別するIDとして、会議録テキスト表示画面の「会議録テキストURLを表示」リンクで表示される21桁の英数字で指定可能（例：「100105254X00119470520」）。完全一致検索。
   /// 省略可（省略時は検索条件に含めない）。書式が適切でない場合にはエラーになる。
-  String? get issueID;
+  String get issueID;
   @override
 
   /// 国会回次From

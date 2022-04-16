@@ -3,23 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
-import 'package:flutter_kokkai_gijiroku/view/about_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
-import 'package:flutter_kokkai_gijiroku/view/widget/cache_clear_dialog.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/home_app_bar_action.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-enum _HomeAction {
-  cache,
-  license,
-  github,
-  ndl,
-  about,
-}
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,61 +27,8 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('議事録検索'),
-        actions: [
-          PopupMenuButton<_HomeAction>(
-            itemBuilder: (context) => const [
-              PopupMenuItem(
-                value: _HomeAction.cache,
-                child: Text('検索キャッシュ削除'),
-              ),
-              PopupMenuItem(
-                value: _HomeAction.license,
-                child: Text('ライセンス'),
-              ),
-              PopupMenuItem(
-                value: _HomeAction.github,
-                child: Text('GitHub'),
-              ),
-              PopupMenuItem(
-                value: _HomeAction.ndl,
-                child: Text('検索用APIの仕様'),
-              ),
-              PopupMenuItem(
-                value: _HomeAction.about,
-                child: Text('このサイトについて'),
-              ),
-            ],
-            onSelected: (value) async {
-              switch (value) {
-                case _HomeAction.cache:
-                  showDialog(
-                    context: context,
-                    builder: (context) => const CacheClearDialog(),
-                  );
-                  break;
-                case _HomeAction.license:
-                  showLicensePage(
-                    context: context,
-                  );
-                  break;
-                case _HomeAction.github:
-                  await launch(
-                    'https://github.com/koji-1009/flutter_kokkai_gijiroku',
-                  );
-                  break;
-                case _HomeAction.ndl:
-                  await launch(
-                    'https://kokkai.ndl.go.jp/api.html',
-                  );
-                  break;
-                case _HomeAction.about:
-                  context.pushNamed(
-                    AboutScreen.screenName,
-                  );
-                  break;
-              }
-            },
-          ),
+        actions: const [
+          HomeAppBarAction(),
         ],
       ),
       body: ListView(
@@ -186,7 +123,7 @@ class HomeScreen extends HookConsumerWidget {
             ),
             onChanged: (value) {
               searchParam.value = searchParam.value.copyWith(
-                any: value.isNotEmpty ? value : null,
+                any: value,
               );
             },
           ),
@@ -203,13 +140,13 @@ class HomeScreen extends HookConsumerWidget {
                     .map(
                       (e) => DropdownMenuItem<SearchRange>(
                         value: e,
-                        child: Text(e.value ?? ''),
+                        child: Text(e.value),
                       ),
                     )
                     .toList(growable: false),
                 onChanged: (value) {
                   searchParam.value = searchParam.value.copyWith(
-                    searchRange: value,
+                    searchRange: value ?? SearchRange.none,
                   );
                 },
               ),
@@ -223,7 +160,7 @@ class HomeScreen extends HookConsumerWidget {
               const Text('追録・附録指定'),
               const Spacer(),
               Switch(
-                value: searchParam.value.supplementAndAppendix ?? false,
+                value: searchParam.value.supplementAndAppendix,
                 onChanged: (value) {
                   searchParam.value = searchParam.value.copyWith(
                     supplementAndAppendix: value,
@@ -237,7 +174,7 @@ class HomeScreen extends HookConsumerWidget {
               const Text('目次・索引指定'),
               const Spacer(),
               Switch(
-                value: searchParam.value.contentsAndIndex ?? false,
+                value: searchParam.value.contentsAndIndex,
                 onChanged: (value) {
                   searchParam.value = searchParam.value.copyWith(
                     contentsAndIndex: value,
@@ -251,7 +188,7 @@ class HomeScreen extends HookConsumerWidget {
               const Text('閉会中指定'),
               const Spacer(),
               Switch(
-                value: searchParam.value.closing ?? false,
+                value: searchParam.value.closing,
                 onChanged: (value) {
                   searchParam.value = searchParam.value.copyWith(
                     closing: value,
@@ -270,7 +207,7 @@ class HomeScreen extends HookConsumerWidget {
             ),
             onChanged: (value) {
               searchParam.value = searchParam.value.copyWith(
-                nameOfMeeting: value.isNotEmpty ? value : null,
+                nameOfMeeting: value,
               );
             },
           ),
@@ -287,13 +224,13 @@ class HomeScreen extends HookConsumerWidget {
                     .map(
                       (e) => DropdownMenuItem<NameOfHouse>(
                         value: e,
-                        child: Text(e.value ?? ''),
+                        child: Text(e.value),
                       ),
                     )
                     .toList(growable: false),
                 onChanged: (value) {
                   searchParam.value = searchParam.value.copyWith(
-                    nameOfHouse: value,
+                    nameOfHouse: value ?? NameOfHouse.none,
                   );
                 },
               ),
@@ -309,7 +246,7 @@ class HomeScreen extends HookConsumerWidget {
             ),
             onChanged: (value) {
               searchParam.value = searchParam.value.copyWith(
-                speaker: value.isNotEmpty ? value : null,
+                speaker: value,
               );
             },
           ),
@@ -325,7 +262,7 @@ class HomeScreen extends HookConsumerWidget {
             ),
             onChanged: (value) {
               searchParam.value = searchParam.value.copyWith(
-                speakerPosition: value.isNotEmpty ? value : null,
+                speakerPosition: value,
               );
             },
           ),
@@ -341,7 +278,7 @@ class HomeScreen extends HookConsumerWidget {
             ),
             onChanged: (value) {
               searchParam.value = searchParam.value.copyWith(
-                speakerGroup: value.isNotEmpty ? value : null,
+                speakerGroup: value,
               );
             },
           ),
@@ -358,13 +295,13 @@ class HomeScreen extends HookConsumerWidget {
                     .map(
                       (e) => DropdownMenuItem<SpeakerRole>(
                         value: e,
-                        child: Text(e.value ?? ''),
+                        child: Text(e.value),
                       ),
                     )
                     .toList(growable: false),
                 onChanged: (value) {
                   searchParam.value = searchParam.value.copyWith(
-                    speakerRole: value,
+                    speakerRole: value ?? SpeakerRole.none,
                   );
                 },
               ),
@@ -388,9 +325,9 @@ class HomeScreen extends HookConsumerWidget {
             );
             return;
           }
-          if ((param.any == null || param.any!.isEmpty) &&
-              (param.speaker == null || param.speaker!.isEmpty) &&
-              (param.nameOfMeeting == null || param.nameOfMeeting!.isEmpty)) {
+          if (param.any.isEmpty &&
+              param.speaker.isEmpty &&
+              param.nameOfMeeting.isEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('検索語/会議名/発言者名のいずれかを入力してください'),
