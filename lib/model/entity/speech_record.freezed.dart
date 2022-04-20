@@ -12,38 +12,11 @@ part of 'speech_record.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SpeechRecordResponse _$SpeechRecordResponseFromJson(Map<String, dynamic> json) {
   return _SpeechRecordResponsee.fromJson(json);
 }
-
-/// @nodoc
-class _$SpeechRecordResponseTearOff {
-  const _$SpeechRecordResponseTearOff();
-
-  _SpeechRecordResponsee call(
-      {required int numberOfRecords,
-      required int numberOfReturn,
-      required int startRecord,
-      required int? nextRecordPosition,
-      List<SpeechRecord> speechRecord = const []}) {
-    return _SpeechRecordResponsee(
-      numberOfRecords: numberOfRecords,
-      numberOfReturn: numberOfReturn,
-      startRecord: startRecord,
-      nextRecordPosition: nextRecordPosition,
-      speechRecord: speechRecord,
-    );
-  }
-
-  SpeechRecordResponse fromJson(Map<String, Object?> json) {
-    return SpeechRecordResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SpeechRecordResponse = _$SpeechRecordResponseTearOff();
 
 /// @nodoc
 mixin _$SpeechRecordResponse {
@@ -192,32 +165,38 @@ class _$_SpeechRecordResponsee
       required this.numberOfReturn,
       required this.startRecord,
       required this.nextRecordPosition,
-      this.speechRecord = const []});
+      final List<SpeechRecord> speechRecord = const []})
+      : _speechRecord = speechRecord;
 
   factory _$_SpeechRecordResponsee.fromJson(Map<String, dynamic> json) =>
       _$$_SpeechRecordResponseeFromJson(json);
 
-  @override
-
   /// 総結果件数
-  final int numberOfRecords;
   @override
+  final int numberOfRecords;
 
   /// 返戻件数
-  final int numberOfReturn;
   @override
+  final int numberOfReturn;
 
   /// 開始位置
-  final int startRecord;
   @override
+  final int startRecord;
 
   /// 次開始位置（※存在する場合のみ）
-  final int? nextRecordPosition;
-  @JsonKey()
   @override
+  final int? nextRecordPosition;
 
   /// 発言リスト
-  final List<SpeechRecord> speechRecord;
+  final List<SpeechRecord> _speechRecord;
+
+  /// 発言リスト
+  @override
+  @JsonKey()
+  List<SpeechRecord> get speechRecord {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_speechRecord);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -253,6 +232,7 @@ class _$_SpeechRecordResponsee
                 .equals(other.speechRecord, speechRecord));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -276,11 +256,11 @@ class _$_SpeechRecordResponsee
 
 abstract class _SpeechRecordResponsee implements SpeechRecordResponse {
   const factory _SpeechRecordResponsee(
-      {required int numberOfRecords,
-      required int numberOfReturn,
-      required int startRecord,
-      required int? nextRecordPosition,
-      List<SpeechRecord> speechRecord}) = _$_SpeechRecordResponsee;
+      {required final int numberOfRecords,
+      required final int numberOfReturn,
+      required final int startRecord,
+      required final int? nextRecordPosition,
+      final List<SpeechRecord> speechRecord}) = _$_SpeechRecordResponsee;
 
   factory _SpeechRecordResponsee.fromJson(Map<String, dynamic> json) =
       _$_SpeechRecordResponsee.fromJson;
@@ -288,23 +268,23 @@ abstract class _SpeechRecordResponsee implements SpeechRecordResponse {
   @override
 
   /// 総結果件数
-  int get numberOfRecords;
+  int get numberOfRecords => throw _privateConstructorUsedError;
   @override
 
   /// 返戻件数
-  int get numberOfReturn;
+  int get numberOfReturn => throw _privateConstructorUsedError;
   @override
 
   /// 開始位置
-  int get startRecord;
+  int get startRecord => throw _privateConstructorUsedError;
   @override
 
   /// 次開始位置（※存在する場合のみ）
-  int? get nextRecordPosition;
+  int? get nextRecordPosition => throw _privateConstructorUsedError;
   @override
 
   /// 発言リスト
-  List<SpeechRecord> get speechRecord;
+  List<SpeechRecord> get speechRecord => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SpeechRecordResponseeCopyWith<_SpeechRecordResponsee> get copyWith =>
@@ -314,63 +294,6 @@ abstract class _SpeechRecordResponsee implements SpeechRecordResponse {
 SpeechRecord _$SpeechRecordFromJson(Map<String, dynamic> json) {
   return _SpeechRecord.fromJson(json);
 }
-
-/// @nodoc
-class _$SpeechRecordTearOff {
-  const _$SpeechRecordTearOff();
-
-  _SpeechRecord call(
-      {required String speechID,
-      required String issueID,
-      required String imageKind,
-      required int searchObject,
-      required int session,
-      required String nameOfHouse,
-      required String nameOfMeeting,
-      required String issue,
-      required String date,
-      required int speechOrder,
-      required String speaker,
-      String speakerYomi = '',
-      String speakerGroup = '',
-      String speakerPosition = '',
-      String speakerRole = '',
-      required String speech,
-      required int startPage,
-      required String speechURL,
-      required String meetingURL,
-      String pdfURL = ''}) {
-    return _SpeechRecord(
-      speechID: speechID,
-      issueID: issueID,
-      imageKind: imageKind,
-      searchObject: searchObject,
-      session: session,
-      nameOfHouse: nameOfHouse,
-      nameOfMeeting: nameOfMeeting,
-      issue: issue,
-      date: date,
-      speechOrder: speechOrder,
-      speaker: speaker,
-      speakerYomi: speakerYomi,
-      speakerGroup: speakerGroup,
-      speakerPosition: speakerPosition,
-      speakerRole: speakerRole,
-      speech: speech,
-      startPage: startPage,
-      speechURL: speechURL,
-      meetingURL: meetingURL,
-      pdfURL: pdfURL,
-    );
-  }
-
-  SpeechRecord fromJson(Map<String, Object?> json) {
-    return SpeechRecord.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SpeechRecord = _$SpeechRecordTearOff();
 
 /// @nodoc
 mixin _$SpeechRecord {
@@ -762,91 +685,91 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
   factory _$_SpeechRecord.fromJson(Map<String, dynamic> json) =>
       _$$_SpeechRecordFromJson(json);
 
-  @override
-
   /// 発言ID
-  final String speechID;
   @override
+  final String speechID;
 
   /// 会議録ID
-  final String issueID;
   @override
+  final String issueID;
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  final String imageKind;
   @override
+  final String imageKind;
 
   /// 検索対象箇所（議事冒頭・本文）
-  final int searchObject;
   @override
+  final int searchObject;
 
   /// 国会回次
-  final int session;
   @override
+  final int session;
 
   /// 院名
-  final String nameOfHouse;
   @override
+  final String nameOfHouse;
 
   /// 会議名
-  final String nameOfMeeting;
   @override
+  final String nameOfMeeting;
 
   /// 号数
-  final String issue;
   @override
+  final String issue;
 
   /// 開催日付
+  @override
   final String date;
-  @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
+// 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
 // /// 閉会中フラグ
 // @Default(false) bool closing,
   /// 発言番号
-  final int speechOrder;
   @override
+  final int speechOrder;
 
   /// 発言者名
-  final String speaker;
-  @JsonKey()
   @override
+  final String speaker;
 
   /// 発言者よみ
-  final String speakerYomi;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String speakerYomi;
 
   /// 発言者所属会派
-  final String speakerGroup;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String speakerGroup;
 
   /// 発言者肩書き
-  final String speakerPosition;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String speakerPosition;
 
   /// 発言者役割
-  final String speakerRole;
   @override
+  @JsonKey()
+  final String speakerRole;
 
   /// 発言
-  final String speech;
   @override
+  final String speech;
 
   /// 発言が掲載されている開始ページ
-  final int startPage;
   @override
+  final int startPage;
 
   /// 発言URL
-  final String speechURL;
   @override
+  final String speechURL;
 
   /// 会議録テキスト表示画面のURL
-  final String meetingURL;
-  @JsonKey()
   @override
+  final String meetingURL;
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
+  @override
+  @JsonKey()
   final String pdfURL;
 
   @override
@@ -917,6 +840,7 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
             const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -955,26 +879,26 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
 
 abstract class _SpeechRecord implements SpeechRecord {
   const factory _SpeechRecord(
-      {required String speechID,
-      required String issueID,
-      required String imageKind,
-      required int searchObject,
-      required int session,
-      required String nameOfHouse,
-      required String nameOfMeeting,
-      required String issue,
-      required String date,
-      required int speechOrder,
-      required String speaker,
-      String speakerYomi,
-      String speakerGroup,
-      String speakerPosition,
-      String speakerRole,
-      required String speech,
-      required int startPage,
-      required String speechURL,
-      required String meetingURL,
-      String pdfURL}) = _$_SpeechRecord;
+      {required final String speechID,
+      required final String issueID,
+      required final String imageKind,
+      required final int searchObject,
+      required final int session,
+      required final String nameOfHouse,
+      required final String nameOfMeeting,
+      required final String issue,
+      required final String date,
+      required final int speechOrder,
+      required final String speaker,
+      final String speakerYomi,
+      final String speakerGroup,
+      final String speakerPosition,
+      final String speakerRole,
+      required final String speech,
+      required final int startPage,
+      required final String speechURL,
+      required final String meetingURL,
+      final String pdfURL}) = _$_SpeechRecord;
 
   factory _SpeechRecord.fromJson(Map<String, dynamic> json) =
       _$_SpeechRecord.fromJson;
@@ -982,84 +906,84 @@ abstract class _SpeechRecord implements SpeechRecord {
   @override
 
   /// 発言ID
-  String get speechID;
+  String get speechID => throw _privateConstructorUsedError;
   @override
 
   /// 会議録ID
-  String get issueID;
+  String get issueID => throw _privateConstructorUsedError;
   @override
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  String get imageKind;
+  String get imageKind => throw _privateConstructorUsedError;
   @override
 
   /// 検索対象箇所（議事冒頭・本文）
-  int get searchObject;
+  int get searchObject => throw _privateConstructorUsedError;
   @override
 
   /// 国会回次
-  int get session;
+  int get session => throw _privateConstructorUsedError;
   @override
 
   /// 院名
-  String get nameOfHouse;
+  String get nameOfHouse => throw _privateConstructorUsedError;
   @override
 
   /// 会議名
-  String get nameOfMeeting;
+  String get nameOfMeeting => throw _privateConstructorUsedError;
   @override
 
   /// 号数
-  String get issue;
+  String get issue => throw _privateConstructorUsedError;
   @override
 
   /// 開催日付
-  String get date;
+  String get date => throw _privateConstructorUsedError;
   @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
 // /// 閉会中フラグ
 // @Default(false) bool closing,
   /// 発言番号
-  int get speechOrder;
+  int get speechOrder => throw _privateConstructorUsedError;
   @override
 
   /// 発言者名
-  String get speaker;
+  String get speaker => throw _privateConstructorUsedError;
   @override
 
   /// 発言者よみ
-  String get speakerYomi;
+  String get speakerYomi => throw _privateConstructorUsedError;
   @override
 
   /// 発言者所属会派
-  String get speakerGroup;
+  String get speakerGroup => throw _privateConstructorUsedError;
   @override
 
   /// 発言者肩書き
-  String get speakerPosition;
+  String get speakerPosition => throw _privateConstructorUsedError;
   @override
 
   /// 発言者役割
-  String get speakerRole;
+  String get speakerRole => throw _privateConstructorUsedError;
   @override
 
   /// 発言
-  String get speech;
+  String get speech => throw _privateConstructorUsedError;
   @override
 
   /// 発言が掲載されている開始ページ
-  int get startPage;
+  int get startPage => throw _privateConstructorUsedError;
   @override
 
   /// 発言URL
-  String get speechURL;
+  String get speechURL => throw _privateConstructorUsedError;
   @override
 
   /// 会議録テキスト表示画面のURL
-  String get meetingURL;
+  String get meetingURL => throw _privateConstructorUsedError;
   @override
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
-  String get pdfURL;
+  String get pdfURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SpeechRecordCopyWith<_SpeechRecord> get copyWith =>
