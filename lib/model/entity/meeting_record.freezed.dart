@@ -12,39 +12,12 @@ part of 'meeting_record.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MeetingRecordDetailResponse _$MeetingRecordDetailResponseFromJson(
     Map<String, dynamic> json) {
   return _MeetingRecordResponseDetail.fromJson(json);
 }
-
-/// @nodoc
-class _$MeetingRecordDetailResponseTearOff {
-  const _$MeetingRecordDetailResponseTearOff();
-
-  _MeetingRecordResponseDetail call(
-      {required int numberOfRecords,
-      required int numberOfReturn,
-      required int startRecord,
-      required int? nextRecordPosition,
-      List<MeetingRecordDetail> meetingRecord = const []}) {
-    return _MeetingRecordResponseDetail(
-      numberOfRecords: numberOfRecords,
-      numberOfReturn: numberOfReturn,
-      startRecord: startRecord,
-      nextRecordPosition: nextRecordPosition,
-      meetingRecord: meetingRecord,
-    );
-  }
-
-  MeetingRecordDetailResponse fromJson(Map<String, Object?> json) {
-    return MeetingRecordDetailResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MeetingRecordDetailResponse = _$MeetingRecordDetailResponseTearOff();
 
 /// @nodoc
 mixin _$MeetingRecordDetailResponse {
@@ -198,32 +171,38 @@ class _$_MeetingRecordResponseDetail
       required this.numberOfReturn,
       required this.startRecord,
       required this.nextRecordPosition,
-      this.meetingRecord = const []});
+      final List<MeetingRecordDetail> meetingRecord = const []})
+      : _meetingRecord = meetingRecord;
 
   factory _$_MeetingRecordResponseDetail.fromJson(Map<String, dynamic> json) =>
       _$$_MeetingRecordResponseDetailFromJson(json);
 
-  @override
-
   /// 総結果件数
-  final int numberOfRecords;
   @override
+  final int numberOfRecords;
 
   /// 返戻件数
-  final int numberOfReturn;
   @override
+  final int numberOfReturn;
 
   /// 開始位置
-  final int startRecord;
   @override
+  final int startRecord;
 
   /// 次開始位置（※存在する場合のみ）
-  final int? nextRecordPosition;
-  @JsonKey()
   @override
+  final int? nextRecordPosition;
 
   /// 会議一覧
-  final List<MeetingRecordDetail> meetingRecord;
+  final List<MeetingRecordDetail> _meetingRecord;
+
+  /// 会議一覧
+  @override
+  @JsonKey()
+  List<MeetingRecordDetail> get meetingRecord {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meetingRecord);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -259,6 +238,7 @@ class _$_MeetingRecordResponseDetail
                 .equals(other.meetingRecord, meetingRecord));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -283,11 +263,11 @@ class _$_MeetingRecordResponseDetail
 abstract class _MeetingRecordResponseDetail
     implements MeetingRecordDetailResponse {
   const factory _MeetingRecordResponseDetail(
-          {required int numberOfRecords,
-          required int numberOfReturn,
-          required int startRecord,
-          required int? nextRecordPosition,
-          List<MeetingRecordDetail> meetingRecord}) =
+          {required final int numberOfRecords,
+          required final int numberOfReturn,
+          required final int startRecord,
+          required final int? nextRecordPosition,
+          final List<MeetingRecordDetail> meetingRecord}) =
       _$_MeetingRecordResponseDetail;
 
   factory _MeetingRecordResponseDetail.fromJson(Map<String, dynamic> json) =
@@ -296,23 +276,24 @@ abstract class _MeetingRecordResponseDetail
   @override
 
   /// 総結果件数
-  int get numberOfRecords;
+  int get numberOfRecords => throw _privateConstructorUsedError;
   @override
 
   /// 返戻件数
-  int get numberOfReturn;
+  int get numberOfReturn => throw _privateConstructorUsedError;
   @override
 
   /// 開始位置
-  int get startRecord;
+  int get startRecord => throw _privateConstructorUsedError;
   @override
 
   /// 次開始位置（※存在する場合のみ）
-  int? get nextRecordPosition;
+  int? get nextRecordPosition => throw _privateConstructorUsedError;
   @override
 
   /// 会議一覧
-  List<MeetingRecordDetail> get meetingRecord;
+  List<MeetingRecordDetail> get meetingRecord =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordResponseDetailCopyWith<_MeetingRecordResponseDetail>
@@ -322,47 +303,6 @@ abstract class _MeetingRecordResponseDetail
 MeetingRecordDetail _$MeetingRecordDetailFromJson(Map<String, dynamic> json) {
   return _MeetingRecordDetail.fromJson(json);
 }
-
-/// @nodoc
-class _$MeetingRecordDetailTearOff {
-  const _$MeetingRecordDetailTearOff();
-
-  _MeetingRecordDetail call(
-      {required String issueID,
-      required String imageKind,
-      required int searchObject,
-      required int session,
-      required String nameOfHouse,
-      required String nameOfMeeting,
-      required String issue,
-      required String date,
-      String closing = '',
-      List<MeetingRecordDetailSpeech> speechRecord = const [],
-      required String meetingURL,
-      String pdfURL = ''}) {
-    return _MeetingRecordDetail(
-      issueID: issueID,
-      imageKind: imageKind,
-      searchObject: searchObject,
-      session: session,
-      nameOfHouse: nameOfHouse,
-      nameOfMeeting: nameOfMeeting,
-      issue: issue,
-      date: date,
-      closing: closing,
-      speechRecord: speechRecord,
-      meetingURL: meetingURL,
-      pdfURL: pdfURL,
-    );
-  }
-
-  MeetingRecordDetail fromJson(Map<String, Object?> json) {
-    return MeetingRecordDetail.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MeetingRecordDetail = _$MeetingRecordDetailTearOff();
 
 /// @nodoc
 mixin _$MeetingRecordDetail {
@@ -622,63 +562,69 @@ class _$_MeetingRecordDetail
       required this.issue,
       required this.date,
       this.closing = '',
-      this.speechRecord = const [],
+      final List<MeetingRecordDetailSpeech> speechRecord = const [],
       required this.meetingURL,
-      this.pdfURL = ''});
+      this.pdfURL = ''})
+      : _speechRecord = speechRecord;
 
   factory _$_MeetingRecordDetail.fromJson(Map<String, dynamic> json) =>
       _$$_MeetingRecordDetailFromJson(json);
 
-  @override
-
   /// 会議録ID
-  final String issueID;
   @override
+  final String issueID;
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  final String imageKind;
   @override
+  final String imageKind;
 
   /// 検索対象箇所（議事冒頭・本文）
-  final int searchObject;
   @override
+  final int searchObject;
 
   /// 国会回次
-  final int session;
   @override
+  final int session;
 
   /// 院名
-  final String nameOfHouse;
   @override
+  final String nameOfHouse;
 
   /// 会議名
-  final String nameOfMeeting;
   @override
+  final String nameOfMeeting;
 
   /// 号数
-  final String issue;
   @override
+  final String issue;
 
   /// 開催日付
-  final String date;
-  @JsonKey()
   @override
+  final String date;
 
   /// 閉会中フラグ (null or 閉)
-  final String closing;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String closing;
 
   /// 発言リスト
-  final List<MeetingRecordDetailSpeech> speechRecord;
+  final List<MeetingRecordDetailSpeech> _speechRecord;
+
+  /// 発言リスト
   @override
+  @JsonKey()
+  List<MeetingRecordDetailSpeech> get speechRecord {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_speechRecord);
+  }
 
   /// 会議録テキスト表示画面のURL
-  final String meetingURL;
-  @JsonKey()
   @override
+  final String meetingURL;
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
+  @override
+  @JsonKey()
   final String pdfURL;
 
   @override
@@ -729,6 +675,7 @@ class _$_MeetingRecordDetail
             const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -759,18 +706,18 @@ class _$_MeetingRecordDetail
 
 abstract class _MeetingRecordDetail implements MeetingRecordDetail {
   const factory _MeetingRecordDetail(
-      {required String issueID,
-      required String imageKind,
-      required int searchObject,
-      required int session,
-      required String nameOfHouse,
-      required String nameOfMeeting,
-      required String issue,
-      required String date,
-      String closing,
-      List<MeetingRecordDetailSpeech> speechRecord,
-      required String meetingURL,
-      String pdfURL}) = _$_MeetingRecordDetail;
+      {required final String issueID,
+      required final String imageKind,
+      required final int searchObject,
+      required final int session,
+      required final String nameOfHouse,
+      required final String nameOfMeeting,
+      required final String issue,
+      required final String date,
+      final String closing,
+      final List<MeetingRecordDetailSpeech> speechRecord,
+      required final String meetingURL,
+      final String pdfURL}) = _$_MeetingRecordDetail;
 
   factory _MeetingRecordDetail.fromJson(Map<String, dynamic> json) =
       _$_MeetingRecordDetail.fromJson;
@@ -778,51 +725,52 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
   @override
 
   /// 会議録ID
-  String get issueID;
+  String get issueID => throw _privateConstructorUsedError;
   @override
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  String get imageKind;
+  String get imageKind => throw _privateConstructorUsedError;
   @override
 
   /// 検索対象箇所（議事冒頭・本文）
-  int get searchObject;
+  int get searchObject => throw _privateConstructorUsedError;
   @override
 
   /// 国会回次
-  int get session;
+  int get session => throw _privateConstructorUsedError;
   @override
 
   /// 院名
-  String get nameOfHouse;
+  String get nameOfHouse => throw _privateConstructorUsedError;
   @override
 
   /// 会議名
-  String get nameOfMeeting;
+  String get nameOfMeeting => throw _privateConstructorUsedError;
   @override
 
   /// 号数
-  String get issue;
+  String get issue => throw _privateConstructorUsedError;
   @override
 
   /// 開催日付
-  String get date;
+  String get date => throw _privateConstructorUsedError;
   @override
 
   /// 閉会中フラグ (null or 閉)
-  String get closing;
+  String get closing => throw _privateConstructorUsedError;
   @override
 
   /// 発言リスト
-  List<MeetingRecordDetailSpeech> get speechRecord;
+  List<MeetingRecordDetailSpeech> get speechRecord =>
+      throw _privateConstructorUsedError;
   @override
 
   /// 会議録テキスト表示画面のURL
-  String get meetingURL;
+  String get meetingURL => throw _privateConstructorUsedError;
   @override
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
-  String get pdfURL;
+  String get pdfURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordDetailCopyWith<_MeetingRecordDetail> get copyWith =>
@@ -833,47 +781,6 @@ MeetingRecordDetailSpeech _$MeetingRecordDetailSpeechFromJson(
     Map<String, dynamic> json) {
   return _MeetingRecordDetailSpeech.fromJson(json);
 }
-
-/// @nodoc
-class _$MeetingRecordDetailSpeechTearOff {
-  const _$MeetingRecordDetailSpeechTearOff();
-
-  _MeetingRecordDetailSpeech call(
-      {required String speechID,
-      required int speechOrder,
-      required String speaker,
-      String speakerYomi = '',
-      String speakerGroup = '',
-      String speakerPosition = '',
-      String speakerRole = '',
-      required String speech,
-      required int startPage,
-      required String createTime,
-      required String updateTime,
-      required String speechURL}) {
-    return _MeetingRecordDetailSpeech(
-      speechID: speechID,
-      speechOrder: speechOrder,
-      speaker: speaker,
-      speakerYomi: speakerYomi,
-      speakerGroup: speakerGroup,
-      speakerPosition: speakerPosition,
-      speakerRole: speakerRole,
-      speech: speech,
-      startPage: startPage,
-      createTime: createTime,
-      updateTime: updateTime,
-      speechURL: speechURL,
-    );
-  }
-
-  MeetingRecordDetailSpeech fromJson(Map<String, Object?> json) {
-    return MeetingRecordDetailSpeech.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MeetingRecordDetailSpeech = _$MeetingRecordDetailSpeechTearOff();
 
 /// @nodoc
 mixin _$MeetingRecordDetailSpeech {
@@ -1140,57 +1047,56 @@ class _$_MeetingRecordDetailSpeech
   factory _$_MeetingRecordDetailSpeech.fromJson(Map<String, dynamic> json) =>
       _$$_MeetingRecordDetailSpeechFromJson(json);
 
-  @override
-
   /// 発言ID
-  final String speechID;
   @override
+  final String speechID;
 
   /// 発言番号
-  final int speechOrder;
   @override
+  final int speechOrder;
 
   /// 発言者名
-  final String speaker;
-  @JsonKey()
   @override
+  final String speaker;
 
   /// 発言者よみ
-  final String speakerYomi;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String speakerYomi;
 
   /// 発言者所属会派
-  final String speakerGroup;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String speakerGroup;
 
   /// 発言者肩書き
-  final String speakerPosition;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String speakerPosition;
 
   /// 発言者役割
-  final String speakerRole;
   @override
+  @JsonKey()
+  final String speakerRole;
 
   /// 発言
-  final String speech;
   @override
+  final String speech;
 
   /// 発言が掲載されている開始ページ
-  final int startPage;
   @override
+  final int startPage;
 
   /// レコード登録日時
-  final String createTime;
   @override
+  final String createTime;
 
   ///  レコード更新日時
-  final String updateTime;
   @override
+  final String updateTime;
 
   /// 発言URL
+  @override
   final String speechURL;
 
   @override
@@ -1243,6 +1149,7 @@ class _$_MeetingRecordDetailSpeech
             const DeepCollectionEquality().equals(other.speechURL, speechURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1274,18 +1181,18 @@ class _$_MeetingRecordDetailSpeech
 
 abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   const factory _MeetingRecordDetailSpeech(
-      {required String speechID,
-      required int speechOrder,
-      required String speaker,
-      String speakerYomi,
-      String speakerGroup,
-      String speakerPosition,
-      String speakerRole,
-      required String speech,
-      required int startPage,
-      required String createTime,
-      required String updateTime,
-      required String speechURL}) = _$_MeetingRecordDetailSpeech;
+      {required final String speechID,
+      required final int speechOrder,
+      required final String speaker,
+      final String speakerYomi,
+      final String speakerGroup,
+      final String speakerPosition,
+      final String speakerRole,
+      required final String speech,
+      required final int startPage,
+      required final String createTime,
+      required final String updateTime,
+      required final String speechURL}) = _$_MeetingRecordDetailSpeech;
 
   factory _MeetingRecordDetailSpeech.fromJson(Map<String, dynamic> json) =
       _$_MeetingRecordDetailSpeech.fromJson;
@@ -1293,51 +1200,51 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   @override
 
   /// 発言ID
-  String get speechID;
+  String get speechID => throw _privateConstructorUsedError;
   @override
 
   /// 発言番号
-  int get speechOrder;
+  int get speechOrder => throw _privateConstructorUsedError;
   @override
 
   /// 発言者名
-  String get speaker;
+  String get speaker => throw _privateConstructorUsedError;
   @override
 
   /// 発言者よみ
-  String get speakerYomi;
+  String get speakerYomi => throw _privateConstructorUsedError;
   @override
 
   /// 発言者所属会派
-  String get speakerGroup;
+  String get speakerGroup => throw _privateConstructorUsedError;
   @override
 
   /// 発言者肩書き
-  String get speakerPosition;
+  String get speakerPosition => throw _privateConstructorUsedError;
   @override
 
   /// 発言者役割
-  String get speakerRole;
+  String get speakerRole => throw _privateConstructorUsedError;
   @override
 
   /// 発言
-  String get speech;
+  String get speech => throw _privateConstructorUsedError;
   @override
 
   /// 発言が掲載されている開始ページ
-  int get startPage;
+  int get startPage => throw _privateConstructorUsedError;
   @override
 
   /// レコード登録日時
-  String get createTime;
+  String get createTime => throw _privateConstructorUsedError;
   @override
 
   ///  レコード更新日時
-  String get updateTime;
+  String get updateTime => throw _privateConstructorUsedError;
   @override
 
   /// 発言URL
-  String get speechURL;
+  String get speechURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordDetailSpeechCopyWith<_MeetingRecordDetailSpeech>
@@ -1348,33 +1255,6 @@ MeetingRecordSummaryResponse _$MeetingRecordSummaryResponseFromJson(
     Map<String, dynamic> json) {
   return _MeetingRecordSummaryResponse.fromJson(json);
 }
-
-/// @nodoc
-class _$MeetingRecordSummaryResponseTearOff {
-  const _$MeetingRecordSummaryResponseTearOff();
-
-  _MeetingRecordSummaryResponse call(
-      {required int numberOfRecords,
-      required int numberOfReturn,
-      required int startRecord,
-      required int? nextRecordPosition,
-      List<MeetingRecordSummary> meetingRecord = const []}) {
-    return _MeetingRecordSummaryResponse(
-      numberOfRecords: numberOfRecords,
-      numberOfReturn: numberOfReturn,
-      startRecord: startRecord,
-      nextRecordPosition: nextRecordPosition,
-      meetingRecord: meetingRecord,
-    );
-  }
-
-  MeetingRecordSummaryResponse fromJson(Map<String, Object?> json) {
-    return MeetingRecordSummaryResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MeetingRecordSummaryResponse = _$MeetingRecordSummaryResponseTearOff();
 
 /// @nodoc
 mixin _$MeetingRecordSummaryResponse {
@@ -1528,32 +1408,38 @@ class _$_MeetingRecordSummaryResponse
       required this.numberOfReturn,
       required this.startRecord,
       required this.nextRecordPosition,
-      this.meetingRecord = const []});
+      final List<MeetingRecordSummary> meetingRecord = const []})
+      : _meetingRecord = meetingRecord;
 
   factory _$_MeetingRecordSummaryResponse.fromJson(Map<String, dynamic> json) =>
       _$$_MeetingRecordSummaryResponseFromJson(json);
 
-  @override
-
   /// 総結果件数
-  final int numberOfRecords;
   @override
+  final int numberOfRecords;
 
   /// 返戻件数
-  final int numberOfReturn;
   @override
+  final int numberOfReturn;
 
   /// 開始位置
-  final int startRecord;
   @override
+  final int startRecord;
 
   /// 次開始位置（※存在する場合のみ）
-  final int? nextRecordPosition;
-  @JsonKey()
   @override
+  final int? nextRecordPosition;
 
   /// 会議一覧
-  final List<MeetingRecordSummary> meetingRecord;
+  final List<MeetingRecordSummary> _meetingRecord;
+
+  /// 会議一覧
+  @override
+  @JsonKey()
+  List<MeetingRecordSummary> get meetingRecord {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meetingRecord);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1589,6 +1475,7 @@ class _$_MeetingRecordSummaryResponse
                 .equals(other.meetingRecord, meetingRecord));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1613,11 +1500,11 @@ class _$_MeetingRecordSummaryResponse
 abstract class _MeetingRecordSummaryResponse
     implements MeetingRecordSummaryResponse {
   const factory _MeetingRecordSummaryResponse(
-          {required int numberOfRecords,
-          required int numberOfReturn,
-          required int startRecord,
-          required int? nextRecordPosition,
-          List<MeetingRecordSummary> meetingRecord}) =
+          {required final int numberOfRecords,
+          required final int numberOfReturn,
+          required final int startRecord,
+          required final int? nextRecordPosition,
+          final List<MeetingRecordSummary> meetingRecord}) =
       _$_MeetingRecordSummaryResponse;
 
   factory _MeetingRecordSummaryResponse.fromJson(Map<String, dynamic> json) =
@@ -1626,23 +1513,24 @@ abstract class _MeetingRecordSummaryResponse
   @override
 
   /// 総結果件数
-  int get numberOfRecords;
+  int get numberOfRecords => throw _privateConstructorUsedError;
   @override
 
   /// 返戻件数
-  int get numberOfReturn;
+  int get numberOfReturn => throw _privateConstructorUsedError;
   @override
 
   /// 開始位置
-  int get startRecord;
+  int get startRecord => throw _privateConstructorUsedError;
   @override
 
   /// 次開始位置（※存在する場合のみ）
-  int? get nextRecordPosition;
+  int? get nextRecordPosition => throw _privateConstructorUsedError;
   @override
 
   /// 会議一覧
-  List<MeetingRecordSummary> get meetingRecord;
+  List<MeetingRecordSummary> get meetingRecord =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordSummaryResponseCopyWith<_MeetingRecordSummaryResponse>
@@ -1652,47 +1540,6 @@ abstract class _MeetingRecordSummaryResponse
 MeetingRecordSummary _$MeetingRecordSummaryFromJson(Map<String, dynamic> json) {
   return _MeetingRecordSummary.fromJson(json);
 }
-
-/// @nodoc
-class _$MeetingRecordSummaryTearOff {
-  const _$MeetingRecordSummaryTearOff();
-
-  _MeetingRecordSummary call(
-      {required String issueID,
-      required String imageKind,
-      required int searchObject,
-      required int session,
-      required String nameOfHouse,
-      required String nameOfMeeting,
-      required String issue,
-      required String date,
-      String closing = '',
-      List<MeetingRecordSummarySpeech> speechRecord = const [],
-      required String meetingURL,
-      String pdfURL = ''}) {
-    return _MeetingRecordSummary(
-      issueID: issueID,
-      imageKind: imageKind,
-      searchObject: searchObject,
-      session: session,
-      nameOfHouse: nameOfHouse,
-      nameOfMeeting: nameOfMeeting,
-      issue: issue,
-      date: date,
-      closing: closing,
-      speechRecord: speechRecord,
-      meetingURL: meetingURL,
-      pdfURL: pdfURL,
-    );
-  }
-
-  MeetingRecordSummary fromJson(Map<String, Object?> json) {
-    return MeetingRecordSummary.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MeetingRecordSummary = _$MeetingRecordSummaryTearOff();
 
 /// @nodoc
 mixin _$MeetingRecordSummary {
@@ -1952,63 +1799,69 @@ class _$_MeetingRecordSummary
       required this.issue,
       required this.date,
       this.closing = '',
-      this.speechRecord = const [],
+      final List<MeetingRecordSummarySpeech> speechRecord = const [],
       required this.meetingURL,
-      this.pdfURL = ''});
+      this.pdfURL = ''})
+      : _speechRecord = speechRecord;
 
   factory _$_MeetingRecordSummary.fromJson(Map<String, dynamic> json) =>
       _$$_MeetingRecordSummaryFromJson(json);
 
-  @override
-
   /// 会議録ID
-  final String issueID;
   @override
+  final String issueID;
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  final String imageKind;
   @override
+  final String imageKind;
 
   /// 検索対象箇所（議事冒頭・本文）
-  final int searchObject;
   @override
+  final int searchObject;
 
   /// 国会回次
-  final int session;
   @override
+  final int session;
 
   /// 院名
-  final String nameOfHouse;
   @override
+  final String nameOfHouse;
 
   /// 会議名
-  final String nameOfMeeting;
   @override
+  final String nameOfMeeting;
 
   /// 号数
-  final String issue;
   @override
+  final String issue;
 
   /// 開催日付
-  final String date;
-  @JsonKey()
   @override
+  final String date;
 
   /// 閉会中フラグ (null or 閉)
-  final String closing;
-  @JsonKey()
   @override
+  @JsonKey()
+  final String closing;
 
   /// 発言リスト
-  final List<MeetingRecordSummarySpeech> speechRecord;
+  final List<MeetingRecordSummarySpeech> _speechRecord;
+
+  /// 発言リスト
   @override
+  @JsonKey()
+  List<MeetingRecordSummarySpeech> get speechRecord {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_speechRecord);
+  }
 
   /// 会議録テキスト表示画面のURL
-  final String meetingURL;
-  @JsonKey()
   @override
+  final String meetingURL;
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
+  @override
+  @JsonKey()
   final String pdfURL;
 
   @override
@@ -2059,6 +1912,7 @@ class _$_MeetingRecordSummary
             const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2089,18 +1943,18 @@ class _$_MeetingRecordSummary
 
 abstract class _MeetingRecordSummary implements MeetingRecordSummary {
   const factory _MeetingRecordSummary(
-      {required String issueID,
-      required String imageKind,
-      required int searchObject,
-      required int session,
-      required String nameOfHouse,
-      required String nameOfMeeting,
-      required String issue,
-      required String date,
-      String closing,
-      List<MeetingRecordSummarySpeech> speechRecord,
-      required String meetingURL,
-      String pdfURL}) = _$_MeetingRecordSummary;
+      {required final String issueID,
+      required final String imageKind,
+      required final int searchObject,
+      required final int session,
+      required final String nameOfHouse,
+      required final String nameOfMeeting,
+      required final String issue,
+      required final String date,
+      final String closing,
+      final List<MeetingRecordSummarySpeech> speechRecord,
+      required final String meetingURL,
+      final String pdfURL}) = _$_MeetingRecordSummary;
 
   factory _MeetingRecordSummary.fromJson(Map<String, dynamic> json) =
       _$_MeetingRecordSummary.fromJson;
@@ -2108,51 +1962,52 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
   @override
 
   /// 会議録ID
-  String get issueID;
+  String get issueID => throw _privateConstructorUsedError;
   @override
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  String get imageKind;
+  String get imageKind => throw _privateConstructorUsedError;
   @override
 
   /// 検索対象箇所（議事冒頭・本文）
-  int get searchObject;
+  int get searchObject => throw _privateConstructorUsedError;
   @override
 
   /// 国会回次
-  int get session;
+  int get session => throw _privateConstructorUsedError;
   @override
 
   /// 院名
-  String get nameOfHouse;
+  String get nameOfHouse => throw _privateConstructorUsedError;
   @override
 
   /// 会議名
-  String get nameOfMeeting;
+  String get nameOfMeeting => throw _privateConstructorUsedError;
   @override
 
   /// 号数
-  String get issue;
+  String get issue => throw _privateConstructorUsedError;
   @override
 
   /// 開催日付
-  String get date;
+  String get date => throw _privateConstructorUsedError;
   @override
 
   /// 閉会中フラグ (null or 閉)
-  String get closing;
+  String get closing => throw _privateConstructorUsedError;
   @override
 
   /// 発言リスト
-  List<MeetingRecordSummarySpeech> get speechRecord;
+  List<MeetingRecordSummarySpeech> get speechRecord =>
+      throw _privateConstructorUsedError;
   @override
 
   /// 会議録テキスト表示画面のURL
-  String get meetingURL;
+  String get meetingURL => throw _privateConstructorUsedError;
   @override
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
-  String get pdfURL;
+  String get pdfURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordSummaryCopyWith<_MeetingRecordSummary> get copyWith =>
@@ -2163,31 +2018,6 @@ MeetingRecordSummarySpeech _$MeetingRecordSummarySpeechFromJson(
     Map<String, dynamic> json) {
   return _MeetingRecordSummarySpeech.fromJson(json);
 }
-
-/// @nodoc
-class _$MeetingRecordSummarySpeechTearOff {
-  const _$MeetingRecordSummarySpeechTearOff();
-
-  _MeetingRecordSummarySpeech call(
-      {required String speechID,
-      required int speechOrder,
-      required String speaker,
-      required String speechURL}) {
-    return _MeetingRecordSummarySpeech(
-      speechID: speechID,
-      speechOrder: speechOrder,
-      speaker: speaker,
-      speechURL: speechURL,
-    );
-  }
-
-  MeetingRecordSummarySpeech fromJson(Map<String, Object?> json) {
-    return MeetingRecordSummarySpeech.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MeetingRecordSummarySpeech = _$MeetingRecordSummarySpeechTearOff();
 
 /// @nodoc
 mixin _$MeetingRecordSummarySpeech {
@@ -2321,21 +2151,20 @@ class _$_MeetingRecordSummarySpeech
   factory _$_MeetingRecordSummarySpeech.fromJson(Map<String, dynamic> json) =>
       _$$_MeetingRecordSummarySpeechFromJson(json);
 
-  @override
-
   /// 発言ID
-  final String speechID;
   @override
+  final String speechID;
 
   /// 発言番号
-  final int speechOrder;
   @override
+  final int speechOrder;
 
   /// 発言者名
-  final String speaker;
   @override
+  final String speaker;
 
   /// 発言URL
+  @override
   final String speechURL;
 
   @override
@@ -2366,6 +2195,7 @@ class _$_MeetingRecordSummarySpeech
             const DeepCollectionEquality().equals(other.speechURL, speechURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2389,10 +2219,10 @@ class _$_MeetingRecordSummarySpeech
 abstract class _MeetingRecordSummarySpeech
     implements MeetingRecordSummarySpeech {
   const factory _MeetingRecordSummarySpeech(
-      {required String speechID,
-      required int speechOrder,
-      required String speaker,
-      required String speechURL}) = _$_MeetingRecordSummarySpeech;
+      {required final String speechID,
+      required final int speechOrder,
+      required final String speaker,
+      required final String speechURL}) = _$_MeetingRecordSummarySpeech;
 
   factory _MeetingRecordSummarySpeech.fromJson(Map<String, dynamic> json) =
       _$_MeetingRecordSummarySpeech.fromJson;
@@ -2400,19 +2230,19 @@ abstract class _MeetingRecordSummarySpeech
   @override
 
   /// 発言ID
-  String get speechID;
+  String get speechID => throw _privateConstructorUsedError;
   @override
 
   /// 発言番号
-  int get speechOrder;
+  int get speechOrder => throw _privateConstructorUsedError;
   @override
 
   /// 発言者名
-  String get speaker;
+  String get speaker => throw _privateConstructorUsedError;
   @override
 
   /// 発言URL
-  String get speechURL;
+  String get speechURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MeetingRecordSummarySpeechCopyWith<_MeetingRecordSummarySpeech>

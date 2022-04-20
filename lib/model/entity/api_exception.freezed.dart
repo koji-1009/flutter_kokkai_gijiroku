@@ -12,7 +12,7 @@ part of 'api_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ApiException _$ApiExceptionFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -28,30 +28,6 @@ ApiException _$ApiExceptionFromJson(Map<String, dynamic> json) {
 }
 
 /// @nodoc
-class _$ApiExceptionTearOff {
-  const _$ApiExceptionTearOff();
-
-  ApiExceptionError error(
-      {required String message, List<String> details = const []}) {
-    return ApiExceptionError(
-      message: message,
-      details: details,
-    );
-  }
-
-  ApiExceptionOther other() {
-    return const ApiExceptionOther();
-  }
-
-  ApiException fromJson(Map<String, Object?> json) {
-    return ApiException.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ApiException = _$ApiExceptionTearOff();
-
-/// @nodoc
 mixin _$ApiException {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -65,7 +41,13 @@ mixin _$ApiException {
     TResult Function()? other,
   }) =>
       throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message, List<String> details)? error,
+    TResult Function()? other,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApiExceptionError value) error,
@@ -147,17 +129,24 @@ class _$ApiExceptionError
     with DiagnosticableTreeMixin
     implements ApiExceptionError {
   const _$ApiExceptionError(
-      {required this.message, this.details = const [], String? $type})
-      : $type = $type ?? 'error';
+      {required this.message,
+      final List<String> details = const [],
+      final String? $type})
+      : _details = details,
+        $type = $type ?? 'error';
 
   factory _$ApiExceptionError.fromJson(Map<String, dynamic> json) =>
       _$$ApiExceptionErrorFromJson(json);
 
   @override
   final String message;
-  @JsonKey()
+  final List<String> _details;
   @override
-  final List<String> details;
+  @JsonKey()
+  List<String> get details {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_details);
+  }
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -185,6 +174,7 @@ class _$ApiExceptionError
             const DeepCollectionEquality().equals(other.details, details));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -212,6 +202,19 @@ class _$ApiExceptionError
     TResult Function()? other,
   }) {
     return error?.call(message, details);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message, List<String> details)? error,
+    TResult Function()? other,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message, details);
+    }
+    return orElse();
   }
 
   @override
@@ -253,13 +256,14 @@ class _$ApiExceptionError
 
 abstract class ApiExceptionError implements ApiException {
   const factory ApiExceptionError(
-      {required String message, List<String> details}) = _$ApiExceptionError;
+      {required final String message,
+      final List<String> details}) = _$ApiExceptionError;
 
   factory ApiExceptionError.fromJson(Map<String, dynamic> json) =
       _$ApiExceptionError.fromJson;
 
-  String get message;
-  List<String> get details;
+  String get message => throw _privateConstructorUsedError;
+  List<String> get details => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApiExceptionErrorCopyWith<ApiExceptionError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -289,7 +293,7 @@ class _$ApiExceptionOtherCopyWithImpl<$Res>
 class _$ApiExceptionOther
     with DiagnosticableTreeMixin
     implements ApiExceptionOther {
-  const _$ApiExceptionOther({String? $type}) : $type = $type ?? 'other';
+  const _$ApiExceptionOther({final String? $type}) : $type = $type ?? 'other';
 
   factory _$ApiExceptionOther.fromJson(Map<String, dynamic> json) =>
       _$$ApiExceptionOtherFromJson(json);
@@ -314,6 +318,7 @@ class _$ApiExceptionOther
         (other.runtimeType == runtimeType && other is ApiExceptionOther);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -333,6 +338,19 @@ class _$ApiExceptionOther
     TResult Function()? other,
   }) {
     return other?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message, List<String> details)? error,
+    TResult Function()? other,
+    required TResult orElse(),
+  }) {
+    if (other != null) {
+      return other();
+    }
+    return orElse();
   }
 
   @override
