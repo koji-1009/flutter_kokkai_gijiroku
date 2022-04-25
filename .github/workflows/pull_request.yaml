@@ -1,0 +1,43 @@
+name: Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'master'
+          cache: false
+      - name: Install dependencies
+        run: flutter pub get
+      - uses: invertase/github-action-dart-analyzer@v1
+
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'master'
+          cache: false
+
+      - name: flutter pub get
+        run: flutter pub get
+      - name: build flutter web
+        run: flutter build web
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          projectId: default
