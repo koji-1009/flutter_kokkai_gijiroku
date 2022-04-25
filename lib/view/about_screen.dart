@@ -1,7 +1,7 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class AboutScreen extends StatelessWidget {
               const Text('国立国会図書館が提供する、国会会議録検索システムを利用しています。'),
               Linkify(
                 text: 'https://kokkai.ndl.go.jp/api.html',
-                onOpen: (link) => launch(link.url),
+                onOpen: (link) => launchUrlString(link.url),
               ),
               const Divider(),
               Text(
@@ -56,7 +56,7 @@ class AboutScreen extends StatelessWidget {
               Linkify(
                 text:
                     'https://github.com/koji-1009/flutter_kokkai_gijiroku/issues',
-                onOpen: (link) => launch(link.url),
+                onOpen: (link) => launchUrlString(link.url),
               ),
             ],
           ),

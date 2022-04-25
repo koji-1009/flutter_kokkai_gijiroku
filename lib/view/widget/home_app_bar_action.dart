@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/view/about_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/cache_clear_dialog.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 enum _HomeAction {
   cache,
@@ -54,12 +54,12 @@ class HomeAppBarAction extends StatelessWidget {
             );
             break;
           case _HomeAction.github:
-            await launch(
+            await launchUrlString(
               'https://github.com/koji-1009/flutter_kokkai_gijiroku',
             );
             break;
           case _HomeAction.ndl:
-            await launch(
+            await launchUrlString(
               'https://kokkai.ndl.go.jp/api.html',
             );
             break;

@@ -7,7 +7,7 @@ import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SpeechDetailScreen extends HookConsumerWidget {
   const SpeechDetailScreen({
@@ -69,15 +69,15 @@ class SpeechDetailScreen extends HookConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Linkify(
-                onOpen: (link) => launch(link.url),
+                onOpen: (link) => launchUrlString(link.url),
                 text: '会議録PDF: ${data.pdfURL}',
               ),
               Linkify(
-                onOpen: (link) => launch(link.url),
+                onOpen: (link) => launchUrlString(link.url),
                 text: '会議録テキストURL: ${data.meetingURL}',
               ),
               Linkify(
-                onOpen: (link) => launch(link.url),
+                onOpen: (link) => launchUrlString(link.url),
                 text: '発言URL: ${data.speechURL}',
               ),
               const Divider(),
