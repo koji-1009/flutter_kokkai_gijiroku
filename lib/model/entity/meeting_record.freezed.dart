@@ -100,12 +100,12 @@ class _$MeetingRecordDetailResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MeetingRecordResponseDetailCopyWith<$Res>
+abstract class _$$_MeetingRecordResponseDetailCopyWith<$Res>
     implements $MeetingRecordDetailResponseCopyWith<$Res> {
-  factory _$MeetingRecordResponseDetailCopyWith(
-          _MeetingRecordResponseDetail value,
-          $Res Function(_MeetingRecordResponseDetail) then) =
-      __$MeetingRecordResponseDetailCopyWithImpl<$Res>;
+  factory _$$_MeetingRecordResponseDetailCopyWith(
+          _$_MeetingRecordResponseDetail value,
+          $Res Function(_$_MeetingRecordResponseDetail) then) =
+      __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>;
   @override
   $Res call(
       {int numberOfRecords,
@@ -116,17 +116,17 @@ abstract class _$MeetingRecordResponseDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MeetingRecordResponseDetailCopyWithImpl<$Res>
+class __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>
     extends _$MeetingRecordDetailResponseCopyWithImpl<$Res>
-    implements _$MeetingRecordResponseDetailCopyWith<$Res> {
-  __$MeetingRecordResponseDetailCopyWithImpl(
-      _MeetingRecordResponseDetail _value,
-      $Res Function(_MeetingRecordResponseDetail) _then)
-      : super(_value, (v) => _then(v as _MeetingRecordResponseDetail));
+    implements _$$_MeetingRecordResponseDetailCopyWith<$Res> {
+  __$$_MeetingRecordResponseDetailCopyWithImpl(
+      _$_MeetingRecordResponseDetail _value,
+      $Res Function(_$_MeetingRecordResponseDetail) _then)
+      : super(_value, (v) => _then(v as _$_MeetingRecordResponseDetail));
 
   @override
-  _MeetingRecordResponseDetail get _value =>
-      super._value as _MeetingRecordResponseDetail;
+  _$_MeetingRecordResponseDetail get _value =>
+      super._value as _$_MeetingRecordResponseDetail;
 
   @override
   $Res call({
@@ -136,7 +136,7 @@ class __$MeetingRecordResponseDetailCopyWithImpl<$Res>
     Object? nextRecordPosition = freezed,
     Object? meetingRecord = freezed,
   }) {
-    return _then(_MeetingRecordResponseDetail(
+    return _then(_$_MeetingRecordResponseDetail(
       numberOfRecords: numberOfRecords == freezed
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ class __$MeetingRecordResponseDetailCopyWithImpl<$Res>
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
       meetingRecord: meetingRecord == freezed
-          ? _value.meetingRecord
+          ? _value._meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordDetail>,
     ));
@@ -225,7 +225,7 @@ class _$_MeetingRecordResponseDetail
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MeetingRecordResponseDetail &&
+            other is _$_MeetingRecordResponseDetail &&
             const DeepCollectionEquality()
                 .equals(other.numberOfRecords, numberOfRecords) &&
             const DeepCollectionEquality()
@@ -235,7 +235,7 @@ class _$_MeetingRecordResponseDetail
             const DeepCollectionEquality()
                 .equals(other.nextRecordPosition, nextRecordPosition) &&
             const DeepCollectionEquality()
-                .equals(other.meetingRecord, meetingRecord));
+                .equals(other._meetingRecord, _meetingRecord));
   }
 
   @JsonKey(ignore: true)
@@ -246,13 +246,13 @@ class _$_MeetingRecordResponseDetail
       const DeepCollectionEquality().hash(numberOfReturn),
       const DeepCollectionEquality().hash(startRecord),
       const DeepCollectionEquality().hash(nextRecordPosition),
-      const DeepCollectionEquality().hash(meetingRecord));
+      const DeepCollectionEquality().hash(_meetingRecord));
 
   @JsonKey(ignore: true)
   @override
-  _$MeetingRecordResponseDetailCopyWith<_MeetingRecordResponseDetail>
-      get copyWith => __$MeetingRecordResponseDetailCopyWithImpl<
-          _MeetingRecordResponseDetail>(this, _$identity);
+  _$$_MeetingRecordResponseDetailCopyWith<_$_MeetingRecordResponseDetail>
+      get copyWith => __$$_MeetingRecordResponseDetailCopyWithImpl<
+          _$_MeetingRecordResponseDetail>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -296,7 +296,7 @@ abstract class _MeetingRecordResponseDetail
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MeetingRecordResponseDetailCopyWith<_MeetingRecordResponseDetail>
+  _$$_MeetingRecordResponseDetailCopyWith<_$_MeetingRecordResponseDetail>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -447,11 +447,11 @@ class _$MeetingRecordDetailCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MeetingRecordDetailCopyWith<$Res>
+abstract class _$$_MeetingRecordDetailCopyWith<$Res>
     implements $MeetingRecordDetailCopyWith<$Res> {
-  factory _$MeetingRecordDetailCopyWith(_MeetingRecordDetail value,
-          $Res Function(_MeetingRecordDetail) then) =
-      __$MeetingRecordDetailCopyWithImpl<$Res>;
+  factory _$$_MeetingRecordDetailCopyWith(_$_MeetingRecordDetail value,
+          $Res Function(_$_MeetingRecordDetail) then) =
+      __$$_MeetingRecordDetailCopyWithImpl<$Res>;
   @override
   $Res call(
       {String issueID,
@@ -469,15 +469,15 @@ abstract class _$MeetingRecordDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MeetingRecordDetailCopyWithImpl<$Res>
+class __$$_MeetingRecordDetailCopyWithImpl<$Res>
     extends _$MeetingRecordDetailCopyWithImpl<$Res>
-    implements _$MeetingRecordDetailCopyWith<$Res> {
-  __$MeetingRecordDetailCopyWithImpl(
-      _MeetingRecordDetail _value, $Res Function(_MeetingRecordDetail) _then)
-      : super(_value, (v) => _then(v as _MeetingRecordDetail));
+    implements _$$_MeetingRecordDetailCopyWith<$Res> {
+  __$$_MeetingRecordDetailCopyWithImpl(_$_MeetingRecordDetail _value,
+      $Res Function(_$_MeetingRecordDetail) _then)
+      : super(_value, (v) => _then(v as _$_MeetingRecordDetail));
 
   @override
-  _MeetingRecordDetail get _value => super._value as _MeetingRecordDetail;
+  _$_MeetingRecordDetail get _value => super._value as _$_MeetingRecordDetail;
 
   @override
   $Res call({
@@ -494,7 +494,7 @@ class __$MeetingRecordDetailCopyWithImpl<$Res>
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
   }) {
-    return _then(_MeetingRecordDetail(
+    return _then(_$_MeetingRecordDetail(
       issueID: issueID == freezed
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
@@ -532,7 +532,7 @@ class __$MeetingRecordDetailCopyWithImpl<$Res>
           : closing // ignore: cast_nullable_to_non_nullable
               as String,
       speechRecord: speechRecord == freezed
-          ? _value.speechRecord
+          ? _value._speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordDetailSpeech>,
       meetingURL: meetingURL == freezed
@@ -655,7 +655,7 @@ class _$_MeetingRecordDetail
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MeetingRecordDetail &&
+            other is _$_MeetingRecordDetail &&
             const DeepCollectionEquality().equals(other.issueID, issueID) &&
             const DeepCollectionEquality().equals(other.imageKind, imageKind) &&
             const DeepCollectionEquality()
@@ -669,7 +669,7 @@ class _$_MeetingRecordDetail
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.closing, closing) &&
             const DeepCollectionEquality()
-                .equals(other.speechRecord, speechRecord) &&
+                .equals(other._speechRecord, _speechRecord) &&
             const DeepCollectionEquality()
                 .equals(other.meetingURL, meetingURL) &&
             const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
@@ -688,14 +688,14 @@ class _$_MeetingRecordDetail
       const DeepCollectionEquality().hash(issue),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(closing),
-      const DeepCollectionEquality().hash(speechRecord),
+      const DeepCollectionEquality().hash(_speechRecord),
       const DeepCollectionEquality().hash(meetingURL),
       const DeepCollectionEquality().hash(pdfURL));
 
   @JsonKey(ignore: true)
   @override
-  _$MeetingRecordDetailCopyWith<_MeetingRecordDetail> get copyWith =>
-      __$MeetingRecordDetailCopyWithImpl<_MeetingRecordDetail>(
+  _$$_MeetingRecordDetailCopyWith<_$_MeetingRecordDetail> get copyWith =>
+      __$$_MeetingRecordDetailCopyWithImpl<_$_MeetingRecordDetail>(
           this, _$identity);
 
   @override
@@ -773,7 +773,7 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
   String get pdfURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MeetingRecordDetailCopyWith<_MeetingRecordDetail> get copyWith =>
+  _$$_MeetingRecordDetailCopyWith<_$_MeetingRecordDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -924,11 +924,12 @@ class _$MeetingRecordDetailSpeechCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MeetingRecordDetailSpeechCopyWith<$Res>
+abstract class _$$_MeetingRecordDetailSpeechCopyWith<$Res>
     implements $MeetingRecordDetailSpeechCopyWith<$Res> {
-  factory _$MeetingRecordDetailSpeechCopyWith(_MeetingRecordDetailSpeech value,
-          $Res Function(_MeetingRecordDetailSpeech) then) =
-      __$MeetingRecordDetailSpeechCopyWithImpl<$Res>;
+  factory _$$_MeetingRecordDetailSpeechCopyWith(
+          _$_MeetingRecordDetailSpeech value,
+          $Res Function(_$_MeetingRecordDetailSpeech) then) =
+      __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>;
   @override
   $Res call(
       {String speechID,
@@ -946,16 +947,17 @@ abstract class _$MeetingRecordDetailSpeechCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MeetingRecordDetailSpeechCopyWithImpl<$Res>
+class __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>
     extends _$MeetingRecordDetailSpeechCopyWithImpl<$Res>
-    implements _$MeetingRecordDetailSpeechCopyWith<$Res> {
-  __$MeetingRecordDetailSpeechCopyWithImpl(_MeetingRecordDetailSpeech _value,
-      $Res Function(_MeetingRecordDetailSpeech) _then)
-      : super(_value, (v) => _then(v as _MeetingRecordDetailSpeech));
+    implements _$$_MeetingRecordDetailSpeechCopyWith<$Res> {
+  __$$_MeetingRecordDetailSpeechCopyWithImpl(
+      _$_MeetingRecordDetailSpeech _value,
+      $Res Function(_$_MeetingRecordDetailSpeech) _then)
+      : super(_value, (v) => _then(v as _$_MeetingRecordDetailSpeech));
 
   @override
-  _MeetingRecordDetailSpeech get _value =>
-      super._value as _MeetingRecordDetailSpeech;
+  _$_MeetingRecordDetailSpeech get _value =>
+      super._value as _$_MeetingRecordDetailSpeech;
 
   @override
   $Res call({
@@ -972,7 +974,7 @@ class __$MeetingRecordDetailSpeechCopyWithImpl<$Res>
     Object? updateTime = freezed,
     Object? speechURL = freezed,
   }) {
-    return _then(_MeetingRecordDetailSpeech(
+    return _then(_$_MeetingRecordDetailSpeech(
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -1127,7 +1129,7 @@ class _$_MeetingRecordDetailSpeech
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MeetingRecordDetailSpeech &&
+            other is _$_MeetingRecordDetailSpeech &&
             const DeepCollectionEquality().equals(other.speechID, speechID) &&
             const DeepCollectionEquality()
                 .equals(other.speechOrder, speechOrder) &&
@@ -1168,10 +1170,9 @@ class _$_MeetingRecordDetailSpeech
 
   @JsonKey(ignore: true)
   @override
-  _$MeetingRecordDetailSpeechCopyWith<_MeetingRecordDetailSpeech>
-      get copyWith =>
-          __$MeetingRecordDetailSpeechCopyWithImpl<_MeetingRecordDetailSpeech>(
-              this, _$identity);
+  _$$_MeetingRecordDetailSpeechCopyWith<_$_MeetingRecordDetailSpeech>
+      get copyWith => __$$_MeetingRecordDetailSpeechCopyWithImpl<
+          _$_MeetingRecordDetailSpeech>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1247,7 +1248,7 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   String get speechURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MeetingRecordDetailSpeechCopyWith<_MeetingRecordDetailSpeech>
+  _$$_MeetingRecordDetailSpeechCopyWith<_$_MeetingRecordDetailSpeech>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1337,12 +1338,12 @@ class _$MeetingRecordSummaryResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MeetingRecordSummaryResponseCopyWith<$Res>
+abstract class _$$_MeetingRecordSummaryResponseCopyWith<$Res>
     implements $MeetingRecordSummaryResponseCopyWith<$Res> {
-  factory _$MeetingRecordSummaryResponseCopyWith(
-          _MeetingRecordSummaryResponse value,
-          $Res Function(_MeetingRecordSummaryResponse) then) =
-      __$MeetingRecordSummaryResponseCopyWithImpl<$Res>;
+  factory _$$_MeetingRecordSummaryResponseCopyWith(
+          _$_MeetingRecordSummaryResponse value,
+          $Res Function(_$_MeetingRecordSummaryResponse) then) =
+      __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {int numberOfRecords,
@@ -1353,17 +1354,17 @@ abstract class _$MeetingRecordSummaryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MeetingRecordSummaryResponseCopyWithImpl<$Res>
+class __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>
     extends _$MeetingRecordSummaryResponseCopyWithImpl<$Res>
-    implements _$MeetingRecordSummaryResponseCopyWith<$Res> {
-  __$MeetingRecordSummaryResponseCopyWithImpl(
-      _MeetingRecordSummaryResponse _value,
-      $Res Function(_MeetingRecordSummaryResponse) _then)
-      : super(_value, (v) => _then(v as _MeetingRecordSummaryResponse));
+    implements _$$_MeetingRecordSummaryResponseCopyWith<$Res> {
+  __$$_MeetingRecordSummaryResponseCopyWithImpl(
+      _$_MeetingRecordSummaryResponse _value,
+      $Res Function(_$_MeetingRecordSummaryResponse) _then)
+      : super(_value, (v) => _then(v as _$_MeetingRecordSummaryResponse));
 
   @override
-  _MeetingRecordSummaryResponse get _value =>
-      super._value as _MeetingRecordSummaryResponse;
+  _$_MeetingRecordSummaryResponse get _value =>
+      super._value as _$_MeetingRecordSummaryResponse;
 
   @override
   $Res call({
@@ -1373,7 +1374,7 @@ class __$MeetingRecordSummaryResponseCopyWithImpl<$Res>
     Object? nextRecordPosition = freezed,
     Object? meetingRecord = freezed,
   }) {
-    return _then(_MeetingRecordSummaryResponse(
+    return _then(_$_MeetingRecordSummaryResponse(
       numberOfRecords: numberOfRecords == freezed
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
@@ -1391,7 +1392,7 @@ class __$MeetingRecordSummaryResponseCopyWithImpl<$Res>
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
       meetingRecord: meetingRecord == freezed
-          ? _value.meetingRecord
+          ? _value._meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordSummary>,
     ));
@@ -1462,7 +1463,7 @@ class _$_MeetingRecordSummaryResponse
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MeetingRecordSummaryResponse &&
+            other is _$_MeetingRecordSummaryResponse &&
             const DeepCollectionEquality()
                 .equals(other.numberOfRecords, numberOfRecords) &&
             const DeepCollectionEquality()
@@ -1472,7 +1473,7 @@ class _$_MeetingRecordSummaryResponse
             const DeepCollectionEquality()
                 .equals(other.nextRecordPosition, nextRecordPosition) &&
             const DeepCollectionEquality()
-                .equals(other.meetingRecord, meetingRecord));
+                .equals(other._meetingRecord, _meetingRecord));
   }
 
   @JsonKey(ignore: true)
@@ -1483,13 +1484,13 @@ class _$_MeetingRecordSummaryResponse
       const DeepCollectionEquality().hash(numberOfReturn),
       const DeepCollectionEquality().hash(startRecord),
       const DeepCollectionEquality().hash(nextRecordPosition),
-      const DeepCollectionEquality().hash(meetingRecord));
+      const DeepCollectionEquality().hash(_meetingRecord));
 
   @JsonKey(ignore: true)
   @override
-  _$MeetingRecordSummaryResponseCopyWith<_MeetingRecordSummaryResponse>
-      get copyWith => __$MeetingRecordSummaryResponseCopyWithImpl<
-          _MeetingRecordSummaryResponse>(this, _$identity);
+  _$$_MeetingRecordSummaryResponseCopyWith<_$_MeetingRecordSummaryResponse>
+      get copyWith => __$$_MeetingRecordSummaryResponseCopyWithImpl<
+          _$_MeetingRecordSummaryResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1533,7 +1534,7 @@ abstract class _MeetingRecordSummaryResponse
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MeetingRecordSummaryResponseCopyWith<_MeetingRecordSummaryResponse>
+  _$$_MeetingRecordSummaryResponseCopyWith<_$_MeetingRecordSummaryResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1684,11 +1685,11 @@ class _$MeetingRecordSummaryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MeetingRecordSummaryCopyWith<$Res>
+abstract class _$$_MeetingRecordSummaryCopyWith<$Res>
     implements $MeetingRecordSummaryCopyWith<$Res> {
-  factory _$MeetingRecordSummaryCopyWith(_MeetingRecordSummary value,
-          $Res Function(_MeetingRecordSummary) then) =
-      __$MeetingRecordSummaryCopyWithImpl<$Res>;
+  factory _$$_MeetingRecordSummaryCopyWith(_$_MeetingRecordSummary value,
+          $Res Function(_$_MeetingRecordSummary) then) =
+      __$$_MeetingRecordSummaryCopyWithImpl<$Res>;
   @override
   $Res call(
       {String issueID,
@@ -1706,15 +1707,15 @@ abstract class _$MeetingRecordSummaryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MeetingRecordSummaryCopyWithImpl<$Res>
+class __$$_MeetingRecordSummaryCopyWithImpl<$Res>
     extends _$MeetingRecordSummaryCopyWithImpl<$Res>
-    implements _$MeetingRecordSummaryCopyWith<$Res> {
-  __$MeetingRecordSummaryCopyWithImpl(
-      _MeetingRecordSummary _value, $Res Function(_MeetingRecordSummary) _then)
-      : super(_value, (v) => _then(v as _MeetingRecordSummary));
+    implements _$$_MeetingRecordSummaryCopyWith<$Res> {
+  __$$_MeetingRecordSummaryCopyWithImpl(_$_MeetingRecordSummary _value,
+      $Res Function(_$_MeetingRecordSummary) _then)
+      : super(_value, (v) => _then(v as _$_MeetingRecordSummary));
 
   @override
-  _MeetingRecordSummary get _value => super._value as _MeetingRecordSummary;
+  _$_MeetingRecordSummary get _value => super._value as _$_MeetingRecordSummary;
 
   @override
   $Res call({
@@ -1731,7 +1732,7 @@ class __$MeetingRecordSummaryCopyWithImpl<$Res>
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
   }) {
-    return _then(_MeetingRecordSummary(
+    return _then(_$_MeetingRecordSummary(
       issueID: issueID == freezed
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
@@ -1769,7 +1770,7 @@ class __$MeetingRecordSummaryCopyWithImpl<$Res>
           : closing // ignore: cast_nullable_to_non_nullable
               as String,
       speechRecord: speechRecord == freezed
-          ? _value.speechRecord
+          ? _value._speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordSummarySpeech>,
       meetingURL: meetingURL == freezed
@@ -1892,7 +1893,7 @@ class _$_MeetingRecordSummary
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MeetingRecordSummary &&
+            other is _$_MeetingRecordSummary &&
             const DeepCollectionEquality().equals(other.issueID, issueID) &&
             const DeepCollectionEquality().equals(other.imageKind, imageKind) &&
             const DeepCollectionEquality()
@@ -1906,7 +1907,7 @@ class _$_MeetingRecordSummary
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.closing, closing) &&
             const DeepCollectionEquality()
-                .equals(other.speechRecord, speechRecord) &&
+                .equals(other._speechRecord, _speechRecord) &&
             const DeepCollectionEquality()
                 .equals(other.meetingURL, meetingURL) &&
             const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
@@ -1925,14 +1926,14 @@ class _$_MeetingRecordSummary
       const DeepCollectionEquality().hash(issue),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(closing),
-      const DeepCollectionEquality().hash(speechRecord),
+      const DeepCollectionEquality().hash(_speechRecord),
       const DeepCollectionEquality().hash(meetingURL),
       const DeepCollectionEquality().hash(pdfURL));
 
   @JsonKey(ignore: true)
   @override
-  _$MeetingRecordSummaryCopyWith<_MeetingRecordSummary> get copyWith =>
-      __$MeetingRecordSummaryCopyWithImpl<_MeetingRecordSummary>(
+  _$$_MeetingRecordSummaryCopyWith<_$_MeetingRecordSummary> get copyWith =>
+      __$$_MeetingRecordSummaryCopyWithImpl<_$_MeetingRecordSummary>(
           this, _$identity);
 
   @override
@@ -2010,7 +2011,7 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
   String get pdfURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MeetingRecordSummaryCopyWith<_MeetingRecordSummary> get copyWith =>
+  _$$_MeetingRecordSummaryCopyWith<_$_MeetingRecordSummary> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2086,28 +2087,29 @@ class _$MeetingRecordSummarySpeechCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MeetingRecordSummarySpeechCopyWith<$Res>
+abstract class _$$_MeetingRecordSummarySpeechCopyWith<$Res>
     implements $MeetingRecordSummarySpeechCopyWith<$Res> {
-  factory _$MeetingRecordSummarySpeechCopyWith(
-          _MeetingRecordSummarySpeech value,
-          $Res Function(_MeetingRecordSummarySpeech) then) =
-      __$MeetingRecordSummarySpeechCopyWithImpl<$Res>;
+  factory _$$_MeetingRecordSummarySpeechCopyWith(
+          _$_MeetingRecordSummarySpeech value,
+          $Res Function(_$_MeetingRecordSummarySpeech) then) =
+      __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>;
   @override
   $Res call(
       {String speechID, int speechOrder, String speaker, String speechURL});
 }
 
 /// @nodoc
-class __$MeetingRecordSummarySpeechCopyWithImpl<$Res>
+class __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>
     extends _$MeetingRecordSummarySpeechCopyWithImpl<$Res>
-    implements _$MeetingRecordSummarySpeechCopyWith<$Res> {
-  __$MeetingRecordSummarySpeechCopyWithImpl(_MeetingRecordSummarySpeech _value,
-      $Res Function(_MeetingRecordSummarySpeech) _then)
-      : super(_value, (v) => _then(v as _MeetingRecordSummarySpeech));
+    implements _$$_MeetingRecordSummarySpeechCopyWith<$Res> {
+  __$$_MeetingRecordSummarySpeechCopyWithImpl(
+      _$_MeetingRecordSummarySpeech _value,
+      $Res Function(_$_MeetingRecordSummarySpeech) _then)
+      : super(_value, (v) => _then(v as _$_MeetingRecordSummarySpeech));
 
   @override
-  _MeetingRecordSummarySpeech get _value =>
-      super._value as _MeetingRecordSummarySpeech;
+  _$_MeetingRecordSummarySpeech get _value =>
+      super._value as _$_MeetingRecordSummarySpeech;
 
   @override
   $Res call({
@@ -2116,7 +2118,7 @@ class __$MeetingRecordSummarySpeechCopyWithImpl<$Res>
     Object? speaker = freezed,
     Object? speechURL = freezed,
   }) {
-    return _then(_MeetingRecordSummarySpeech(
+    return _then(_$_MeetingRecordSummarySpeech(
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -2187,7 +2189,7 @@ class _$_MeetingRecordSummarySpeech
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MeetingRecordSummarySpeech &&
+            other is _$_MeetingRecordSummarySpeech &&
             const DeepCollectionEquality().equals(other.speechID, speechID) &&
             const DeepCollectionEquality()
                 .equals(other.speechOrder, speechOrder) &&
@@ -2206,9 +2208,9 @@ class _$_MeetingRecordSummarySpeech
 
   @JsonKey(ignore: true)
   @override
-  _$MeetingRecordSummarySpeechCopyWith<_MeetingRecordSummarySpeech>
-      get copyWith => __$MeetingRecordSummarySpeechCopyWithImpl<
-          _MeetingRecordSummarySpeech>(this, _$identity);
+  _$$_MeetingRecordSummarySpeechCopyWith<_$_MeetingRecordSummarySpeech>
+      get copyWith => __$$_MeetingRecordSummarySpeechCopyWithImpl<
+          _$_MeetingRecordSummarySpeech>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -2245,6 +2247,6 @@ abstract class _MeetingRecordSummarySpeech
   String get speechURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MeetingRecordSummarySpeechCopyWith<_MeetingRecordSummarySpeech>
+  _$$_MeetingRecordSummarySpeechCopyWith<_$_MeetingRecordSummarySpeech>
       get copyWith => throw _privateConstructorUsedError;
 }

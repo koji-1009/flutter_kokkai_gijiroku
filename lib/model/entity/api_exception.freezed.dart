@@ -87,36 +87,36 @@ class _$ApiExceptionCopyWithImpl<$Res> implements $ApiExceptionCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $ApiExceptionErrorCopyWith<$Res> {
-  factory $ApiExceptionErrorCopyWith(
-          ApiExceptionError value, $Res Function(ApiExceptionError) then) =
-      _$ApiExceptionErrorCopyWithImpl<$Res>;
+abstract class _$$ApiExceptionErrorCopyWith<$Res> {
+  factory _$$ApiExceptionErrorCopyWith(
+          _$ApiExceptionError value, $Res Function(_$ApiExceptionError) then) =
+      __$$ApiExceptionErrorCopyWithImpl<$Res>;
   $Res call({String message, List<String> details});
 }
 
 /// @nodoc
-class _$ApiExceptionErrorCopyWithImpl<$Res>
+class __$$ApiExceptionErrorCopyWithImpl<$Res>
     extends _$ApiExceptionCopyWithImpl<$Res>
-    implements $ApiExceptionErrorCopyWith<$Res> {
-  _$ApiExceptionErrorCopyWithImpl(
-      ApiExceptionError _value, $Res Function(ApiExceptionError) _then)
-      : super(_value, (v) => _then(v as ApiExceptionError));
+    implements _$$ApiExceptionErrorCopyWith<$Res> {
+  __$$ApiExceptionErrorCopyWithImpl(
+      _$ApiExceptionError _value, $Res Function(_$ApiExceptionError) _then)
+      : super(_value, (v) => _then(v as _$ApiExceptionError));
 
   @override
-  ApiExceptionError get _value => super._value as ApiExceptionError;
+  _$ApiExceptionError get _value => super._value as _$ApiExceptionError;
 
   @override
   $Res call({
     Object? message = freezed,
     Object? details = freezed,
   }) {
-    return _then(ApiExceptionError(
+    return _then(_$ApiExceptionError(
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
       details: details == freezed
-          ? _value.details
+          ? _value._details
           : details // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -169,9 +169,9 @@ class _$ApiExceptionError
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ApiExceptionError &&
+            other is _$ApiExceptionError &&
             const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.details, details));
+            const DeepCollectionEquality().equals(other._details, _details));
   }
 
   @JsonKey(ignore: true)
@@ -179,12 +179,12 @@ class _$ApiExceptionError
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(details));
+      const DeepCollectionEquality().hash(_details));
 
   @JsonKey(ignore: true)
   @override
-  $ApiExceptionErrorCopyWith<ApiExceptionError> get copyWith =>
-      _$ApiExceptionErrorCopyWithImpl<ApiExceptionError>(this, _$identity);
+  _$$ApiExceptionErrorCopyWith<_$ApiExceptionError> get copyWith =>
+      __$$ApiExceptionErrorCopyWithImpl<_$ApiExceptionError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -265,27 +265,27 @@ abstract class ApiExceptionError implements ApiException {
   String get message => throw _privateConstructorUsedError;
   List<String> get details => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ApiExceptionErrorCopyWith<ApiExceptionError> get copyWith =>
+  _$$ApiExceptionErrorCopyWith<_$ApiExceptionError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApiExceptionOtherCopyWith<$Res> {
-  factory $ApiExceptionOtherCopyWith(
-          ApiExceptionOther value, $Res Function(ApiExceptionOther) then) =
-      _$ApiExceptionOtherCopyWithImpl<$Res>;
+abstract class _$$ApiExceptionOtherCopyWith<$Res> {
+  factory _$$ApiExceptionOtherCopyWith(
+          _$ApiExceptionOther value, $Res Function(_$ApiExceptionOther) then) =
+      __$$ApiExceptionOtherCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ApiExceptionOtherCopyWithImpl<$Res>
+class __$$ApiExceptionOtherCopyWithImpl<$Res>
     extends _$ApiExceptionCopyWithImpl<$Res>
-    implements $ApiExceptionOtherCopyWith<$Res> {
-  _$ApiExceptionOtherCopyWithImpl(
-      ApiExceptionOther _value, $Res Function(ApiExceptionOther) _then)
-      : super(_value, (v) => _then(v as ApiExceptionOther));
+    implements _$$ApiExceptionOtherCopyWith<$Res> {
+  __$$ApiExceptionOtherCopyWithImpl(
+      _$ApiExceptionOther _value, $Res Function(_$ApiExceptionOther) _then)
+      : super(_value, (v) => _then(v as _$ApiExceptionOther));
 
   @override
-  ApiExceptionOther get _value => super._value as ApiExceptionOther;
+  _$ApiExceptionOther get _value => super._value as _$ApiExceptionOther;
 }
 
 /// @nodoc
@@ -315,7 +315,7 @@ class _$ApiExceptionOther
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ApiExceptionOther);
+        (other.runtimeType == runtimeType && other is _$ApiExceptionOther);
   }
 
   @JsonKey(ignore: true)
