@@ -266,11 +266,11 @@ class _$SearchParamsCopyWithImpl<$Res> implements $SearchParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SearchParamsCopyWith<$Res>
+abstract class _$$_SearchParamsCopyWith<$Res>
     implements $SearchParamsCopyWith<$Res> {
-  factory _$SearchParamsCopyWith(
-          _SearchParams value, $Res Function(_SearchParams) then) =
-      __$SearchParamsCopyWithImpl<$Res>;
+  factory _$$_SearchParamsCopyWith(
+          _$_SearchParams value, $Res Function(_$_SearchParams) then) =
+      __$$_SearchParamsCopyWithImpl<$Res>;
   @override
   $Res call(
       {NameOfHouse nameOfHouse,
@@ -296,14 +296,15 @@ abstract class _$SearchParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
-    implements _$SearchParamsCopyWith<$Res> {
-  __$SearchParamsCopyWithImpl(
-      _SearchParams _value, $Res Function(_SearchParams) _then)
-      : super(_value, (v) => _then(v as _SearchParams));
+class __$$_SearchParamsCopyWithImpl<$Res>
+    extends _$SearchParamsCopyWithImpl<$Res>
+    implements _$$_SearchParamsCopyWith<$Res> {
+  __$$_SearchParamsCopyWithImpl(
+      _$_SearchParams _value, $Res Function(_$_SearchParams) _then)
+      : super(_value, (v) => _then(v as _$_SearchParams));
 
   @override
-  _SearchParams get _value => super._value as _SearchParams;
+  _$_SearchParams get _value => super._value as _$_SearchParams;
 
   @override
   $Res call({
@@ -328,7 +329,7 @@ class __$SearchParamsCopyWithImpl<$Res> extends _$SearchParamsCopyWithImpl<$Res>
     Object? issueFrom = freezed,
     Object? issueTo = freezed,
   }) {
-    return _then(_SearchParams(
+    return _then(_$_SearchParams(
       nameOfHouse: nameOfHouse == freezed
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
@@ -607,7 +608,7 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SearchParams &&
+            other is _$_SearchParams &&
             const DeepCollectionEquality()
                 .equals(other.nameOfHouse, nameOfHouse) &&
             const DeepCollectionEquality()
@@ -667,8 +668,8 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
 
   @JsonKey(ignore: true)
   @override
-  _$SearchParamsCopyWith<_SearchParams> get copyWith =>
-      __$SearchParamsCopyWithImpl<_SearchParams>(this, _$identity);
+  _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
+      __$$_SearchParamsCopyWithImpl<_$_SearchParams>(this, _$identity);
 }
 
 abstract class _SearchParams implements SearchParams {
@@ -816,6 +817,6 @@ abstract class _SearchParams implements SearchParams {
   int? get issueTo => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SearchParamsCopyWith<_SearchParams> get copyWith =>
+  _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
       throw _privateConstructorUsedError;
 }

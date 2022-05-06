@@ -97,11 +97,11 @@ class _$SpeechRecordResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SpeechRecordResponseeCopyWith<$Res>
+abstract class _$$_SpeechRecordResponseeCopyWith<$Res>
     implements $SpeechRecordResponseCopyWith<$Res> {
-  factory _$SpeechRecordResponseeCopyWith(_SpeechRecordResponsee value,
-          $Res Function(_SpeechRecordResponsee) then) =
-      __$SpeechRecordResponseeCopyWithImpl<$Res>;
+  factory _$$_SpeechRecordResponseeCopyWith(_$_SpeechRecordResponsee value,
+          $Res Function(_$_SpeechRecordResponsee) then) =
+      __$$_SpeechRecordResponseeCopyWithImpl<$Res>;
   @override
   $Res call(
       {int numberOfRecords,
@@ -112,15 +112,16 @@ abstract class _$SpeechRecordResponseeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SpeechRecordResponseeCopyWithImpl<$Res>
+class __$$_SpeechRecordResponseeCopyWithImpl<$Res>
     extends _$SpeechRecordResponseCopyWithImpl<$Res>
-    implements _$SpeechRecordResponseeCopyWith<$Res> {
-  __$SpeechRecordResponseeCopyWithImpl(_SpeechRecordResponsee _value,
-      $Res Function(_SpeechRecordResponsee) _then)
-      : super(_value, (v) => _then(v as _SpeechRecordResponsee));
+    implements _$$_SpeechRecordResponseeCopyWith<$Res> {
+  __$$_SpeechRecordResponseeCopyWithImpl(_$_SpeechRecordResponsee _value,
+      $Res Function(_$_SpeechRecordResponsee) _then)
+      : super(_value, (v) => _then(v as _$_SpeechRecordResponsee));
 
   @override
-  _SpeechRecordResponsee get _value => super._value as _SpeechRecordResponsee;
+  _$_SpeechRecordResponsee get _value =>
+      super._value as _$_SpeechRecordResponsee;
 
   @override
   $Res call({
@@ -130,7 +131,7 @@ class __$SpeechRecordResponseeCopyWithImpl<$Res>
     Object? nextRecordPosition = freezed,
     Object? speechRecord = freezed,
   }) {
-    return _then(_SpeechRecordResponsee(
+    return _then(_$_SpeechRecordResponsee(
       numberOfRecords: numberOfRecords == freezed
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
@@ -148,7 +149,7 @@ class __$SpeechRecordResponseeCopyWithImpl<$Res>
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
       speechRecord: speechRecord == freezed
-          ? _value.speechRecord
+          ? _value._speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<SpeechRecord>,
     ));
@@ -219,7 +220,7 @@ class _$_SpeechRecordResponsee
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SpeechRecordResponsee &&
+            other is _$_SpeechRecordResponsee &&
             const DeepCollectionEquality()
                 .equals(other.numberOfRecords, numberOfRecords) &&
             const DeepCollectionEquality()
@@ -229,7 +230,7 @@ class _$_SpeechRecordResponsee
             const DeepCollectionEquality()
                 .equals(other.nextRecordPosition, nextRecordPosition) &&
             const DeepCollectionEquality()
-                .equals(other.speechRecord, speechRecord));
+                .equals(other._speechRecord, _speechRecord));
   }
 
   @JsonKey(ignore: true)
@@ -240,12 +241,12 @@ class _$_SpeechRecordResponsee
       const DeepCollectionEquality().hash(numberOfReturn),
       const DeepCollectionEquality().hash(startRecord),
       const DeepCollectionEquality().hash(nextRecordPosition),
-      const DeepCollectionEquality().hash(speechRecord));
+      const DeepCollectionEquality().hash(_speechRecord));
 
   @JsonKey(ignore: true)
   @override
-  _$SpeechRecordResponseeCopyWith<_SpeechRecordResponsee> get copyWith =>
-      __$SpeechRecordResponseeCopyWithImpl<_SpeechRecordResponsee>(
+  _$$_SpeechRecordResponseeCopyWith<_$_SpeechRecordResponsee> get copyWith =>
+      __$$_SpeechRecordResponseeCopyWithImpl<_$_SpeechRecordResponsee>(
           this, _$identity);
 
   @override
@@ -287,7 +288,7 @@ abstract class _SpeechRecordResponsee implements SpeechRecordResponse {
   List<SpeechRecord> get speechRecord => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SpeechRecordResponseeCopyWith<_SpeechRecordResponsee> get copyWith =>
+  _$$_SpeechRecordResponseeCopyWith<_$_SpeechRecordResponsee> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -510,11 +511,11 @@ class _$SpeechRecordCopyWithImpl<$Res> implements $SpeechRecordCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SpeechRecordCopyWith<$Res>
+abstract class _$$_SpeechRecordCopyWith<$Res>
     implements $SpeechRecordCopyWith<$Res> {
-  factory _$SpeechRecordCopyWith(
-          _SpeechRecord value, $Res Function(_SpeechRecord) then) =
-      __$SpeechRecordCopyWithImpl<$Res>;
+  factory _$$_SpeechRecordCopyWith(
+          _$_SpeechRecord value, $Res Function(_$_SpeechRecord) then) =
+      __$$_SpeechRecordCopyWithImpl<$Res>;
   @override
   $Res call(
       {String speechID,
@@ -540,14 +541,15 @@ abstract class _$SpeechRecordCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SpeechRecordCopyWithImpl<$Res> extends _$SpeechRecordCopyWithImpl<$Res>
-    implements _$SpeechRecordCopyWith<$Res> {
-  __$SpeechRecordCopyWithImpl(
-      _SpeechRecord _value, $Res Function(_SpeechRecord) _then)
-      : super(_value, (v) => _then(v as _SpeechRecord));
+class __$$_SpeechRecordCopyWithImpl<$Res>
+    extends _$SpeechRecordCopyWithImpl<$Res>
+    implements _$$_SpeechRecordCopyWith<$Res> {
+  __$$_SpeechRecordCopyWithImpl(
+      _$_SpeechRecord _value, $Res Function(_$_SpeechRecord) _then)
+      : super(_value, (v) => _then(v as _$_SpeechRecord));
 
   @override
-  _SpeechRecord get _value => super._value as _SpeechRecord;
+  _$_SpeechRecord get _value => super._value as _$_SpeechRecord;
 
   @override
   $Res call({
@@ -572,7 +574,7 @@ class __$SpeechRecordCopyWithImpl<$Res> extends _$SpeechRecordCopyWithImpl<$Res>
     Object? meetingURL = freezed,
     Object? pdfURL = freezed,
   }) {
-    return _then(_SpeechRecord(
+    return _then(_$_SpeechRecord(
       speechID: speechID == freezed
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -808,7 +810,7 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SpeechRecord &&
+            other is _$_SpeechRecord &&
             const DeepCollectionEquality().equals(other.speechID, speechID) &&
             const DeepCollectionEquality().equals(other.issueID, issueID) &&
             const DeepCollectionEquality().equals(other.imageKind, imageKind) &&
@@ -868,8 +870,8 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
 
   @JsonKey(ignore: true)
   @override
-  _$SpeechRecordCopyWith<_SpeechRecord> get copyWith =>
-      __$SpeechRecordCopyWithImpl<_SpeechRecord>(this, _$identity);
+  _$$_SpeechRecordCopyWith<_$_SpeechRecord> get copyWith =>
+      __$$_SpeechRecordCopyWithImpl<_$_SpeechRecord>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -986,6 +988,6 @@ abstract class _SpeechRecord implements SpeechRecord {
   String get pdfURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SpeechRecordCopyWith<_SpeechRecord> get copyWith =>
+  _$$_SpeechRecordCopyWith<_$_SpeechRecord> get copyWith =>
       throw _privateConstructorUsedError;
 }
