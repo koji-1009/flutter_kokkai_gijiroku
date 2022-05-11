@@ -13,8 +13,8 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'beta'
-          cache: false
+          channel: 'stable'
+          cache: true
       - name: Install dependencies
         run: flutter pub get
       - uses: invertase/github-action-dart-analyzer@v1
@@ -28,8 +28,8 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'beta'
-          cache: false
+          channel: 'stable'
+          cache: true
 
       - name: flutter pub get
         run: flutter pub get
