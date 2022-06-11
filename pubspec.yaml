@@ -26,8 +26,7 @@ dependencies:
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^2.0.0-dev.0
 
-  hive: ^2.0.0
-  hive_flutter: ^1.0.0
+  http_hive_cache: ^0.0.1
 
   google_fonts: ^3.0.0
   breakpoints_mq: ^2.0.0
