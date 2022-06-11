@@ -5,41 +5,36 @@ import 'package:flutter_kokkai_gijiroku/model/api_config.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
-import 'package:flutter_kokkai_gijiroku/model/hive_repository.dart';
-import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_hive_cache/http_hive_cache.dart';
 import 'package:xml/xml.dart';
 
 final apiRepositoryProvider = Provider(
   (ref) => ApiRepository(
     config: ref.watch(apiConfigProvider),
-    hiveRepository: ref.watch(hiveRepositoryProvider),
   ),
 );
 
 class ApiRepository {
   const ApiRepository({
     required this.config,
-    required this.hiveRepository,
   });
 
   final ApiConfig config;
-  final HiveRepository hiveRepository;
 
   Future<MeetingRecordSummaryResponse> getMeetingSummary({
     required Map<String, String> queryParameters,
+    Duration cacheControl = const Duration(
+      hours: 3,
+    ),
   }) async {
-    final hiveKey = 'meetingSummary-$queryParameters';
-
-    final cache = await hiveRepository.get(hiveKey);
-    if (cache != null) {
-      return MeetingRecordSummaryResponse.fromJson(cache);
-    }
-
-    final response = await http.get(
+    final response = await HttpHiveCache.get(
       config.meetingSummaryUri.replace(
         queryParameters: queryParameters,
+      ),
+      strategy: CacheStrategy.client(
+        cacheControl: cacheControl,
       ),
     );
 
@@ -48,29 +43,21 @@ class ApiRepository {
     }
 
     final map = json.decode(response.body);
-
-    final today = DateTime.now().localDate;
-    final queryUntil = queryParameters['until'];
-    if (queryUntil != null && queryUntil != today) {
-      await hiveRepository.put(hiveKey, map);
-    }
-
     return MeetingRecordSummaryResponse.fromJson(map);
   }
 
   Future<MeetingRecordDetailResponse> getMeetingDetail({
     required Map<String, String> queryParameters,
+    Duration cacheControl = const Duration(
+      days: 3,
+    ),
   }) async {
-    final hiveKey = 'meetingDetail-$queryParameters';
-
-    final cache = await hiveRepository.get(hiveKey);
-    if (cache != null) {
-      return MeetingRecordDetailResponse.fromJson(cache);
-    }
-
-    final response = await http.get(
+    final response = await HttpHiveCache.get(
       config.meetingDetailUri.replace(
         queryParameters: queryParameters,
+      ),
+      strategy: CacheStrategy.client(
+        cacheControl: cacheControl,
       ),
     );
 
@@ -79,29 +66,18 @@ class ApiRepository {
     }
 
     final map = json.decode(response.body);
-
-    final today = DateTime.now().localDate;
-    final queryUntil = queryParameters['until'];
-    if (queryUntil != null && queryUntil != today) {
-      await hiveRepository.put(hiveKey, map);
-    }
-
     return MeetingRecordDetailResponse.fromJson(map);
   }
 
   Future<SpeechRecordResponse> getSpeech({
     required Map<String, String> queryParameters,
   }) async {
-    final hiveKey = 'speech-$queryParameters';
-
-    final cache = await hiveRepository.get(hiveKey);
-    if (cache != null) {
-      return SpeechRecordResponse.fromJson(cache);
-    }
-
-    final response = await http.get(
+    final response = await HttpHiveCache.get(
       config.meetingSpeechUri.replace(
         queryParameters: queryParameters,
+      ),
+      strategy: const CacheStrategy.client(
+        cacheControl: Duration(days: 1),
       ),
     );
 
@@ -110,13 +86,6 @@ class ApiRepository {
     }
 
     final map = json.decode(response.body);
-
-    final today = DateTime.now().localDate;
-    final queryUntil = queryParameters['until'];
-    if (queryUntil != null && queryUntil != today) {
-      await hiveRepository.put(hiveKey, map);
-    }
-
     return SpeechRecordResponse.fromJson(map);
   }
 

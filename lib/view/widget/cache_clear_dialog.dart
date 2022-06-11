@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/cache_presenter.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http_hive_cache/http_hive_cache.dart';
 
-class CacheClearDialog extends ConsumerStatefulWidget {
-  const CacheClearDialog({Key? key}) : super(key: key);
+class CacheClearDialog extends StatefulWidget {
+  const CacheClearDialog({super.key});
 
   @override
-  ConsumerState<CacheClearDialog> createState() => _CacheClearDialogState();
+  State<CacheClearDialog> createState() => _CacheClearDialogState();
 }
 
-class _CacheClearDialogState extends ConsumerState<CacheClearDialog> {
+class _CacheClearDialogState extends State<CacheClearDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -24,7 +23,7 @@ class _CacheClearDialogState extends ConsumerState<CacheClearDialog> {
       actions: [
         TextButton(
           onPressed: () async {
-            await ref.read(cachePresenterProvider).clear();
+            await HttpHiveCache.clearAll();
 
             if (!mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
