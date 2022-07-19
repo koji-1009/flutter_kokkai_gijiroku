@@ -251,7 +251,9 @@ class _$_SpeechRecordResponsee
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SpeechRecordResponseeToJson(this);
+    return _$$_SpeechRecordResponseeToJson(
+      this,
+    );
   }
 }
 
@@ -269,23 +271,23 @@ abstract class _SpeechRecordResponsee implements SpeechRecordResponse {
   @override
 
   /// 総結果件数
-  int get numberOfRecords => throw _privateConstructorUsedError;
+  int get numberOfRecords;
   @override
 
   /// 返戻件数
-  int get numberOfReturn => throw _privateConstructorUsedError;
+  int get numberOfReturn;
   @override
 
   /// 開始位置
-  int get startRecord => throw _privateConstructorUsedError;
+  int get startRecord;
   @override
 
   /// 次開始位置（※存在する場合のみ）
-  int? get nextRecordPosition => throw _privateConstructorUsedError;
+  int? get nextRecordPosition;
   @override
 
   /// 発言リスト
-  List<SpeechRecord> get speechRecord => throw _privateConstructorUsedError;
+  List<SpeechRecord> get speechRecord;
   @override
   @JsonKey(ignore: true)
   _$$_SpeechRecordResponseeCopyWith<_$_SpeechRecordResponsee> get copyWith =>
@@ -875,7 +877,9 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SpeechRecordToJson(this);
+    return _$$_SpeechRecordToJson(
+      this,
+    );
   }
 }
 
@@ -908,84 +912,84 @@ abstract class _SpeechRecord implements SpeechRecord {
   @override
 
   /// 発言ID
-  String get speechID => throw _privateConstructorUsedError;
+  String get speechID;
   @override
 
   /// 会議録ID
-  String get issueID => throw _privateConstructorUsedError;
+  String get issueID;
   @override
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  String get imageKind => throw _privateConstructorUsedError;
+  String get imageKind;
   @override
 
   /// 検索対象箇所（議事冒頭・本文）
-  int get searchObject => throw _privateConstructorUsedError;
+  int get searchObject;
   @override
 
   /// 国会回次
-  int get session => throw _privateConstructorUsedError;
+  int get session;
   @override
 
   /// 院名
-  String get nameOfHouse => throw _privateConstructorUsedError;
+  String get nameOfHouse;
   @override
 
   /// 会議名
-  String get nameOfMeeting => throw _privateConstructorUsedError;
+  String get nameOfMeeting;
   @override
 
   /// 号数
-  String get issue => throw _privateConstructorUsedError;
+  String get issue;
   @override
 
   /// 開催日付
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override // 文字列で`閉`が返ってくることがあるため、一時的にコメントアウト
 // /// 閉会中フラグ
 // @Default(false) bool closing,
   /// 発言番号
-  int get speechOrder => throw _privateConstructorUsedError;
+  int get speechOrder;
   @override
 
   /// 発言者名
-  String get speaker => throw _privateConstructorUsedError;
+  String get speaker;
   @override
 
   /// 発言者よみ
-  String get speakerYomi => throw _privateConstructorUsedError;
+  String get speakerYomi;
   @override
 
   /// 発言者所属会派
-  String get speakerGroup => throw _privateConstructorUsedError;
+  String get speakerGroup;
   @override
 
   /// 発言者肩書き
-  String get speakerPosition => throw _privateConstructorUsedError;
+  String get speakerPosition;
   @override
 
   /// 発言者役割
-  String get speakerRole => throw _privateConstructorUsedError;
+  String get speakerRole;
   @override
 
   /// 発言
-  String get speech => throw _privateConstructorUsedError;
+  String get speech;
   @override
 
   /// 発言が掲載されている開始ページ
-  int get startPage => throw _privateConstructorUsedError;
+  int get startPage;
   @override
 
   /// 発言URL
-  String get speechURL => throw _privateConstructorUsedError;
+  String get speechURL;
   @override
 
   /// 会議録テキスト表示画面のURL
-  String get meetingURL => throw _privateConstructorUsedError;
+  String get meetingURL;
   @override
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
-  String get pdfURL => throw _privateConstructorUsedError;
+  String get pdfURL;
   @override
   @JsonKey(ignore: true)
   _$$_SpeechRecordCopyWith<_$_SpeechRecord> get copyWith =>
