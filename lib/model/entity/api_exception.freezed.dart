@@ -250,7 +250,9 @@ class _$ApiExceptionError
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ApiExceptionErrorToJson(this);
+    return _$$ApiExceptionErrorToJson(
+      this,
+    );
   }
 }
 
@@ -262,8 +264,8 @@ abstract class ApiExceptionError implements ApiException {
   factory ApiExceptionError.fromJson(Map<String, dynamic> json) =
       _$ApiExceptionError.fromJson;
 
-  String get message => throw _privateConstructorUsedError;
-  List<String> get details => throw _privateConstructorUsedError;
+  String get message;
+  List<String> get details;
   @JsonKey(ignore: true)
   _$$ApiExceptionErrorCopyWith<_$ApiExceptionError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -386,7 +388,9 @@ class _$ApiExceptionOther
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ApiExceptionOtherToJson(this);
+    return _$$ApiExceptionOtherToJson(
+      this,
+    );
   }
 }
 

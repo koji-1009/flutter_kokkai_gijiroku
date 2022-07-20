@@ -256,7 +256,9 @@ class _$_MeetingRecordResponseDetail
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordResponseDetailToJson(this);
+    return _$$_MeetingRecordResponseDetailToJson(
+      this,
+    );
   }
 }
 
@@ -276,24 +278,23 @@ abstract class _MeetingRecordResponseDetail
   @override
 
   /// 総結果件数
-  int get numberOfRecords => throw _privateConstructorUsedError;
+  int get numberOfRecords;
   @override
 
   /// 返戻件数
-  int get numberOfReturn => throw _privateConstructorUsedError;
+  int get numberOfReturn;
   @override
 
   /// 開始位置
-  int get startRecord => throw _privateConstructorUsedError;
+  int get startRecord;
   @override
 
   /// 次開始位置（※存在する場合のみ）
-  int? get nextRecordPosition => throw _privateConstructorUsedError;
+  int? get nextRecordPosition;
   @override
 
   /// 会議一覧
-  List<MeetingRecordDetail> get meetingRecord =>
-      throw _privateConstructorUsedError;
+  List<MeetingRecordDetail> get meetingRecord;
   @override
   @JsonKey(ignore: true)
   _$$_MeetingRecordResponseDetailCopyWith<_$_MeetingRecordResponseDetail>
@@ -700,7 +701,9 @@ class _$_MeetingRecordDetail
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordDetailToJson(this);
+    return _$$_MeetingRecordDetailToJson(
+      this,
+    );
   }
 }
 
@@ -725,52 +728,51 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
   @override
 
   /// 会議録ID
-  String get issueID => throw _privateConstructorUsedError;
+  String get issueID;
   @override
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  String get imageKind => throw _privateConstructorUsedError;
+  String get imageKind;
   @override
 
   /// 検索対象箇所（議事冒頭・本文）
-  int get searchObject => throw _privateConstructorUsedError;
+  int get searchObject;
   @override
 
   /// 国会回次
-  int get session => throw _privateConstructorUsedError;
+  int get session;
   @override
 
   /// 院名
-  String get nameOfHouse => throw _privateConstructorUsedError;
+  String get nameOfHouse;
   @override
 
   /// 会議名
-  String get nameOfMeeting => throw _privateConstructorUsedError;
+  String get nameOfMeeting;
   @override
 
   /// 号数
-  String get issue => throw _privateConstructorUsedError;
+  String get issue;
   @override
 
   /// 開催日付
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override
 
   /// 閉会中フラグ (null or 閉)
-  String get closing => throw _privateConstructorUsedError;
+  String get closing;
   @override
 
   /// 発言リスト
-  List<MeetingRecordDetailSpeech> get speechRecord =>
-      throw _privateConstructorUsedError;
+  List<MeetingRecordDetailSpeech> get speechRecord;
   @override
 
   /// 会議録テキスト表示画面のURL
-  String get meetingURL => throw _privateConstructorUsedError;
+  String get meetingURL;
   @override
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
-  String get pdfURL => throw _privateConstructorUsedError;
+  String get pdfURL;
   @override
   @JsonKey(ignore: true)
   _$$_MeetingRecordDetailCopyWith<_$_MeetingRecordDetail> get copyWith =>
@@ -1176,7 +1178,9 @@ class _$_MeetingRecordDetailSpeech
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordDetailSpeechToJson(this);
+    return _$$_MeetingRecordDetailSpeechToJson(
+      this,
+    );
   }
 }
 
@@ -1201,51 +1205,51 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   @override
 
   /// 発言ID
-  String get speechID => throw _privateConstructorUsedError;
+  String get speechID;
   @override
 
   /// 発言番号
-  int get speechOrder => throw _privateConstructorUsedError;
+  int get speechOrder;
   @override
 
   /// 発言者名
-  String get speaker => throw _privateConstructorUsedError;
+  String get speaker;
   @override
 
   /// 発言者よみ
-  String get speakerYomi => throw _privateConstructorUsedError;
+  String get speakerYomi;
   @override
 
   /// 発言者所属会派
-  String get speakerGroup => throw _privateConstructorUsedError;
+  String get speakerGroup;
   @override
 
   /// 発言者肩書き
-  String get speakerPosition => throw _privateConstructorUsedError;
+  String get speakerPosition;
   @override
 
   /// 発言者役割
-  String get speakerRole => throw _privateConstructorUsedError;
+  String get speakerRole;
   @override
 
   /// 発言
-  String get speech => throw _privateConstructorUsedError;
+  String get speech;
   @override
 
   /// 発言が掲載されている開始ページ
-  int get startPage => throw _privateConstructorUsedError;
+  int get startPage;
   @override
 
   /// レコード登録日時
-  String get createTime => throw _privateConstructorUsedError;
+  String get createTime;
   @override
 
   ///  レコード更新日時
-  String get updateTime => throw _privateConstructorUsedError;
+  String get updateTime;
   @override
 
   /// 発言URL
-  String get speechURL => throw _privateConstructorUsedError;
+  String get speechURL;
   @override
   @JsonKey(ignore: true)
   _$$_MeetingRecordDetailSpeechCopyWith<_$_MeetingRecordDetailSpeech>
@@ -1494,7 +1498,9 @@ class _$_MeetingRecordSummaryResponse
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordSummaryResponseToJson(this);
+    return _$$_MeetingRecordSummaryResponseToJson(
+      this,
+    );
   }
 }
 
@@ -1514,24 +1520,23 @@ abstract class _MeetingRecordSummaryResponse
   @override
 
   /// 総結果件数
-  int get numberOfRecords => throw _privateConstructorUsedError;
+  int get numberOfRecords;
   @override
 
   /// 返戻件数
-  int get numberOfReturn => throw _privateConstructorUsedError;
+  int get numberOfReturn;
   @override
 
   /// 開始位置
-  int get startRecord => throw _privateConstructorUsedError;
+  int get startRecord;
   @override
 
   /// 次開始位置（※存在する場合のみ）
-  int? get nextRecordPosition => throw _privateConstructorUsedError;
+  int? get nextRecordPosition;
   @override
 
   /// 会議一覧
-  List<MeetingRecordSummary> get meetingRecord =>
-      throw _privateConstructorUsedError;
+  List<MeetingRecordSummary> get meetingRecord;
   @override
   @JsonKey(ignore: true)
   _$$_MeetingRecordSummaryResponseCopyWith<_$_MeetingRecordSummaryResponse>
@@ -1938,7 +1943,9 @@ class _$_MeetingRecordSummary
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordSummaryToJson(this);
+    return _$$_MeetingRecordSummaryToJson(
+      this,
+    );
   }
 }
 
@@ -1963,52 +1970,51 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
   @override
 
   /// 会議録ID
-  String get issueID => throw _privateConstructorUsedError;
+  String get issueID;
   @override
 
   /// イメージ種別（会議録・目次・索引・附録・追録）
-  String get imageKind => throw _privateConstructorUsedError;
+  String get imageKind;
   @override
 
   /// 検索対象箇所（議事冒頭・本文）
-  int get searchObject => throw _privateConstructorUsedError;
+  int get searchObject;
   @override
 
   /// 国会回次
-  int get session => throw _privateConstructorUsedError;
+  int get session;
   @override
 
   /// 院名
-  String get nameOfHouse => throw _privateConstructorUsedError;
+  String get nameOfHouse;
   @override
 
   /// 会議名
-  String get nameOfMeeting => throw _privateConstructorUsedError;
+  String get nameOfMeeting;
   @override
 
   /// 号数
-  String get issue => throw _privateConstructorUsedError;
+  String get issue;
   @override
 
   /// 開催日付
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override
 
   /// 閉会中フラグ (null or 閉)
-  String get closing => throw _privateConstructorUsedError;
+  String get closing;
   @override
 
   /// 発言リスト
-  List<MeetingRecordSummarySpeech> get speechRecord =>
-      throw _privateConstructorUsedError;
+  List<MeetingRecordSummarySpeech> get speechRecord;
   @override
 
   /// 会議録テキスト表示画面のURL
-  String get meetingURL => throw _privateConstructorUsedError;
+  String get meetingURL;
   @override
 
   /// 会議録PDF表示画面のURL（※存在する場合のみ）
-  String get pdfURL => throw _privateConstructorUsedError;
+  String get pdfURL;
   @override
   @JsonKey(ignore: true)
   _$$_MeetingRecordSummaryCopyWith<_$_MeetingRecordSummary> get copyWith =>
@@ -2214,7 +2220,9 @@ class _$_MeetingRecordSummarySpeech
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordSummarySpeechToJson(this);
+    return _$$_MeetingRecordSummarySpeechToJson(
+      this,
+    );
   }
 }
 
@@ -2232,19 +2240,19 @@ abstract class _MeetingRecordSummarySpeech
   @override
 
   /// 発言ID
-  String get speechID => throw _privateConstructorUsedError;
+  String get speechID;
   @override
 
   /// 発言番号
-  int get speechOrder => throw _privateConstructorUsedError;
+  int get speechOrder;
   @override
 
   /// 発言者名
-  String get speaker => throw _privateConstructorUsedError;
+  String get speaker;
   @override
 
   /// 発言URL
-  String get speechURL => throw _privateConstructorUsedError;
+  String get speechURL;
   @override
   @JsonKey(ignore: true)
   _$$_MeetingRecordSummarySpeechCopyWith<_$_MeetingRecordSummarySpeech>
