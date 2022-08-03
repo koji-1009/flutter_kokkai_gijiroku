@@ -10,6 +10,7 @@ import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:sticky_headers/sticky_headers.dart';
 
 class SearchMeetingDetailScreen extends HookConsumerWidget {
   const SearchMeetingDetailScreen({
@@ -71,54 +72,49 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(title.value),
       ),
-      body: Scrollbar(
-        child: PagedListView<int, MeetingRecordDetail>.separated(
-          padding: EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: margin,
-          ),
-          pagingController: controller,
-          builderDelegate: PagedChildBuilderDelegate(
-            itemBuilder: (_, item, __) => Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 16,
+      body: PagedListView<int, MeetingRecordDetail>(
+        pagingController: controller,
+        builderDelegate: PagedChildBuilderDelegate(
+          itemBuilder: (_, item, __) => StickyHeader(
+            header: Container(
+              color: Theme.of(context).colorScheme.surface,
+              padding: EdgeInsets.symmetric(
+                horizontal: margin,
+                vertical: 16,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(item.nameOfHouse),
+                  Text(item.nameOfMeeting),
+                  Text(item.date.yMMMEd),
+                ],
+              ),
+            ),
+            content: ListView.builder(
+              shrinkWrap: true,
+              itemBuilder: (context, i) {
+                final record = item.speechRecord[i];
+
+                return ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: margin,
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(item.nameOfHouse),
-                          Text(item.nameOfMeeting),
-                          Text(item.date.yMMMEd),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                ...item.speechRecord.map(
-                  (e) => InkWell(
-                    child: ListTile(
-                      title: Text(e.speaker),
-                      subtitle: Text(e.speechID),
-                    ),
-                    onTap: () {
-                      context.pushNamed(
-                        SpeechDetailScreen.screenName,
-                        params: {
-                          'speechID': e.speechID,
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
+                  title: Text(record.speaker),
+                  subtitle: Text(record.speechID),
+                  onTap: () {
+                    context.pushNamed(
+                      SpeechDetailScreen.screenName,
+                      params: {
+                        'speechID': record.speechID,
+                      },
+                    );
+                  },
+                );
+              },
+              itemCount: item.speechRecord.length,
             ),
           ),
-          separatorBuilder: (context, index) => const Divider(),
         ),
       ),
     );

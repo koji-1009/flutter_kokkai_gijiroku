@@ -70,42 +70,33 @@ class SearchSpeechScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(title.value),
       ),
-      body: Scrollbar(
-        child: PagedListView<int, SpeechRecord>.separated(
-          padding: EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: margin,
-          ),
-          pagingController: controller,
-          builderDelegate: PagedChildBuilderDelegate(
-            itemBuilder: (_, item, __) => Column(
-              children: [
-                InkWell(
-                  child: ListTile(
-                    title: Text(
-                      '${item.speaker}, '
-                      '${item.nameOfMeeting}, '
-                      '${item.date.yMMMEd}',
-                    ),
-                    subtitle: Text(
-                      item.speech,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  onTap: () {
-                    context.pushNamed(
-                      SpeechDetailScreen.screenName,
-                      params: {
-                        'speechID': item.speechID,
-                      },
-                    );
-                  },
-                ),
-              ],
+      body: PagedListView<int, SpeechRecord>(
+        pagingController: controller,
+        builderDelegate: PagedChildBuilderDelegate(
+          itemBuilder: (_, item, __) => ListTile(
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: margin,
+              vertical: 8,
             ),
+            title: Text(
+              '${item.speaker}, '
+              '${item.nameOfMeeting}, '
+              '${item.date.yMMMEd}',
+            ),
+            subtitle: Text(
+              item.speech,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+            onTap: () {
+              context.pushNamed(
+                SpeechDetailScreen.screenName,
+                params: {
+                  'speechID': item.speechID,
+                },
+              );
+            },
           ),
-          separatorBuilder: (context, index) => const Divider(),
         ),
       ),
     );

@@ -62,7 +62,7 @@ class SpeechDetailScreen extends HookConsumerWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: 8,
+            vertical: 16,
             horizontal: margin,
           ),
           child: Column(
@@ -80,18 +80,26 @@ class SpeechDetailScreen extends HookConsumerWidget {
                 onOpen: (link) => launchUrlString(link.url),
                 text: '発言URL: ${data.speechURL}',
               ),
-              const Divider(),
+              const SizedBox(
+                height: 16,
+              ),
               SelectableText('院名: ${data.nameOfHouse}\n'
                   '会議名: ${data.nameOfMeeting}\n'
                   '日付:  ${data.date.yMMMEd}'),
-              const Divider(),
+              const SizedBox(
+                height: 16,
+              ),
               SelectableText('名前: ${data.speaker}(${data.speakerYomi})\n'
                   '所属会派: ${data.speakerGroup}\n'
                   '役割: ${data.speakerRole}\n'
                   '肩書き: ${data.speakerPosition}'),
-              const Divider(),
+              const SizedBox(
+                height: 16,
+              ),
               SelectableText(data.speech),
-              const Divider(),
+              const SizedBox(
+                height: 16,
+              ),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
                   minimumSize: const Size.fromHeight(48),
