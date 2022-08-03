@@ -55,38 +55,31 @@ class IssueDetailScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(issueID),
       ),
-      body: Scrollbar(
-        child: PagedListView<int, SpeechRecord>.separated(
-          padding: EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: margin,
-          ),
-          pagingController: controller,
-          builderDelegate: PagedChildBuilderDelegate(
-            itemBuilder: (_, item, __) => Column(
-              children: [
-                InkWell(
-                  child: ListTile(
-                    title: Text(item.speaker),
-                    subtitle: Text(
-                      item.speech,
-                      maxLines: 10,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  onTap: () {
-                    context.pushNamed(
-                      SpeechDetailScreen.screenName,
-                      params: {
-                        'speechID': item.speechID,
-                      },
-                    );
-                  },
-                ),
-              ],
+      body: PagedListView<int, SpeechRecord>(
+        pagingController: controller,
+        builderDelegate: PagedChildBuilderDelegate(
+          itemBuilder: (_, item, __) => InkWell(
+            child: ListTile(
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: margin,
+              ),
+              title: Text(item.speaker),
+              subtitle: Text(
+                item.speech,
+                maxLines: 10,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
+            onTap: () {
+              context.pushNamed(
+                SpeechDetailScreen.screenName,
+                params: {
+                  'speechID': item.speechID,
+                },
+              );
+            },
           ),
-          separatorBuilder: (context, index) => const Divider(),
         ),
       ),
     );

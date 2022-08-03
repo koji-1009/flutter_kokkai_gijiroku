@@ -32,6 +32,7 @@ dependencies:
   breakpoints_mq: ^2.0.0
   infinite_scroll_pagination: ^3.0.0
   flutter_linkify: ^5.0.0
+  sticky_headers: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -42,7 +43,6 @@ dev_dependencies:
   build_runner: ^2.0.0
   freezed: ^2.0.0
   json_serializable: ^6.0.0
-  hive_generator: ^1.0.0
 
 flutter:
   uses-material-design: true
