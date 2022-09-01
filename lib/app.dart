@@ -85,6 +85,7 @@ class App extends StatelessWidget {
     return MaterialApp.router(
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,
+      routeInformationProvider: _router.routeInformationProvider,
       title: '国会 議事録検索システム(非公式)',
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
