@@ -66,7 +66,6 @@ class SearchSpeechScreen extends HookConsumerWidget {
         }
       },
     );
-    print(params);
 
     return Scaffold(
       appBar: AppBar(
