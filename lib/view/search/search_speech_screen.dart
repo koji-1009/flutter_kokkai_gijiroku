@@ -13,9 +13,9 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class SearchSpeechScreen extends HookConsumerWidget {
   const SearchSpeechScreen({
-    Key? key,
+    super.key,
     required this.params,
-  }) : super(key: key);
+  });
 
   static String screenName = 'searchSpeech';
 
@@ -70,32 +70,34 @@ class SearchSpeechScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(title.value),
       ),
-      body: PagedListView<int, SpeechRecord>(
-        pagingController: controller,
-        builderDelegate: PagedChildBuilderDelegate(
-          itemBuilder: (_, item, __) => ListTile(
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: margin,
-              vertical: 8,
+      body: SafeArea(
+        child: PagedListView<int, SpeechRecord>(
+          pagingController: controller,
+          builderDelegate: PagedChildBuilderDelegate(
+            itemBuilder: (_, item, __) => ListTile(
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: margin,
+                vertical: 8,
+              ),
+              title: Text(
+                '${item.speaker}, '
+                '${item.nameOfMeeting}, '
+                '${item.date.yMMMEd}',
+              ),
+              subtitle: Text(
+                item.speech,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+              onTap: () {
+                context.pushNamed(
+                  SpeechDetailScreen.screenName,
+                  params: {
+                    'speechID': item.speechID,
+                  },
+                );
+              },
             ),
-            title: Text(
-              '${item.speaker}, '
-              '${item.nameOfMeeting}, '
-              '${item.date.yMMMEd}',
-            ),
-            subtitle: Text(
-              item.speech,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-            onTap: () {
-              context.pushNamed(
-                SpeechDetailScreen.screenName,
-                params: {
-                  'speechID': item.speechID,
-                },
-              );
-            },
           ),
         ),
       ),

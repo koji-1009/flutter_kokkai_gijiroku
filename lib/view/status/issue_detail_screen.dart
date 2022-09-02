@@ -11,9 +11,9 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class IssueDetailScreen extends HookConsumerWidget {
   const IssueDetailScreen({
-    Key? key,
+    super.key,
     required this.issueID,
-  }) : super(key: key);
+  });
 
   static String screenName = 'statusIssue';
 
@@ -55,30 +55,32 @@ class IssueDetailScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(issueID),
       ),
-      body: PagedListView<int, SpeechRecord>(
-        pagingController: controller,
-        builderDelegate: PagedChildBuilderDelegate(
-          itemBuilder: (_, item, __) => InkWell(
-            child: ListTile(
-              contentPadding: EdgeInsets.symmetric(
-                vertical: 8,
-                horizontal: margin,
+      body: SafeArea(
+        child: PagedListView<int, SpeechRecord>(
+          pagingController: controller,
+          builderDelegate: PagedChildBuilderDelegate(
+            itemBuilder: (_, item, __) => InkWell(
+              child: ListTile(
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: margin,
+                ),
+                title: Text(item.speaker),
+                subtitle: Text(
+                  item.speech,
+                  maxLines: 10,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-              title: Text(item.speaker),
-              subtitle: Text(
-                item.speech,
-                maxLines: 10,
-                overflow: TextOverflow.ellipsis,
-              ),
+              onTap: () {
+                context.pushNamed(
+                  SpeechDetailScreen.screenName,
+                  params: {
+                    'speechID': item.speechID,
+                  },
+                );
+              },
             ),
-            onTap: () {
-              context.pushNamed(
-                SpeechDetailScreen.screenName,
-                params: {
-                  'speechID': item.speechID,
-                },
-              );
-            },
           ),
         ),
       ),

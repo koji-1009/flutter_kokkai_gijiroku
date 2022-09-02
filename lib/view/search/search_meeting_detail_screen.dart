@@ -14,9 +14,9 @@ import 'package:sticky_headers/sticky_headers.dart';
 
 class SearchMeetingDetailScreen extends HookConsumerWidget {
   const SearchMeetingDetailScreen({
-    Key? key,
+    super.key,
     required this.params,
-  }) : super(key: key);
+  });
 
   static String screenName = 'searchMeetingDetail';
 
@@ -72,47 +72,49 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(title.value),
       ),
-      body: PagedListView<int, MeetingRecordDetail>(
-        pagingController: controller,
-        builderDelegate: PagedChildBuilderDelegate(
-          itemBuilder: (_, item, __) => StickyHeader(
-            header: Container(
-              color: Theme.of(context).colorScheme.surface,
-              padding: EdgeInsets.symmetric(
-                horizontal: margin,
-                vertical: 16,
+      body: SafeArea(
+        child: PagedListView<int, MeetingRecordDetail>(
+          pagingController: controller,
+          builderDelegate: PagedChildBuilderDelegate(
+            itemBuilder: (_, item, __) => StickyHeader(
+              header: Container(
+                color: Theme.of(context).colorScheme.surface,
+                padding: EdgeInsets.symmetric(
+                  horizontal: margin,
+                  vertical: 16,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(item.nameOfHouse),
+                    Text(item.nameOfMeeting),
+                    Text(item.date.yMMMEd),
+                  ],
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(item.nameOfHouse),
-                  Text(item.nameOfMeeting),
-                  Text(item.date.yMMMEd),
-                ],
-              ),
-            ),
-            content: ListView.builder(
-              shrinkWrap: true,
-              itemBuilder: (context, i) {
-                final record = item.speechRecord[i];
+              content: ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (context, i) {
+                  final record = item.speechRecord[i];
 
-                return ListTile(
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: margin,
-                  ),
-                  title: Text(record.speaker),
-                  subtitle: Text(record.speechID),
-                  onTap: () {
-                    context.pushNamed(
-                      SpeechDetailScreen.screenName,
-                      params: {
-                        'speechID': record.speechID,
-                      },
-                    );
-                  },
-                );
-              },
-              itemCount: item.speechRecord.length,
+                  return ListTile(
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: margin,
+                    ),
+                    title: Text(record.speaker),
+                    subtitle: Text(record.speechID),
+                    onTap: () {
+                      context.pushNamed(
+                        SpeechDetailScreen.screenName,
+                        params: {
+                          'speechID': record.speechID,
+                        },
+                      );
+                    },
+                  );
+                },
+                itemCount: item.speechRecord.length,
+              ),
             ),
           ),
         ),
