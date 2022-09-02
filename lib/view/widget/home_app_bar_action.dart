@@ -13,7 +13,7 @@ enum _HomeAction {
 }
 
 class HomeAppBarAction extends StatelessWidget {
-  const HomeAppBarAction({Key? key}) : super(key: key);
+  const HomeAppBarAction({super.key});
 
   @override
   Widget build(BuildContext context) {

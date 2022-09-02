@@ -11,9 +11,9 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class SpeechDetailScreen extends HookConsumerWidget {
   const SpeechDetailScreen({
-    Key? key,
+    super.key,
     required this.speechID,
-  }) : super(key: key);
+  });
 
   static String screenName = 'statusSpeech';
 
@@ -59,62 +59,64 @@ class SpeechDetailScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(speechID),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 16,
-            horizontal: margin,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Linkify(
-                onOpen: (link) => launchUrlString(link.url),
-                text: '会議録PDF: ${data.pdfURL}',
-              ),
-              Linkify(
-                onOpen: (link) => launchUrlString(link.url),
-                text: '会議録テキストURL: ${data.meetingURL}',
-              ),
-              Linkify(
-                onOpen: (link) => launchUrlString(link.url),
-                text: '発言URL: ${data.speechURL}',
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              SelectableText('院名: ${data.nameOfHouse}\n'
-                  '会議名: ${data.nameOfMeeting}\n'
-                  '日付:  ${data.date.yMMMEd}'),
-              const SizedBox(
-                height: 16,
-              ),
-              SelectableText('名前: ${data.speaker}(${data.speakerYomi})\n'
-                  '所属会派: ${data.speakerGroup}\n'
-                  '役割: ${data.speakerRole}\n'
-                  '肩書き: ${data.speakerPosition}'),
-              const SizedBox(
-                height: 16,
-              ),
-              SelectableText(data.speech),
-              const SizedBox(
-                height: 16,
-              ),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(48),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: margin,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Linkify(
+                  onOpen: (link) => launchUrlString(link.url),
+                  text: '会議録PDF: ${data.pdfURL}',
                 ),
-                onPressed: () {
-                  context.pushNamed(
-                    IssueDetailScreen.screenName,
-                    params: {
-                      'issueID': data.issueID,
-                    },
-                  );
-                },
-                child: const Text('会議'),
-              ),
-            ],
+                Linkify(
+                  onOpen: (link) => launchUrlString(link.url),
+                  text: '会議録テキストURL: ${data.meetingURL}',
+                ),
+                Linkify(
+                  onOpen: (link) => launchUrlString(link.url),
+                  text: '発言URL: ${data.speechURL}',
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                SelectableText('院名: ${data.nameOfHouse}\n'
+                    '会議名: ${data.nameOfMeeting}\n'
+                    '日付:  ${data.date.yMMMEd}'),
+                const SizedBox(
+                  height: 16,
+                ),
+                SelectableText('名前: ${data.speaker}(${data.speakerYomi})\n'
+                    '所属会派: ${data.speakerGroup}\n'
+                    '役割: ${data.speakerRole}\n'
+                    '肩書き: ${data.speakerPosition}'),
+                const SizedBox(
+                  height: 16,
+                ),
+                SelectableText(data.speech),
+                const SizedBox(
+                  height: 16,
+                ),
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(48),
+                  ),
+                  onPressed: () {
+                    context.pushNamed(
+                      IssueDetailScreen.screenName,
+                      params: {
+                        'issueID': data.issueID,
+                      },
+                    );
+                  },
+                  child: const Text('会議'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

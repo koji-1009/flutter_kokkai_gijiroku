@@ -8,15 +8,14 @@ import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:highlight_text/highlight_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class SearchSpeechScreen extends HookConsumerWidget {
   const SearchSpeechScreen({
-    Key? key,
+    super.key,
     required this.params,
-  }) : super(key: key);
+  });
 
   static String screenName = 'searchSpeech';
 
@@ -71,40 +70,34 @@ class SearchSpeechScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(title.value),
       ),
-      body: PagedListView<int, SpeechRecord>(
-        pagingController: controller,
-        builderDelegate: PagedChildBuilderDelegate(
-          itemBuilder: (_, item, __) => ListTile(
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: margin,
-              vertical: 8,
-            ),
-            title: Text(
-              '${item.speaker}, '
-              '${item.nameOfMeeting}, '
-              '${item.date.yMMMEd}',
-            ),
-            subtitle: TextHighlight(
-              text: item.speech,
-              words: {
-                params['any'] ?? '': HighlightedWord(
-                  textStyle: Theme.of(context).textTheme.bodyMedium,
-                ),
+      body: SafeArea(
+        child: PagedListView<int, SpeechRecord>(
+          pagingController: controller,
+          builderDelegate: PagedChildBuilderDelegate(
+            itemBuilder: (_, item, __) => ListTile(
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: margin,
+                vertical: 8,
+              ),
+              title: Text(
+                '${item.speaker}, '
+                '${item.nameOfMeeting}, '
+                '${item.date.yMMMEd}',
+              ),
+              subtitle: Text(
+                item.speech,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+              onTap: () {
+                context.pushNamed(
+                  SpeechDetailScreen.screenName,
+                  params: {
+                    'speechID': item.speechID,
+                  },
+                );
               },
-              textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).textTheme.bodySmall?.color,
-                  ),
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
             ),
-            onTap: () {
-              context.pushNamed(
-                SpeechDetailScreen.screenName,
-                params: {
-                  'speechID': item.speechID,
-                },
-              );
-            },
           ),
         ),
       ),

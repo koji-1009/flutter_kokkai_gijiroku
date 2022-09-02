@@ -12,7 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,284 +31,286 @@ class HomeScreen extends HookConsumerWidget {
           HomeAppBarAction(),
         ],
       ),
-      body: ListView(
-        padding: EdgeInsets.only(
-          top: 16,
-          bottom: 80,
-          left: margin,
-          right: margin,
-        ),
-        children: [
-          Row(
-            children: [
-              const Text('検索対象'),
-              const Spacer(),
-              DropdownButton<SearchMode>(
-                value: mode.value,
-                items: SearchMode.values
-                    .map(
-                      (e) => DropdownMenuItem<SearchMode>(
-                        value: e,
-                        child: Text(e.value),
-                      ),
-                    )
-                    .toList(growable: false),
-                onChanged: (value) {
-                  mode.value = value ?? SearchMode.meetingDetail;
-                },
-              ),
-            ],
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.only(
+            top: 16,
+            bottom: 80,
+            left: margin,
+            right: margin,
           ),
-          const Divider(),
-          TextField(
-            controller: fromDateController,
-            readOnly: true,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '検索開始日(開会日付)',
-            ),
-            onTap: () async {
-              final now = DateTime.now();
-              final selectDate = await showDatePicker(
-                context: context,
-                initialDate: DateTime.utc(
-                  2010,
-                  1,
-                  1,
+          children: [
+            Row(
+              children: [
+                const Text('検索対象'),
+                const Spacer(),
+                DropdownButton<SearchMode>(
+                  value: mode.value,
+                  items: SearchMode.values
+                      .map(
+                        (e) => DropdownMenuItem<SearchMode>(
+                          value: e,
+                          child: Text(e.value),
+                        ),
+                      )
+                      .toList(growable: false),
+                  onChanged: (value) {
+                    mode.value = value ?? SearchMode.meetingDetail;
+                  },
                 ),
-                firstDate: DateTime.utc(1880, 1, 1),
-                lastDate: now,
-              );
+              ],
+            ),
+            const Divider(),
+            TextField(
+              controller: fromDateController,
+              readOnly: true,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '検索開始日(開会日付)',
+              ),
+              onTap: () async {
+                final now = DateTime.now();
+                final selectDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.utc(
+                    2010,
+                    1,
+                    1,
+                  ),
+                  firstDate: DateTime.utc(1880, 1, 1),
+                  lastDate: now,
+                );
 
-              searchParam.value = searchParam.value.copyWith(
-                from: selectDate,
-              );
-              fromDateController.text =
-                  selectDate != null ? selectDate.yMMMMEd : '';
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextField(
-            controller: untilDateController,
-            readOnly: true,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '検索終了日(開会日付)',
+                searchParam.value = searchParam.value.copyWith(
+                  from: selectDate,
+                );
+                fromDateController.text =
+                    selectDate != null ? selectDate.yMMMMEd : '';
+              },
             ),
-            onTap: () async {
-              final now = DateTime.now();
-              final selectDate = await showDatePicker(
-                context: context,
-                initialDate: now,
-                firstDate: DateTime.utc(1881, 1, 1),
-                lastDate: now,
-              );
+            const SizedBox(
+              height: 8,
+            ),
+            TextField(
+              controller: untilDateController,
+              readOnly: true,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '検索終了日(開会日付)',
+              ),
+              onTap: () async {
+                final now = DateTime.now();
+                final selectDate = await showDatePicker(
+                  context: context,
+                  initialDate: now,
+                  firstDate: DateTime.utc(1881, 1, 1),
+                  lastDate: now,
+                );
 
-              searchParam.value = searchParam.value.copyWith(
-                until: selectDate,
-              );
-              untilDateController.text =
-                  selectDate != null ? selectDate.yMMMMEd : '';
-            },
-          ),
-          const Divider(),
-          TextField(
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '検索語',
+                searchParam.value = searchParam.value.copyWith(
+                  until: selectDate,
+                );
+                untilDateController.text =
+                    selectDate != null ? selectDate.yMMMMEd : '';
+              },
             ),
-            onChanged: (value) {
-              searchParam.value = searchParam.value.copyWith(
-                any: value,
-              );
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              const Text('検索対象'),
-              const Spacer(),
-              DropdownButton<SearchRange>(
-                value: searchParam.value.searchRange,
-                items: SearchRange.values
-                    .map(
-                      (e) => DropdownMenuItem<SearchRange>(
-                        value: e,
-                        child: Text(e.value),
-                      ),
-                    )
-                    .toList(growable: false),
-                onChanged: (value) {
-                  searchParam.value = searchParam.value.copyWith(
-                    searchRange: value ?? SearchRange.none,
-                  );
-                },
+            const Divider(),
+            TextField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '検索語',
               ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              const Text('追録・附録指定'),
-              const Spacer(),
-              Switch(
-                value: searchParam.value.supplementAndAppendix,
-                onChanged: (value) {
-                  searchParam.value = searchParam.value.copyWith(
-                    supplementAndAppendix: value,
-                  );
-                },
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text('目次・索引指定'),
-              const Spacer(),
-              Switch(
-                value: searchParam.value.contentsAndIndex,
-                onChanged: (value) {
-                  searchParam.value = searchParam.value.copyWith(
-                    contentsAndIndex: value,
-                  );
-                },
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text('閉会中指定'),
-              const Spacer(),
-              Switch(
-                value: searchParam.value.closing,
-                onChanged: (value) {
-                  searchParam.value = searchParam.value.copyWith(
-                    closing: value,
-                  );
-                },
-              ),
-            ],
-          ),
-          const Divider(),
-          TextField(
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '会議名',
+              onChanged: (value) {
+                searchParam.value = searchParam.value.copyWith(
+                  any: value,
+                );
+              },
             ),
-            onChanged: (value) {
-              searchParam.value = searchParam.value.copyWith(
-                nameOfMeeting: value,
-              );
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              const Text('院名'),
-              const Spacer(),
-              DropdownButton<NameOfHouse>(
-                value: searchParam.value.nameOfHouse,
-                items: NameOfHouse.values
-                    .map(
-                      (e) => DropdownMenuItem<NameOfHouse>(
-                        value: e,
-                        child: Text(e.value),
-                      ),
-                    )
-                    .toList(growable: false),
-                onChanged: (value) {
-                  searchParam.value = searchParam.value.copyWith(
-                    nameOfHouse: value ?? NameOfHouse.none,
-                  );
-                },
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: [
+                const Text('検索対象'),
+                const Spacer(),
+                DropdownButton<SearchRange>(
+                  value: searchParam.value.searchRange,
+                  items: SearchRange.values
+                      .map(
+                        (e) => DropdownMenuItem<SearchRange>(
+                          value: e,
+                          child: Text(e.value),
+                        ),
+                      )
+                      .toList(growable: false),
+                  onChanged: (value) {
+                    searchParam.value = searchParam.value.copyWith(
+                      searchRange: value ?? SearchRange.none,
+                    );
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: [
+                const Text('追録・附録指定'),
+                const Spacer(),
+                Switch(
+                  value: searchParam.value.supplementAndAppendix,
+                  onChanged: (value) {
+                    searchParam.value = searchParam.value.copyWith(
+                      supplementAndAppendix: value,
+                    );
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Text('目次・索引指定'),
+                const Spacer(),
+                Switch(
+                  value: searchParam.value.contentsAndIndex,
+                  onChanged: (value) {
+                    searchParam.value = searchParam.value.copyWith(
+                      contentsAndIndex: value,
+                    );
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Text('閉会中指定'),
+                const Spacer(),
+                Switch(
+                  value: searchParam.value.closing,
+                  onChanged: (value) {
+                    searchParam.value = searchParam.value.copyWith(
+                      closing: value,
+                    );
+                  },
+                ),
+              ],
+            ),
+            const Divider(),
+            TextField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '会議名',
               ),
-            ],
-          ),
-          const Divider(),
-          TextField(
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '発言者名',
+              onChanged: (value) {
+                searchParam.value = searchParam.value.copyWith(
+                  nameOfMeeting: value,
+                );
+              },
             ),
-            onChanged: (value) {
-              searchParam.value = searchParam.value.copyWith(
-                speaker: value,
-              );
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextField(
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '発言者肩書き',
+            const SizedBox(
+              height: 8,
             ),
-            onChanged: (value) {
-              searchParam.value = searchParam.value.copyWith(
-                speakerPosition: value,
-              );
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextField(
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: '発言者所属会派',
+            Row(
+              children: [
+                const Text('院名'),
+                const Spacer(),
+                DropdownButton<NameOfHouse>(
+                  value: searchParam.value.nameOfHouse,
+                  items: NameOfHouse.values
+                      .map(
+                        (e) => DropdownMenuItem<NameOfHouse>(
+                          value: e,
+                          child: Text(e.value),
+                        ),
+                      )
+                      .toList(growable: false),
+                  onChanged: (value) {
+                    searchParam.value = searchParam.value.copyWith(
+                      nameOfHouse: value ?? NameOfHouse.none,
+                    );
+                  },
+                ),
+              ],
             ),
-            onChanged: (value) {
-              searchParam.value = searchParam.value.copyWith(
-                speakerGroup: value,
-              );
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              const Text('発言者役割'),
-              const Spacer(),
-              DropdownButton<SpeakerRole>(
-                value: searchParam.value.speakerRole,
-                items: SpeakerRole.values
-                    .map(
-                      (e) => DropdownMenuItem<SpeakerRole>(
-                        value: e,
-                        child: Text(e.value),
-                      ),
-                    )
-                    .toList(growable: false),
-                onChanged: (value) {
-                  searchParam.value = searchParam.value.copyWith(
-                    speakerRole: value ?? SpeakerRole.none,
-                  );
-                },
+            const Divider(),
+            TextField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '発言者名',
               ),
-            ],
-          ),
-          const Divider(),
-        ],
+              onChanged: (value) {
+                searchParam.value = searchParam.value.copyWith(
+                  speaker: value,
+                );
+              },
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '発言者肩書き',
+              ),
+              onChanged: (value) {
+                searchParam.value = searchParam.value.copyWith(
+                  speakerPosition: value,
+                );
+              },
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '発言者所属会派',
+              ),
+              onChanged: (value) {
+                searchParam.value = searchParam.value.copyWith(
+                  speakerGroup: value,
+                );
+              },
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: [
+                const Text('発言者役割'),
+                const Spacer(),
+                DropdownButton<SpeakerRole>(
+                  value: searchParam.value.speakerRole,
+                  items: SpeakerRole.values
+                      .map(
+                        (e) => DropdownMenuItem<SpeakerRole>(
+                          value: e,
+                          child: Text(e.value),
+                        ),
+                      )
+                      .toList(growable: false),
+                  onChanged: (value) {
+                    searchParam.value = searchParam.value.copyWith(
+                      speakerRole: value ?? SpeakerRole.none,
+                    );
+                  },
+                ),
+              ],
+            ),
+            const Divider(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('検索'),
