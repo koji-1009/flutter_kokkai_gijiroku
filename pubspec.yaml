@@ -33,7 +33,6 @@ dependencies:
   infinite_scroll_pagination: ^3.0.0
   flutter_linkify: ^5.0.0
   sticky_headers: ^0.3.0
-  highlight_text: ^1.0.0
 
 dev_dependencies:
   flutter_test:
