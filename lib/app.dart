@@ -24,7 +24,7 @@ class App extends ConsumerWidget {
       theme: () {
         final base = ThemeData(
           useMaterial3: true,
-          colorSchemeSeed: Colors.teal,
+          colorSchemeSeed: Colors.indigo,
           brightness: Brightness.light,
         );
 
@@ -35,7 +35,7 @@ class App extends ConsumerWidget {
       darkTheme: () {
         final base = ThemeData(
           useMaterial3: true,
-          colorSchemeSeed: Colors.teal,
+          colorSchemeSeed: Colors.indigo,
           brightness: Brightness.dark,
         );
 

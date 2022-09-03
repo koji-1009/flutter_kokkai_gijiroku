@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/view/about_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
@@ -16,11 +15,6 @@ final routerProvider = Provider(
         path: '/',
         builder: (context, state) => const HomeScreen(),
         routes: [
-          GoRoute(
-            path: 'about',
-            name: AboutScreen.screenName,
-            builder: (context, state) => const AboutScreen(),
-          ),
           GoRoute(
             path: 'search/detail',
             name: SearchMeetingDetailScreen.screenName,
