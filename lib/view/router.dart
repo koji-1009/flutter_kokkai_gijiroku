@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/view/home_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/home_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
