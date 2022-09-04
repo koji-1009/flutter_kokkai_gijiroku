@@ -70,7 +70,7 @@ class WordWidget extends ConsumerWidget {
         const SizedBox(
           height: 8,
         ),
-        SwitchListTile.adaptive(
+        SwitchListTile(
           title: const Text('追録・附録指定'),
           contentPadding: EdgeInsets.symmetric(
             horizontal: margin,
@@ -83,7 +83,7 @@ class WordWidget extends ConsumerWidget {
             );
           },
         ),
-        SwitchListTile.adaptive(
+        SwitchListTile(
           title: const Text('目次・索引指定'),
           contentPadding: EdgeInsets.symmetric(
             horizontal: margin,
@@ -96,7 +96,7 @@ class WordWidget extends ConsumerWidget {
             );
           },
         ),
-        SwitchListTile.adaptive(
+        SwitchListTile(
           title: const Text('閉会中指定'),
           contentPadding: EdgeInsets.symmetric(
             horizontal: margin,
