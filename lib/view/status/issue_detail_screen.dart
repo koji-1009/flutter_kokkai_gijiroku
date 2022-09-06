@@ -68,8 +68,7 @@ class IssueDetailScreen extends HookConsumerWidget {
                 title: Text(item.speaker),
                 subtitle: Text(
                   item.speech,
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
+                  maxLines: 999,
                 ),
               ),
               onTap: () {
