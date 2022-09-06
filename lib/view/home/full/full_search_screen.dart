@@ -24,8 +24,8 @@ enum _Field {
   speaker,
 }
 
-class HomeScreen extends HookConsumerWidget {
-  const HomeScreen({super.key});
+class FullSearchScreen extends HookConsumerWidget {
+  const FullSearchScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -106,19 +106,19 @@ class HomeScreen extends HookConsumerWidget {
             case SearchMode.meetingDetail:
               context.pushNamed(
                 SearchMeetingDetailScreen.screenName,
-                queryParams: state.params.query,
+                queryParams: state.fullParams.query,
               );
               break;
             case SearchMode.meetingSummary:
               context.pushNamed(
                 SearchMeetingSummaryScreen.screenName,
-                queryParams: state.params.query,
+                queryParams: state.fullParams.query,
               );
               break;
             case SearchMode.speech:
               context.pushNamed(
                 SearchSpeechScreen.screenName,
-                queryParams: state.params.query,
+                queryParams: state.fullParams.query,
               );
               break;
           }

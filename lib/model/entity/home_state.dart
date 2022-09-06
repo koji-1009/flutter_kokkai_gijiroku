@@ -33,26 +33,33 @@ class HomeState with _$HomeState {
 }
 
 extension HomeStateExt on HomeState {
-  SearchParams get params => SearchParams(
-        nameOfHouse: nameOfHouse,
-        nameOfMeeting: nameOfMeeting,
+  SearchParams get simpleParams => SearchParams(
         any: any,
-        speaker: speaker,
         from: from,
         until: until,
-        supplementAndAppendix: supplementAndAppendix,
-        contentsAndIndex: contentsAndIndex,
-        searchRange: searchRange,
-        closing: closing,
-        speechNumber: speechNumber,
-        speakerPosition: speakerPosition,
-        speakerGroup: speakerGroup,
-        speakerRole: speakerRole,
-        speechID: speechID,
-        issueID: issueID,
-        sessionFrom: sessionFrom,
-        sessionTo: sessionTo,
-        issueFrom: issueFrom,
-        issueTo: issueTo,
       );
+
+  SearchParams get fullParams => SearchParams(
+    nameOfHouse: nameOfHouse,
+    nameOfMeeting: nameOfMeeting,
+    any: any,
+    speaker: speaker,
+    from: from,
+    until: until,
+    supplementAndAppendix: supplementAndAppendix,
+    contentsAndIndex: contentsAndIndex,
+    searchRange: searchRange,
+    closing: closing,
+    speechNumber: speechNumber,
+    speakerPosition: speakerPosition,
+    speakerGroup: speakerGroup,
+    speakerRole: speakerRole,
+    speechID: speechID,
+    issueID: issueID,
+    sessionFrom: sessionFrom,
+    sessionTo: sessionTo,
+    issueFrom: issueFrom,
+    issueTo: issueTo,
+  );
+
 }

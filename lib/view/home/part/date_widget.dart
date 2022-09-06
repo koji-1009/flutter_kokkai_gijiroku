@@ -26,7 +26,7 @@ class DateWidget extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  '検索開始日(開会日付)',
+                  '検索開始日',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const Spacer(),
@@ -68,7 +68,7 @@ class DateWidget extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  '検索終了日(開会日付)',
+                  '検索終了日',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const Spacer(),
