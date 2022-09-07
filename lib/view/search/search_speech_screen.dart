@@ -97,6 +97,58 @@ class SearchSpeechScreen extends HookConsumerWidget {
                   },
                 );
               },
+              onLongPress: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => SimpleDialog(
+                    title: const Text('詳しく見る'),
+                    children: [
+                      SimpleDialogOption(
+                        child: const Text('この会議で絞り込み'),
+                        onPressed: () {
+                          context.pushNamed(
+                            SearchSpeechScreen.screenName,
+                            queryParams: {
+                              ...params,
+                              'issueID': item.issueID,
+                            },
+                          );
+
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      SimpleDialogOption(
+                        child: const Text('発言者で絞り込み'),
+                        onPressed: () {
+                          context.pushNamed(
+                            SearchSpeechScreen.screenName,
+                            queryParams: {
+                              ...params,
+                              'speaker': item.speaker,
+                            },
+                          );
+
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      SimpleDialogOption(
+                        child: const Text('所属政党で絞り込み'),
+                        onPressed: () {
+                          context.pushNamed(
+                            SearchSpeechScreen.screenName,
+                            queryParams: {
+                              ...params,
+                              'speaker_group': item.speakerGroup,
+                            },
+                          );
+
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
         ),
