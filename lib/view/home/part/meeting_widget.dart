@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/home_search_manager.dart';
+import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MeetingWidget extends ConsumerWidget {
+class MeetingWidget extends HookConsumerWidget {
   const MeetingWidget({
     super.key,
     required this.margin,
@@ -13,7 +14,12 @@ class MeetingWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(homeStateProvider);
+    final state = ref.watch(searchStateProvider);
+    final meetingController = useTextEditingController.fromValue(
+      TextEditingValue(
+        text: state.nameOfMeeting,
+      ),
+    );
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -22,6 +28,7 @@ class MeetingWidget extends ConsumerWidget {
       child: Column(
         children: [
           TextField(
+            controller: meetingController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
@@ -29,10 +36,7 @@ class MeetingWidget extends ConsumerWidget {
               labelText: '会議名',
             ),
             onChanged: (value) {
-              final state = ref.read(homeStateProvider);
-              ref.read(homeStateProvider.notifier).state = state.copyWith(
-                nameOfMeeting: value,
-              );
+              ref.read(searchStateProvider.notifier).updateNameOfMeeting(value);
             },
           ),
           const SizedBox(
@@ -45,21 +49,20 @@ class MeetingWidget extends ConsumerWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const Spacer(),
-              DropdownButton<NameOfHouse>(
+              DropdownButton(
                 value: state.nameOfHouse,
                 items: [
                   ...NameOfHouse.values.map(
-                    (e) => DropdownMenuItem<NameOfHouse>(
+                    (e) => DropdownMenuItem(
                       value: e,
                       child: Text(e.value),
                     ),
                   ),
                 ],
                 onChanged: (value) {
-                  final state = ref.read(homeStateProvider);
-                  ref.read(homeStateProvider.notifier).state = state.copyWith(
-                    nameOfHouse: value ?? NameOfHouse.none,
-                  );
+                  ref
+                      .read(searchStateProvider.notifier)
+                      .updateNameOfHouse(value);
                 },
               ),
             ],

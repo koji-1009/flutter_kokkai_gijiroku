@@ -3,11 +3,11 @@ import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'home_state.freezed.dart';
+part 'search_state.freezed.dart';
 
 @freezed
-class HomeState with _$HomeState {
-  const factory HomeState({
+class SearchState with _$HomeState {
+  const factory SearchState({
     @Default(SearchMode.speech) SearchMode mode,
     @Default(NameOfHouse.none) NameOfHouse nameOfHouse,
     @Default('') String nameOfMeeting,
@@ -32,34 +32,31 @@ class HomeState with _$HomeState {
   }) = _HomeState;
 }
 
-extension HomeStateExt on HomeState {
+extension SearchStateExt on SearchState {
   SearchParams get simpleParams => SearchParams(
         any: any,
-        from: from,
-        until: until,
       );
 
   SearchParams get fullParams => SearchParams(
-    nameOfHouse: nameOfHouse,
-    nameOfMeeting: nameOfMeeting,
-    any: any,
-    speaker: speaker,
-    from: from,
-    until: until,
-    supplementAndAppendix: supplementAndAppendix,
-    contentsAndIndex: contentsAndIndex,
-    searchRange: searchRange,
-    closing: closing,
-    speechNumber: speechNumber,
-    speakerPosition: speakerPosition,
-    speakerGroup: speakerGroup,
-    speakerRole: speakerRole,
-    speechID: speechID,
-    issueID: issueID,
-    sessionFrom: sessionFrom,
-    sessionTo: sessionTo,
-    issueFrom: issueFrom,
-    issueTo: issueTo,
-  );
-
+        nameOfHouse: nameOfHouse,
+        nameOfMeeting: nameOfMeeting,
+        any: any,
+        speaker: speaker,
+        from: from,
+        until: until,
+        supplementAndAppendix: supplementAndAppendix,
+        contentsAndIndex: contentsAndIndex,
+        searchRange: searchRange,
+        closing: closing,
+        speechNumber: speechNumber,
+        speakerPosition: speakerPosition,
+        speakerGroup: speakerGroup,
+        speakerRole: speakerRole,
+        speechID: speechID,
+        issueID: issueID,
+        sessionFrom: sessionFrom,
+        sessionTo: sessionTo,
+        issueFrom: issueFrom,
+        issueTo: issueTo,
+      );
 }

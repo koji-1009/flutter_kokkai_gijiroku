@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'home_state.dart';
+part of 'search_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -39,13 +39,13 @@ mixin _$HomeState {
   int? get issueTo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
+  $HomeStateCopyWith<SearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
+  factory $HomeStateCopyWith(SearchState value, $Res Function(SearchState) then) =
       _$HomeStateCopyWithImpl<$Res>;
   $Res call(
       {SearchMode mode,
@@ -75,9 +75,9 @@ abstract class $HomeStateCopyWith<$Res> {
 class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   _$HomeStateCopyWithImpl(this._value, this._then);
 
-  final HomeState _value;
+  final SearchState _value;
   // ignore: unused_field
-  final $Res Function(HomeState) _then;
+  final $Res Function(SearchState) _then;
 
   @override
   $Res call({
@@ -531,7 +531,7 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
       __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
 }
 
-abstract class _HomeState implements HomeState {
+abstract class _HomeState implements SearchState {
   const factory _HomeState(
       {final SearchMode mode,
       final NameOfHouse nameOfHouse,

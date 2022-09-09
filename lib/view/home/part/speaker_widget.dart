@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/home_search_manager.dart';
+import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SpeakerWidget extends ConsumerWidget {
+class SpeakerWidget extends HookConsumerWidget {
   const SpeakerWidget({
     super.key,
     required this.margin,
@@ -13,7 +14,22 @@ class SpeakerWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(homeStateProvider);
+    final state = ref.watch(searchStateProvider);
+    final speakerController = useTextEditingController.fromValue(
+      TextEditingValue(
+        text: state.speaker,
+      ),
+    );
+    final speakerPositionController = useTextEditingController.fromValue(
+      TextEditingValue(
+        text: state.speakerPosition,
+      ),
+    );
+    final speakerGroupController = useTextEditingController.fromValue(
+      TextEditingValue(
+        text: state.speakerGroup,
+      ),
+    );
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -22,6 +38,7 @@ class SpeakerWidget extends ConsumerWidget {
       child: Column(
         children: [
           TextField(
+            controller: speakerController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
@@ -29,16 +46,14 @@ class SpeakerWidget extends ConsumerWidget {
               labelText: '発言者名',
             ),
             onChanged: (value) {
-              final state = ref.read(homeStateProvider);
-              ref.read(homeStateProvider.notifier).state = state.copyWith(
-                speaker: value,
-              );
+              ref.read(searchStateProvider.notifier).updateSpeaker(value);
             },
           ),
           const SizedBox(
             height: 8,
           ),
           TextField(
+            controller: speakerPositionController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
@@ -46,16 +61,16 @@ class SpeakerWidget extends ConsumerWidget {
               labelText: '発言者肩書き',
             ),
             onChanged: (value) {
-              final state = ref.read(homeStateProvider);
-              ref.read(homeStateProvider.notifier).state = state.copyWith(
-                speakerPosition: value,
-              );
+              ref
+                  .read(searchStateProvider.notifier)
+                  .updateSpeakerPosition(value);
             },
           ),
           const SizedBox(
             height: 8,
           ),
           TextField(
+            controller: speakerGroupController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
@@ -63,10 +78,7 @@ class SpeakerWidget extends ConsumerWidget {
               labelText: '発言者所属会派',
             ),
             onChanged: (value) {
-              final state = ref.read(homeStateProvider);
-              ref.read(homeStateProvider.notifier).state = state.copyWith(
-                speakerGroup: value,
-              );
+              ref.read(searchStateProvider.notifier).updateSpeakerGroup(value);
             },
           ),
           const SizedBox(
@@ -79,21 +91,20 @@ class SpeakerWidget extends ConsumerWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const Spacer(),
-              DropdownButton<SpeakerRole>(
+              DropdownButton(
                 value: state.speakerRole,
                 items: [
                   ...SpeakerRole.values.map(
-                    (e) => DropdownMenuItem<SpeakerRole>(
+                    (e) => DropdownMenuItem(
                       value: e,
                       child: Text(e.value),
                     ),
                   ),
                 ],
                 onChanged: (value) {
-                  final state = ref.read(homeStateProvider);
-                  ref.read(homeStateProvider.notifier).state = state.copyWith(
-                    speakerRole: value ?? SpeakerRole.none,
-                  );
+                  ref
+                      .read(searchStateProvider.notifier)
+                      .updateSpeakerRole(value);
                 },
               ),
             ],

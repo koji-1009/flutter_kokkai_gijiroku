@@ -1,19 +1,10 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/model/entity/home_state.dart';
-import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/home_search_manager.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/part/date_widget.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/part/meeting_widget.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/part/mode_widget.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/part/speaker_widget.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/part/word_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
-import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
-import 'package:flutter_kokkai_gijiroku/view/widget/home_app_bar_action.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 enum _Field {
@@ -24,22 +15,17 @@ enum _Field {
   speaker,
 }
 
-class FullSearchScreen extends HookConsumerWidget {
-  const FullSearchScreen({super.key});
+class FullSearchWidget extends ConsumerWidget {
+  const FullSearchWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final margin = MediaQuery.of(context).breakpointMargin;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('議事録検索'),
-        actions: const [
-          HomeAppBarAction(),
-        ],
-      ),
-      body: SafeArea(
-        child: ListView.separated(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final margin = Breakpoint.fromConstraints(constraints).margin;
+        return ListView.separated(
           padding: const EdgeInsets.only(
             top: 16,
             bottom: 80,
@@ -73,57 +59,8 @@ class FullSearchScreen extends HookConsumerWidget {
                 );
             }
           },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: const Text('検索'),
-        icon: const Icon(Icons.search_outlined),
-        onPressed: () {
-          final state = ref.read(homeStateProvider);
-
-          if (state.from != null &&
-              state.until != null &&
-              state.from!.isAfter(state.until!)) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('日付の指定が不正です'),
-              ),
-            );
-            return;
-          }
-          if (state.any.isEmpty &&
-              state.speaker.isEmpty &&
-              state.nameOfMeeting.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('検索語/会議名/発言者名のいずれかを入力してください'),
-              ),
-            );
-            return;
-          }
-
-          switch (state.mode) {
-            case SearchMode.meetingDetail:
-              context.pushNamed(
-                SearchMeetingDetailScreen.screenName,
-                queryParams: state.fullParams.query,
-              );
-              break;
-            case SearchMode.meetingSummary:
-              context.pushNamed(
-                SearchMeetingSummaryScreen.screenName,
-                queryParams: state.fullParams.query,
-              );
-              break;
-            case SearchMode.speech:
-              context.pushNamed(
-                SearchSpeechScreen.screenName,
-                queryParams: state.fullParams.query,
-              );
-              break;
-          }
-        },
-      ),
+        );
+      },
     );
   }
 }
