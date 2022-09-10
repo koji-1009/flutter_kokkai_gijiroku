@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SearchParams _$SearchParamsFromJson(Map<String, dynamic> json) {
+  return _SearchParams.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SearchParams {
   /// 院名
@@ -116,6 +120,7 @@ mixin _$SearchParams {
   /// 省略可（省略時は検索条件に含めない）。
   int? get issueTo => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SearchParamsCopyWith<SearchParams> get copyWith =>
       throw _privateConstructorUsedError;
@@ -415,7 +420,7 @@ class __$$_SearchParamsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   const _$_SearchParams(
       {this.nameOfHouse = NameOfHouse.none,
@@ -438,6 +443,9 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
       this.sessionTo,
       this.issueFrom,
       this.issueTo});
+
+  factory _$_SearchParams.fromJson(Map<String, dynamic> json) =>
+      _$$_SearchParamsFromJson(json);
 
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
@@ -641,6 +649,7 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
             const DeepCollectionEquality().equals(other.issueTo, issueTo));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -670,6 +679,13 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   @override
   _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
       __$$_SearchParamsCopyWithImpl<_$_SearchParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SearchParamsToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SearchParams implements SearchParams {
@@ -694,6 +710,9 @@ abstract class _SearchParams implements SearchParams {
       final int? sessionTo,
       final int? issueFrom,
       final int? issueTo}) = _$_SearchParams;
+
+  factory _SearchParams.fromJson(Map<String, dynamic> json) =
+      _$_SearchParams.fromJson;
 
   @override
 

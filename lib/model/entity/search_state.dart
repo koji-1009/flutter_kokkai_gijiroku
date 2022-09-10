@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'search_state.freezed.dart';
 
 @freezed
-class SearchState with _$HomeState {
+class SearchState with _$SearchState {
   const factory SearchState({
     @Default(SearchMode.speech) SearchMode mode,
     @Default(NameOfHouse.none) NameOfHouse nameOfHouse,

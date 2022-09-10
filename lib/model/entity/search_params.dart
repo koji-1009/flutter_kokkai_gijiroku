@@ -3,6 +3,7 @@ import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_params.freezed.dart';
+part 'search_params.g.dart';
 
 enum NameOfHouse {
   /// none
@@ -198,6 +199,8 @@ class SearchParams with _$SearchParams {
     /// 省略可（省略時は検索条件に含めない）。
     int? issueTo,
   }) = _SearchParams;
+
+  factory SearchParams.fromJson(Map<String, dynamic> json) => _$SearchParamsFromJson(json);
 }
 
 extension SearchParamsExt on SearchParams {

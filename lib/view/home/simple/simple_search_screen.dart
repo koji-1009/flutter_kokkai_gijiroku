@@ -30,12 +30,12 @@ class SimpleSearchWidget extends HookConsumerWidget {
           decoration:  InputDecoration(
             border: const OutlineInputBorder(),
             labelText: '検索語',
-            suffix: IconButton(
+            suffixIcon: IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
                 submitAction();
               },
-            )
+            ),
           ),
           onChanged: (value) {
             ref.read(searchStateProvider.notifier).updateAny(value);

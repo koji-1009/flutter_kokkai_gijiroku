@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$SearchState {
   SearchMode get mode => throw _privateConstructorUsedError;
   NameOfHouse get nameOfHouse => throw _privateConstructorUsedError;
   String get nameOfMeeting => throw _privateConstructorUsedError;
@@ -39,14 +39,15 @@ mixin _$HomeState {
   int? get issueTo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeStateCopyWith<SearchState> get copyWith =>
+  $SearchStateCopyWith<SearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(SearchState value, $Res Function(SearchState) then) =
-      _$HomeStateCopyWithImpl<$Res>;
+abstract class $SearchStateCopyWith<$Res> {
+  factory $SearchStateCopyWith(
+          SearchState value, $Res Function(SearchState) then) =
+      _$SearchStateCopyWithImpl<$Res>;
   $Res call(
       {SearchMode mode,
       NameOfHouse nameOfHouse,
@@ -72,8 +73,8 @@ abstract class $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
+  _$SearchStateCopyWithImpl(this._value, this._then);
 
   final SearchState _value;
   // ignore: unused_field
@@ -193,7 +194,8 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+abstract class _$$_HomeStateCopyWith<$Res>
+    implements $SearchStateCopyWith<$Res> {
   factory _$$_HomeStateCopyWith(
           _$_HomeState value, $Res Function(_$_HomeState) then) =
       __$$_HomeStateCopyWithImpl<$Res>;
@@ -223,7 +225,7 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
+class __$$_HomeStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     implements _$$_HomeStateCopyWith<$Res> {
   __$$_HomeStateCopyWithImpl(
       _$_HomeState _value, $Res Function(_$_HomeState) _then)
@@ -430,14 +432,14 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState(mode: $mode, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, any: $any, speaker: $speaker, from: $from, until: $until, supplementAndAppendix: $supplementAndAppendix, contentsAndIndex: $contentsAndIndex, searchRange: $searchRange, closing: $closing, speechNumber: $speechNumber, speakerPosition: $speakerPosition, speakerGroup: $speakerGroup, speakerRole: $speakerRole, speechID: $speechID, issueID: $issueID, sessionFrom: $sessionFrom, sessionTo: $sessionTo, issueFrom: $issueFrom, issueTo: $issueTo)';
+    return 'SearchState(mode: $mode, nameOfHouse: $nameOfHouse, nameOfMeeting: $nameOfMeeting, any: $any, speaker: $speaker, from: $from, until: $until, supplementAndAppendix: $supplementAndAppendix, contentsAndIndex: $contentsAndIndex, searchRange: $searchRange, closing: $closing, speechNumber: $speechNumber, speakerPosition: $speakerPosition, speakerGroup: $speakerGroup, speakerRole: $speakerRole, speechID: $speechID, issueID: $issueID, sessionFrom: $sessionFrom, sessionTo: $sessionTo, issueFrom: $issueFrom, issueTo: $issueTo)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'HomeState'))
+      ..add(DiagnosticsProperty('type', 'SearchState'))
       ..add(DiagnosticsProperty('mode', mode))
       ..add(DiagnosticsProperty('nameOfHouse', nameOfHouse))
       ..add(DiagnosticsProperty('nameOfMeeting', nameOfMeeting))
