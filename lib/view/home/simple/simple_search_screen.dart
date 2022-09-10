@@ -7,7 +7,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class SimpleSearchWidget extends HookConsumerWidget {
   const SimpleSearchWidget({
     super.key,
+    required this.submitAction,
   });
+
+  final VoidCallback submitAction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,12 +27,21 @@ class SimpleSearchWidget extends HookConsumerWidget {
           controller: wordController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
+          decoration:  InputDecoration(
+            border: const OutlineInputBorder(),
             labelText: '検索語',
+            suffix: IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                submitAction();
+              },
+            )
           ),
           onChanged: (value) {
             ref.read(searchStateProvider.notifier).updateAny(value);
+          },
+          onEditingComplete: () {
+            submitAction();
           },
         ),
       ),

@@ -1,8 +1,7 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_kokkai_gijiroku/model/entity/search_state.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_state.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/full/full_search_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/history/history_widget.dart';
@@ -15,52 +14,62 @@ import 'package:flutter_kokkai_gijiroku/view/widget/home_app_bar_action.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-enum _BodyMode {
-  simple,
-  full,
-  history,
+enum HomeMode {
+  simple('/', 'homeScreenSimple'),
+  full('/full', 'homeScreenFull'),
+  history('/history', 'homeScreenHistory');
+
+  final String path;
+  final String name;
+
+  const HomeMode(this.path, this.name);
 }
 
-class HomeScreen extends HookConsumerWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({
+    super.key,
+    required this.mode,
+  });
+
+  final HomeMode mode;
+
+  int get index => HomeMode.values.indexOf(mode);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenSize = MediaQuery.of(context).breakpointScreenSize;
 
-    final pageIndex = useState(0);
-    final mode = _BodyMode.values[pageIndex.value];
-
     final Widget body;
-    final VoidCallback action;
+    final FloatingActionButton? actionButton;
 
     switch (mode) {
-      case _BodyMode.simple:
-        body = const SimpleSearchWidget();
-        action = () {
-          final state = ref.read(searchStateProvider);
-          final text = state.any;
+      case HomeMode.simple:
+        body = SimpleSearchWidget(
+          submitAction: () {
+            final state = ref.read(searchStateProvider);
+            final text = state.any;
 
-          if (text.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('検索語を入力してください'),
-              ),
+            if (text.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('検索語を入力してください'),
+                ),
+              );
+              return;
+            }
+
+            context.pushNamed(
+              SearchSpeechScreen.screenName,
+              queryParams: {
+                'any': text,
+              },
             );
-            return;
-          }
-
-          context.pushNamed(
-            SearchSpeechScreen.screenName,
-            queryParams: {
-              'any': text,
-            },
-          );
-        };
+          },
+        );
+        actionButton = null;
         break;
-      case _BodyMode.full:
-        body = const FullSearchWidget();
-        action = () {
+      case HomeMode.full:
+        action() {
           final state = ref.read(searchStateProvider);
 
           if (state.from != null &&
@@ -104,22 +113,23 @@ class HomeScreen extends HookConsumerWidget {
               );
               break;
           }
-        };
+        }
+        body = const FullSearchWidget();
+        actionButton = FloatingActionButton.extended(
+          label: const Text('検索'),
+          icon: const Icon(Icons.search_outlined),
+          tooltip: '検索',
+          onPressed: action,
+        );
         break;
-      case _BodyMode.history:
+      case HomeMode.history:
         body = const HistoryWidget();
-        action = () {};
+        actionButton = null;
         break;
     }
 
-    final actionButton = FloatingActionButton.extended(
-      label: const Text('検索'),
-      icon: const Icon(Icons.search_outlined),
-      tooltip: '検索',
-      onPressed: action,
-    );
-
     if (screenSize <= BreakpointScreenSize.extraSmall) {
+      /// smart phone
       return Scaffold(
         appBar: AppBar(
           title: const Text('議事録検索'),
@@ -147,9 +157,12 @@ class HomeScreen extends HookConsumerWidget {
               tooltip: '検索履歴',
             ),
           ],
-          currentIndex: pageIndex.value,
+          currentIndex: index,
           onTap: (index) {
-            pageIndex.value = index;
+            _navigate(
+              context: context,
+              index: index,
+            );
           },
         ),
       );
@@ -178,9 +191,12 @@ class HomeScreen extends HookConsumerWidget {
                   label: Text('検索履歴'),
                 ),
               ],
-              selectedIndex: pageIndex.value,
+              selectedIndex: index,
               onDestinationSelected: (index) {
-                pageIndex.value = index;
+                _navigate(
+                  context: context,
+                  index: index,
+                );
               },
             ),
             Expanded(
@@ -192,5 +208,13 @@ class HomeScreen extends HookConsumerWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       );
     }
+  }
+
+  void _navigate({
+    required BuildContext context,
+    required int index,
+  }) {
+    final mode = HomeMode.values[index];
+    context.goNamed(mode.name);
   }
 }

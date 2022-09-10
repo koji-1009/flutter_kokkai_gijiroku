@@ -12,8 +12,14 @@ final routerProvider = Provider(
   (_) => GoRouter(
     routes: [
       GoRoute(
-        path: '/',
-        builder: (context, state) => const HomeScreen(),
+        path: HomeMode.simple.path,
+        name: HomeMode.simple.name,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const HomeScreen(
+            mode: HomeMode.simple,
+          ),
+        ),
         routes: [
           GoRoute(
             path: 'search/detail',
@@ -66,6 +72,26 @@ final routerProvider = Provider(
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: HomeMode.full.path,
+        name: HomeMode.full.name,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const HomeScreen(
+            mode: HomeMode.full,
+          ),
+        ),
+      ),
+      GoRoute(
+        path: HomeMode.history.path,
+        name: HomeMode.history.name,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const HomeScreen(
+            mode: HomeMode.history,
+          ),
+        ),
       ),
     ],
     urlPathStrategy: UrlPathStrategy.path,
