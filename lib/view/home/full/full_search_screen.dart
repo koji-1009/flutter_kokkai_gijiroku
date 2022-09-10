@@ -1,10 +1,10 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/date_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/meeting_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/mode_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/speaker_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/word_widget.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/full/part/date_widget.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/full/part/meeting_widget.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/full/part/mode_widget.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/full/part/speaker_widget.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/full/part/word_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 enum _Field {
