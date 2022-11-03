@@ -94,6 +94,5 @@ final routerProvider = Provider(
         ),
       ),
     ],
-    urlPathStrategy: UrlPathStrategy.path,
   ),
 );
