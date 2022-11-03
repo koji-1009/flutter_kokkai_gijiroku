@@ -37,8 +37,8 @@ mixin _$ApiException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String message, List<String> details)? error,
-    TResult Function()? other,
+    TResult? Function(String message, List<String> details)? error,
+    TResult? Function()? other,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$ApiException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApiExceptionError value)? error,
-    TResult Function(ApiExceptionOther value)? other,
+    TResult? Function(ApiExceptionError value)? error,
+    TResult? Function(ApiExceptionOther value)? other,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,16 +74,18 @@ mixin _$ApiException {
 abstract class $ApiExceptionCopyWith<$Res> {
   factory $ApiExceptionCopyWith(
           ApiException value, $Res Function(ApiException) then) =
-      _$ApiExceptionCopyWithImpl<$Res>;
+      _$ApiExceptionCopyWithImpl<$Res, ApiException>;
 }
 
 /// @nodoc
-class _$ApiExceptionCopyWithImpl<$Res> implements $ApiExceptionCopyWith<$Res> {
+class _$ApiExceptionCopyWithImpl<$Res, $Val extends ApiException>
+    implements $ApiExceptionCopyWith<$Res> {
   _$ApiExceptionCopyWithImpl(this._value, this._then);
 
-  final ApiException _value;
   // ignore: unused_field
-  final $Res Function(ApiException) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -91,31 +93,30 @@ abstract class _$$ApiExceptionErrorCopyWith<$Res> {
   factory _$$ApiExceptionErrorCopyWith(
           _$ApiExceptionError value, $Res Function(_$ApiExceptionError) then) =
       __$$ApiExceptionErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({String message, List<String> details});
 }
 
 /// @nodoc
 class __$$ApiExceptionErrorCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionError>
     implements _$$ApiExceptionErrorCopyWith<$Res> {
   __$$ApiExceptionErrorCopyWithImpl(
       _$ApiExceptionError _value, $Res Function(_$ApiExceptionError) _then)
-      : super(_value, (v) => _then(v as _$ApiExceptionError));
+      : super(_value, _then);
 
-  @override
-  _$ApiExceptionError get _value => super._value as _$ApiExceptionError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
-    Object? details = freezed,
+    Object? message = null,
+    Object? details = null,
   }) {
     return _then(_$ApiExceptionError(
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      details: details == freezed
+      details: null == details
           ? _value._details
           : details // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -170,19 +171,18 @@ class _$ApiExceptionError
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiExceptionError &&
-            const DeepCollectionEquality().equals(other.message, message) &&
+            (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._details, _details));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(_details));
+      runtimeType, message, const DeepCollectionEquality().hash(_details));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ApiExceptionErrorCopyWith<_$ApiExceptionError> get copyWith =>
       __$$ApiExceptionErrorCopyWithImpl<_$ApiExceptionError>(this, _$identity);
 
@@ -198,8 +198,8 @@ class _$ApiExceptionError
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String message, List<String> details)? error,
-    TResult Function()? other,
+    TResult? Function(String message, List<String> details)? error,
+    TResult? Function()? other,
   }) {
     return error?.call(message, details);
   }
@@ -229,8 +229,8 @@ class _$ApiExceptionError
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApiExceptionError value)? error,
-    TResult Function(ApiExceptionOther value)? other,
+    TResult? Function(ApiExceptionError value)? error,
+    TResult? Function(ApiExceptionOther value)? other,
   }) {
     return error?.call(this);
   }
@@ -280,14 +280,11 @@ abstract class _$$ApiExceptionOtherCopyWith<$Res> {
 
 /// @nodoc
 class __$$ApiExceptionOtherCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionOther>
     implements _$$ApiExceptionOtherCopyWith<$Res> {
   __$$ApiExceptionOtherCopyWithImpl(
       _$ApiExceptionOther _value, $Res Function(_$ApiExceptionOther) _then)
-      : super(_value, (v) => _then(v as _$ApiExceptionOther));
-
-  @override
-  _$ApiExceptionOther get _value => super._value as _$ApiExceptionOther;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -336,8 +333,8 @@ class _$ApiExceptionOther
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String message, List<String> details)? error,
-    TResult Function()? other,
+    TResult? Function(String message, List<String> details)? error,
+    TResult? Function()? other,
   }) {
     return other?.call();
   }
@@ -367,8 +364,8 @@ class _$ApiExceptionOther
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApiExceptionError value)? error,
-    TResult Function(ApiExceptionOther value)? other,
+    TResult? Function(ApiExceptionError value)? error,
+    TResult? Function(ApiExceptionOther value)? other,
   }) {
     return other?.call(this);
   }

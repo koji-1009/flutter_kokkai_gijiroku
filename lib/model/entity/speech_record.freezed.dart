@@ -45,7 +45,8 @@ mixin _$SpeechRecordResponse {
 abstract class $SpeechRecordResponseCopyWith<$Res> {
   factory $SpeechRecordResponseCopyWith(SpeechRecordResponse value,
           $Res Function(SpeechRecordResponse) then) =
-      _$SpeechRecordResponseCopyWithImpl<$Res>;
+      _$SpeechRecordResponseCopyWithImpl<$Res, SpeechRecordResponse>;
+  @useResult
   $Res call(
       {int numberOfRecords,
       int numberOfReturn,
@@ -55,44 +56,47 @@ abstract class $SpeechRecordResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SpeechRecordResponseCopyWithImpl<$Res>
+class _$SpeechRecordResponseCopyWithImpl<$Res,
+        $Val extends SpeechRecordResponse>
     implements $SpeechRecordResponseCopyWith<$Res> {
   _$SpeechRecordResponseCopyWithImpl(this._value, this._then);
 
-  final SpeechRecordResponse _value;
   // ignore: unused_field
-  final $Res Function(SpeechRecordResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? numberOfRecords = freezed,
-    Object? numberOfReturn = freezed,
-    Object? startRecord = freezed,
+    Object? numberOfRecords = null,
+    Object? numberOfReturn = null,
+    Object? startRecord = null,
     Object? nextRecordPosition = freezed,
-    Object? speechRecord = freezed,
+    Object? speechRecord = null,
   }) {
     return _then(_value.copyWith(
-      numberOfRecords: numberOfRecords == freezed
+      numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
               as int,
-      numberOfReturn: numberOfReturn == freezed
+      numberOfReturn: null == numberOfReturn
           ? _value.numberOfReturn
           : numberOfReturn // ignore: cast_nullable_to_non_nullable
               as int,
-      startRecord: startRecord == freezed
+      startRecord: null == startRecord
           ? _value.startRecord
           : startRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      nextRecordPosition: nextRecordPosition == freezed
+      nextRecordPosition: freezed == nextRecordPosition
           ? _value.nextRecordPosition
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
-      speechRecord: speechRecord == freezed
+      speechRecord: null == speechRecord
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<SpeechRecord>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -103,6 +107,7 @@ abstract class _$$_SpeechRecordResponseeCopyWith<$Res>
           $Res Function(_$_SpeechRecordResponsee) then) =
       __$$_SpeechRecordResponseeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int numberOfRecords,
       int numberOfReturn,
@@ -113,42 +118,39 @@ abstract class _$$_SpeechRecordResponseeCopyWith<$Res>
 
 /// @nodoc
 class __$$_SpeechRecordResponseeCopyWithImpl<$Res>
-    extends _$SpeechRecordResponseCopyWithImpl<$Res>
+    extends _$SpeechRecordResponseCopyWithImpl<$Res, _$_SpeechRecordResponsee>
     implements _$$_SpeechRecordResponseeCopyWith<$Res> {
   __$$_SpeechRecordResponseeCopyWithImpl(_$_SpeechRecordResponsee _value,
       $Res Function(_$_SpeechRecordResponsee) _then)
-      : super(_value, (v) => _then(v as _$_SpeechRecordResponsee));
+      : super(_value, _then);
 
-  @override
-  _$_SpeechRecordResponsee get _value =>
-      super._value as _$_SpeechRecordResponsee;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? numberOfRecords = freezed,
-    Object? numberOfReturn = freezed,
-    Object? startRecord = freezed,
+    Object? numberOfRecords = null,
+    Object? numberOfReturn = null,
+    Object? startRecord = null,
     Object? nextRecordPosition = freezed,
-    Object? speechRecord = freezed,
+    Object? speechRecord = null,
   }) {
     return _then(_$_SpeechRecordResponsee(
-      numberOfRecords: numberOfRecords == freezed
+      numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
               as int,
-      numberOfReturn: numberOfReturn == freezed
+      numberOfReturn: null == numberOfReturn
           ? _value.numberOfReturn
           : numberOfReturn // ignore: cast_nullable_to_non_nullable
               as int,
-      startRecord: startRecord == freezed
+      startRecord: null == startRecord
           ? _value.startRecord
           : startRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      nextRecordPosition: nextRecordPosition == freezed
+      nextRecordPosition: freezed == nextRecordPosition
           ? _value.nextRecordPosition
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
-      speechRecord: speechRecord == freezed
+      speechRecord: null == speechRecord
           ? _value._speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<SpeechRecord>,
@@ -221,14 +223,14 @@ class _$_SpeechRecordResponsee
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SpeechRecordResponsee &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfRecords, numberOfRecords) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfReturn, numberOfReturn) &&
-            const DeepCollectionEquality()
-                .equals(other.startRecord, startRecord) &&
-            const DeepCollectionEquality()
-                .equals(other.nextRecordPosition, nextRecordPosition) &&
+            (identical(other.numberOfRecords, numberOfRecords) ||
+                other.numberOfRecords == numberOfRecords) &&
+            (identical(other.numberOfReturn, numberOfReturn) ||
+                other.numberOfReturn == numberOfReturn) &&
+            (identical(other.startRecord, startRecord) ||
+                other.startRecord == startRecord) &&
+            (identical(other.nextRecordPosition, nextRecordPosition) ||
+                other.nextRecordPosition == nextRecordPosition) &&
             const DeepCollectionEquality()
                 .equals(other._speechRecord, _speechRecord));
   }
@@ -237,14 +239,15 @@ class _$_SpeechRecordResponsee
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(numberOfRecords),
-      const DeepCollectionEquality().hash(numberOfReturn),
-      const DeepCollectionEquality().hash(startRecord),
-      const DeepCollectionEquality().hash(nextRecordPosition),
+      numberOfRecords,
+      numberOfReturn,
+      startRecord,
+      nextRecordPosition,
       const DeepCollectionEquality().hash(_speechRecord));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SpeechRecordResponseeCopyWith<_$_SpeechRecordResponsee> get copyWith =>
       __$$_SpeechRecordResponseeCopyWithImpl<_$_SpeechRecordResponsee>(
           this, _$identity);
@@ -372,7 +375,8 @@ mixin _$SpeechRecord {
 abstract class $SpeechRecordCopyWith<$Res> {
   factory $SpeechRecordCopyWith(
           SpeechRecord value, $Res Function(SpeechRecord) then) =
-      _$SpeechRecordCopyWithImpl<$Res>;
+      _$SpeechRecordCopyWithImpl<$Res, SpeechRecord>;
+  @useResult
   $Res call(
       {String speechID,
       String issueID,
@@ -397,118 +401,121 @@ abstract class $SpeechRecordCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SpeechRecordCopyWithImpl<$Res> implements $SpeechRecordCopyWith<$Res> {
+class _$SpeechRecordCopyWithImpl<$Res, $Val extends SpeechRecord>
+    implements $SpeechRecordCopyWith<$Res> {
   _$SpeechRecordCopyWithImpl(this._value, this._then);
 
-  final SpeechRecord _value;
   // ignore: unused_field
-  final $Res Function(SpeechRecord) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? speechID = freezed,
-    Object? issueID = freezed,
-    Object? imageKind = freezed,
-    Object? searchObject = freezed,
-    Object? session = freezed,
-    Object? nameOfHouse = freezed,
-    Object? nameOfMeeting = freezed,
-    Object? issue = freezed,
-    Object? date = freezed,
-    Object? speechOrder = freezed,
-    Object? speaker = freezed,
-    Object? speakerYomi = freezed,
-    Object? speakerGroup = freezed,
-    Object? speakerPosition = freezed,
-    Object? speakerRole = freezed,
-    Object? speech = freezed,
-    Object? startPage = freezed,
-    Object? speechURL = freezed,
-    Object? meetingURL = freezed,
-    Object? pdfURL = freezed,
+    Object? speechID = null,
+    Object? issueID = null,
+    Object? imageKind = null,
+    Object? searchObject = null,
+    Object? session = null,
+    Object? nameOfHouse = null,
+    Object? nameOfMeeting = null,
+    Object? issue = null,
+    Object? date = null,
+    Object? speechOrder = null,
+    Object? speaker = null,
+    Object? speakerYomi = null,
+    Object? speakerGroup = null,
+    Object? speakerPosition = null,
+    Object? speakerRole = null,
+    Object? speech = null,
+    Object? startPage = null,
+    Object? speechURL = null,
+    Object? meetingURL = null,
+    Object? pdfURL = null,
   }) {
     return _then(_value.copyWith(
-      speechID: speechID == freezed
+      speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
               as String,
-      issueID: issueID == freezed
+      issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
               as String,
-      imageKind: imageKind == freezed
+      imageKind: null == imageKind
           ? _value.imageKind
           : imageKind // ignore: cast_nullable_to_non_nullable
               as String,
-      searchObject: searchObject == freezed
+      searchObject: null == searchObject
           ? _value.searchObject
           : searchObject // ignore: cast_nullable_to_non_nullable
               as int,
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as int,
-      nameOfHouse: nameOfHouse == freezed
+      nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOfMeeting: nameOfMeeting == freezed
+      nameOfMeeting: null == nameOfMeeting
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
               as String,
-      issue: issue == freezed
+      issue: null == issue
           ? _value.issue
           : issue // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      speechOrder: speechOrder == freezed
+      speechOrder: null == speechOrder
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      speaker: speaker == freezed
+      speaker: null == speaker
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerYomi: speakerYomi == freezed
+      speakerYomi: null == speakerYomi
           ? _value.speakerYomi
           : speakerYomi // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerGroup: speakerGroup == freezed
+      speakerGroup: null == speakerGroup
           ? _value.speakerGroup
           : speakerGroup // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerPosition: speakerPosition == freezed
+      speakerPosition: null == speakerPosition
           ? _value.speakerPosition
           : speakerPosition // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerRole: speakerRole == freezed
+      speakerRole: null == speakerRole
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
               as String,
-      speech: speech == freezed
+      speech: null == speech
           ? _value.speech
           : speech // ignore: cast_nullable_to_non_nullable
               as String,
-      startPage: startPage == freezed
+      startPage: null == startPage
           ? _value.startPage
           : startPage // ignore: cast_nullable_to_non_nullable
               as int,
-      speechURL: speechURL == freezed
+      speechURL: null == speechURL
           ? _value.speechURL
           : speechURL // ignore: cast_nullable_to_non_nullable
               as String,
-      meetingURL: meetingURL == freezed
+      meetingURL: null == meetingURL
           ? _value.meetingURL
           : meetingURL // ignore: cast_nullable_to_non_nullable
               as String,
-      pdfURL: pdfURL == freezed
+      pdfURL: null == pdfURL
           ? _value.pdfURL
           : pdfURL // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -519,6 +526,7 @@ abstract class _$$_SpeechRecordCopyWith<$Res>
           _$_SpeechRecord value, $Res Function(_$_SpeechRecord) then) =
       __$$_SpeechRecordCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String speechID,
       String issueID,
@@ -544,116 +552,114 @@ abstract class _$$_SpeechRecordCopyWith<$Res>
 
 /// @nodoc
 class __$$_SpeechRecordCopyWithImpl<$Res>
-    extends _$SpeechRecordCopyWithImpl<$Res>
+    extends _$SpeechRecordCopyWithImpl<$Res, _$_SpeechRecord>
     implements _$$_SpeechRecordCopyWith<$Res> {
   __$$_SpeechRecordCopyWithImpl(
       _$_SpeechRecord _value, $Res Function(_$_SpeechRecord) _then)
-      : super(_value, (v) => _then(v as _$_SpeechRecord));
+      : super(_value, _then);
 
-  @override
-  _$_SpeechRecord get _value => super._value as _$_SpeechRecord;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? speechID = freezed,
-    Object? issueID = freezed,
-    Object? imageKind = freezed,
-    Object? searchObject = freezed,
-    Object? session = freezed,
-    Object? nameOfHouse = freezed,
-    Object? nameOfMeeting = freezed,
-    Object? issue = freezed,
-    Object? date = freezed,
-    Object? speechOrder = freezed,
-    Object? speaker = freezed,
-    Object? speakerYomi = freezed,
-    Object? speakerGroup = freezed,
-    Object? speakerPosition = freezed,
-    Object? speakerRole = freezed,
-    Object? speech = freezed,
-    Object? startPage = freezed,
-    Object? speechURL = freezed,
-    Object? meetingURL = freezed,
-    Object? pdfURL = freezed,
+    Object? speechID = null,
+    Object? issueID = null,
+    Object? imageKind = null,
+    Object? searchObject = null,
+    Object? session = null,
+    Object? nameOfHouse = null,
+    Object? nameOfMeeting = null,
+    Object? issue = null,
+    Object? date = null,
+    Object? speechOrder = null,
+    Object? speaker = null,
+    Object? speakerYomi = null,
+    Object? speakerGroup = null,
+    Object? speakerPosition = null,
+    Object? speakerRole = null,
+    Object? speech = null,
+    Object? startPage = null,
+    Object? speechURL = null,
+    Object? meetingURL = null,
+    Object? pdfURL = null,
   }) {
     return _then(_$_SpeechRecord(
-      speechID: speechID == freezed
+      speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
               as String,
-      issueID: issueID == freezed
+      issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
               as String,
-      imageKind: imageKind == freezed
+      imageKind: null == imageKind
           ? _value.imageKind
           : imageKind // ignore: cast_nullable_to_non_nullable
               as String,
-      searchObject: searchObject == freezed
+      searchObject: null == searchObject
           ? _value.searchObject
           : searchObject // ignore: cast_nullable_to_non_nullable
               as int,
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as int,
-      nameOfHouse: nameOfHouse == freezed
+      nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOfMeeting: nameOfMeeting == freezed
+      nameOfMeeting: null == nameOfMeeting
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
               as String,
-      issue: issue == freezed
+      issue: null == issue
           ? _value.issue
           : issue // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      speechOrder: speechOrder == freezed
+      speechOrder: null == speechOrder
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      speaker: speaker == freezed
+      speaker: null == speaker
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerYomi: speakerYomi == freezed
+      speakerYomi: null == speakerYomi
           ? _value.speakerYomi
           : speakerYomi // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerGroup: speakerGroup == freezed
+      speakerGroup: null == speakerGroup
           ? _value.speakerGroup
           : speakerGroup // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerPosition: speakerPosition == freezed
+      speakerPosition: null == speakerPosition
           ? _value.speakerPosition
           : speakerPosition // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerRole: speakerRole == freezed
+      speakerRole: null == speakerRole
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
               as String,
-      speech: speech == freezed
+      speech: null == speech
           ? _value.speech
           : speech // ignore: cast_nullable_to_non_nullable
               as String,
-      startPage: startPage == freezed
+      startPage: null == startPage
           ? _value.startPage
           : startPage // ignore: cast_nullable_to_non_nullable
               as int,
-      speechURL: speechURL == freezed
+      speechURL: null == speechURL
           ? _value.speechURL
           : speechURL // ignore: cast_nullable_to_non_nullable
               as String,
-      meetingURL: meetingURL == freezed
+      meetingURL: null == meetingURL
           ? _value.meetingURL
           : meetingURL // ignore: cast_nullable_to_non_nullable
               as String,
-      pdfURL: pdfURL == freezed
+      pdfURL: null == pdfURL
           ? _value.pdfURL
           : pdfURL // ignore: cast_nullable_to_non_nullable
               as String,
@@ -813,65 +819,70 @@ class _$_SpeechRecord with DiagnosticableTreeMixin implements _SpeechRecord {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SpeechRecord &&
-            const DeepCollectionEquality().equals(other.speechID, speechID) &&
-            const DeepCollectionEquality().equals(other.issueID, issueID) &&
-            const DeepCollectionEquality().equals(other.imageKind, imageKind) &&
-            const DeepCollectionEquality()
-                .equals(other.searchObject, searchObject) &&
-            const DeepCollectionEquality().equals(other.session, session) &&
-            const DeepCollectionEquality()
-                .equals(other.nameOfHouse, nameOfHouse) &&
-            const DeepCollectionEquality()
-                .equals(other.nameOfMeeting, nameOfMeeting) &&
-            const DeepCollectionEquality().equals(other.issue, issue) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality()
-                .equals(other.speechOrder, speechOrder) &&
-            const DeepCollectionEquality().equals(other.speaker, speaker) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerYomi, speakerYomi) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerGroup, speakerGroup) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerPosition, speakerPosition) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerRole, speakerRole) &&
-            const DeepCollectionEquality().equals(other.speech, speech) &&
-            const DeepCollectionEquality().equals(other.startPage, startPage) &&
-            const DeepCollectionEquality().equals(other.speechURL, speechURL) &&
-            const DeepCollectionEquality()
-                .equals(other.meetingURL, meetingURL) &&
-            const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
+            (identical(other.speechID, speechID) ||
+                other.speechID == speechID) &&
+            (identical(other.issueID, issueID) || other.issueID == issueID) &&
+            (identical(other.imageKind, imageKind) ||
+                other.imageKind == imageKind) &&
+            (identical(other.searchObject, searchObject) ||
+                other.searchObject == searchObject) &&
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.nameOfHouse, nameOfHouse) ||
+                other.nameOfHouse == nameOfHouse) &&
+            (identical(other.nameOfMeeting, nameOfMeeting) ||
+                other.nameOfMeeting == nameOfMeeting) &&
+            (identical(other.issue, issue) || other.issue == issue) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.speechOrder, speechOrder) ||
+                other.speechOrder == speechOrder) &&
+            (identical(other.speaker, speaker) || other.speaker == speaker) &&
+            (identical(other.speakerYomi, speakerYomi) ||
+                other.speakerYomi == speakerYomi) &&
+            (identical(other.speakerGroup, speakerGroup) ||
+                other.speakerGroup == speakerGroup) &&
+            (identical(other.speakerPosition, speakerPosition) ||
+                other.speakerPosition == speakerPosition) &&
+            (identical(other.speakerRole, speakerRole) ||
+                other.speakerRole == speakerRole) &&
+            (identical(other.speech, speech) || other.speech == speech) &&
+            (identical(other.startPage, startPage) ||
+                other.startPage == startPage) &&
+            (identical(other.speechURL, speechURL) ||
+                other.speechURL == speechURL) &&
+            (identical(other.meetingURL, meetingURL) ||
+                other.meetingURL == meetingURL) &&
+            (identical(other.pdfURL, pdfURL) || other.pdfURL == pdfURL));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(speechID),
-        const DeepCollectionEquality().hash(issueID),
-        const DeepCollectionEquality().hash(imageKind),
-        const DeepCollectionEquality().hash(searchObject),
-        const DeepCollectionEquality().hash(session),
-        const DeepCollectionEquality().hash(nameOfHouse),
-        const DeepCollectionEquality().hash(nameOfMeeting),
-        const DeepCollectionEquality().hash(issue),
-        const DeepCollectionEquality().hash(date),
-        const DeepCollectionEquality().hash(speechOrder),
-        const DeepCollectionEquality().hash(speaker),
-        const DeepCollectionEquality().hash(speakerYomi),
-        const DeepCollectionEquality().hash(speakerGroup),
-        const DeepCollectionEquality().hash(speakerPosition),
-        const DeepCollectionEquality().hash(speakerRole),
-        const DeepCollectionEquality().hash(speech),
-        const DeepCollectionEquality().hash(startPage),
-        const DeepCollectionEquality().hash(speechURL),
-        const DeepCollectionEquality().hash(meetingURL),
-        const DeepCollectionEquality().hash(pdfURL)
+        speechID,
+        issueID,
+        imageKind,
+        searchObject,
+        session,
+        nameOfHouse,
+        nameOfMeeting,
+        issue,
+        date,
+        speechOrder,
+        speaker,
+        speakerYomi,
+        speakerGroup,
+        speakerPosition,
+        speakerRole,
+        speech,
+        startPage,
+        speechURL,
+        meetingURL,
+        pdfURL
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SpeechRecordCopyWith<_$_SpeechRecord> get copyWith =>
       __$$_SpeechRecordCopyWithImpl<_$_SpeechRecord>(this, _$identity);
 

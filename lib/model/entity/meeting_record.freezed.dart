@@ -48,7 +48,9 @@ abstract class $MeetingRecordDetailResponseCopyWith<$Res> {
   factory $MeetingRecordDetailResponseCopyWith(
           MeetingRecordDetailResponse value,
           $Res Function(MeetingRecordDetailResponse) then) =
-      _$MeetingRecordDetailResponseCopyWithImpl<$Res>;
+      _$MeetingRecordDetailResponseCopyWithImpl<$Res,
+          MeetingRecordDetailResponse>;
+  @useResult
   $Res call(
       {int numberOfRecords,
       int numberOfReturn,
@@ -58,44 +60,47 @@ abstract class $MeetingRecordDetailResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MeetingRecordDetailResponseCopyWithImpl<$Res>
+class _$MeetingRecordDetailResponseCopyWithImpl<$Res,
+        $Val extends MeetingRecordDetailResponse>
     implements $MeetingRecordDetailResponseCopyWith<$Res> {
   _$MeetingRecordDetailResponseCopyWithImpl(this._value, this._then);
 
-  final MeetingRecordDetailResponse _value;
   // ignore: unused_field
-  final $Res Function(MeetingRecordDetailResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? numberOfRecords = freezed,
-    Object? numberOfReturn = freezed,
-    Object? startRecord = freezed,
+    Object? numberOfRecords = null,
+    Object? numberOfReturn = null,
+    Object? startRecord = null,
     Object? nextRecordPosition = freezed,
-    Object? meetingRecord = freezed,
+    Object? meetingRecord = null,
   }) {
     return _then(_value.copyWith(
-      numberOfRecords: numberOfRecords == freezed
+      numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
               as int,
-      numberOfReturn: numberOfReturn == freezed
+      numberOfReturn: null == numberOfReturn
           ? _value.numberOfReturn
           : numberOfReturn // ignore: cast_nullable_to_non_nullable
               as int,
-      startRecord: startRecord == freezed
+      startRecord: null == startRecord
           ? _value.startRecord
           : startRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      nextRecordPosition: nextRecordPosition == freezed
+      nextRecordPosition: freezed == nextRecordPosition
           ? _value.nextRecordPosition
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
-      meetingRecord: meetingRecord == freezed
+      meetingRecord: null == meetingRecord
           ? _value.meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordDetail>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -107,6 +112,7 @@ abstract class _$$_MeetingRecordResponseDetailCopyWith<$Res>
           $Res Function(_$_MeetingRecordResponseDetail) then) =
       __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int numberOfRecords,
       int numberOfReturn,
@@ -117,43 +123,41 @@ abstract class _$$_MeetingRecordResponseDetailCopyWith<$Res>
 
 /// @nodoc
 class __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>
-    extends _$MeetingRecordDetailResponseCopyWithImpl<$Res>
+    extends _$MeetingRecordDetailResponseCopyWithImpl<$Res,
+        _$_MeetingRecordResponseDetail>
     implements _$$_MeetingRecordResponseDetailCopyWith<$Res> {
   __$$_MeetingRecordResponseDetailCopyWithImpl(
       _$_MeetingRecordResponseDetail _value,
       $Res Function(_$_MeetingRecordResponseDetail) _then)
-      : super(_value, (v) => _then(v as _$_MeetingRecordResponseDetail));
+      : super(_value, _then);
 
-  @override
-  _$_MeetingRecordResponseDetail get _value =>
-      super._value as _$_MeetingRecordResponseDetail;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? numberOfRecords = freezed,
-    Object? numberOfReturn = freezed,
-    Object? startRecord = freezed,
+    Object? numberOfRecords = null,
+    Object? numberOfReturn = null,
+    Object? startRecord = null,
     Object? nextRecordPosition = freezed,
-    Object? meetingRecord = freezed,
+    Object? meetingRecord = null,
   }) {
     return _then(_$_MeetingRecordResponseDetail(
-      numberOfRecords: numberOfRecords == freezed
+      numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
               as int,
-      numberOfReturn: numberOfReturn == freezed
+      numberOfReturn: null == numberOfReturn
           ? _value.numberOfReturn
           : numberOfReturn // ignore: cast_nullable_to_non_nullable
               as int,
-      startRecord: startRecord == freezed
+      startRecord: null == startRecord
           ? _value.startRecord
           : startRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      nextRecordPosition: nextRecordPosition == freezed
+      nextRecordPosition: freezed == nextRecordPosition
           ? _value.nextRecordPosition
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
-      meetingRecord: meetingRecord == freezed
+      meetingRecord: null == meetingRecord
           ? _value._meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordDetail>,
@@ -226,14 +230,14 @@ class _$_MeetingRecordResponseDetail
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeetingRecordResponseDetail &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfRecords, numberOfRecords) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfReturn, numberOfReturn) &&
-            const DeepCollectionEquality()
-                .equals(other.startRecord, startRecord) &&
-            const DeepCollectionEquality()
-                .equals(other.nextRecordPosition, nextRecordPosition) &&
+            (identical(other.numberOfRecords, numberOfRecords) ||
+                other.numberOfRecords == numberOfRecords) &&
+            (identical(other.numberOfReturn, numberOfReturn) ||
+                other.numberOfReturn == numberOfReturn) &&
+            (identical(other.startRecord, startRecord) ||
+                other.startRecord == startRecord) &&
+            (identical(other.nextRecordPosition, nextRecordPosition) ||
+                other.nextRecordPosition == nextRecordPosition) &&
             const DeepCollectionEquality()
                 .equals(other._meetingRecord, _meetingRecord));
   }
@@ -242,14 +246,15 @@ class _$_MeetingRecordResponseDetail
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(numberOfRecords),
-      const DeepCollectionEquality().hash(numberOfReturn),
-      const DeepCollectionEquality().hash(startRecord),
-      const DeepCollectionEquality().hash(nextRecordPosition),
+      numberOfRecords,
+      numberOfReturn,
+      startRecord,
+      nextRecordPosition,
       const DeepCollectionEquality().hash(_meetingRecord));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeetingRecordResponseDetailCopyWith<_$_MeetingRecordResponseDetail>
       get copyWith => __$$_MeetingRecordResponseDetailCopyWithImpl<
           _$_MeetingRecordResponseDetail>(this, _$identity);
@@ -354,7 +359,8 @@ mixin _$MeetingRecordDetail {
 abstract class $MeetingRecordDetailCopyWith<$Res> {
   factory $MeetingRecordDetailCopyWith(
           MeetingRecordDetail value, $Res Function(MeetingRecordDetail) then) =
-      _$MeetingRecordDetailCopyWithImpl<$Res>;
+      _$MeetingRecordDetailCopyWithImpl<$Res, MeetingRecordDetail>;
+  @useResult
   $Res call(
       {String issueID,
       String imageKind,
@@ -371,79 +377,81 @@ abstract class $MeetingRecordDetailCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MeetingRecordDetailCopyWithImpl<$Res>
+class _$MeetingRecordDetailCopyWithImpl<$Res, $Val extends MeetingRecordDetail>
     implements $MeetingRecordDetailCopyWith<$Res> {
   _$MeetingRecordDetailCopyWithImpl(this._value, this._then);
 
-  final MeetingRecordDetail _value;
   // ignore: unused_field
-  final $Res Function(MeetingRecordDetail) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? issueID = freezed,
-    Object? imageKind = freezed,
-    Object? searchObject = freezed,
-    Object? session = freezed,
-    Object? nameOfHouse = freezed,
-    Object? nameOfMeeting = freezed,
-    Object? issue = freezed,
-    Object? date = freezed,
-    Object? closing = freezed,
-    Object? speechRecord = freezed,
-    Object? meetingURL = freezed,
-    Object? pdfURL = freezed,
+    Object? issueID = null,
+    Object? imageKind = null,
+    Object? searchObject = null,
+    Object? session = null,
+    Object? nameOfHouse = null,
+    Object? nameOfMeeting = null,
+    Object? issue = null,
+    Object? date = null,
+    Object? closing = null,
+    Object? speechRecord = null,
+    Object? meetingURL = null,
+    Object? pdfURL = null,
   }) {
     return _then(_value.copyWith(
-      issueID: issueID == freezed
+      issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
               as String,
-      imageKind: imageKind == freezed
+      imageKind: null == imageKind
           ? _value.imageKind
           : imageKind // ignore: cast_nullable_to_non_nullable
               as String,
-      searchObject: searchObject == freezed
+      searchObject: null == searchObject
           ? _value.searchObject
           : searchObject // ignore: cast_nullable_to_non_nullable
               as int,
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as int,
-      nameOfHouse: nameOfHouse == freezed
+      nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOfMeeting: nameOfMeeting == freezed
+      nameOfMeeting: null == nameOfMeeting
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
               as String,
-      issue: issue == freezed
+      issue: null == issue
           ? _value.issue
           : issue // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
+      closing: null == closing
           ? _value.closing
           : closing // ignore: cast_nullable_to_non_nullable
               as String,
-      speechRecord: speechRecord == freezed
+      speechRecord: null == speechRecord
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordDetailSpeech>,
-      meetingURL: meetingURL == freezed
+      meetingURL: null == meetingURL
           ? _value.meetingURL
           : meetingURL // ignore: cast_nullable_to_non_nullable
               as String,
-      pdfURL: pdfURL == freezed
+      pdfURL: null == pdfURL
           ? _value.pdfURL
           : pdfURL // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -454,6 +462,7 @@ abstract class _$$_MeetingRecordDetailCopyWith<$Res>
           $Res Function(_$_MeetingRecordDetail) then) =
       __$$_MeetingRecordDetailCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String issueID,
       String imageKind,
@@ -471,76 +480,74 @@ abstract class _$$_MeetingRecordDetailCopyWith<$Res>
 
 /// @nodoc
 class __$$_MeetingRecordDetailCopyWithImpl<$Res>
-    extends _$MeetingRecordDetailCopyWithImpl<$Res>
+    extends _$MeetingRecordDetailCopyWithImpl<$Res, _$_MeetingRecordDetail>
     implements _$$_MeetingRecordDetailCopyWith<$Res> {
   __$$_MeetingRecordDetailCopyWithImpl(_$_MeetingRecordDetail _value,
       $Res Function(_$_MeetingRecordDetail) _then)
-      : super(_value, (v) => _then(v as _$_MeetingRecordDetail));
+      : super(_value, _then);
 
-  @override
-  _$_MeetingRecordDetail get _value => super._value as _$_MeetingRecordDetail;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? issueID = freezed,
-    Object? imageKind = freezed,
-    Object? searchObject = freezed,
-    Object? session = freezed,
-    Object? nameOfHouse = freezed,
-    Object? nameOfMeeting = freezed,
-    Object? issue = freezed,
-    Object? date = freezed,
-    Object? closing = freezed,
-    Object? speechRecord = freezed,
-    Object? meetingURL = freezed,
-    Object? pdfURL = freezed,
+    Object? issueID = null,
+    Object? imageKind = null,
+    Object? searchObject = null,
+    Object? session = null,
+    Object? nameOfHouse = null,
+    Object? nameOfMeeting = null,
+    Object? issue = null,
+    Object? date = null,
+    Object? closing = null,
+    Object? speechRecord = null,
+    Object? meetingURL = null,
+    Object? pdfURL = null,
   }) {
     return _then(_$_MeetingRecordDetail(
-      issueID: issueID == freezed
+      issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
               as String,
-      imageKind: imageKind == freezed
+      imageKind: null == imageKind
           ? _value.imageKind
           : imageKind // ignore: cast_nullable_to_non_nullable
               as String,
-      searchObject: searchObject == freezed
+      searchObject: null == searchObject
           ? _value.searchObject
           : searchObject // ignore: cast_nullable_to_non_nullable
               as int,
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as int,
-      nameOfHouse: nameOfHouse == freezed
+      nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOfMeeting: nameOfMeeting == freezed
+      nameOfMeeting: null == nameOfMeeting
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
               as String,
-      issue: issue == freezed
+      issue: null == issue
           ? _value.issue
           : issue // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
+      closing: null == closing
           ? _value.closing
           : closing // ignore: cast_nullable_to_non_nullable
               as String,
-      speechRecord: speechRecord == freezed
+      speechRecord: null == speechRecord
           ? _value._speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordDetailSpeech>,
-      meetingURL: meetingURL == freezed
+      meetingURL: null == meetingURL
           ? _value.meetingURL
           : meetingURL // ignore: cast_nullable_to_non_nullable
               as String,
-      pdfURL: pdfURL == freezed
+      pdfURL: null == pdfURL
           ? _value.pdfURL
           : pdfURL // ignore: cast_nullable_to_non_nullable
               as String,
@@ -657,44 +664,46 @@ class _$_MeetingRecordDetail
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeetingRecordDetail &&
-            const DeepCollectionEquality().equals(other.issueID, issueID) &&
-            const DeepCollectionEquality().equals(other.imageKind, imageKind) &&
-            const DeepCollectionEquality()
-                .equals(other.searchObject, searchObject) &&
-            const DeepCollectionEquality().equals(other.session, session) &&
-            const DeepCollectionEquality()
-                .equals(other.nameOfHouse, nameOfHouse) &&
-            const DeepCollectionEquality()
-                .equals(other.nameOfMeeting, nameOfMeeting) &&
-            const DeepCollectionEquality().equals(other.issue, issue) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.closing, closing) &&
+            (identical(other.issueID, issueID) || other.issueID == issueID) &&
+            (identical(other.imageKind, imageKind) ||
+                other.imageKind == imageKind) &&
+            (identical(other.searchObject, searchObject) ||
+                other.searchObject == searchObject) &&
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.nameOfHouse, nameOfHouse) ||
+                other.nameOfHouse == nameOfHouse) &&
+            (identical(other.nameOfMeeting, nameOfMeeting) ||
+                other.nameOfMeeting == nameOfMeeting) &&
+            (identical(other.issue, issue) || other.issue == issue) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.closing, closing) || other.closing == closing) &&
             const DeepCollectionEquality()
                 .equals(other._speechRecord, _speechRecord) &&
-            const DeepCollectionEquality()
-                .equals(other.meetingURL, meetingURL) &&
-            const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
+            (identical(other.meetingURL, meetingURL) ||
+                other.meetingURL == meetingURL) &&
+            (identical(other.pdfURL, pdfURL) || other.pdfURL == pdfURL));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(issueID),
-      const DeepCollectionEquality().hash(imageKind),
-      const DeepCollectionEquality().hash(searchObject),
-      const DeepCollectionEquality().hash(session),
-      const DeepCollectionEquality().hash(nameOfHouse),
-      const DeepCollectionEquality().hash(nameOfMeeting),
-      const DeepCollectionEquality().hash(issue),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(closing),
+      issueID,
+      imageKind,
+      searchObject,
+      session,
+      nameOfHouse,
+      nameOfMeeting,
+      issue,
+      date,
+      closing,
       const DeepCollectionEquality().hash(_speechRecord),
-      const DeepCollectionEquality().hash(meetingURL),
-      const DeepCollectionEquality().hash(pdfURL));
+      meetingURL,
+      pdfURL);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeetingRecordDetailCopyWith<_$_MeetingRecordDetail> get copyWith =>
       __$$_MeetingRecordDetailCopyWithImpl<_$_MeetingRecordDetail>(
           this, _$identity);
@@ -832,7 +841,8 @@ mixin _$MeetingRecordDetailSpeech {
 abstract class $MeetingRecordDetailSpeechCopyWith<$Res> {
   factory $MeetingRecordDetailSpeechCopyWith(MeetingRecordDetailSpeech value,
           $Res Function(MeetingRecordDetailSpeech) then) =
-      _$MeetingRecordDetailSpeechCopyWithImpl<$Res>;
+      _$MeetingRecordDetailSpeechCopyWithImpl<$Res, MeetingRecordDetailSpeech>;
+  @useResult
   $Res call(
       {String speechID,
       int speechOrder,
@@ -849,79 +859,82 @@ abstract class $MeetingRecordDetailSpeechCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MeetingRecordDetailSpeechCopyWithImpl<$Res>
+class _$MeetingRecordDetailSpeechCopyWithImpl<$Res,
+        $Val extends MeetingRecordDetailSpeech>
     implements $MeetingRecordDetailSpeechCopyWith<$Res> {
   _$MeetingRecordDetailSpeechCopyWithImpl(this._value, this._then);
 
-  final MeetingRecordDetailSpeech _value;
   // ignore: unused_field
-  final $Res Function(MeetingRecordDetailSpeech) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? speechID = freezed,
-    Object? speechOrder = freezed,
-    Object? speaker = freezed,
-    Object? speakerYomi = freezed,
-    Object? speakerGroup = freezed,
-    Object? speakerPosition = freezed,
-    Object? speakerRole = freezed,
-    Object? speech = freezed,
-    Object? startPage = freezed,
-    Object? createTime = freezed,
-    Object? updateTime = freezed,
-    Object? speechURL = freezed,
+    Object? speechID = null,
+    Object? speechOrder = null,
+    Object? speaker = null,
+    Object? speakerYomi = null,
+    Object? speakerGroup = null,
+    Object? speakerPosition = null,
+    Object? speakerRole = null,
+    Object? speech = null,
+    Object? startPage = null,
+    Object? createTime = null,
+    Object? updateTime = null,
+    Object? speechURL = null,
   }) {
     return _then(_value.copyWith(
-      speechID: speechID == freezed
+      speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
               as String,
-      speechOrder: speechOrder == freezed
+      speechOrder: null == speechOrder
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      speaker: speaker == freezed
+      speaker: null == speaker
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerYomi: speakerYomi == freezed
+      speakerYomi: null == speakerYomi
           ? _value.speakerYomi
           : speakerYomi // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerGroup: speakerGroup == freezed
+      speakerGroup: null == speakerGroup
           ? _value.speakerGroup
           : speakerGroup // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerPosition: speakerPosition == freezed
+      speakerPosition: null == speakerPosition
           ? _value.speakerPosition
           : speakerPosition // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerRole: speakerRole == freezed
+      speakerRole: null == speakerRole
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
               as String,
-      speech: speech == freezed
+      speech: null == speech
           ? _value.speech
           : speech // ignore: cast_nullable_to_non_nullable
               as String,
-      startPage: startPage == freezed
+      startPage: null == startPage
           ? _value.startPage
           : startPage // ignore: cast_nullable_to_non_nullable
               as int,
-      createTime: createTime == freezed
+      createTime: null == createTime
           ? _value.createTime
           : createTime // ignore: cast_nullable_to_non_nullable
               as String,
-      updateTime: updateTime == freezed
+      updateTime: null == updateTime
           ? _value.updateTime
           : updateTime // ignore: cast_nullable_to_non_nullable
               as String,
-      speechURL: speechURL == freezed
+      speechURL: null == speechURL
           ? _value.speechURL
           : speechURL // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -933,6 +946,7 @@ abstract class _$$_MeetingRecordDetailSpeechCopyWith<$Res>
           $Res Function(_$_MeetingRecordDetailSpeech) then) =
       __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String speechID,
       int speechOrder,
@@ -950,78 +964,76 @@ abstract class _$$_MeetingRecordDetailSpeechCopyWith<$Res>
 
 /// @nodoc
 class __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>
-    extends _$MeetingRecordDetailSpeechCopyWithImpl<$Res>
+    extends _$MeetingRecordDetailSpeechCopyWithImpl<$Res,
+        _$_MeetingRecordDetailSpeech>
     implements _$$_MeetingRecordDetailSpeechCopyWith<$Res> {
   __$$_MeetingRecordDetailSpeechCopyWithImpl(
       _$_MeetingRecordDetailSpeech _value,
       $Res Function(_$_MeetingRecordDetailSpeech) _then)
-      : super(_value, (v) => _then(v as _$_MeetingRecordDetailSpeech));
+      : super(_value, _then);
 
-  @override
-  _$_MeetingRecordDetailSpeech get _value =>
-      super._value as _$_MeetingRecordDetailSpeech;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? speechID = freezed,
-    Object? speechOrder = freezed,
-    Object? speaker = freezed,
-    Object? speakerYomi = freezed,
-    Object? speakerGroup = freezed,
-    Object? speakerPosition = freezed,
-    Object? speakerRole = freezed,
-    Object? speech = freezed,
-    Object? startPage = freezed,
-    Object? createTime = freezed,
-    Object? updateTime = freezed,
-    Object? speechURL = freezed,
+    Object? speechID = null,
+    Object? speechOrder = null,
+    Object? speaker = null,
+    Object? speakerYomi = null,
+    Object? speakerGroup = null,
+    Object? speakerPosition = null,
+    Object? speakerRole = null,
+    Object? speech = null,
+    Object? startPage = null,
+    Object? createTime = null,
+    Object? updateTime = null,
+    Object? speechURL = null,
   }) {
     return _then(_$_MeetingRecordDetailSpeech(
-      speechID: speechID == freezed
+      speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
               as String,
-      speechOrder: speechOrder == freezed
+      speechOrder: null == speechOrder
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      speaker: speaker == freezed
+      speaker: null == speaker
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerYomi: speakerYomi == freezed
+      speakerYomi: null == speakerYomi
           ? _value.speakerYomi
           : speakerYomi // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerGroup: speakerGroup == freezed
+      speakerGroup: null == speakerGroup
           ? _value.speakerGroup
           : speakerGroup // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerPosition: speakerPosition == freezed
+      speakerPosition: null == speakerPosition
           ? _value.speakerPosition
           : speakerPosition // ignore: cast_nullable_to_non_nullable
               as String,
-      speakerRole: speakerRole == freezed
+      speakerRole: null == speakerRole
           ? _value.speakerRole
           : speakerRole // ignore: cast_nullable_to_non_nullable
               as String,
-      speech: speech == freezed
+      speech: null == speech
           ? _value.speech
           : speech // ignore: cast_nullable_to_non_nullable
               as String,
-      startPage: startPage == freezed
+      startPage: null == startPage
           ? _value.startPage
           : startPage // ignore: cast_nullable_to_non_nullable
               as int,
-      createTime: createTime == freezed
+      createTime: null == createTime
           ? _value.createTime
           : createTime // ignore: cast_nullable_to_non_nullable
               as String,
-      updateTime: updateTime == freezed
+      updateTime: null == updateTime
           ? _value.updateTime
           : updateTime // ignore: cast_nullable_to_non_nullable
               as String,
-      speechURL: speechURL == freezed
+      speechURL: null == speechURL
           ? _value.speechURL
           : speechURL // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1132,46 +1144,50 @@ class _$_MeetingRecordDetailSpeech
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeetingRecordDetailSpeech &&
-            const DeepCollectionEquality().equals(other.speechID, speechID) &&
-            const DeepCollectionEquality()
-                .equals(other.speechOrder, speechOrder) &&
-            const DeepCollectionEquality().equals(other.speaker, speaker) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerYomi, speakerYomi) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerGroup, speakerGroup) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerPosition, speakerPosition) &&
-            const DeepCollectionEquality()
-                .equals(other.speakerRole, speakerRole) &&
-            const DeepCollectionEquality().equals(other.speech, speech) &&
-            const DeepCollectionEquality().equals(other.startPage, startPage) &&
-            const DeepCollectionEquality()
-                .equals(other.createTime, createTime) &&
-            const DeepCollectionEquality()
-                .equals(other.updateTime, updateTime) &&
-            const DeepCollectionEquality().equals(other.speechURL, speechURL));
+            (identical(other.speechID, speechID) ||
+                other.speechID == speechID) &&
+            (identical(other.speechOrder, speechOrder) ||
+                other.speechOrder == speechOrder) &&
+            (identical(other.speaker, speaker) || other.speaker == speaker) &&
+            (identical(other.speakerYomi, speakerYomi) ||
+                other.speakerYomi == speakerYomi) &&
+            (identical(other.speakerGroup, speakerGroup) ||
+                other.speakerGroup == speakerGroup) &&
+            (identical(other.speakerPosition, speakerPosition) ||
+                other.speakerPosition == speakerPosition) &&
+            (identical(other.speakerRole, speakerRole) ||
+                other.speakerRole == speakerRole) &&
+            (identical(other.speech, speech) || other.speech == speech) &&
+            (identical(other.startPage, startPage) ||
+                other.startPage == startPage) &&
+            (identical(other.createTime, createTime) ||
+                other.createTime == createTime) &&
+            (identical(other.updateTime, updateTime) ||
+                other.updateTime == updateTime) &&
+            (identical(other.speechURL, speechURL) ||
+                other.speechURL == speechURL));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(speechID),
-      const DeepCollectionEquality().hash(speechOrder),
-      const DeepCollectionEquality().hash(speaker),
-      const DeepCollectionEquality().hash(speakerYomi),
-      const DeepCollectionEquality().hash(speakerGroup),
-      const DeepCollectionEquality().hash(speakerPosition),
-      const DeepCollectionEquality().hash(speakerRole),
-      const DeepCollectionEquality().hash(speech),
-      const DeepCollectionEquality().hash(startPage),
-      const DeepCollectionEquality().hash(createTime),
-      const DeepCollectionEquality().hash(updateTime),
-      const DeepCollectionEquality().hash(speechURL));
+      speechID,
+      speechOrder,
+      speaker,
+      speakerYomi,
+      speakerGroup,
+      speakerPosition,
+      speakerRole,
+      speech,
+      startPage,
+      createTime,
+      updateTime,
+      speechURL);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeetingRecordDetailSpeechCopyWith<_$_MeetingRecordDetailSpeech>
       get copyWith => __$$_MeetingRecordDetailSpeechCopyWithImpl<
           _$_MeetingRecordDetailSpeech>(this, _$identity);
@@ -1290,7 +1306,9 @@ abstract class $MeetingRecordSummaryResponseCopyWith<$Res> {
   factory $MeetingRecordSummaryResponseCopyWith(
           MeetingRecordSummaryResponse value,
           $Res Function(MeetingRecordSummaryResponse) then) =
-      _$MeetingRecordSummaryResponseCopyWithImpl<$Res>;
+      _$MeetingRecordSummaryResponseCopyWithImpl<$Res,
+          MeetingRecordSummaryResponse>;
+  @useResult
   $Res call(
       {int numberOfRecords,
       int numberOfReturn,
@@ -1300,44 +1318,47 @@ abstract class $MeetingRecordSummaryResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MeetingRecordSummaryResponseCopyWithImpl<$Res>
+class _$MeetingRecordSummaryResponseCopyWithImpl<$Res,
+        $Val extends MeetingRecordSummaryResponse>
     implements $MeetingRecordSummaryResponseCopyWith<$Res> {
   _$MeetingRecordSummaryResponseCopyWithImpl(this._value, this._then);
 
-  final MeetingRecordSummaryResponse _value;
   // ignore: unused_field
-  final $Res Function(MeetingRecordSummaryResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? numberOfRecords = freezed,
-    Object? numberOfReturn = freezed,
-    Object? startRecord = freezed,
+    Object? numberOfRecords = null,
+    Object? numberOfReturn = null,
+    Object? startRecord = null,
     Object? nextRecordPosition = freezed,
-    Object? meetingRecord = freezed,
+    Object? meetingRecord = null,
   }) {
     return _then(_value.copyWith(
-      numberOfRecords: numberOfRecords == freezed
+      numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
               as int,
-      numberOfReturn: numberOfReturn == freezed
+      numberOfReturn: null == numberOfReturn
           ? _value.numberOfReturn
           : numberOfReturn // ignore: cast_nullable_to_non_nullable
               as int,
-      startRecord: startRecord == freezed
+      startRecord: null == startRecord
           ? _value.startRecord
           : startRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      nextRecordPosition: nextRecordPosition == freezed
+      nextRecordPosition: freezed == nextRecordPosition
           ? _value.nextRecordPosition
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
-      meetingRecord: meetingRecord == freezed
+      meetingRecord: null == meetingRecord
           ? _value.meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordSummary>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1349,6 +1370,7 @@ abstract class _$$_MeetingRecordSummaryResponseCopyWith<$Res>
           $Res Function(_$_MeetingRecordSummaryResponse) then) =
       __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int numberOfRecords,
       int numberOfReturn,
@@ -1359,43 +1381,41 @@ abstract class _$$_MeetingRecordSummaryResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>
-    extends _$MeetingRecordSummaryResponseCopyWithImpl<$Res>
+    extends _$MeetingRecordSummaryResponseCopyWithImpl<$Res,
+        _$_MeetingRecordSummaryResponse>
     implements _$$_MeetingRecordSummaryResponseCopyWith<$Res> {
   __$$_MeetingRecordSummaryResponseCopyWithImpl(
       _$_MeetingRecordSummaryResponse _value,
       $Res Function(_$_MeetingRecordSummaryResponse) _then)
-      : super(_value, (v) => _then(v as _$_MeetingRecordSummaryResponse));
+      : super(_value, _then);
 
-  @override
-  _$_MeetingRecordSummaryResponse get _value =>
-      super._value as _$_MeetingRecordSummaryResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? numberOfRecords = freezed,
-    Object? numberOfReturn = freezed,
-    Object? startRecord = freezed,
+    Object? numberOfRecords = null,
+    Object? numberOfReturn = null,
+    Object? startRecord = null,
     Object? nextRecordPosition = freezed,
-    Object? meetingRecord = freezed,
+    Object? meetingRecord = null,
   }) {
     return _then(_$_MeetingRecordSummaryResponse(
-      numberOfRecords: numberOfRecords == freezed
+      numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
               as int,
-      numberOfReturn: numberOfReturn == freezed
+      numberOfReturn: null == numberOfReturn
           ? _value.numberOfReturn
           : numberOfReturn // ignore: cast_nullable_to_non_nullable
               as int,
-      startRecord: startRecord == freezed
+      startRecord: null == startRecord
           ? _value.startRecord
           : startRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      nextRecordPosition: nextRecordPosition == freezed
+      nextRecordPosition: freezed == nextRecordPosition
           ? _value.nextRecordPosition
           : nextRecordPosition // ignore: cast_nullable_to_non_nullable
               as int?,
-      meetingRecord: meetingRecord == freezed
+      meetingRecord: null == meetingRecord
           ? _value._meetingRecord
           : meetingRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordSummary>,
@@ -1468,14 +1488,14 @@ class _$_MeetingRecordSummaryResponse
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeetingRecordSummaryResponse &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfRecords, numberOfRecords) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfReturn, numberOfReturn) &&
-            const DeepCollectionEquality()
-                .equals(other.startRecord, startRecord) &&
-            const DeepCollectionEquality()
-                .equals(other.nextRecordPosition, nextRecordPosition) &&
+            (identical(other.numberOfRecords, numberOfRecords) ||
+                other.numberOfRecords == numberOfRecords) &&
+            (identical(other.numberOfReturn, numberOfReturn) ||
+                other.numberOfReturn == numberOfReturn) &&
+            (identical(other.startRecord, startRecord) ||
+                other.startRecord == startRecord) &&
+            (identical(other.nextRecordPosition, nextRecordPosition) ||
+                other.nextRecordPosition == nextRecordPosition) &&
             const DeepCollectionEquality()
                 .equals(other._meetingRecord, _meetingRecord));
   }
@@ -1484,14 +1504,15 @@ class _$_MeetingRecordSummaryResponse
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(numberOfRecords),
-      const DeepCollectionEquality().hash(numberOfReturn),
-      const DeepCollectionEquality().hash(startRecord),
-      const DeepCollectionEquality().hash(nextRecordPosition),
+      numberOfRecords,
+      numberOfReturn,
+      startRecord,
+      nextRecordPosition,
       const DeepCollectionEquality().hash(_meetingRecord));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeetingRecordSummaryResponseCopyWith<_$_MeetingRecordSummaryResponse>
       get copyWith => __$$_MeetingRecordSummaryResponseCopyWithImpl<
           _$_MeetingRecordSummaryResponse>(this, _$identity);
@@ -1596,7 +1617,8 @@ mixin _$MeetingRecordSummary {
 abstract class $MeetingRecordSummaryCopyWith<$Res> {
   factory $MeetingRecordSummaryCopyWith(MeetingRecordSummary value,
           $Res Function(MeetingRecordSummary) then) =
-      _$MeetingRecordSummaryCopyWithImpl<$Res>;
+      _$MeetingRecordSummaryCopyWithImpl<$Res, MeetingRecordSummary>;
+  @useResult
   $Res call(
       {String issueID,
       String imageKind,
@@ -1613,79 +1635,82 @@ abstract class $MeetingRecordSummaryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MeetingRecordSummaryCopyWithImpl<$Res>
+class _$MeetingRecordSummaryCopyWithImpl<$Res,
+        $Val extends MeetingRecordSummary>
     implements $MeetingRecordSummaryCopyWith<$Res> {
   _$MeetingRecordSummaryCopyWithImpl(this._value, this._then);
 
-  final MeetingRecordSummary _value;
   // ignore: unused_field
-  final $Res Function(MeetingRecordSummary) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? issueID = freezed,
-    Object? imageKind = freezed,
-    Object? searchObject = freezed,
-    Object? session = freezed,
-    Object? nameOfHouse = freezed,
-    Object? nameOfMeeting = freezed,
-    Object? issue = freezed,
-    Object? date = freezed,
-    Object? closing = freezed,
-    Object? speechRecord = freezed,
-    Object? meetingURL = freezed,
-    Object? pdfURL = freezed,
+    Object? issueID = null,
+    Object? imageKind = null,
+    Object? searchObject = null,
+    Object? session = null,
+    Object? nameOfHouse = null,
+    Object? nameOfMeeting = null,
+    Object? issue = null,
+    Object? date = null,
+    Object? closing = null,
+    Object? speechRecord = null,
+    Object? meetingURL = null,
+    Object? pdfURL = null,
   }) {
     return _then(_value.copyWith(
-      issueID: issueID == freezed
+      issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
               as String,
-      imageKind: imageKind == freezed
+      imageKind: null == imageKind
           ? _value.imageKind
           : imageKind // ignore: cast_nullable_to_non_nullable
               as String,
-      searchObject: searchObject == freezed
+      searchObject: null == searchObject
           ? _value.searchObject
           : searchObject // ignore: cast_nullable_to_non_nullable
               as int,
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as int,
-      nameOfHouse: nameOfHouse == freezed
+      nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOfMeeting: nameOfMeeting == freezed
+      nameOfMeeting: null == nameOfMeeting
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
               as String,
-      issue: issue == freezed
+      issue: null == issue
           ? _value.issue
           : issue // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
+      closing: null == closing
           ? _value.closing
           : closing // ignore: cast_nullable_to_non_nullable
               as String,
-      speechRecord: speechRecord == freezed
+      speechRecord: null == speechRecord
           ? _value.speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordSummarySpeech>,
-      meetingURL: meetingURL == freezed
+      meetingURL: null == meetingURL
           ? _value.meetingURL
           : meetingURL // ignore: cast_nullable_to_non_nullable
               as String,
-      pdfURL: pdfURL == freezed
+      pdfURL: null == pdfURL
           ? _value.pdfURL
           : pdfURL // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1696,6 +1721,7 @@ abstract class _$$_MeetingRecordSummaryCopyWith<$Res>
           $Res Function(_$_MeetingRecordSummary) then) =
       __$$_MeetingRecordSummaryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String issueID,
       String imageKind,
@@ -1713,76 +1739,74 @@ abstract class _$$_MeetingRecordSummaryCopyWith<$Res>
 
 /// @nodoc
 class __$$_MeetingRecordSummaryCopyWithImpl<$Res>
-    extends _$MeetingRecordSummaryCopyWithImpl<$Res>
+    extends _$MeetingRecordSummaryCopyWithImpl<$Res, _$_MeetingRecordSummary>
     implements _$$_MeetingRecordSummaryCopyWith<$Res> {
   __$$_MeetingRecordSummaryCopyWithImpl(_$_MeetingRecordSummary _value,
       $Res Function(_$_MeetingRecordSummary) _then)
-      : super(_value, (v) => _then(v as _$_MeetingRecordSummary));
+      : super(_value, _then);
 
-  @override
-  _$_MeetingRecordSummary get _value => super._value as _$_MeetingRecordSummary;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? issueID = freezed,
-    Object? imageKind = freezed,
-    Object? searchObject = freezed,
-    Object? session = freezed,
-    Object? nameOfHouse = freezed,
-    Object? nameOfMeeting = freezed,
-    Object? issue = freezed,
-    Object? date = freezed,
-    Object? closing = freezed,
-    Object? speechRecord = freezed,
-    Object? meetingURL = freezed,
-    Object? pdfURL = freezed,
+    Object? issueID = null,
+    Object? imageKind = null,
+    Object? searchObject = null,
+    Object? session = null,
+    Object? nameOfHouse = null,
+    Object? nameOfMeeting = null,
+    Object? issue = null,
+    Object? date = null,
+    Object? closing = null,
+    Object? speechRecord = null,
+    Object? meetingURL = null,
+    Object? pdfURL = null,
   }) {
     return _then(_$_MeetingRecordSummary(
-      issueID: issueID == freezed
+      issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
               as String,
-      imageKind: imageKind == freezed
+      imageKind: null == imageKind
           ? _value.imageKind
           : imageKind // ignore: cast_nullable_to_non_nullable
               as String,
-      searchObject: searchObject == freezed
+      searchObject: null == searchObject
           ? _value.searchObject
           : searchObject // ignore: cast_nullable_to_non_nullable
               as int,
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as int,
-      nameOfHouse: nameOfHouse == freezed
+      nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOfMeeting: nameOfMeeting == freezed
+      nameOfMeeting: null == nameOfMeeting
           ? _value.nameOfMeeting
           : nameOfMeeting // ignore: cast_nullable_to_non_nullable
               as String,
-      issue: issue == freezed
+      issue: null == issue
           ? _value.issue
           : issue // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      closing: closing == freezed
+      closing: null == closing
           ? _value.closing
           : closing // ignore: cast_nullable_to_non_nullable
               as String,
-      speechRecord: speechRecord == freezed
+      speechRecord: null == speechRecord
           ? _value._speechRecord
           : speechRecord // ignore: cast_nullable_to_non_nullable
               as List<MeetingRecordSummarySpeech>,
-      meetingURL: meetingURL == freezed
+      meetingURL: null == meetingURL
           ? _value.meetingURL
           : meetingURL // ignore: cast_nullable_to_non_nullable
               as String,
-      pdfURL: pdfURL == freezed
+      pdfURL: null == pdfURL
           ? _value.pdfURL
           : pdfURL // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1899,44 +1923,46 @@ class _$_MeetingRecordSummary
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeetingRecordSummary &&
-            const DeepCollectionEquality().equals(other.issueID, issueID) &&
-            const DeepCollectionEquality().equals(other.imageKind, imageKind) &&
-            const DeepCollectionEquality()
-                .equals(other.searchObject, searchObject) &&
-            const DeepCollectionEquality().equals(other.session, session) &&
-            const DeepCollectionEquality()
-                .equals(other.nameOfHouse, nameOfHouse) &&
-            const DeepCollectionEquality()
-                .equals(other.nameOfMeeting, nameOfMeeting) &&
-            const DeepCollectionEquality().equals(other.issue, issue) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.closing, closing) &&
+            (identical(other.issueID, issueID) || other.issueID == issueID) &&
+            (identical(other.imageKind, imageKind) ||
+                other.imageKind == imageKind) &&
+            (identical(other.searchObject, searchObject) ||
+                other.searchObject == searchObject) &&
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.nameOfHouse, nameOfHouse) ||
+                other.nameOfHouse == nameOfHouse) &&
+            (identical(other.nameOfMeeting, nameOfMeeting) ||
+                other.nameOfMeeting == nameOfMeeting) &&
+            (identical(other.issue, issue) || other.issue == issue) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.closing, closing) || other.closing == closing) &&
             const DeepCollectionEquality()
                 .equals(other._speechRecord, _speechRecord) &&
-            const DeepCollectionEquality()
-                .equals(other.meetingURL, meetingURL) &&
-            const DeepCollectionEquality().equals(other.pdfURL, pdfURL));
+            (identical(other.meetingURL, meetingURL) ||
+                other.meetingURL == meetingURL) &&
+            (identical(other.pdfURL, pdfURL) || other.pdfURL == pdfURL));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(issueID),
-      const DeepCollectionEquality().hash(imageKind),
-      const DeepCollectionEquality().hash(searchObject),
-      const DeepCollectionEquality().hash(session),
-      const DeepCollectionEquality().hash(nameOfHouse),
-      const DeepCollectionEquality().hash(nameOfMeeting),
-      const DeepCollectionEquality().hash(issue),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(closing),
+      issueID,
+      imageKind,
+      searchObject,
+      session,
+      nameOfHouse,
+      nameOfMeeting,
+      issue,
+      date,
+      closing,
       const DeepCollectionEquality().hash(_speechRecord),
-      const DeepCollectionEquality().hash(meetingURL),
-      const DeepCollectionEquality().hash(pdfURL));
+      meetingURL,
+      pdfURL);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeetingRecordSummaryCopyWith<_$_MeetingRecordSummary> get copyWith =>
       __$$_MeetingRecordSummaryCopyWithImpl<_$_MeetingRecordSummary>(
           this, _$identity);
@@ -2050,45 +2076,50 @@ mixin _$MeetingRecordSummarySpeech {
 abstract class $MeetingRecordSummarySpeechCopyWith<$Res> {
   factory $MeetingRecordSummarySpeechCopyWith(MeetingRecordSummarySpeech value,
           $Res Function(MeetingRecordSummarySpeech) then) =
-      _$MeetingRecordSummarySpeechCopyWithImpl<$Res>;
+      _$MeetingRecordSummarySpeechCopyWithImpl<$Res,
+          MeetingRecordSummarySpeech>;
+  @useResult
   $Res call(
       {String speechID, int speechOrder, String speaker, String speechURL});
 }
 
 /// @nodoc
-class _$MeetingRecordSummarySpeechCopyWithImpl<$Res>
+class _$MeetingRecordSummarySpeechCopyWithImpl<$Res,
+        $Val extends MeetingRecordSummarySpeech>
     implements $MeetingRecordSummarySpeechCopyWith<$Res> {
   _$MeetingRecordSummarySpeechCopyWithImpl(this._value, this._then);
 
-  final MeetingRecordSummarySpeech _value;
   // ignore: unused_field
-  final $Res Function(MeetingRecordSummarySpeech) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? speechID = freezed,
-    Object? speechOrder = freezed,
-    Object? speaker = freezed,
-    Object? speechURL = freezed,
+    Object? speechID = null,
+    Object? speechOrder = null,
+    Object? speaker = null,
+    Object? speechURL = null,
   }) {
     return _then(_value.copyWith(
-      speechID: speechID == freezed
+      speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
               as String,
-      speechOrder: speechOrder == freezed
+      speechOrder: null == speechOrder
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      speaker: speaker == freezed
+      speaker: null == speaker
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
               as String,
-      speechURL: speechURL == freezed
+      speechURL: null == speechURL
           ? _value.speechURL
           : speechURL // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -2100,44 +2131,43 @@ abstract class _$$_MeetingRecordSummarySpeechCopyWith<$Res>
           $Res Function(_$_MeetingRecordSummarySpeech) then) =
       __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String speechID, int speechOrder, String speaker, String speechURL});
 }
 
 /// @nodoc
 class __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>
-    extends _$MeetingRecordSummarySpeechCopyWithImpl<$Res>
+    extends _$MeetingRecordSummarySpeechCopyWithImpl<$Res,
+        _$_MeetingRecordSummarySpeech>
     implements _$$_MeetingRecordSummarySpeechCopyWith<$Res> {
   __$$_MeetingRecordSummarySpeechCopyWithImpl(
       _$_MeetingRecordSummarySpeech _value,
       $Res Function(_$_MeetingRecordSummarySpeech) _then)
-      : super(_value, (v) => _then(v as _$_MeetingRecordSummarySpeech));
+      : super(_value, _then);
 
-  @override
-  _$_MeetingRecordSummarySpeech get _value =>
-      super._value as _$_MeetingRecordSummarySpeech;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? speechID = freezed,
-    Object? speechOrder = freezed,
-    Object? speaker = freezed,
-    Object? speechURL = freezed,
+    Object? speechID = null,
+    Object? speechOrder = null,
+    Object? speaker = null,
+    Object? speechURL = null,
   }) {
     return _then(_$_MeetingRecordSummarySpeech(
-      speechID: speechID == freezed
+      speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
               as String,
-      speechOrder: speechOrder == freezed
+      speechOrder: null == speechOrder
           ? _value.speechOrder
           : speechOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      speaker: speaker == freezed
+      speaker: null == speaker
           ? _value.speaker
           : speaker // ignore: cast_nullable_to_non_nullable
               as String,
-      speechURL: speechURL == freezed
+      speechURL: null == speechURL
           ? _value.speechURL
           : speechURL // ignore: cast_nullable_to_non_nullable
               as String,
@@ -2196,24 +2226,23 @@ class _$_MeetingRecordSummarySpeech
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeetingRecordSummarySpeech &&
-            const DeepCollectionEquality().equals(other.speechID, speechID) &&
-            const DeepCollectionEquality()
-                .equals(other.speechOrder, speechOrder) &&
-            const DeepCollectionEquality().equals(other.speaker, speaker) &&
-            const DeepCollectionEquality().equals(other.speechURL, speechURL));
+            (identical(other.speechID, speechID) ||
+                other.speechID == speechID) &&
+            (identical(other.speechOrder, speechOrder) ||
+                other.speechOrder == speechOrder) &&
+            (identical(other.speaker, speaker) || other.speaker == speaker) &&
+            (identical(other.speechURL, speechURL) ||
+                other.speechURL == speechURL));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(speechID),
-      const DeepCollectionEquality().hash(speechOrder),
-      const DeepCollectionEquality().hash(speaker),
-      const DeepCollectionEquality().hash(speechURL));
+  int get hashCode =>
+      Object.hash(runtimeType, speechID, speechOrder, speaker, speechURL);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeetingRecordSummarySpeechCopyWith<_$_MeetingRecordSummarySpeech>
       get copyWith => __$$_MeetingRecordSummarySpeechCopyWithImpl<
           _$_MeetingRecordSummarySpeech>(this, _$identity);
