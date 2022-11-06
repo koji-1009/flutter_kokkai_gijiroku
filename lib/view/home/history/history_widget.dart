@@ -1,12 +1,58 @@
-import 'package:flutter/cupertino.dart';
+import 'package:breakpoints_mq/breakpoints_mq.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
+import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
+import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
-class HistoryWidget extends StatelessWidget {
+class HistoryWidget extends ConsumerWidget {
   const HistoryWidget({
     super.key,
   });
 
+  DateFormat get _formatter => DateFormat.yMd().add_Hm();
+
   @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final margin = MediaQuery.of(context).breakpointMargin;
+    final box = ref.watch(searchHistoryBoxProvider);
+
+    return ValueListenableBuilder(
+      valueListenable: box.listenable(),
+      builder: (context, value, child) {
+        final histories = [...value.values];
+        return ListView.builder(
+          padding: EdgeInsets.symmetric(
+            horizontal: margin,
+            vertical: 16,
+          ),
+          itemBuilder: (context, index) {
+            final history = histories[index];
+            return Card(
+              child: ListTile(
+                title: Text('ワード: ${history.params.any}'),
+                subtitle: Text(
+                  _formatter.format(history.updatedAt),
+                ),
+                trailing: const IconButton(
+                  icon: Icon(Icons.more_vert),
+                  onPressed: null,
+                ),
+                onTap: () {
+                  context.pushNamed(
+                    SearchSpeechScreen.screenName,
+                    queryParams: history.params.query,
+                  );
+                },
+              ),
+            );
+          },
+          itemCount: histories.length,
+        );
+      },
+    );
   }
 }

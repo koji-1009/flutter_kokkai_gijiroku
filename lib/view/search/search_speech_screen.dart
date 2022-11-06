@@ -2,6 +2,7 @@ import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
@@ -14,12 +15,14 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 class SearchSpeechScreen extends HookConsumerWidget {
   const SearchSpeechScreen({
     super.key,
-    required this.params,
+    required this.query,
   });
 
   static String screenName = 'searchSpeech';
 
-  final Map<String, String> params;
+  final Map<String, String> query;
+
+  SearchParams get params => SearchParams.fromJson(query);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -108,10 +111,11 @@ class SearchSpeechScreen extends HookConsumerWidget {
                         onPressed: () {
                           context.pushNamed(
                             SearchSpeechScreen.screenName,
-                            queryParams: {
-                              ...params,
-                              'issueID': item.issueID,
-                            },
+                            queryParams: params
+                                .copyWith(
+                                  issueID: item.issueID,
+                                )
+                                .query,
                           );
 
                           Navigator.of(context).pop();
@@ -122,10 +126,11 @@ class SearchSpeechScreen extends HookConsumerWidget {
                         onPressed: () {
                           context.pushNamed(
                             SearchSpeechScreen.screenName,
-                            queryParams: {
-                              ...params,
-                              'speaker': item.speaker,
-                            },
+                            queryParams: params
+                                .copyWith(
+                                  speaker: item.speaker,
+                                )
+                                .query,
                           );
 
                           Navigator.of(context).pop();
@@ -136,10 +141,11 @@ class SearchSpeechScreen extends HookConsumerWidget {
                         onPressed: () {
                           context.pushNamed(
                             SearchSpeechScreen.screenName,
-                            queryParams: {
-                              ...params,
-                              'speaker_group': item.speakerGroup,
-                            },
+                            queryParams: params
+                                .copyWith(
+                                  speakerGroup: item.speakerGroup,
+                                )
+                                .query,
                           );
 
                           Navigator.of(context).pop();

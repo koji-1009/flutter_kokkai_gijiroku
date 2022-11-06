@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
@@ -15,12 +16,14 @@ import 'package:sticky_headers/sticky_headers.dart';
 class SearchMeetingSummaryScreen extends HookConsumerWidget {
   const SearchMeetingSummaryScreen({
     super.key,
-    required this.params,
+    required this.query,
   });
 
   static String screenName = 'searchMeetingSummary';
 
-  final Map<String, String> params;
+  final Map<String, String> query;
+
+  SearchParams get params => SearchParams.fromJson(query);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
