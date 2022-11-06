@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/view/router.dart';
+import 'package:flutter_kokkai_gijiroku/view/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class App extends ConsumerWidget {
@@ -21,28 +21,8 @@ class App extends ConsumerWidget {
       supportedLocales: const [
         Locale('ja'),
       ],
-      theme: () {
-        final base = ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: Colors.indigo,
-          brightness: Brightness.light,
-        );
-
-        return base.copyWith(
-          textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
-        );
-      }(),
-      darkTheme: () {
-        final base = ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: Colors.indigo,
-          brightness: Brightness.dark,
-        );
-
-        return base.copyWith(
-          textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
-        );
-      }(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,

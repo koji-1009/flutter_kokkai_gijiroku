@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/home_search_manager.dart';
+import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,7 +13,7 @@ class DateWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(homeStateProvider);
+    final state = ref.watch(searchStateProvider);
 
     return Column(
       children: [
@@ -26,7 +26,7 @@ class DateWidget extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  '検索開始日(開会日付)',
+                  '検索開始日',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const Spacer(),
@@ -50,10 +50,7 @@ class DateWidget extends ConsumerWidget {
               lastDate: now,
             );
 
-            final state = ref.read(homeStateProvider);
-            ref.read(homeStateProvider.notifier).state = state.copyWith(
-              from: selectDate,
-            );
+            ref.read(searchStateProvider.notifier).updateFrom(selectDate);
           },
         ),
         const SizedBox(
@@ -68,7 +65,7 @@ class DateWidget extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  '検索終了日(開会日付)',
+                  '検索終了日',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const Spacer(),
@@ -88,10 +85,7 @@ class DateWidget extends ConsumerWidget {
               lastDate: now,
             );
 
-            final state = ref.read(homeStateProvider);
-            ref.read(homeStateProvider.notifier).state = state.copyWith(
-              until: selectDate,
-            );
+            ref.read(searchStateProvider.notifier).updateUntil(selectDate);
           },
         ),
       ],

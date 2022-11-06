@@ -3,11 +3,11 @@ import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'home_state.freezed.dart';
+part 'search_state.freezed.dart';
 
 @freezed
-class HomeState with _$HomeState {
-  const factory HomeState({
+class SearchState with _$SearchState {
+  const factory SearchState({
     @Default(SearchMode.speech) SearchMode mode,
     @Default(NameOfHouse.none) NameOfHouse nameOfHouse,
     @Default('') String nameOfMeeting,
@@ -32,8 +32,12 @@ class HomeState with _$HomeState {
   }) = _HomeState;
 }
 
-extension HomeStateExt on HomeState {
-  SearchParams get params => SearchParams(
+extension SearchStateExt on SearchState {
+  SearchParams get simpleParams => SearchParams(
+        any: any,
+      );
+
+  SearchParams get fullParams => SearchParams(
         nameOfHouse: nameOfHouse,
         nameOfMeeting: nameOfMeeting,
         any: any,

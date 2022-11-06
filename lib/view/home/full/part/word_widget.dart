@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/home_search_manager.dart';
+import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class WordWidget extends ConsumerWidget {
+class WordWidget extends HookConsumerWidget {
   const WordWidget({
     super.key,
     required this.margin,
@@ -13,7 +14,12 @@ class WordWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(homeStateProvider);
+    final state = ref.watch(searchStateProvider);
+    final wordController = useTextEditingController.fromValue(
+      TextEditingValue(
+        text: state.any,
+      ),
+    );
 
     return Column(
       children: [
@@ -22,6 +28,7 @@ class WordWidget extends ConsumerWidget {
             horizontal: margin,
           ),
           child: TextField(
+            controller: wordController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
@@ -29,10 +36,7 @@ class WordWidget extends ConsumerWidget {
               labelText: '検索語',
             ),
             onChanged: (value) {
-              final state = ref.read(homeStateProvider);
-              ref.read(homeStateProvider.notifier).state = state.copyWith(
-                any: value,
-              );
+              ref.read(searchStateProvider.notifier).updateAny(value);
             },
           ),
         ),
@@ -47,21 +51,20 @@ class WordWidget extends ConsumerWidget {
             children: [
               const Text('検索対象'),
               const Spacer(),
-              DropdownButton<SearchRange>(
+              DropdownButton(
                 value: state.searchRange,
                 items: [
                   ...SearchRange.values.map(
-                    (e) => DropdownMenuItem<SearchRange>(
+                    (e) => DropdownMenuItem(
                       value: e,
                       child: Text(e.value),
                     ),
                   ),
                 ],
                 onChanged: (value) {
-                  final state = ref.read(homeStateProvider);
-                  ref.read(homeStateProvider.notifier).state = state.copyWith(
-                    searchRange: value ?? SearchRange.none,
-                  );
+                  ref
+                      .read(searchStateProvider.notifier)
+                      .updateSearchRange(value);
                 },
               ),
             ],
@@ -77,10 +80,9 @@ class WordWidget extends ConsumerWidget {
           ),
           value: state.supplementAndAppendix,
           onChanged: (value) {
-            final state = ref.read(homeStateProvider);
-            ref.read(homeStateProvider.notifier).state = state.copyWith(
-              supplementAndAppendix: value,
-            );
+            ref
+                .read(searchStateProvider.notifier)
+                .updateSupplementAndAppendix(value);
           },
         ),
         SwitchListTile(
@@ -90,10 +92,9 @@ class WordWidget extends ConsumerWidget {
           ),
           value: state.contentsAndIndex,
           onChanged: (value) {
-            final state = ref.read(homeStateProvider);
-            ref.read(homeStateProvider.notifier).state = state.copyWith(
-              contentsAndIndex: value,
-            );
+            ref
+                .read(searchStateProvider.notifier)
+                .updateContentsAndIndex(value);
           },
         ),
         SwitchListTile(
@@ -103,10 +104,7 @@ class WordWidget extends ConsumerWidget {
           ),
           value: state.closing,
           onChanged: (value) {
-            final state = ref.read(homeStateProvider);
-            ref.read(homeStateProvider.notifier).state = state.copyWith(
-              closing: value,
-            );
+            ref.read(searchStateProvider.notifier).updateClosing(value);
           },
         ),
       ],

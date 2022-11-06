@@ -1,13 +1,11 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_kokkai_gijiroku/model/entity/home_state.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
-import 'package:flutter_kokkai_gijiroku/presenter/home_search_manager.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/date_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/meeting_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/mode_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/speaker_widget.dart';
-import 'package:flutter_kokkai_gijiroku/view/home/part/word_widget.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_state.dart';
+import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/full/full_search_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/history/history_widget.dart';
+import 'package:flutter_kokkai_gijiroku/view/home/simple/simple_search_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
@@ -16,70 +14,63 @@ import 'package:flutter_kokkai_gijiroku/view/widget/home_app_bar_action.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-enum _Field {
-  mode,
-  date,
-  word,
-  meeting,
-  speaker,
+enum HomeMode {
+  simple('/', 'homeScreenSimple'),
+  full('/full', 'homeScreenFull'),
+  history('/history', 'homeScreenHistory');
+
+  final String path;
+  final String name;
+
+  const HomeMode(this.path, this.name);
 }
 
-class HomeScreen extends HookConsumerWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({
+    super.key,
+    required this.mode,
+  });
+
+  final HomeMode mode;
+
+  int get index => HomeMode.values.indexOf(mode);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final margin = MediaQuery.of(context).breakpointMargin;
+    final screenSize = MediaQuery.of(context).breakpointScreenSize;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('議事録検索'),
-        actions: const [
-          HomeAppBarAction(),
-        ],
-      ),
-      body: SafeArea(
-        child: ListView.separated(
-          padding: const EdgeInsets.only(
-            top: 16,
-            bottom: 80,
-          ),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 16,
-          ),
-          itemCount: _Field.values.length,
-          itemBuilder: (context, index) {
-            final field = _Field.values[index];
-            switch (field) {
-              case _Field.mode:
-                return ModeWidget(
-                  margin: margin,
-                );
-              case _Field.date:
-                return DateWidget(
-                  margin: margin,
-                );
-              case _Field.word:
-                return WordWidget(
-                  margin: margin,
-                );
-              case _Field.meeting:
-                return MeetingWidget(
-                  margin: margin,
-                );
-              case _Field.speaker:
-                return SpeakerWidget(
-                  margin: margin,
-                );
+    final Widget body;
+    final FloatingActionButton? actionButton;
+
+    switch (mode) {
+      case HomeMode.simple:
+        body = SimpleSearchWidget(
+          submitAction: () {
+            final state = ref.read(searchStateProvider);
+            final text = state.any;
+
+            if (text.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('検索語を入力してください'),
+                ),
+              );
+              return;
             }
+
+            context.pushNamed(
+              SearchSpeechScreen.screenName,
+              queryParams: {
+                'any': text,
+              },
+            );
           },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: const Text('検索'),
-        icon: const Icon(Icons.search_outlined),
-        onPressed: () {
-          final state = ref.read(homeStateProvider);
+        );
+        actionButton = null;
+        break;
+      case HomeMode.full:
+        action() {
+          final state = ref.read(searchStateProvider);
 
           if (state.from != null &&
               state.until != null &&
@@ -106,24 +97,124 @@ class HomeScreen extends HookConsumerWidget {
             case SearchMode.meetingDetail:
               context.pushNamed(
                 SearchMeetingDetailScreen.screenName,
-                queryParams: state.params.query,
+                queryParams: state.fullParams.query,
               );
               break;
             case SearchMode.meetingSummary:
               context.pushNamed(
                 SearchMeetingSummaryScreen.screenName,
-                queryParams: state.params.query,
+                queryParams: state.fullParams.query,
               );
               break;
             case SearchMode.speech:
               context.pushNamed(
                 SearchSpeechScreen.screenName,
-                queryParams: state.params.query,
+                queryParams: state.fullParams.query,
               );
               break;
           }
-        },
-      ),
-    );
+        }
+        body = const FullSearchWidget();
+        actionButton = FloatingActionButton.extended(
+          label: const Text('検索'),
+          icon: const Icon(Icons.search_outlined),
+          tooltip: '検索',
+          onPressed: action,
+        );
+        break;
+      case HomeMode.history:
+        body = const HistoryWidget();
+        actionButton = null;
+        break;
+    }
+
+    if (screenSize <= BreakpointScreenSize.extraSmall) {
+      /// smart phone
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('議事録検索'),
+          actions: const [
+            HomeAppBarAction(),
+          ],
+        ),
+        body: body,
+        floatingActionButton: actionButton,
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: '',
+              tooltip: 'キーワード検索',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.text_snippet),
+              label: '',
+              tooltip: '条件検索',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: '',
+              tooltip: '検索履歴',
+            ),
+          ],
+          currentIndex: index,
+          onTap: (index) {
+            _navigate(
+              context: context,
+              index: index,
+            );
+          },
+        ),
+      );
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('議事録検索'),
+          actions: const [
+            HomeAppBarAction(),
+          ],
+        ),
+        body: Row(
+          children: [
+            NavigationRail(
+              destinations: const [
+                NavigationRailDestination(
+                  icon: Icon(Icons.search),
+                  label: Text('キーワード検索'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.manage_search),
+                  label: Text('条件検索'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.history),
+                  label: Text('検索履歴'),
+                ),
+              ],
+              selectedIndex: index,
+              onDestinationSelected: (index) {
+                _navigate(
+                  context: context,
+                  index: index,
+                );
+              },
+            ),
+            Expanded(
+              child: body,
+            ),
+          ],
+        ),
+        floatingActionButton: actionButton,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      );
+    }
+  }
+
+  void _navigate({
+    required BuildContext context,
+    required int index,
+  }) {
+    final mode = HomeMode.values[index];
+    context.goNamed(mode.name);
   }
 }
