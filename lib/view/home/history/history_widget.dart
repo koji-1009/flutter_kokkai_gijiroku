@@ -59,10 +59,10 @@ class HistoryWidget extends ConsumerWidget {
                           SimpleDialogOption(
                             child: const Text('削除'),
                             onPressed: () {
-                              Navigator.of(context).pop();
-
                               // delete
                               box.delete(history.params.hashCode);
+
+                              Navigator.of(context).pop();
                             },
                           )
                         ],
