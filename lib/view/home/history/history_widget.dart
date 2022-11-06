@@ -24,6 +24,17 @@ class HistoryWidget extends ConsumerWidget {
       valueListenable: box.listenable(),
       builder: (context, value, child) {
         final histories = [...value.values];
+        if (histories.isEmpty) {
+          return Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: margin,
+                vertical: 16,
+              ),
+              child: const Text('検索履歴がありません'),
+            ),
+          );
+        }
         return ListView.builder(
           padding: EdgeInsets.symmetric(
             horizontal: margin,
