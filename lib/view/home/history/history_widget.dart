@@ -37,9 +37,27 @@ class HistoryWidget extends ConsumerWidget {
                 subtitle: Text(
                   _formatter.format(history.updatedAt),
                 ),
-                trailing: const IconButton(
-                  icon: Icon(Icons.more_vert),
-                  onPressed: null,
+                trailing: IconButton(
+                  icon: const Icon(Icons.more_vert),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => SimpleDialog(
+                        title: const Text('オプション'),
+                        children: [
+                          SimpleDialogOption(
+                            child: const Text('削除'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+
+                              // delete
+                              box.delete(history.params.hashCode);
+                            },
+                          )
+                        ],
+                      ),
+                    );
+                  },
                 ),
                 onTap: () {
                   context.pushNamed(
