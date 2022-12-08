@@ -39,6 +39,11 @@ dependencies:
   flutter_linkify: ^5.0.0
   sticky_headers: ^0.3.0
 
+  over_bottom_sheet:
+    git:
+      url: https://github.com/koji-1009/over_bottom_sheet.git
+      ref: main
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
