@@ -35,7 +35,7 @@ dependencies:
 
   google_fonts: ^3.0.0
   breakpoints_mq: ^2.0.0
-  infinite_scroll_pagination: ^3.0.0
+  paging_view: ^1.0.0
   flutter_linkify: ^5.0.0
   sticky_headers: ^0.3.0
 
