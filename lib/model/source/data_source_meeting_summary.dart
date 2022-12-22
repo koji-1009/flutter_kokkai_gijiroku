@@ -25,40 +25,34 @@ class DataSourceMeetingSummary extends DataSource<int, MeetingRecordSummary> {
   Future<LoadResult<int, MeetingRecordSummary>> load(
     LoadParams<int> params,
   ) async {
-    try {
-      return params.when(
-        refresh: () async {
-          final response = await repository.getMeetingSummary(
-            page: 1,
-            params: searchParams,
-          );
+    return params.when(
+      refresh: () async {
+        final response = await repository.getMeetingSummary(
+          page: 1,
+          params: searchParams,
+        );
 
-          return LoadResult.success(
-            page: PageData(
-              data: response.meetingRecord,
-              appendKey: response.nextRecordPosition,
-            ),
-          );
-        },
-        prepend: (pageKey) async => const LoadResult.none(),
-        append: (pageKey) async {
-          final response = await repository.getMeetingSummary(
-            page: pageKey,
-            params: searchParams,
-          );
+        return LoadResult.success(
+          page: PageData(
+            data: response.meetingRecord,
+            appendKey: response.nextRecordPosition,
+          ),
+        );
+      },
+      prepend: (pageKey) async => const LoadResult.none(),
+      append: (pageKey) async {
+        final response = await repository.getMeetingSummary(
+          page: pageKey,
+          params: searchParams,
+        );
 
-          return LoadResult.success(
-            page: PageData(
-              data: response.meetingRecord,
-              appendKey: response.nextRecordPosition,
-            ),
-          );
-        },
-      );
-    } on Exception catch (error) {
-      return LoadResult.failure(
-        e: error,
-      );
-    }
+        return LoadResult.success(
+          page: PageData(
+            data: response.meetingRecord,
+            appendKey: response.nextRecordPosition,
+          ),
+        );
+      },
+    );
   }
 }

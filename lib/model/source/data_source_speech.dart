@@ -25,40 +25,34 @@ class DataSourceSpeech extends DataSource<int, SpeechRecord> {
   Future<LoadResult<int, SpeechRecord>> load(
     LoadParams<int> params,
   ) async {
-    try {
-      return params.when(
-        refresh: () async {
-          final response = await repository.getSpeech(
-            page: 1,
-            params: searchParams,
-          );
+    return params.when(
+      refresh: () async {
+        final response = await repository.getSpeech(
+          page: 1,
+          params: searchParams,
+        );
 
-          return LoadResult.success(
-            page: PageData(
-              data: response.speechRecord,
-              appendKey: response.nextRecordPosition,
-            ),
-          );
-        },
-        prepend: (pageKey) async => const LoadResult.none(),
-        append: (pageKey) async {
-          final response = await repository.getSpeech(
-            page: pageKey,
-            params: searchParams,
-          );
+        return LoadResult.success(
+          page: PageData(
+            data: response.speechRecord,
+            appendKey: response.nextRecordPosition,
+          ),
+        );
+      },
+      prepend: (pageKey) async => const LoadResult.none(),
+      append: (pageKey) async {
+        final response = await repository.getSpeech(
+          page: pageKey,
+          params: searchParams,
+        );
 
-          return LoadResult.success(
-            page: PageData(
-              data: response.speechRecord,
-              appendKey: response.nextRecordPosition,
-            ),
-          );
-        },
-      );
-    } on Exception catch (error) {
-      return LoadResult.failure(
-        e: error,
-      );
-    }
+        return LoadResult.success(
+          page: PageData(
+            data: response.speechRecord,
+            appendKey: response.nextRecordPosition,
+          ),
+        );
+      },
+    );
   }
 }
