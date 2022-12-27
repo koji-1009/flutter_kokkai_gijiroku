@@ -1,6 +1,5 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
@@ -9,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class SpeechDetailScreen extends HookConsumerWidget {
+class SpeechDetailScreen extends ConsumerWidget {
   const SpeechDetailScreen({
     super.key,
     required this.speechID,
@@ -21,13 +20,7 @@ class SpeechDetailScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final request = useMemoized(
-      () => ref.watch(apiPresenterProvider).speech(
-            speechID: speechID,
-          ),
-      [speechID],
-    );
-    final speechResponse = useFuture(request);
+    final speechResponse = ref.watch(speechDetailProvider(speechID));
     if (speechResponse.hasError) {
       return Scaffold(
         appBar: AppBar(
@@ -41,7 +34,7 @@ class SpeechDetailScreen extends HookConsumerWidget {
       );
     }
 
-    final data = speechResponse.data?.speechRecord.first;
+    final data = speechResponse.value?.speechRecord.first;
     if (data == null) {
       return Scaffold(
         appBar: AppBar(

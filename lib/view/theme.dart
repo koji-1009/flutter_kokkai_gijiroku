@@ -10,6 +10,13 @@ ThemeData get lightTheme {
 
   return base.copyWith(
     textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
+    bottomSheetTheme: base.bottomSheetTheme.copyWith(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(32),
+        ),
+      ),
+    ),
   );
 }
 
@@ -22,5 +29,12 @@ ThemeData get darkTheme {
 
   return base.copyWith(
     textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
+    bottomSheetTheme: base.bottomSheetTheme.copyWith(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(32),
+        ),
+      ),
+    ),
   );
 }

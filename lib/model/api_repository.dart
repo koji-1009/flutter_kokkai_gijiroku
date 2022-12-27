@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_kokkai_gijiroku/model/api_config.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -24,11 +25,20 @@ class ApiRepository {
   final ApiConfig config;
 
   Future<MeetingRecordSummaryResponse> getMeetingSummary({
-    required Map<String, String> queryParameters,
+    required int page,
+    required SearchParams params,
     Duration cacheControl = const Duration(
       hours: 3,
     ),
   }) async {
+    final queryParameters = {
+      ...params.query,
+      ...{
+        'recordPacking': 'json',
+        'startRecord': '$page',
+        'maximumRecords': '20',
+      },
+    };
     final response = await HttpHiveCache.get(
       config.meetingSummaryUri.replace(
         queryParameters: queryParameters,
@@ -47,11 +57,21 @@ class ApiRepository {
   }
 
   Future<MeetingRecordDetailResponse> getMeetingDetail({
-    required Map<String, String> queryParameters,
+    required int page,
+    required SearchParams params,
     Duration cacheControl = const Duration(
       days: 3,
     ),
   }) async {
+    final queryParameters = {
+      ...params.query,
+      ...{
+        'recordPacking': 'json',
+        'startRecord': '$page',
+        'maximumRecords': '2',
+      },
+    };
+
     final response = await HttpHiveCache.get(
       config.meetingDetailUri.replace(
         queryParameters: queryParameters,
@@ -69,9 +89,73 @@ class ApiRepository {
     return MeetingRecordDetailResponse.fromJson(map);
   }
 
-  Future<SpeechRecordResponse> getSpeech({
-    required Map<String, String> queryParameters,
+  Future<SpeechRecordResponse> getSpeechBySpeechId({
+    required String speechID,
   }) async {
+    final queryParameters = {
+      'recordPacking': 'json',
+      'speechID': speechID,
+      'maximumRecords': '1',
+    };
+
+    final response = await HttpHiveCache.get(
+      config.meetingSpeechUri.replace(
+        queryParameters: queryParameters,
+      ),
+      strategy: const CacheStrategy.client(
+        cacheControl: Duration(days: 1),
+      ),
+    );
+
+    if (response.statusCode != 200) {
+      throw _error(response);
+    }
+
+    final map = json.decode(response.body);
+    return SpeechRecordResponse.fromJson(map);
+  }
+
+  Future<SpeechRecordResponse> getSpeechByIssueID({
+    required int page,
+    required String issueID,
+  }) async {
+    final queryParameters = {
+      'recordPacking': 'json',
+      'issueID': issueID,
+      'startRecord': '$page',
+      'maximumRecords': '20',
+    };
+
+    final response = await HttpHiveCache.get(
+      config.meetingSpeechUri.replace(
+        queryParameters: queryParameters,
+      ),
+      strategy: const CacheStrategy.client(
+        cacheControl: Duration(days: 1),
+      ),
+    );
+
+    if (response.statusCode != 200) {
+      throw _error(response);
+    }
+
+    final map = json.decode(response.body);
+    return SpeechRecordResponse.fromJson(map);
+  }
+
+  Future<SpeechRecordResponse> getSpeech({
+    required int page,
+    required SearchParams params,
+  }) async {
+    final queryParameters = {
+      ...params.query,
+      ...{
+        'recordPacking': 'json',
+        'startRecord': '$page',
+        'maximumRecords': '20',
+      },
+    };
+
     final response = await HttpHiveCache.get(
       config.meetingSpeechUri.replace(
         queryParameters: queryParameters,

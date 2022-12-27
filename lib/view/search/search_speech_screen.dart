@@ -1,94 +1,67 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
+import 'package:flutter_kokkai_gijiroku/model/source/data_source_speech.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
-import 'package:flutter_kokkai_gijiroku/utils/infinite_scroll_hooks.dart';
+import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
 import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_content.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_divider.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_options.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:over_bottom_sheet/over_bottom_sheet.dart';
+import 'package:paging_view/paging_view.dart';
 
-class SearchSpeechScreen extends HookConsumerWidget {
+class SearchSpeechScreen extends ConsumerWidget {
   const SearchSpeechScreen({
     super.key,
-    required this.query,
+    required this.params,
   });
 
   static String screenName = 'searchSpeech';
 
-  final Map<String, String> query;
-
-  SearchParams get params => SearchParams.fromJson(query);
+  final SearchParams params;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).breakpointMargin;
-    final title = useState('');
-
-    final controller = usePagingController<int, SpeechRecord>(
-      firstPageKey: 1,
-    );
-
-    controller.addPageRequestListener(
-      (pageKey) async {
-        try {
-          final response = await ref.read(apiPresenterProvider).speechList(
-                page: pageKey,
-                params: params,
-              );
-
-          title.value = '総結果件数: ${response.numberOfRecords}';
-          final newItems = response.speechRecord;
-          final nextPageKey = response.nextRecordPosition;
-          if (nextPageKey == null) {
-            controller.appendLastPage(newItems);
-          } else {
-            controller.appendPage(newItems, nextPageKey);
-          }
-        } on ApiExceptionError catch (error) {
-          controller.error = error.message;
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(error.message),
-            ),
-          );
-        } on Exception catch (error) {
-          controller.error = error;
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(error.toString()),
-            ),
-          );
-        }
-      },
-    );
+    final dataSource = ref.watch(dataSourceSpeechProvider(params));
+    final numberOfRecords = ref.watch(speechInfoProvider(params)).maybeWhen(
+          data: (data) => '$data',
+          orElse: () => '',
+        );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title.value),
+        title: Text(
+          SearchMode.speech.value,
+        ),
       ),
       body: SafeArea(
-        child: PagedListView<int, SpeechRecord>(
-          pagingController: controller,
-          builderDelegate: PagedChildBuilderDelegate(
-            itemBuilder: (_, item, __) => ListTile(
+        child: OverBottomSheet(
+          sizeOption: bottomSheetSizeOption,
+          header: const BottomSheetDivider(),
+          content: SearchResultBottomContent(
+            numberOfRecords: numberOfRecords,
+            params: params,
+          ),
+          child: PagingList<int, SpeechRecord>(
+            dataSource: dataSource,
+            builder: (context, element, index) => ListTile(
               contentPadding: EdgeInsets.symmetric(
                 horizontal: margin,
                 vertical: 8,
               ),
               title: Text(
-                '${item.speaker}, '
-                '${item.nameOfMeeting}, '
-                '${item.date.yMMMEd}',
+                '${element.speaker}, '
+                '${element.nameOfMeeting}, '
+                '${element.date.yMMMEd}',
               ),
               subtitle: Text(
-                item.speech,
+                element.speech,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -96,7 +69,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
                 context.pushNamed(
                   SpeechDetailScreen.screenName,
                   params: {
-                    'speechID': item.speechID,
+                    'speechID': element.speechID,
                   },
                 );
               },
@@ -113,7 +86,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
                             SearchSpeechScreen.screenName,
                             queryParams: params
                                 .copyWith(
-                                  issueID: item.issueID,
+                                  issueID: element.issueID,
                                 )
                                 .query,
                           );
@@ -128,7 +101,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
                             SearchSpeechScreen.screenName,
                             queryParams: params
                                 .copyWith(
-                                  speaker: item.speaker,
+                                  speaker: element.speaker,
                                 )
                                 .query,
                           );
@@ -143,7 +116,7 @@ class SearchSpeechScreen extends HookConsumerWidget {
                             SearchSpeechScreen.screenName,
                             queryParams: params
                                 .copyWith(
-                                  speakerGroup: item.speakerGroup,
+                                  speakerGroup: element.speakerGroup,
                                 )
                                 .query,
                           );
@@ -155,6 +128,18 @@ class SearchSpeechScreen extends HookConsumerWidget {
                   ),
                 );
               },
+            ),
+            initialLoadingWidget: const Center(
+              child: CircularProgressIndicator(),
+            ),
+            appendLoadingWidget: const Center(
+              child: CircularProgressIndicator(),
+            ),
+            errorBuilder: (context, e) => Center(
+              child: Text('$e'),
+            ),
+            emptyWidget: const Center(
+              child: Text('検索結果が見つかりませんでした。'),
             ),
           ),
         ),

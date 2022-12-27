@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/view/home/home_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_meeting_summary_screen.dart';
@@ -27,7 +28,7 @@ final routerProvider = Provider(
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: SearchMeetingDetailScreen(
-                query: state.queryParams,
+                params: SearchParams.fromJson(state.queryParams),
               ),
             ),
           ),
@@ -37,7 +38,7 @@ final routerProvider = Provider(
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: SearchMeetingSummaryScreen(
-                query: state.queryParams,
+                params: SearchParams.fromJson(state.queryParams),
               ),
             ),
           ),
@@ -47,7 +48,7 @@ final routerProvider = Provider(
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: SearchSpeechScreen(
-                query: state.queryParams,
+                params: SearchParams.fromJson(state.queryParams),
               ),
             ),
           ),
