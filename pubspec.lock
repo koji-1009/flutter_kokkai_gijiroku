@@ -425,7 +425,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: cd815bbff8c8ff5f21b1ceb58c103dcb5932dac4
+      resolved-ref: "85aa7b064494ce35291b26d92aa55fbd248a08c3"
       url: "https://github.com/koji-1009/over_bottom_sheet.git"
     source: git
     version: "0.0.1"
