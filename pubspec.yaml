@@ -34,11 +34,11 @@ dependencies:
   http_hive_cache: ^0.0.1
 
   google_fonts: ^3.0.0
+  quiver: ^3.0.0
   breakpoints_mq: ^2.0.0
   paging_view: ^1.0.0
   flutter_linkify: ^5.0.0
   sticky_headers: ^0.3.0
-
   over_bottom_sheet: ^0.0.1
 
 dev_dependencies:
