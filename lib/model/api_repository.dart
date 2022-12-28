@@ -11,7 +11,6 @@ import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_hive_cache/http_hive_cache.dart';
-import 'package:quiver/core.dart';
 import 'package:xml/xml.dart';
 
 final apiRepositoryProvider = Provider(
@@ -232,7 +231,6 @@ class ApiRepository {
       params: params,
     );
 
-    final key = hashObjects([params]);
-    await box.put(key, history);
+    await box.put(history.indexKey, history);
   }
 }

@@ -60,7 +60,7 @@ class HistoryWidget extends ConsumerWidget {
                             child: const Text('削除'),
                             onPressed: () {
                               // delete
-                              box.delete(history.params.hashCode);
+                              box.delete(history.indexKey);
 
                               Navigator.of(context).pop();
                             },
