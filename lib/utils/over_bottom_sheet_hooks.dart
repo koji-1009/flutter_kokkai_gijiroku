@@ -8,7 +8,7 @@ import 'package:over_bottom_sheet/over_bottom_sheet.dart';
 /// - [OverBottomSheetController]
 OverBottomSheetController useOverBottomSheetController({
   double ratio = 1.0,
-  Duration period = const Duration(
+  Duration tick = const Duration(
     milliseconds: 8,
   ),
   double step = 0.05,
@@ -17,7 +17,7 @@ OverBottomSheetController useOverBottomSheetController({
   return use(
     _OverBottomSheetControllerHook(
       ratio: ratio,
-      period: period,
+      tick: tick,
       step: step,
       keys: keys,
     ),
@@ -27,13 +27,13 @@ OverBottomSheetController useOverBottomSheetController({
 class _OverBottomSheetControllerHook extends Hook<OverBottomSheetController> {
   const _OverBottomSheetControllerHook({
     required this.ratio,
-    required this.period,
+    required this.tick,
     required this.step,
     List<Object?>? keys,
   }) : super(keys: keys);
 
   final double ratio;
-  final Duration period;
+  final Duration tick;
   final double step;
 
   @override
@@ -45,7 +45,7 @@ class _OverBottomSheetControllerHookState extends HookState<
     OverBottomSheetController, _OverBottomSheetControllerHook> {
   late final controller = OverBottomSheetController(
     ratio: hook.ratio,
-    period: hook.period,
+    tick: hook.tick,
     step: hook.step,
   );
 
