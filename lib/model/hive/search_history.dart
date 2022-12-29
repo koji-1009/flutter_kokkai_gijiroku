@@ -1,6 +1,7 @@
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quiver/core.dart';
 
 part 'search_history.g.dart';
 
@@ -33,4 +34,8 @@ class SearchHistory {
 
   @HiveField(3)
   SearchParams params;
+}
+
+extension SearchHistoryExt on SearchHistory {
+  int get indexKey => hashObjects([params]);
 }

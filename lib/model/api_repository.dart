@@ -6,6 +6,8 @@ import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
+import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
+import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_hive_cache/http_hive_cache.dart';
@@ -14,15 +16,18 @@ import 'package:xml/xml.dart';
 final apiRepositoryProvider = Provider(
   (ref) => ApiRepository(
     config: ref.watch(apiConfigProvider),
+    box: ref.watch(searchHistoryBoxProvider),
   ),
 );
 
 class ApiRepository {
   const ApiRepository({
     required this.config,
+    required this.box,
   });
 
   final ApiConfig config;
+  final Box<SearchHistory> box;
 
   Future<MeetingRecordSummaryResponse> getMeetingSummary({
     required int page,
@@ -31,6 +36,12 @@ class ApiRepository {
       hours: 3,
     ),
   }) async {
+    if (page == 1) {
+      await upsertHistory(
+        params: params,
+      );
+    }
+
     final queryParameters = {
       ...params.query,
       ...{
@@ -63,6 +74,12 @@ class ApiRepository {
       days: 3,
     ),
   }) async {
+    if (page == 1) {
+      await upsertHistory(
+        params: params,
+      );
+    }
+
     final queryParameters = {
       ...params.query,
       ...{
@@ -147,6 +164,12 @@ class ApiRepository {
     required int page,
     required SearchParams params,
   }) async {
+    if (page == 1) {
+      await upsertHistory(
+        params: params,
+      );
+    }
+
     final queryParameters = {
       ...params.query,
       ...{
@@ -199,5 +222,15 @@ class ApiRepository {
     }
 
     return const ApiException.other();
+  }
+
+  Future<void> upsertHistory({
+    required SearchParams params,
+  }) async {
+    final history = SearchHistory.create(
+      params: params,
+    );
+
+    await box.put(history.indexKey, history);
   }
 }
