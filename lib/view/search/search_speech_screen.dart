@@ -79,57 +79,60 @@ class SearchSpeechScreen extends ConsumerWidget {
                   builder: (context) => SimpleDialog(
                     title: const Text('詳しく見る'),
                     children: [
-                      SimpleDialogOption(
-                        child: const Text('この会議で絞り込み'),
-                        onPressed: () {
-                          context.pushNamed(
-                            SearchSpeechScreen.screenName,
-                            queryParams: {
-                              'q': params
-                                  .copyWith(
-                                    issueID: element.issueID,
-                                  )
-                                  .uriQuery,
-                            },
-                          );
+                      if (element.speechID.isNotEmpty)
+                        SimpleDialogOption(
+                          child: const Text('この会議で絞り込み'),
+                          onPressed: () {
+                            context.pushNamed(
+                              SearchSpeechScreen.screenName,
+                              queryParams: {
+                                'q': params
+                                    .copyWith(
+                                      issueID: element.issueID,
+                                    )
+                                    .uriQuery,
+                              },
+                            );
 
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      SimpleDialogOption(
-                        child: const Text('発言者で絞り込み'),
-                        onPressed: () {
-                          context.pushNamed(
-                            SearchSpeechScreen.screenName,
-                            queryParams: {
-                              'q': params
-                                  .copyWith(
-                                    speaker: element.speaker,
-                                  )
-                                  .uriQuery,
-                            },
-                          );
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      if (element.speaker.isNotEmpty)
+                        SimpleDialogOption(
+                          child: const Text('発言者で絞り込み'),
+                          onPressed: () {
+                            context.pushNamed(
+                              SearchSpeechScreen.screenName,
+                              queryParams: {
+                                'q': params
+                                    .copyWith(
+                                      speaker: element.speaker,
+                                    )
+                                    .uriQuery,
+                              },
+                            );
 
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      SimpleDialogOption(
-                        child: const Text('所属政党で絞り込み'),
-                        onPressed: () {
-                          context.pushNamed(
-                            SearchSpeechScreen.screenName,
-                            queryParams: {
-                              'q': params
-                                  .copyWith(
-                                    speakerGroup: element.speakerGroup,
-                                  )
-                                  .uriQuery,
-                            },
-                          );
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      if (element.speakerGroup.isNotEmpty)
+                        SimpleDialogOption(
+                          child: const Text('所属政党で絞り込み'),
+                          onPressed: () {
+                            context.pushNamed(
+                              SearchSpeechScreen.screenName,
+                              queryParams: {
+                                'q': params
+                                    .copyWith(
+                                      speakerGroup: element.speakerGroup,
+                                    )
+                                    .uriQuery,
+                              },
+                            );
 
-                          Navigator.of(context).pop();
-                        },
-                      ),
+                            Navigator.of(context).pop();
+                          },
+                        ),
                     ],
                   ),
                 );

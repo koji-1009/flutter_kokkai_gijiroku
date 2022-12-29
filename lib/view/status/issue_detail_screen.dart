@@ -26,10 +26,7 @@ class IssueDetailScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          issueID,
-          overflow: TextOverflow.ellipsis,
-        ),
+        title: const Text('会議録詳細'),
       ),
       body: SafeArea(
         child: PagingList<int, SpeechRecord>(

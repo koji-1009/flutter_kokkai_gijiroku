@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
@@ -224,9 +225,67 @@ class SearchParams with _$SearchParams {
 }
 
 extension SearchParamsExt on SearchParams {
-  String get uriQuery => Uri.encodeComponent(jsonEncode(toJson()));
+  get _minifyMap => {
+        if (nameOfHouse != NameOfHouse.none) 'nameOfHouse': nameOfHouse.name,
+        if (nameOfMeeting.isNotEmpty) 'nameOfMeeting': nameOfMeeting,
+        if (any.isNotEmpty) 'any': any,
+        if (speaker.isNotEmpty) 'speaker': speaker,
+        if (from != null) 'from': from!.localDate,
+        if (until != null) 'until': until!.localDate,
+        if (supplementAndAppendix) 'supplementAndAppendix': true,
+        if (contentsAndIndex) 'contentsAndIndex': true,
+        if (searchRange != SearchRange.none) 'SearchRange': searchRange.name,
+        if (closing) 'closing': true,
+        if (speechNumber != null) 'speechNumber': speechNumber,
+        if (speakerPosition.isNotEmpty) 'speakerPosition': speakerPosition,
+        if (speakerGroup.isNotEmpty) 'speakerGroup': speakerGroup,
+        if (speakerRole != SpeakerRole.none) 'speakerRole': speakerRole.name,
+        if (speechID.isNotEmpty) 'speechID': speechID,
+        if (issueID.isNotEmpty) 'issueID': issueID,
+        if (sessionFrom != null) 'sessionFrom': sessionFrom,
+        if (sessionTo != null) 'sessionTo': sessionTo,
+        if (issueFrom != null) 'issueFrom': issueFrom,
+        if (issueTo != null) 'issueTo': issueTo,
+      };
 
-  static SearchParams fromUriQuery(String? query) => query != null
-      ? SearchParams.fromJson(jsonDecode(Uri.decodeComponent(query)))
-      : const SearchParams();
+  String get uriQuery => Uri.encodeComponent(jsonEncode(_minifyMap));
+
+  static SearchParams fromUriQuery(String? query) {
+    if (query == null) {
+      return const SearchParams();
+    }
+
+    final json = jsonDecode(Uri.decodeComponent(query));
+    return SearchParams(
+      nameOfHouse: NameOfHouse.values.firstWhere(
+        (element) => element.name == json['nameOfHouse'],
+        orElse: () => NameOfHouse.none,
+      ),
+      nameOfMeeting: json['nameOfMeeting'] ?? '',
+      any: json['any'] ?? '',
+      speaker: json['speaker'] ?? '',
+      from: DateTime.tryParse(json['from'] ?? ''),
+      until: DateTime.tryParse(json['until'] ?? ''),
+      supplementAndAppendix: json['supplementAndAppendix'] == true,
+      contentsAndIndex: json['contentsAndIndex'] == true,
+      searchRange: SearchRange.values.firstWhere(
+        (element) => element.name == json['searchRange'],
+        orElse: () => SearchRange.none,
+      ),
+      closing: json['closing'] == true,
+      speechNumber: json['speechNumber'],
+      speakerPosition: json['speakerPosition'] ?? '',
+      speakerGroup: json['speakerGroup'] ?? '',
+      speakerRole: SpeakerRole.values.firstWhere(
+        (element) => element.name == json['speakerRole'],
+        orElse: () => SpeakerRole.none,
+      ),
+      speechID: json['speechID'] ?? '',
+      issueID: json['issueID'] ?? '',
+      sessionFrom: json['sessionFrom'],
+      sessionTo: json['sessionTo'],
+      issueFrom: json['issueFrom'],
+      issueTo: json['issueTo'],
+    );
+  }
 }

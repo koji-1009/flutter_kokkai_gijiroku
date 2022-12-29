@@ -24,7 +24,7 @@ class SpeechDetailScreen extends ConsumerWidget {
     if (speechResponse.hasError) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(speechID),
+          title: const Text('発言詳細'),
         ),
         body: Center(
           child: Text(
@@ -38,7 +38,7 @@ class SpeechDetailScreen extends ConsumerWidget {
     if (data == null) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(speechID),
+          title: const Text('発言詳細'),
         ),
         body: const Center(
           child: CircularProgressIndicator(),
@@ -50,7 +50,7 @@ class SpeechDetailScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(speechID),
+        title: const Text('発言詳細'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
