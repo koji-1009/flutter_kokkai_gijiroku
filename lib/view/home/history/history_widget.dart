@@ -54,26 +54,6 @@ class HistoryWidget extends ConsumerWidget {
                     },
                   );
                 },
-                onDoubleTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => SimpleDialog(
-                      title: const Text('オプション'),
-                      children: [
-                        SimpleDialogOption(
-                          child: const Text('削除'),
-                          onPressed: () async {
-                            // delete
-                            await box.delete(history.indexKey);
-
-                            // ignore: use_build_context_synchronously
-                            Navigator.of(context).pop();
-                          },
-                        )
-                      ],
-                    ),
-                  );
-                },
                 onLongPress: () {
                   showDialog(
                     context: context,
@@ -84,7 +64,7 @@ class HistoryWidget extends ConsumerWidget {
                           child: const Text('削除'),
                           onPressed: () async {
                             // delete
-                            await box.delete(history.indexKey);
+                            await box.deleteAt(index);
 
                             // ignore: use_build_context_synchronously
                             Navigator.of(context).pop();
