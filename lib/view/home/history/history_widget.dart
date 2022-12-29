@@ -1,8 +1,10 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/memo_result.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/memo_edit_dialog.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/search_params_list.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -54,53 +56,100 @@ class HistoryWidget extends ConsumerWidget {
                     },
                   );
                 },
-                onLongPress: () {
-                  showDialog(
+                onLongPress: () async {
+                  final result = await showDialog<MemoResult?>(
                     context: context,
-                    builder: (context) => SimpleDialog(
-                      title: const Text('オプション'),
-                      children: [
-                        SimpleDialogOption(
-                          child: const Text('削除'),
-                          onPressed: () async {
-                            // delete
-                            await box.deleteAt(index);
-
-                            // ignore: use_build_context_synchronously
-                            Navigator.of(context).pop();
-                          },
-                        )
-                      ],
+                    builder: (context) => MemoEditDialog(
+                      memo: history.memo,
                     ),
+                  );
+                  if (result == null) {
+                    return;
+                  }
+
+                  await result.when(
+                    (memo) async {
+                      final newHistory = SearchHistory(
+                        updatedAt: DateTime.now(),
+                        memo: memo,
+                        params: history.params,
+                      );
+                      await box.putAt(index, newHistory);
+                    },
+                    cancel: () {
+                      // nop
+                    },
                   );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Column(
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SearchParamsList(
-                        params: history.params,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        '検索日時',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      Text(
-                        _formatter.format(history.updatedAt),
-                      ),
-                      if (history.memo.isNotEmpty) ...[
-                        Text(
-                          'メモ',
-                          style: Theme.of(context).textTheme.titleMedium,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SearchParamsList(
+                              params: history.params,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              '検索日時',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              _formatter.format(history.updatedAt),
+                            ),
+                            if (history.memo.isNotEmpty) ...[
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'メモ',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              Text(
+                                history.memo,
+                              ),
+                            ],
+                          ],
                         ),
-                        Text(
-                          history.memo,
-                        ),
-                      ],
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('履歴の削除'),
+                              content: const Text('この操作は取り消せません。'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('キャンセル'),
+                                ),
+                                TextButton(
+                                  onPressed: () async {
+                                    Navigator.of(context).pop();
+
+                                    await box.deleteAt(index);
+                                  },
+                                  style: TextButton.styleFrom(
+                                    foregroundColor:
+                                        Theme.of(context).colorScheme.error,
+                                  ),
+                                  child: const Text('削除する'),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.delete_forever),
+                      ),
                     ],
                   ),
                 ),
