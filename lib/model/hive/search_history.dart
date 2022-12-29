@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -37,5 +39,5 @@ class SearchHistory {
 }
 
 extension SearchHistoryExt on SearchHistory {
-  int get indexKey => hashObjects([params]);
+  int get indexKey => hashObjects([jsonEncode(params.toJson())]);
 }
