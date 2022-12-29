@@ -7,6 +7,7 @@ import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
+import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -233,4 +234,29 @@ class ApiRepository {
 
     await box.put(history.indexKey, history);
   }
+}
+
+extension on SearchParams {
+  Map<String, String> get query => {
+        if (nameOfHouse != NameOfHouse.none) 'nameOfHouse': nameOfHouse.value,
+        if (nameOfMeeting.isNotEmpty) 'nameOfMeeting': nameOfMeeting,
+        if (any.isNotEmpty) 'any': any,
+        if (speaker.isNotEmpty) 'speaker': speaker,
+        if (from != null) 'from': from!.localDate,
+        if (until != null) 'until': until!.localDate,
+        if (supplementAndAppendix) 'supplementAndAppendix': 'true',
+        if (contentsAndIndex) 'contentsAndIndex': 'true',
+        if (searchRange != SearchRange.none) 'SearchRange': searchRange.value,
+        if (closing) 'closing': 'true',
+        if (speechNumber != null) 'speechNumber': '$speechNumber',
+        if (speakerPosition.isNotEmpty) 'speakerPosition': speakerPosition,
+        if (speakerGroup.isNotEmpty) 'speakerGroup': speakerGroup,
+        if (speakerRole != SpeakerRole.none) 'speakerRole': speakerRole.value,
+        if (speechID.isNotEmpty) 'speechID': speechID,
+        if (issueID.isNotEmpty) 'issueID': issueID,
+        if (sessionFrom != null) 'sessionFrom': '$sessionFrom',
+        if (sessionTo != null) 'sessionTo': '$sessionTo',
+        if (issueFrom != null) 'issueFrom': '$issueFrom',
+        if (issueTo != null) 'issueTo': '$issueTo',
+      };
 }

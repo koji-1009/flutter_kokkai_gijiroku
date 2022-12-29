@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/search_params_list.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -43,6 +44,7 @@ class HistoryWidget extends ConsumerWidget {
           itemBuilder: (context, index) {
             final history = histories[index];
             return Card(
+<<<<<<< Updated upstream
               child: ListTile(
                 title: Text('ワード: ${history.params.any}'),
                 subtitle: Text(
@@ -70,12 +72,88 @@ class HistoryWidget extends ConsumerWidget {
                     );
                   },
                 ),
+=======
+              clipBehavior: Clip.hardEdge,
+              child: InkWell(
+>>>>>>> Stashed changes
                 onTap: () {
                   context.pushNamed(
                     SearchSpeechScreen.screenName,
-                    queryParams: history.params.query,
+                    queryParams: {
+                      'q': history.params.uriQuery,
+                    },
                   );
                 },
+                onDoubleTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => SimpleDialog(
+                      title: const Text('オプション'),
+                      children: [
+                        SimpleDialogOption(
+                          child: const Text('削除'),
+                          onPressed: () async {
+                            // delete
+                            await box.delete(history.indexKey);
+
+                            // ignore: use_build_context_synchronously
+                            Navigator.of(context).pop();
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                },
+                onLongPress: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => SimpleDialog(
+                      title: const Text('オプション'),
+                      children: [
+                        SimpleDialogOption(
+                          child: const Text('削除'),
+                          onPressed: () async {
+                            // delete
+                            await box.delete(history.indexKey);
+
+                            // ignore: use_build_context_synchronously
+                            Navigator.of(context).pop();
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SearchParamsList(
+                        params: history.params,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        '検索日時',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      Text(
+                        _formatter.format(history.updatedAt),
+                      ),
+                      if (history.memo.isNotEmpty) ...[
+                        Text(
+                          'メモ',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          history.memo,
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
               ),
             );
           },
