@@ -1,8 +1,10 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/memo_result.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
 import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/widget/memo_edit_dialog.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/search_params_list.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -54,6 +56,31 @@ class HistoryWidget extends ConsumerWidget {
                     },
                   );
                 },
+                onLongPress: () async {
+                  final result = await showDialog<MemoResult?>(
+                    context: context,
+                    builder: (context) => MemoEditDialog(
+                      memo: history.memo,
+                    ),
+                  );
+                  if (result == null) {
+                    return;
+                  }
+
+                  await result.when(
+                    (memo) async {
+                      final newHistory = SearchHistory(
+                        updatedAt: DateTime.now(),
+                        memo: memo,
+                        params: history.params,
+                      );
+                      await box.putAt(index, newHistory);
+                    },
+                    cancel: () {
+                      // nop
+                    },
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Row(
@@ -77,6 +104,9 @@ class HistoryWidget extends ConsumerWidget {
                               _formatter.format(history.updatedAt),
                             ),
                             if (history.memo.isNotEmpty) ...[
+                              const SizedBox(
+                                height: 8,
+                              ),
                               Text(
                                 'メモ',
                                 style: Theme.of(context).textTheme.titleMedium,
