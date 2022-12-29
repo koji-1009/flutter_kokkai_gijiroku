@@ -44,38 +44,8 @@ class HistoryWidget extends ConsumerWidget {
           itemBuilder: (context, index) {
             final history = histories[index];
             return Card(
-<<<<<<< Updated upstream
-              child: ListTile(
-                title: Text('ワード: ${history.params.any}'),
-                subtitle: Text(
-                  _formatter.format(history.updatedAt),
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.more_vert),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => SimpleDialog(
-                        title: const Text('オプション'),
-                        children: [
-                          SimpleDialogOption(
-                            child: const Text('削除'),
-                            onPressed: () {
-                              // delete
-                              box.delete(history.indexKey);
-
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-=======
               clipBehavior: Clip.hardEdge,
               child: InkWell(
->>>>>>> Stashed changes
                 onTap: () {
                   context.pushNamed(
                     SearchSpeechScreen.screenName,
