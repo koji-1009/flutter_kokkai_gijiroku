@@ -28,7 +28,7 @@ final routerProvider = Provider(
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: SearchMeetingDetailScreen(
-                params: SearchParams.fromJson(state.queryParams),
+                params: SearchParamsExt.fromUriQuery(state.queryParams['q']),
               ),
             ),
           ),
@@ -38,7 +38,7 @@ final routerProvider = Provider(
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: SearchMeetingSummaryScreen(
-                params: SearchParams.fromJson(state.queryParams),
+                params: SearchParamsExt.fromUriQuery(state.queryParams['q']),
               ),
             ),
           ),
@@ -48,7 +48,7 @@ final routerProvider = Provider(
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: SearchSpeechScreen(
-                params: SearchParams.fromJson(state.queryParams),
+                params: SearchParamsExt.fromUriQuery(state.queryParams['q']),
               ),
             ),
           ),

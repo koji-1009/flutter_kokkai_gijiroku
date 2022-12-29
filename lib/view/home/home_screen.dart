@@ -61,7 +61,9 @@ class HomeScreen extends ConsumerWidget {
             context.pushNamed(
               SearchSpeechScreen.screenName,
               queryParams: {
-                'any': text,
+                'q': SearchParams(
+                  any: text,
+                ).uriQuery,
               },
             );
           },
@@ -97,19 +99,25 @@ class HomeScreen extends ConsumerWidget {
             case SearchMode.meetingDetail:
               context.pushNamed(
                 SearchMeetingDetailScreen.screenName,
-                queryParams: state.fullParams.query,
+                queryParams: {
+                  'q': state.fullParams.uriQuery,
+                },
               );
               break;
             case SearchMode.meetingSummary:
               context.pushNamed(
                 SearchMeetingSummaryScreen.screenName,
-                queryParams: state.fullParams.query,
+                queryParams: {
+                  'q': state.fullParams.uriQuery,
+                },
               );
               break;
             case SearchMode.speech:
               context.pushNamed(
                 SearchSpeechScreen.screenName,
-                queryParams: state.fullParams.query,
+                queryParams: {
+                  'q': state.fullParams.uriQuery,
+                },
               );
               break;
           }

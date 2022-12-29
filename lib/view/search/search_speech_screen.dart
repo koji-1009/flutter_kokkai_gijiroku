@@ -84,11 +84,13 @@ class SearchSpeechScreen extends ConsumerWidget {
                         onPressed: () {
                           context.pushNamed(
                             SearchSpeechScreen.screenName,
-                            queryParams: params
-                                .copyWith(
-                                  issueID: element.issueID,
-                                )
-                                .query,
+                            queryParams: {
+                              'q': params
+                                  .copyWith(
+                                    issueID: element.issueID,
+                                  )
+                                  .uriQuery,
+                            },
                           );
 
                           Navigator.of(context).pop();
@@ -99,11 +101,13 @@ class SearchSpeechScreen extends ConsumerWidget {
                         onPressed: () {
                           context.pushNamed(
                             SearchSpeechScreen.screenName,
-                            queryParams: params
-                                .copyWith(
-                                  speaker: element.speaker,
-                                )
-                                .query,
+                            queryParams: {
+                              'q': params
+                                  .copyWith(
+                                    speaker: element.speaker,
+                                  )
+                                  .uriQuery,
+                            },
                           );
 
                           Navigator.of(context).pop();
@@ -114,11 +118,13 @@ class SearchSpeechScreen extends ConsumerWidget {
                         onPressed: () {
                           context.pushNamed(
                             SearchSpeechScreen.screenName,
-                            queryParams: params
-                                .copyWith(
-                                  speakerGroup: element.speakerGroup,
-                                )
-                                .query,
+                            queryParams: {
+                              'q': params
+                                  .copyWith(
+                                    speakerGroup: element.speakerGroup,
+                                  )
+                                  .uriQuery,
+                            },
                           );
 
                           Navigator.of(context).pop();
