@@ -56,31 +56,6 @@ class HistoryWidget extends ConsumerWidget {
                     },
                   );
                 },
-                onLongPress: () async {
-                  final result = await showDialog<MemoResult?>(
-                    context: context,
-                    builder: (context) => MemoEditDialog(
-                      memo: history.memo,
-                    ),
-                  );
-                  if (result == null) {
-                    return;
-                  }
-
-                  await result.when(
-                    (memo) async {
-                      final newHistory = SearchHistory(
-                        updatedAt: DateTime.now(),
-                        memo: memo,
-                        params: history.params,
-                      );
-                      await box.putAt(index, newHistory);
-                    },
-                    cancel: () {
-                      // nop
-                    },
-                  );
-                },
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Row(
@@ -118,37 +93,74 @@ class HistoryWidget extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      IconButton(
-                        onPressed: () async {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: const Text('履歴の削除'),
-                              content: const Text('この操作は取り消せません。'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('キャンセル'),
+                      Column(
+                        children: [
+                          IconButton(
+                            tooltip: 'メモの編集',
+                            onPressed: () async {
+                              final result = await showDialog<MemoResult?>(
+                                context: context,
+                                builder: (context) => MemoEditDialog(
+                                  memo: history.memo,
                                 ),
-                                TextButton(
-                                  onPressed: () async {
-                                    Navigator.of(context).pop();
+                              );
+                              if (result == null) {
+                                return;
+                              }
 
-                                    await box.deleteAt(index);
-                                  },
-                                  style: TextButton.styleFrom(
-                                    foregroundColor:
-                                        Theme.of(context).colorScheme.error,
-                                  ),
-                                  child: const Text('削除する'),
+                              await result.when(
+                                (memo) async {
+                                  final newHistory = SearchHistory(
+                                    updatedAt: DateTime.now(),
+                                    memo: memo,
+                                    params: history.params,
+                                  );
+                                  await box.putAt(index, newHistory);
+                                },
+                                cancel: () {
+                                  // nop
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.edit),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          IconButton(
+                            tooltip: '履歴の削除',
+                            onPressed: () async {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: const Text('履歴の削除'),
+                                  content: const Text('この操作は取り消せません。'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('キャンセル'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        Navigator.of(context).pop();
+
+                                        await box.deleteAt(index);
+                                      },
+                                      style: TextButton.styleFrom(
+                                        foregroundColor:
+                                            Theme.of(context).colorScheme.error,
+                                      ),
+                                      child: const Text('削除する'),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.delete_forever),
+                              );
+                            },
+                            icon: const Icon(Icons.delete_forever),
+                          ),
+                        ],
                       ),
                     ],
                   ),
