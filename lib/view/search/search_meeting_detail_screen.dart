@@ -51,6 +51,7 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
             params: params,
           ),
           child: PagingList<int, MeetingRecordDetail>(
+            primary: true,
             dataSource: dataSource,
             builder: (context, element, index) => StickyHeader(
               header: Container(
@@ -69,6 +70,7 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
                 ),
               ),
               content: ListView.builder(
+                primary: false,
                 shrinkWrap: true,
                 itemBuilder: (context, i) {
                   final record = element.speechRecord[i];
