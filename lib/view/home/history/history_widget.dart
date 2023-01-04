@@ -124,6 +124,9 @@ class HistoryWidget extends ConsumerWidget {
                             },
                             icon: const Icon(Icons.edit),
                           ),
+                          const SizedBox(
+                            height: 8,
+                          ),
                           IconButton(
                             tooltip: '履歴の削除',
                             onPressed: () async {
