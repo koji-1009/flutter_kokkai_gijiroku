@@ -13,7 +13,7 @@ class DateWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(searchStateProvider);
+    final state = ref.watch(searchStateManagerProvider);
 
     return Column(
       children: [
@@ -50,7 +50,9 @@ class DateWidget extends ConsumerWidget {
               lastDate: now,
             );
 
-            ref.read(searchStateProvider.notifier).updateFrom(selectDate);
+            ref
+                .read(searchStateManagerProvider.notifier)
+                .updateFrom(selectDate);
           },
         ),
         const SizedBox(
@@ -85,7 +87,9 @@ class DateWidget extends ConsumerWidget {
               lastDate: now,
             );
 
-            ref.read(searchStateProvider.notifier).updateUntil(selectDate);
+            ref
+                .read(searchStateManagerProvider.notifier)
+                .updateUntil(selectDate);
           },
         ),
       ],

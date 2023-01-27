@@ -1,16 +1,20 @@
 import 'package:flutter_kokkai_gijiroku/model/api_repository.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:paging_view/paging_view.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final dataSourceMeetingDetailProvider =
-    Provider.family.autoDispose<DataSourceMeetingDetail, SearchParams>(
-  (ref, params) => DataSourceMeetingDetail(
-    repository: ref.watch(apiRepositoryProvider),
-    searchParams: params,
-  ),
-);
+part 'data_source_meeting_detail.g.dart';
+
+@riverpod
+DataSourceMeetingDetail dataSourceMeetingDetail(
+  DataSourceMeetingDetailRef ref, {
+  required SearchParams params,
+}) =>
+    DataSourceMeetingDetail(
+      repository: ref.watch(apiRepositoryProvider),
+      searchParams: params,
+    );
 
 class DataSourceMeetingDetail extends DataSource<int, MeetingRecordDetail> {
   DataSourceMeetingDetail({

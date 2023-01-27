@@ -21,7 +21,9 @@ class IssueDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).breakpointMargin;
     final dataSource = ref.watch(
-      dataSourceIssueProvider(issueID),
+      dataSourceIssueProvider(
+        issueID: issueID,
+      ),
     );
 
     return Scaffold(

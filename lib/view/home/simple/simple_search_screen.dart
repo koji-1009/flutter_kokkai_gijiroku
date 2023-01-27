@@ -14,7 +14,9 @@ class SimpleSearchWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final any = ref.watch(searchStateProvider.select((value) => value.any));
+    final any = ref.watch(
+      searchStateManagerProvider.select((value) => value.any),
+    );
     final wordController = useTextEditingController.fromValue(
       TextEditingValue(
         text: any,
@@ -27,7 +29,7 @@ class SimpleSearchWidget extends HookConsumerWidget {
           controller: wordController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
-          decoration:  InputDecoration(
+          decoration: InputDecoration(
             border: const OutlineInputBorder(),
             labelText: '検索語',
             suffixIcon: IconButton(
@@ -38,7 +40,7 @@ class SimpleSearchWidget extends HookConsumerWidget {
             ),
           ),
           onChanged: (value) {
-            ref.read(searchStateProvider.notifier).updateAny(value);
+            ref.read(searchStateManagerProvider.notifier).updateAny(value);
           },
           onEditingComplete: () {
             submitAction();

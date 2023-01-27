@@ -9,17 +9,21 @@ import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
 import 'package:hive/hive.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_hive_cache/http_hive_cache.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:xml/xml.dart';
 
-final apiRepositoryProvider = Provider(
-  (ref) => ApiRepository(
-    config: ref.watch(apiConfigProvider),
-    box: ref.watch(searchHistoryBoxProvider),
-  ),
-);
+part 'api_repository.g.dart';
+
+@riverpod
+ApiRepository apiRepository(
+  ApiRepositoryRef ref,
+) =>
+    ApiRepository(
+      config: ref.watch(apiConfigProvider),
+      box: ref.watch(searchHistoryBoxProvider),
+    );
 
 class ApiRepository {
   const ApiRepository({

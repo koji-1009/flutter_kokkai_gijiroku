@@ -46,7 +46,7 @@ class HomeScreen extends ConsumerWidget {
       case HomeMode.simple:
         body = SimpleSearchWidget(
           submitAction: () {
-            final state = ref.read(searchStateProvider);
+            final state = ref.read(searchStateManagerProvider);
             final text = state.any;
 
             if (text.isEmpty) {
@@ -72,7 +72,7 @@ class HomeScreen extends ConsumerWidget {
         break;
       case HomeMode.full:
         action() {
-          final state = ref.read(searchStateProvider);
+          final state = ref.read(searchStateManagerProvider);
 
           if (state.from != null &&
               state.until != null &&

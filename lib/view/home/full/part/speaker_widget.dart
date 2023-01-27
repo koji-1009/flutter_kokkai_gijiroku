@@ -14,7 +14,7 @@ class SpeakerWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(searchStateProvider);
+    final state = ref.watch(searchStateManagerProvider);
     final speakerController = useTextEditingController.fromValue(
       TextEditingValue(
         text: state.speaker,
@@ -46,7 +46,9 @@ class SpeakerWidget extends HookConsumerWidget {
               labelText: '発言者名',
             ),
             onChanged: (value) {
-              ref.read(searchStateProvider.notifier).updateSpeaker(value);
+              ref
+                  .read(searchStateManagerProvider.notifier)
+                  .updateSpeaker(value);
             },
           ),
           const SizedBox(
@@ -62,7 +64,7 @@ class SpeakerWidget extends HookConsumerWidget {
             ),
             onChanged: (value) {
               ref
-                  .read(searchStateProvider.notifier)
+                  .read(searchStateManagerProvider.notifier)
                   .updateSpeakerPosition(value);
             },
           ),
@@ -78,7 +80,9 @@ class SpeakerWidget extends HookConsumerWidget {
               labelText: '発言者所属会派',
             ),
             onChanged: (value) {
-              ref.read(searchStateProvider.notifier).updateSpeakerGroup(value);
+              ref
+                  .read(searchStateManagerProvider.notifier)
+                  .updateSpeakerGroup(value);
             },
           ),
           const SizedBox(
@@ -103,7 +107,7 @@ class SpeakerWidget extends HookConsumerWidget {
                 ],
                 onChanged: (value) {
                   ref
-                      .read(searchStateProvider.notifier)
+                      .read(searchStateManagerProvider.notifier)
                       .updateSpeakerRole(value);
                 },
               ),
