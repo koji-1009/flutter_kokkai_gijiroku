@@ -28,8 +28,18 @@ class SearchSpeechScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).breakpointMargin;
-    final dataSource = ref.watch(dataSourceSpeechProvider(params));
-    final numberOfRecords = ref.watch(speechInfoProvider(params)).maybeWhen(
+    final dataSource = ref.watch(
+      dataSourceSpeechProvider(
+        params: params,
+      ),
+    );
+    final numberOfRecords = ref
+        .watch(
+          speechInfoProvider(
+            params: params,
+          ),
+        )
+        .maybeWhen(
           data: (data) => '$data',
           orElse: () => '',
         );

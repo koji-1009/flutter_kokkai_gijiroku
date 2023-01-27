@@ -20,7 +20,11 @@ class SpeechDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final speechResponse = ref.watch(speechDetailProvider(speechID));
+    final speechResponse = ref.watch(
+      speechDetailProvider(
+        speechID: speechID,
+      ),
+    );
     if (speechResponse.hasError) {
       return Scaffold(
         appBar: AppBar(

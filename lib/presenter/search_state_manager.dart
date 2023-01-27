@@ -1,15 +1,18 @@
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_state.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final searchStateProvider =
-    StateNotifierProvider<SearchStateManager, SearchState>(
-  (_) => SearchStateManager(),
-);
+part 'search_state_manager.g.dart';
 
-class SearchStateManager extends StateNotifier<SearchState> {
-  SearchStateManager() : super(const SearchState());
+@riverpod
+class SearchStateManager extends _$SearchStateManager {
+  SearchStateManager();
+
+  @override
+  SearchState build() {
+    return const SearchState();
+  }
 
   void updateMode(SearchMode? value) {
     state = state.copyWith(

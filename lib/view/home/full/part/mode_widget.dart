@@ -13,7 +13,9 @@ class ModeWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mode = ref.watch(searchStateProvider.select((value) => value.mode));
+    final mode = ref.watch(
+      searchStateManagerProvider.select((value) => value.mode),
+    );
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -37,7 +39,7 @@ class ModeWidget extends ConsumerWidget {
               ),
             ],
             onChanged: (value) {
-              ref.read(searchStateProvider.notifier).updateMode(value);
+              ref.read(searchStateManagerProvider.notifier).updateMode(value);
             },
           ),
         ],

@@ -1,9 +1,13 @@
 import 'package:flutter/foundation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final apiConfigProvider = Provider(
-  (_) => const ApiConfig(),
-);
+part 'api_config.g.dart';
+
+@riverpod
+ApiConfig apiConfig(
+  ApiConfigRef ref,
+) =>
+    const ApiConfig();
 
 @immutable
 class ApiConfig {

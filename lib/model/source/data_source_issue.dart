@@ -1,15 +1,19 @@
 import 'package:flutter_kokkai_gijiroku/model/api_repository.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:paging_view/paging_view.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final dataSourceIssueProvider =
-    Provider.family.autoDispose<DataSourceIssue, String>(
-  (ref, issueID) => DataSourceIssue(
-    repository: ref.watch(apiRepositoryProvider),
-    issueID: issueID,
-  ),
-);
+part 'data_source_issue.g.dart';
+
+@riverpod
+DataSourceIssue dataSourceIssue(
+  DataSourceIssueRef ref, {
+  required String issueID,
+}) =>
+    DataSourceIssue(
+      repository: ref.watch(apiRepositoryProvider),
+      issueID: issueID,
+    );
 
 class DataSourceIssue extends DataSource<int, SpeechRecord> {
   DataSourceIssue({

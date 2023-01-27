@@ -14,7 +14,7 @@ class MeetingWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(searchStateProvider);
+    final state = ref.watch(searchStateManagerProvider);
     final meetingController = useTextEditingController.fromValue(
       TextEditingValue(
         text: state.nameOfMeeting,
@@ -36,7 +36,9 @@ class MeetingWidget extends HookConsumerWidget {
               labelText: '会議名',
             ),
             onChanged: (value) {
-              ref.read(searchStateProvider.notifier).updateNameOfMeeting(value);
+              ref
+                  .read(searchStateManagerProvider.notifier)
+                  .updateNameOfMeeting(value);
             },
           ),
           const SizedBox(
@@ -61,7 +63,7 @@ class MeetingWidget extends HookConsumerWidget {
                 ],
                 onChanged: (value) {
                   ref
-                      .read(searchStateProvider.notifier)
+                      .read(searchStateManagerProvider.notifier)
                       .updateNameOfHouse(value);
                 },
               ),

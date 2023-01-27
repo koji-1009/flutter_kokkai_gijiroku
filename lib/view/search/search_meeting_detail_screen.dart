@@ -29,12 +29,22 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).breakpointMargin;
-    final dataSource = ref.watch(dataSourceMeetingDetailProvider(params));
-    final numberOfRecords =
-        ref.watch(meetingDetailInfoProvider(params)).maybeWhen(
-              data: (data) => '$data',
-              orElse: () => '',
-            );
+
+    final dataSource = ref.watch(
+      dataSourceMeetingDetailProvider(
+        params: params,
+      ),
+    );
+    final numberOfRecords = ref
+        .watch(
+          meetingDetailInfoProvider(
+            params: params,
+          ),
+        )
+        .maybeWhen(
+          data: (data) => '$data',
+          orElse: () => '',
+        );
 
     return Scaffold(
       appBar: AppBar(

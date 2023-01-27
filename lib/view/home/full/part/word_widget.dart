@@ -14,7 +14,7 @@ class WordWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(searchStateProvider);
+    final state = ref.watch(searchStateManagerProvider);
     final wordController = useTextEditingController.fromValue(
       TextEditingValue(
         text: state.any,
@@ -36,7 +36,7 @@ class WordWidget extends HookConsumerWidget {
               labelText: '検索語',
             ),
             onChanged: (value) {
-              ref.read(searchStateProvider.notifier).updateAny(value);
+              ref.read(searchStateManagerProvider.notifier).updateAny(value);
             },
           ),
         ),
@@ -63,7 +63,7 @@ class WordWidget extends HookConsumerWidget {
                 ],
                 onChanged: (value) {
                   ref
-                      .read(searchStateProvider.notifier)
+                      .read(searchStateManagerProvider.notifier)
                       .updateSearchRange(value);
                 },
               ),
@@ -81,7 +81,7 @@ class WordWidget extends HookConsumerWidget {
           value: state.supplementAndAppendix,
           onChanged: (value) {
             ref
-                .read(searchStateProvider.notifier)
+                .read(searchStateManagerProvider.notifier)
                 .updateSupplementAndAppendix(value);
           },
         ),
@@ -93,7 +93,7 @@ class WordWidget extends HookConsumerWidget {
           value: state.contentsAndIndex,
           onChanged: (value) {
             ref
-                .read(searchStateProvider.notifier)
+                .read(searchStateManagerProvider.notifier)
                 .updateContentsAndIndex(value);
           },
         ),
@@ -104,7 +104,7 @@ class WordWidget extends HookConsumerWidget {
           ),
           value: state.closing,
           onChanged: (value) {
-            ref.read(searchStateProvider.notifier).updateClosing(value);
+            ref.read(searchStateManagerProvider.notifier).updateClosing(value);
           },
         ),
       ],
