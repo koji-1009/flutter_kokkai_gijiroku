@@ -6,7 +6,7 @@ part of 'api_presenter.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$speechDetailHash() => r'9d5bc9d9cef8a211105ce76fdec7c37f2cb29519';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,14 +29,57 @@ class _SystemHash {
   }
 }
 
-String _$speechDetailHash() => r'9d5bc9d9cef8a211105ce76fdec7c37f2cb29519';
+typedef SpeechDetailRef = AutoDisposeFutureProviderRef<SpeechRecordResponse>;
+
+/// See also [speechDetail].
+@ProviderFor(speechDetail)
+const speechDetailProvider = SpeechDetailFamily();
+
+/// See also [speechDetail].
+class SpeechDetailFamily extends Family<AsyncValue<SpeechRecordResponse>> {
+  /// See also [speechDetail].
+  const SpeechDetailFamily();
+
+  /// See also [speechDetail].
+  SpeechDetailProvider call({
+    required String speechID,
+  }) {
+    return SpeechDetailProvider(
+      speechID: speechID,
+    );
+  }
+
+  @override
+  SpeechDetailProvider getProviderOverride(
+    covariant SpeechDetailProvider provider,
+  ) {
+    return call(
+      speechID: provider.speechID,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'speechDetailProvider';
+}
 
 /// See also [speechDetail].
 class SpeechDetailProvider
     extends AutoDisposeFutureProvider<SpeechRecordResponse> {
+  /// See also [speechDetail].
   SpeechDetailProvider({
     required this.speechID,
-  }) : super(
+  }) : super.internal(
           (ref) => speechDetail(
             ref,
             speechID: speechID,
@@ -47,6 +90,9 @@ class SpeechDetailProvider
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$speechDetailHash,
+          dependencies: SpeechDetailFamily._dependencies,
+          allTransitiveDependencies:
+              SpeechDetailFamily._allTransitiveDependencies,
         );
 
   final String speechID;
@@ -65,48 +111,57 @@ class SpeechDetailProvider
   }
 }
 
-typedef SpeechDetailRef = AutoDisposeFutureProviderRef<SpeechRecordResponse>;
+String _$speechInfoHash() => r'513ae80f5fa28c0690f44be03b4b7566c18537a6';
+typedef SpeechInfoRef = AutoDisposeFutureProviderRef<int>;
 
-/// See also [speechDetail].
-final speechDetailProvider = SpeechDetailFamily();
+/// See also [speechInfo].
+@ProviderFor(speechInfo)
+const speechInfoProvider = SpeechInfoFamily();
 
-class SpeechDetailFamily extends Family<AsyncValue<SpeechRecordResponse>> {
-  SpeechDetailFamily();
+/// See also [speechInfo].
+class SpeechInfoFamily extends Family<AsyncValue<int>> {
+  /// See also [speechInfo].
+  const SpeechInfoFamily();
 
-  SpeechDetailProvider call({
-    required String speechID,
+  /// See also [speechInfo].
+  SpeechInfoProvider call({
+    required SearchParams params,
   }) {
-    return SpeechDetailProvider(
-      speechID: speechID,
+    return SpeechInfoProvider(
+      params: params,
     );
   }
 
   @override
-  AutoDisposeFutureProvider<SpeechRecordResponse> getProviderOverride(
-    covariant SpeechDetailProvider provider,
+  SpeechInfoProvider getProviderOverride(
+    covariant SpeechInfoProvider provider,
   ) {
     return call(
-      speechID: provider.speechID,
+      params: provider.params,
     );
   }
 
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
-  List<ProviderOrFamily>? get dependencies => null;
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  String? get name => r'speechDetailProvider';
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'speechInfoProvider';
 }
-
-String _$speechInfoHash() => r'513ae80f5fa28c0690f44be03b4b7566c18537a6';
 
 /// See also [speechInfo].
 class SpeechInfoProvider extends AutoDisposeFutureProvider<int> {
+  /// See also [speechInfo].
   SpeechInfoProvider({
     required this.params,
-  }) : super(
+  }) : super.internal(
           (ref) => speechInfo(
             ref,
             params: params,
@@ -117,6 +172,9 @@ class SpeechInfoProvider extends AutoDisposeFutureProvider<int> {
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$speechInfoHash,
+          dependencies: SpeechInfoFamily._dependencies,
+          allTransitiveDependencies:
+              SpeechInfoFamily._allTransitiveDependencies,
         );
 
   final SearchParams params;
@@ -135,49 +193,58 @@ class SpeechInfoProvider extends AutoDisposeFutureProvider<int> {
   }
 }
 
-typedef SpeechInfoRef = AutoDisposeFutureProviderRef<int>;
+String _$meetingSummaryInfoHash() =>
+    r'866b4282cb839190881b13a21f009b41f6c04aaa';
+typedef MeetingSummaryInfoRef = AutoDisposeFutureProviderRef<int>;
 
-/// See also [speechInfo].
-final speechInfoProvider = SpeechInfoFamily();
+/// See also [meetingSummaryInfo].
+@ProviderFor(meetingSummaryInfo)
+const meetingSummaryInfoProvider = MeetingSummaryInfoFamily();
 
-class SpeechInfoFamily extends Family<AsyncValue<int>> {
-  SpeechInfoFamily();
+/// See also [meetingSummaryInfo].
+class MeetingSummaryInfoFamily extends Family<AsyncValue<int>> {
+  /// See also [meetingSummaryInfo].
+  const MeetingSummaryInfoFamily();
 
-  SpeechInfoProvider call({
+  /// See also [meetingSummaryInfo].
+  MeetingSummaryInfoProvider call({
     required SearchParams params,
   }) {
-    return SpeechInfoProvider(
+    return MeetingSummaryInfoProvider(
       params: params,
     );
   }
 
   @override
-  AutoDisposeFutureProvider<int> getProviderOverride(
-    covariant SpeechInfoProvider provider,
+  MeetingSummaryInfoProvider getProviderOverride(
+    covariant MeetingSummaryInfoProvider provider,
   ) {
     return call(
       params: provider.params,
     );
   }
 
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
-  List<ProviderOrFamily>? get dependencies => null;
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  String? get name => r'speechInfoProvider';
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'meetingSummaryInfoProvider';
 }
-
-String _$meetingSummaryInfoHash() =>
-    r'866b4282cb839190881b13a21f009b41f6c04aaa';
 
 /// See also [meetingSummaryInfo].
 class MeetingSummaryInfoProvider extends AutoDisposeFutureProvider<int> {
+  /// See also [meetingSummaryInfo].
   MeetingSummaryInfoProvider({
     required this.params,
-  }) : super(
+  }) : super.internal(
           (ref) => meetingSummaryInfo(
             ref,
             params: params,
@@ -188,6 +255,9 @@ class MeetingSummaryInfoProvider extends AutoDisposeFutureProvider<int> {
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$meetingSummaryInfoHash,
+          dependencies: MeetingSummaryInfoFamily._dependencies,
+          allTransitiveDependencies:
+              MeetingSummaryInfoFamily._allTransitiveDependencies,
         );
 
   final SearchParams params;
@@ -206,48 +276,57 @@ class MeetingSummaryInfoProvider extends AutoDisposeFutureProvider<int> {
   }
 }
 
-typedef MeetingSummaryInfoRef = AutoDisposeFutureProviderRef<int>;
+String _$meetingDetailInfoHash() => r'7afa6fb418cc87d85dc458d2ecd12a1d7c8f36e9';
+typedef MeetingDetailInfoRef = AutoDisposeFutureProviderRef<int>;
 
-/// See also [meetingSummaryInfo].
-final meetingSummaryInfoProvider = MeetingSummaryInfoFamily();
+/// See also [meetingDetailInfo].
+@ProviderFor(meetingDetailInfo)
+const meetingDetailInfoProvider = MeetingDetailInfoFamily();
 
-class MeetingSummaryInfoFamily extends Family<AsyncValue<int>> {
-  MeetingSummaryInfoFamily();
+/// See also [meetingDetailInfo].
+class MeetingDetailInfoFamily extends Family<AsyncValue<int>> {
+  /// See also [meetingDetailInfo].
+  const MeetingDetailInfoFamily();
 
-  MeetingSummaryInfoProvider call({
+  /// See also [meetingDetailInfo].
+  MeetingDetailInfoProvider call({
     required SearchParams params,
   }) {
-    return MeetingSummaryInfoProvider(
+    return MeetingDetailInfoProvider(
       params: params,
     );
   }
 
   @override
-  AutoDisposeFutureProvider<int> getProviderOverride(
-    covariant MeetingSummaryInfoProvider provider,
+  MeetingDetailInfoProvider getProviderOverride(
+    covariant MeetingDetailInfoProvider provider,
   ) {
     return call(
       params: provider.params,
     );
   }
 
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
-  List<ProviderOrFamily>? get dependencies => null;
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  String? get name => r'meetingSummaryInfoProvider';
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'meetingDetailInfoProvider';
 }
-
-String _$meetingDetailInfoHash() => r'7afa6fb418cc87d85dc458d2ecd12a1d7c8f36e9';
 
 /// See also [meetingDetailInfo].
 class MeetingDetailInfoProvider extends AutoDisposeFutureProvider<int> {
+  /// See also [meetingDetailInfo].
   MeetingDetailInfoProvider({
     required this.params,
-  }) : super(
+  }) : super.internal(
           (ref) => meetingDetailInfo(
             ref,
             params: params,
@@ -258,6 +337,9 @@ class MeetingDetailInfoProvider extends AutoDisposeFutureProvider<int> {
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$meetingDetailInfoHash,
+          dependencies: MeetingDetailInfoFamily._dependencies,
+          allTransitiveDependencies:
+              MeetingDetailInfoFamily._allTransitiveDependencies,
         );
 
   final SearchParams params;
@@ -275,38 +357,4 @@ class MeetingDetailInfoProvider extends AutoDisposeFutureProvider<int> {
     return _SystemHash.finish(hash);
   }
 }
-
-typedef MeetingDetailInfoRef = AutoDisposeFutureProviderRef<int>;
-
-/// See also [meetingDetailInfo].
-final meetingDetailInfoProvider = MeetingDetailInfoFamily();
-
-class MeetingDetailInfoFamily extends Family<AsyncValue<int>> {
-  MeetingDetailInfoFamily();
-
-  MeetingDetailInfoProvider call({
-    required SearchParams params,
-  }) {
-    return MeetingDetailInfoProvider(
-      params: params,
-    );
-  }
-
-  @override
-  AutoDisposeFutureProvider<int> getProviderOverride(
-    covariant MeetingDetailInfoProvider provider,
-  ) {
-    return call(
-      params: provider.params,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'meetingDetailInfoProvider';
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

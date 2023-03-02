@@ -6,7 +6,7 @@ part of 'data_source_issue.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$dataSourceIssueHash() => r'ca3f644f49f66cb38f749dd8cc743242a2e06ec5';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,13 +29,56 @@ class _SystemHash {
   }
 }
 
-String _$dataSourceIssueHash() => r'ca3f644f49f66cb38f749dd8cc743242a2e06ec5';
+typedef DataSourceIssueRef = AutoDisposeProviderRef<DataSourceIssue>;
+
+/// See also [dataSourceIssue].
+@ProviderFor(dataSourceIssue)
+const dataSourceIssueProvider = DataSourceIssueFamily();
+
+/// See also [dataSourceIssue].
+class DataSourceIssueFamily extends Family<DataSourceIssue> {
+  /// See also [dataSourceIssue].
+  const DataSourceIssueFamily();
+
+  /// See also [dataSourceIssue].
+  DataSourceIssueProvider call({
+    required String issueID,
+  }) {
+    return DataSourceIssueProvider(
+      issueID: issueID,
+    );
+  }
+
+  @override
+  DataSourceIssueProvider getProviderOverride(
+    covariant DataSourceIssueProvider provider,
+  ) {
+    return call(
+      issueID: provider.issueID,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'dataSourceIssueProvider';
+}
 
 /// See also [dataSourceIssue].
 class DataSourceIssueProvider extends AutoDisposeProvider<DataSourceIssue> {
+  /// See also [dataSourceIssue].
   DataSourceIssueProvider({
     required this.issueID,
-  }) : super(
+  }) : super.internal(
           (ref) => dataSourceIssue(
             ref,
             issueID: issueID,
@@ -46,6 +89,9 @@ class DataSourceIssueProvider extends AutoDisposeProvider<DataSourceIssue> {
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$dataSourceIssueHash,
+          dependencies: DataSourceIssueFamily._dependencies,
+          allTransitiveDependencies:
+              DataSourceIssueFamily._allTransitiveDependencies,
         );
 
   final String issueID;
@@ -63,38 +109,4 @@ class DataSourceIssueProvider extends AutoDisposeProvider<DataSourceIssue> {
     return _SystemHash.finish(hash);
   }
 }
-
-typedef DataSourceIssueRef = AutoDisposeProviderRef<DataSourceIssue>;
-
-/// See also [dataSourceIssue].
-final dataSourceIssueProvider = DataSourceIssueFamily();
-
-class DataSourceIssueFamily extends Family<DataSourceIssue> {
-  DataSourceIssueFamily();
-
-  DataSourceIssueProvider call({
-    required String issueID,
-  }) {
-    return DataSourceIssueProvider(
-      issueID: issueID,
-    );
-  }
-
-  @override
-  AutoDisposeProvider<DataSourceIssue> getProviderOverride(
-    covariant DataSourceIssueProvider provider,
-  ) {
-    return call(
-      issueID: provider.issueID,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'dataSourceIssueProvider';
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

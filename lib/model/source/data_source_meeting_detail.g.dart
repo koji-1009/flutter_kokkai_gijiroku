@@ -6,7 +6,8 @@ part of 'data_source_meeting_detail.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$dataSourceMeetingDetailHash() =>
+    r'779305aa0979d1c2bf7eae7bc3f876c96c615426';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,15 +30,58 @@ class _SystemHash {
   }
 }
 
-String _$dataSourceMeetingDetailHash() =>
-    r'779305aa0979d1c2bf7eae7bc3f876c96c615426';
+typedef DataSourceMeetingDetailRef
+    = AutoDisposeProviderRef<DataSourceMeetingDetail>;
+
+/// See also [dataSourceMeetingDetail].
+@ProviderFor(dataSourceMeetingDetail)
+const dataSourceMeetingDetailProvider = DataSourceMeetingDetailFamily();
+
+/// See also [dataSourceMeetingDetail].
+class DataSourceMeetingDetailFamily extends Family<DataSourceMeetingDetail> {
+  /// See also [dataSourceMeetingDetail].
+  const DataSourceMeetingDetailFamily();
+
+  /// See also [dataSourceMeetingDetail].
+  DataSourceMeetingDetailProvider call({
+    required SearchParams params,
+  }) {
+    return DataSourceMeetingDetailProvider(
+      params: params,
+    );
+  }
+
+  @override
+  DataSourceMeetingDetailProvider getProviderOverride(
+    covariant DataSourceMeetingDetailProvider provider,
+  ) {
+    return call(
+      params: provider.params,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'dataSourceMeetingDetailProvider';
+}
 
 /// See also [dataSourceMeetingDetail].
 class DataSourceMeetingDetailProvider
     extends AutoDisposeProvider<DataSourceMeetingDetail> {
+  /// See also [dataSourceMeetingDetail].
   DataSourceMeetingDetailProvider({
     required this.params,
-  }) : super(
+  }) : super.internal(
           (ref) => dataSourceMeetingDetail(
             ref,
             params: params,
@@ -48,6 +92,9 @@ class DataSourceMeetingDetailProvider
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$dataSourceMeetingDetailHash,
+          dependencies: DataSourceMeetingDetailFamily._dependencies,
+          allTransitiveDependencies:
+              DataSourceMeetingDetailFamily._allTransitiveDependencies,
         );
 
   final SearchParams params;
@@ -65,39 +112,4 @@ class DataSourceMeetingDetailProvider
     return _SystemHash.finish(hash);
   }
 }
-
-typedef DataSourceMeetingDetailRef
-    = AutoDisposeProviderRef<DataSourceMeetingDetail>;
-
-/// See also [dataSourceMeetingDetail].
-final dataSourceMeetingDetailProvider = DataSourceMeetingDetailFamily();
-
-class DataSourceMeetingDetailFamily extends Family<DataSourceMeetingDetail> {
-  DataSourceMeetingDetailFamily();
-
-  DataSourceMeetingDetailProvider call({
-    required SearchParams params,
-  }) {
-    return DataSourceMeetingDetailProvider(
-      params: params,
-    );
-  }
-
-  @override
-  AutoDisposeProvider<DataSourceMeetingDetail> getProviderOverride(
-    covariant DataSourceMeetingDetailProvider provider,
-  ) {
-    return call(
-      params: provider.params,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'dataSourceMeetingDetailProvider';
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
