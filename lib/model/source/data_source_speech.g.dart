@@ -6,7 +6,7 @@ part of 'data_source_speech.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$dataSourceSpeechHash() => r'c99dd8d0df003aee6f8ac172fdfe904d9b663b99';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,13 +29,56 @@ class _SystemHash {
   }
 }
 
-String _$dataSourceSpeechHash() => r'c99dd8d0df003aee6f8ac172fdfe904d9b663b99';
+typedef DataSourceSpeechRef = AutoDisposeProviderRef<DataSourceSpeech>;
+
+/// See also [dataSourceSpeech].
+@ProviderFor(dataSourceSpeech)
+const dataSourceSpeechProvider = DataSourceSpeechFamily();
+
+/// See also [dataSourceSpeech].
+class DataSourceSpeechFamily extends Family<DataSourceSpeech> {
+  /// See also [dataSourceSpeech].
+  const DataSourceSpeechFamily();
+
+  /// See also [dataSourceSpeech].
+  DataSourceSpeechProvider call({
+    required SearchParams params,
+  }) {
+    return DataSourceSpeechProvider(
+      params: params,
+    );
+  }
+
+  @override
+  DataSourceSpeechProvider getProviderOverride(
+    covariant DataSourceSpeechProvider provider,
+  ) {
+    return call(
+      params: provider.params,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'dataSourceSpeechProvider';
+}
 
 /// See also [dataSourceSpeech].
 class DataSourceSpeechProvider extends AutoDisposeProvider<DataSourceSpeech> {
+  /// See also [dataSourceSpeech].
   DataSourceSpeechProvider({
     required this.params,
-  }) : super(
+  }) : super.internal(
           (ref) => dataSourceSpeech(
             ref,
             params: params,
@@ -46,6 +89,9 @@ class DataSourceSpeechProvider extends AutoDisposeProvider<DataSourceSpeech> {
               const bool.fromEnvironment('dart.vm.product')
                   ? null
                   : _$dataSourceSpeechHash,
+          dependencies: DataSourceSpeechFamily._dependencies,
+          allTransitiveDependencies:
+              DataSourceSpeechFamily._allTransitiveDependencies,
         );
 
   final SearchParams params;
@@ -63,38 +109,4 @@ class DataSourceSpeechProvider extends AutoDisposeProvider<DataSourceSpeech> {
     return _SystemHash.finish(hash);
   }
 }
-
-typedef DataSourceSpeechRef = AutoDisposeProviderRef<DataSourceSpeech>;
-
-/// See also [dataSourceSpeech].
-final dataSourceSpeechProvider = DataSourceSpeechFamily();
-
-class DataSourceSpeechFamily extends Family<DataSourceSpeech> {
-  DataSourceSpeechFamily();
-
-  DataSourceSpeechProvider call({
-    required SearchParams params,
-  }) {
-    return DataSourceSpeechProvider(
-      params: params,
-    );
-  }
-
-  @override
-  AutoDisposeProvider<DataSourceSpeech> getProviderOverride(
-    covariant DataSourceSpeechProvider provider,
-  ) {
-    return call(
-      params: provider.params,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'dataSourceSpeechProvider';
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
