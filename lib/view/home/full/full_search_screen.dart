@@ -16,9 +16,7 @@ enum _Field {
 }
 
 class FullSearchWidget extends ConsumerWidget {
-  const FullSearchWidget({
-    super.key,
-  });
+  const FullSearchWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -3,18 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/memo_result.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
-import 'package:flutter_kokkai_gijiroku/view/search/search_speech_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/memo_edit_dialog.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/search_params_list.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class HistoryWidget extends ConsumerWidget {
-  const HistoryWidget({
-    super.key,
-  });
+  const HistoryWidget({super.key});
 
   DateFormat get _formatter => DateFormat.yMd().add_Hm();
 
@@ -49,12 +46,9 @@ class HistoryWidget extends ConsumerWidget {
               clipBehavior: Clip.hardEdge,
               child: InkWell(
                 onTap: () {
-                  context.pushNamed(
-                    SearchSpeechScreen.screenName,
-                    queryParams: {
-                      'q': history.params.uriQuery,
-                    },
-                  );
+                  SearchSpeechRoute(
+                    q: history.params.uriQuery,
+                  ).push(context);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16),

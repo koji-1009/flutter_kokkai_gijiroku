@@ -5,12 +5,11 @@ import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/source/data_source_meeting_detail.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
+import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
-import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_content.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_divider.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_options.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:over_bottom_sheet/over_bottom_sheet.dart';
 import 'package:paging_view/paging_view.dart';
@@ -21,8 +20,6 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
     super.key,
     required this.params,
   });
-
-  static String screenName = 'searchMeetingDetail';
 
   final SearchParams params;
 
@@ -92,12 +89,9 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
                     title: Text(record.speaker),
                     subtitle: Text(record.speechID),
                     onTap: () {
-                      context.pushNamed(
-                        SpeechDetailScreen.screenName,
-                        params: {
-                          'speechID': record.speechID,
-                        },
-                      );
+                      SpeechDetailRoute(
+                        speechID: record.speechID,
+                      ).push(context);
                     },
                   );
                 },

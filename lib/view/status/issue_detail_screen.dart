@@ -2,8 +2,7 @@ import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/source/data_source_issue.dart';
-import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:paging_view/paging_view.dart';
 
@@ -12,8 +11,6 @@ class IssueDetailScreen extends ConsumerWidget {
     super.key,
     required this.issueID,
   });
-
-  static String screenName = 'statusIssue';
 
   final String issueID;
 
@@ -46,12 +43,9 @@ class IssueDetailScreen extends ConsumerWidget {
               ),
             ),
             onTap: () {
-              context.pushNamed(
-                SpeechDetailScreen.screenName,
-                params: {
-                  'speechID': element.speechID,
-                },
-              );
+              SpeechDetailRoute(
+                speechID: element.speechID,
+              ).go(context);
             },
           ),
           initialLoadingWidget: const Center(
