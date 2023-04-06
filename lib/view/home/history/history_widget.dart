@@ -11,9 +11,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class HistoryWidget extends ConsumerWidget {
-  const HistoryWidget({
-    super.key,
-  });
+  const HistoryWidget({super.key});
 
   DateFormat get _formatter => DateFormat.yMd().add_Hm();
 
