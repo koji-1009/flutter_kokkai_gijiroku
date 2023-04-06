@@ -2,9 +2,8 @@ import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
-import 'package:flutter_kokkai_gijiroku/view/status/issue_detail_screen.dart';
+import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -13,8 +12,6 @@ class SpeechDetailScreen extends ConsumerWidget {
     super.key,
     required this.speechID,
   });
-
-  static String screenName = 'statusSpeech';
 
   final String speechID;
 
@@ -103,12 +100,9 @@ class SpeechDetailScreen extends ConsumerWidget {
                     minimumSize: const Size.fromHeight(48),
                   ),
                   onPressed: () {
-                    context.pushNamed(
-                      IssueDetailScreen.screenName,
-                      params: {
-                        'issueID': data.issueID,
-                      },
-                    );
+                    IssueDetailRoute(
+                      issueID: data.issueID,
+                    ).push(context);
                   },
                   child: const Text('会議'),
                 ),

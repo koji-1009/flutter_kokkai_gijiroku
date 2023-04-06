@@ -5,12 +5,11 @@ import 'package:flutter_kokkai_gijiroku/model/entity/speech_record.dart';
 import 'package:flutter_kokkai_gijiroku/model/source/data_source_speech.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/api_presenter.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
+import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:flutter_kokkai_gijiroku/view/search_mode.dart';
-import 'package:flutter_kokkai_gijiroku/view/status/speech_detail_screen.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_content.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_divider.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/bottom_sheet_options.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:over_bottom_sheet/over_bottom_sheet.dart';
 import 'package:paging_view/paging_view.dart';
@@ -20,8 +19,6 @@ class SearchSpeechScreen extends ConsumerWidget {
     super.key,
     required this.params,
   });
-
-  static String screenName = 'searchSpeech';
 
   final SearchParams params;
 
@@ -76,12 +73,9 @@ class SearchSpeechScreen extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               onTap: () {
-                context.pushNamed(
-                  SpeechDetailScreen.screenName,
-                  params: {
-                    'speechID': element.speechID,
-                  },
-                );
+                SpeechDetailRoute(
+                  speechID: element.speechID,
+                ).push(context);
               },
               onLongPress: () {
                 showDialog(
@@ -93,54 +87,45 @@ class SearchSpeechScreen extends ConsumerWidget {
                         SimpleDialogOption(
                           child: const Text('この会議で絞り込み'),
                           onPressed: () {
-                            context.pushNamed(
-                              SearchSpeechScreen.screenName,
-                              queryParams: {
-                                'q': params
-                                    .copyWith(
-                                      issueID: element.issueID,
-                                    )
-                                    .uriQuery,
-                              },
-                            );
-
                             Navigator.of(context).pop();
+
+                            SearchSpeechRoute(
+                              q: params
+                                  .copyWith(
+                                    issueID: element.issueID,
+                                  )
+                                  .uriQuery,
+                            ).push(context);
                           },
                         ),
                       if (element.speaker.isNotEmpty)
                         SimpleDialogOption(
                           child: const Text('発言者で絞り込み'),
                           onPressed: () {
-                            context.pushNamed(
-                              SearchSpeechScreen.screenName,
-                              queryParams: {
-                                'q': params
-                                    .copyWith(
-                                      speaker: element.speaker,
-                                    )
-                                    .uriQuery,
-                              },
-                            );
-
                             Navigator.of(context).pop();
+
+                            SearchSpeechRoute(
+                              q: params
+                                  .copyWith(
+                                    speaker: element.speaker,
+                                  )
+                                  .uriQuery,
+                            ).push(context);
                           },
                         ),
                       if (element.speakerGroup.isNotEmpty)
                         SimpleDialogOption(
                           child: const Text('所属政党で絞り込み'),
                           onPressed: () {
-                            context.pushNamed(
-                              SearchSpeechScreen.screenName,
-                              queryParams: {
-                                'q': params
-                                    .copyWith(
-                                      speakerGroup: element.speakerGroup,
-                                    )
-                                    .uriQuery,
-                              },
-                            );
-
                             Navigator.of(context).pop();
+
+                            SearchSpeechRoute(
+                              q: params
+                                  .copyWith(
+                                    speakerGroup: element.speakerGroup,
+                                  )
+                                  .uriQuery,
+                            ).push(context);
                           },
                         ),
                     ],

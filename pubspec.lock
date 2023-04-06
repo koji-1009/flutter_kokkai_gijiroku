@@ -341,6 +341,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.5.5"
+  go_router_builder:
+    dependency: "direct dev"
+    description:
+      name: go_router_builder
+      sha256: d4006e511607d356f23b5dfc759473a25a641b49324174a662c9ba700a666985
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -597,6 +605,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
+  path_to_regexp:
+    dependency: transitive
+    description:
+      name: path_to_regexp
+      sha256: "169d78fbd55e61ea8873bcca545979f559d22238f66facdd7ef30870c7f53327"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   petitparser:
     dependency: transitive
     description:

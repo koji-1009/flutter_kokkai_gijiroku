@@ -1,16 +1,15 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
+import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SimpleSearchWidget extends HookConsumerWidget {
   const SimpleSearchWidget({
     super.key,
-    required this.submitAction,
   });
-
-  final VoidCallback submitAction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,7 +34,23 @@ class SimpleSearchWidget extends HookConsumerWidget {
             suffixIcon: IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
-                submitAction();
+                final state = ref.read(searchStateManagerProvider);
+                final text = state.any;
+
+                if (text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('検索語を入力してください'),
+                    ),
+                  );
+                  return;
+                }
+
+                SearchSpeechRoute(
+                  q: SearchParams(
+                    any: text,
+                  ).uriQuery,
+                ).push(context);
               },
             ),
           ),
@@ -43,7 +58,23 @@ class SimpleSearchWidget extends HookConsumerWidget {
             ref.read(searchStateManagerProvider.notifier).updateAny(value);
           },
           onEditingComplete: () {
-            submitAction();
+            final state = ref.read(searchStateManagerProvider);
+            final text = state.any;
+
+            if (text.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('検索語を入力してください'),
+                ),
+              );
+              return;
+            }
+
+            SearchSpeechRoute(
+              q: SearchParams(
+                any: text,
+              ).uriQuery,
+            ).push(context);
           },
         ),
       ),
