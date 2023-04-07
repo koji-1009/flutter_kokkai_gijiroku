@@ -11,6 +11,8 @@ class SimpleSearchWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final margin = MediaQuery.of(context).breakpointMargin;
+
     final any = ref.watch(
       searchStateManagerProvider.select((value) => value.any),
     );
@@ -39,7 +41,11 @@ class SimpleSearchWidget extends HookConsumerWidget {
       ).push(context);
     }
 
-    return BreakpointWidget(
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: margin,
+        vertical: 16,
+      ),
       child: Center(
         child: TextField(
           controller: wordController,

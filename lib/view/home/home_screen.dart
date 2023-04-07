@@ -101,7 +101,7 @@ class HomeScreen extends ConsumerWidget {
         break;
     }
 
-    if (screenSize <= BreakpointScreenSize.extraSmall) {
+    if (screenSize == BreakpointScreenSize.compact) {
       /// smart phone
       return Scaffold(
         appBar: AppBar(
