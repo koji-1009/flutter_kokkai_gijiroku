@@ -70,7 +70,7 @@ extension $SimpleRouteExtension on SimpleRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -91,7 +91,7 @@ extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -112,7 +112,7 @@ extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -132,7 +132,7 @@ extension $SearchSpeechRouteExtension on SearchSpeechRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -149,7 +149,7 @@ extension $SpeechDetailRouteExtension on SpeechDetailRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -166,7 +166,7 @@ extension $IssueDetailRouteExtension on IssueDetailRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -181,7 +181,7 @@ extension $FullRouteExtension on FullRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
@@ -196,7 +196,7 @@ extension $HistoryRouteExtension on HistoryRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
