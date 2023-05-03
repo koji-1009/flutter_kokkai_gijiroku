@@ -79,7 +79,7 @@ extension $SimpleRouteExtension on SimpleRoute {
 extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
   static SearchMeetingDetailRoute _fromState(GoRouterState state) =>
       SearchMeetingDetailRoute(
-        q: state.queryParams['q'] ?? '',
+        q: state.queryParameters['q'] ?? '',
       );
 
   String get location => GoRouteData.$location(
@@ -100,7 +100,7 @@ extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
 extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
   static SearchMeetingSummaryRoute _fromState(GoRouterState state) =>
       SearchMeetingSummaryRoute(
-        q: state.queryParams['q'] ?? '',
+        q: state.queryParameters['q'] ?? '',
       );
 
   String get location => GoRouteData.$location(
@@ -120,7 +120,7 @@ extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
 
 extension $SearchSpeechRouteExtension on SearchSpeechRoute {
   static SearchSpeechRoute _fromState(GoRouterState state) => SearchSpeechRoute(
-        q: state.queryParams['q'] ?? '',
+        q: state.queryParameters['q'] ?? '',
       );
 
   String get location => GoRouteData.$location(
@@ -140,7 +140,7 @@ extension $SearchSpeechRouteExtension on SearchSpeechRoute {
 
 extension $SpeechDetailRouteExtension on SpeechDetailRoute {
   static SpeechDetailRoute _fromState(GoRouterState state) => SpeechDetailRoute(
-        speechID: state.params['speechID']!,
+        speechID: state.pathParameters['speechID']!,
       );
 
   String get location => GoRouteData.$location(
@@ -157,7 +157,7 @@ extension $SpeechDetailRouteExtension on SpeechDetailRoute {
 
 extension $IssueDetailRouteExtension on IssueDetailRoute {
   static IssueDetailRoute _fromState(GoRouterState state) => IssueDetailRoute(
-        issueID: state.params['issueID']!,
+        issueID: state.pathParameters['issueID']!,
       );
 
   String get location => GoRouteData.$location(
