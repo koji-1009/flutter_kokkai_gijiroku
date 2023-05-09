@@ -124,7 +124,7 @@ class HistoryWidget extends ConsumerWidget {
                           IconButton(
                             tooltip: '履歴の削除',
                             onPressed: () async {
-                              showDialog(
+                              await showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
                                   title: const Text('履歴の削除'),

@@ -8,7 +8,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http_hive_cache/http_hive_cache.dart';
 
-Future<void> main() async {
+void main() async {
   LicenseRegistry.addLicense(() async* {
     yield const LicenseEntryWithLineBreaks(['google_fonts'], mPlus1License);
   });
