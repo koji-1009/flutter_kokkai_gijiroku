@@ -42,7 +42,7 @@ class HomeAppBarAction extends StatelessWidget {
       onSelected: (value) async {
         switch (value) {
           case _HomeAction.cache:
-            showDialog(
+            await showDialog(
               context: context,
               builder: (context) => const CacheClearDialog(),
             );
