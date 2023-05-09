@@ -112,26 +112,26 @@ class HomeScreen extends ConsumerWidget {
         ),
         body: child,
         floatingActionButton: actionButton,
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
+        bottomNavigationBar: NavigationBar(
+          destinations: const [
+            NavigationDestination(
               icon: Icon(Icons.search),
-              label: '',
+              label: 'キーワード',
               tooltip: 'キーワード検索',
             ),
-            BottomNavigationBarItem(
+            NavigationDestination(
               icon: Icon(Icons.text_snippet),
-              label: '',
+              label: '条件',
               tooltip: '条件検索',
             ),
-            BottomNavigationBarItem(
+            NavigationDestination(
               icon: Icon(Icons.history),
-              label: '',
+              label: '履歴',
               tooltip: '検索履歴',
             ),
           ],
-          currentIndex: index,
-          onTap: (index) {
+          selectedIndex: index,
+          onDestinationSelected: (index) {
             _navigate(
               context: context,
               index: index,
