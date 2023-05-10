@@ -16,7 +16,7 @@ DataSourceSpeech dataSourceSpeech(
       searchParams: params,
     );
 
-class DataSourceSpeech extends DataSource<int, SpeechRecord> {
+final class DataSourceSpeech extends DataSource<int, SpeechRecord> {
   DataSourceSpeech({
     required this.repository,
     required this.searchParams,
@@ -27,36 +27,35 @@ class DataSourceSpeech extends DataSource<int, SpeechRecord> {
 
   @override
   Future<LoadResult<int, SpeechRecord>> load(
-    LoadParams<int> params,
+    LoadAction<int> action,
   ) async {
-    return params.when(
-      refresh: () async {
+    switch (action) {
+      case Refresh():
         final response = await repository.getSpeech(
           page: 1,
           params: searchParams,
         );
 
-        return LoadResult.success(
+        return Success(
           page: PageData(
             data: response.speechRecord,
             appendKey: response.nextRecordPosition,
           ),
         );
-      },
-      prepend: (pageKey) async => const LoadResult.none(),
-      append: (pageKey) async {
+      case Prepend(key: _):
+        return const None();
+      case Append(key: int pageKey):
         final response = await repository.getSpeech(
           page: pageKey,
           params: searchParams,
         );
 
-        return LoadResult.success(
+        return Success(
           page: PageData(
             data: response.speechRecord,
             appendKey: response.nextRecordPosition,
           ),
         );
-      },
-    );
+    }
   }
 }

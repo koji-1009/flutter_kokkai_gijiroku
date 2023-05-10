@@ -15,7 +15,7 @@ DataSourceIssue dataSourceIssue(
       issueID: issueID,
     );
 
-class DataSourceIssue extends DataSource<int, SpeechRecord> {
+final class DataSourceIssue extends DataSource<int, SpeechRecord> {
   DataSourceIssue({
     required this.repository,
     required this.issueID,
@@ -25,37 +25,34 @@ class DataSourceIssue extends DataSource<int, SpeechRecord> {
   final String issueID;
 
   @override
-  Future<LoadResult<int, SpeechRecord>> load(
-    LoadParams<int> params,
-  ) async {
-    return params.when(
-      refresh: () async {
+  Future<LoadResult<int, SpeechRecord>> load(LoadAction<int> action) async {
+    switch (action) {
+      case Refresh():
         final response = await repository.getSpeechByIssueID(
           page: 1,
           issueID: issueID,
         );
 
-        return LoadResult.success(
+        return Success(
           page: PageData(
             data: response.speechRecord,
             appendKey: response.nextRecordPosition,
           ),
         );
-      },
-      prepend: (pageKey) async => const LoadResult.none(),
-      append: (pageKey) async {
+      case Prepend(key: _):
+        return const None();
+      case Append(key: int pageKey):
         final response = await repository.getSpeechByIssueID(
           page: pageKey,
           issueID: issueID,
         );
 
-        return LoadResult.success(
+        return Success(
           page: PageData(
             data: response.speechRecord,
             appendKey: response.nextRecordPosition,
           ),
         );
-      },
-    );
+    }
   }
 }
