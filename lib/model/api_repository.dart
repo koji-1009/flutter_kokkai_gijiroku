@@ -218,7 +218,7 @@ class ApiRepository {
           final messageList = document.findAllElements('message').first;
 
           return ApiExceptionError(
-            message: messageList.nodes.first.text,
+            message: messageList.nodes.first.innerText,
           );
         } on Exception catch (e) {
           debugPrint(e.toString());

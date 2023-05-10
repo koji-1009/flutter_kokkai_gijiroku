@@ -16,7 +16,8 @@ DataSourceMeetingSummary dataSourceMeetingSummary(
       searchParams: params,
     );
 
-class DataSourceMeetingSummary extends DataSource<int, MeetingRecordSummary> {
+final class DataSourceMeetingSummary
+    extends DataSource<int, MeetingRecordSummary> {
   DataSourceMeetingSummary({
     required this.repository,
     required this.searchParams,
@@ -27,36 +28,35 @@ class DataSourceMeetingSummary extends DataSource<int, MeetingRecordSummary> {
 
   @override
   Future<LoadResult<int, MeetingRecordSummary>> load(
-    LoadParams<int> params,
+    LoadAction<int> action,
   ) async {
-    return params.when(
-      refresh: () async {
+    switch (action) {
+      case Refresh():
         final response = await repository.getMeetingSummary(
           page: 1,
           params: searchParams,
         );
 
-        return LoadResult.success(
+        return Success(
           page: PageData(
             data: response.meetingRecord,
             appendKey: response.nextRecordPosition,
           ),
         );
-      },
-      prepend: (pageKey) async => const LoadResult.none(),
-      append: (pageKey) async {
+      case Prepend(key: _):
+        return const None();
+      case Append(key: int pageKey):
         final response = await repository.getMeetingSummary(
           page: pageKey,
           params: searchParams,
         );
 
-        return LoadResult.success(
+        return Success(
           page: PageData(
             data: response.meetingRecord,
             appendKey: response.nextRecordPosition,
           ),
         );
-      },
-    );
+    }
   }
 }
