@@ -141,6 +141,7 @@ class HomeScreen extends ConsumerWidget {
       );
     }
 
+    final isExtended = screenSize == BreakpointScreenSize.expanded;
     return Scaffold(
       appBar: AppBar(
         title: const Text('議事録検索'),
@@ -151,18 +152,20 @@ class HomeScreen extends ConsumerWidget {
       body: Row(
         children: [
           NavigationRail(
+            extended: isExtended,
+            labelType: isExtended ? null : NavigationRailLabelType.selected,
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.search),
-                label: Text('キーワード検索'),
+                label: Text('キーワード'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.manage_search),
-                label: Text('条件検索'),
+                label: Text('条件'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.history),
-                label: Text('検索履歴'),
+                label: Text('検索'),
               ),
             ],
             selectedIndex: index,
