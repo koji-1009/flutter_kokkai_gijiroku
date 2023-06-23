@@ -46,7 +46,6 @@ class HomeScreen extends ConsumerWidget {
     switch (mode) {
       case HomeMode.simple:
         actionButton = null;
-        break;
       case HomeMode.full:
         actionButton = FloatingActionButton.extended(
           label: const Text('検索'),
@@ -81,24 +80,19 @@ class HomeScreen extends ConsumerWidget {
                 SearchMeetingDetailRoute(
                   q: state.fullParams.uriQuery,
                 ).push(context);
-                break;
               case SearchMode.meetingSummary:
                 SearchMeetingSummaryRoute(
                   q: state.fullParams.uriQuery,
                 ).push(context);
-                break;
               case SearchMode.speech:
                 SearchSpeechRoute(
                   q: state.fullParams.uriQuery,
                 ).push(context);
-                break;
             }
           },
         );
-        break;
       case HomeMode.history:
         actionButton = null;
-        break;
     }
 
     if (screenSize == BreakpointScreenSize.compact) {
@@ -194,13 +188,10 @@ class HomeScreen extends ConsumerWidget {
     switch (mode) {
       case HomeMode.simple:
         const SimpleRoute().go(context);
-        break;
       case HomeMode.full:
         const FullRoute().go(context);
-        break;
       case HomeMode.history:
         const HistoryRoute().go(context);
-        break;
     }
   }
 }
