@@ -46,7 +46,6 @@ class HomeScreen extends ConsumerWidget {
     switch (mode) {
       case HomeMode.simple:
         actionButton = null;
-        break;
       case HomeMode.full:
         actionButton = FloatingActionButton.extended(
           label: const Text('検索'),
@@ -81,24 +80,19 @@ class HomeScreen extends ConsumerWidget {
                 SearchMeetingDetailRoute(
                   q: state.fullParams.uriQuery,
                 ).push(context);
-                break;
               case SearchMode.meetingSummary:
                 SearchMeetingSummaryRoute(
                   q: state.fullParams.uriQuery,
                 ).push(context);
-                break;
               case SearchMode.speech:
                 SearchSpeechRoute(
                   q: state.fullParams.uriQuery,
                 ).push(context);
-                break;
             }
           },
         );
-        break;
       case HomeMode.history:
         actionButton = null;
-        break;
     }
 
     if (screenSize == BreakpointScreenSize.compact) {
@@ -141,6 +135,7 @@ class HomeScreen extends ConsumerWidget {
       );
     }
 
+    final isExtended = screenSize == BreakpointScreenSize.expanded;
     return Scaffold(
       appBar: AppBar(
         title: const Text('議事録検索'),
@@ -151,18 +146,20 @@ class HomeScreen extends ConsumerWidget {
       body: Row(
         children: [
           NavigationRail(
+            extended: isExtended,
+            labelType: isExtended ? null : NavigationRailLabelType.selected,
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.search),
-                label: Text('キーワード検索'),
+                label: Text('キーワード'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.manage_search),
-                label: Text('条件検索'),
+                label: Text('条件'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.history),
-                label: Text('検索履歴'),
+                label: Text('検索'),
               ),
             ],
             selectedIndex: index,
@@ -191,13 +188,10 @@ class HomeScreen extends ConsumerWidget {
     switch (mode) {
       case HomeMode.simple:
         const SimpleRoute().go(context);
-        break;
       case HomeMode.full:
         const FullRoute().go(context);
-        break;
       case HomeMode.history:
         const HistoryRoute().go(context);
-        break;
     }
   }
 }

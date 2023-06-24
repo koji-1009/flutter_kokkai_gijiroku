@@ -46,13 +46,10 @@ class HomeAppBarAction extends StatelessWidget {
               context: context,
               builder: (context) => const CacheClearDialog(),
             );
-            break;
           case _HomeAction.github:
             await launchUrlString(_repositoryUrl);
-            break;
           case _HomeAction.ndl:
             await launchUrlString(_ndlApiDocUrl);
-            break;
           case _HomeAction.about:
             final body = [
               const Text(
@@ -89,7 +86,6 @@ class HomeAppBarAction extends StatelessWidget {
               context: context,
               children: body,
             );
-            break;
         }
       },
     );
