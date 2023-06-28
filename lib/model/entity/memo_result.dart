@@ -4,10 +4,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'memo_result.freezed.dart';
 
 @freezed
-class MemoResult with _$MemoResult {
+sealed class MemoResult with _$MemoResult {
   const factory MemoResult({
     required String memo,
-  }) = _MemoResult;
+  }) = MemoResultSuccess;
 
-  const factory MemoResult.cancel() = _MemoResultCanecel;
+  const factory MemoResult.cancel() = MemoResultCancel;
 }

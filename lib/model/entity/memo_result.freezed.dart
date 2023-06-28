@@ -15,46 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MemoResult {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String memo) $default, {
-    required TResult Function() cancel,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String memo)? $default, {
-    TResult? Function()? cancel,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String memo)? $default, {
-    TResult Function()? cancel,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_MemoResult value) $default, {
-    required TResult Function(_MemoResultCanecel value) cancel,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_MemoResult value)? $default, {
-    TResult? Function(_MemoResultCanecel value)? cancel,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_MemoResult value)? $default, {
-    TResult Function(_MemoResultCanecel value)? cancel,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
+mixin _$MemoResult {}
 
 /// @nodoc
 abstract class $MemoResultCopyWith<$Res> {
@@ -75,20 +36,20 @@ class _$MemoResultCopyWithImpl<$Res, $Val extends MemoResult>
 }
 
 /// @nodoc
-abstract class _$$_MemoResultCopyWith<$Res> {
-  factory _$$_MemoResultCopyWith(
-          _$_MemoResult value, $Res Function(_$_MemoResult) then) =
-      __$$_MemoResultCopyWithImpl<$Res>;
+abstract class _$$MemoResultSuccessCopyWith<$Res> {
+  factory _$$MemoResultSuccessCopyWith(
+          _$MemoResultSuccess value, $Res Function(_$MemoResultSuccess) then) =
+      __$$MemoResultSuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({String memo});
 }
 
 /// @nodoc
-class __$$_MemoResultCopyWithImpl<$Res>
-    extends _$MemoResultCopyWithImpl<$Res, _$_MemoResult>
-    implements _$$_MemoResultCopyWith<$Res> {
-  __$$_MemoResultCopyWithImpl(
-      _$_MemoResult _value, $Res Function(_$_MemoResult) _then)
+class __$$MemoResultSuccessCopyWithImpl<$Res>
+    extends _$MemoResultCopyWithImpl<$Res, _$MemoResultSuccess>
+    implements _$$MemoResultSuccessCopyWith<$Res> {
+  __$$MemoResultSuccessCopyWithImpl(
+      _$MemoResultSuccess _value, $Res Function(_$MemoResultSuccess) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +57,7 @@ class __$$_MemoResultCopyWithImpl<$Res>
   $Res call({
     Object? memo = null,
   }) {
-    return _then(_$_MemoResult(
+    return _then(_$MemoResultSuccess(
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -107,8 +68,10 @@ class __$$_MemoResultCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MemoResult with DiagnosticableTreeMixin implements _MemoResult {
-  const _$_MemoResult({required this.memo});
+class _$MemoResultSuccess
+    with DiagnosticableTreeMixin
+    implements MemoResultSuccess {
+  const _$MemoResultSuccess({required this.memo});
 
   @override
   final String memo;
@@ -130,7 +93,7 @@ class _$_MemoResult with DiagnosticableTreeMixin implements _MemoResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MemoResult &&
+            other is _$MemoResultSuccess &&
             (identical(other.memo, memo) || other.memo == memo));
   }
 
@@ -140,103 +103,42 @@ class _$_MemoResult with DiagnosticableTreeMixin implements _MemoResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MemoResultCopyWith<_$_MemoResult> get copyWith =>
-      __$$_MemoResultCopyWithImpl<_$_MemoResult>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String memo) $default, {
-    required TResult Function() cancel,
-  }) {
-    return $default(memo);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String memo)? $default, {
-    TResult? Function()? cancel,
-  }) {
-    return $default?.call(memo);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String memo)? $default, {
-    TResult Function()? cancel,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(memo);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_MemoResult value) $default, {
-    required TResult Function(_MemoResultCanecel value) cancel,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_MemoResult value)? $default, {
-    TResult? Function(_MemoResultCanecel value)? cancel,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_MemoResult value)? $default, {
-    TResult Function(_MemoResultCanecel value)? cancel,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
+  _$$MemoResultSuccessCopyWith<_$MemoResultSuccess> get copyWith =>
+      __$$MemoResultSuccessCopyWithImpl<_$MemoResultSuccess>(this, _$identity);
 }
 
-abstract class _MemoResult implements MemoResult {
-  const factory _MemoResult({required final String memo}) = _$_MemoResult;
+abstract class MemoResultSuccess implements MemoResult {
+  const factory MemoResultSuccess({required final String memo}) =
+      _$MemoResultSuccess;
 
   String get memo;
   @JsonKey(ignore: true)
-  _$$_MemoResultCopyWith<_$_MemoResult> get copyWith =>
+  _$$MemoResultSuccessCopyWith<_$MemoResultSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MemoResultCanecelCopyWith<$Res> {
-  factory _$$_MemoResultCanecelCopyWith(_$_MemoResultCanecel value,
-          $Res Function(_$_MemoResultCanecel) then) =
-      __$$_MemoResultCanecelCopyWithImpl<$Res>;
+abstract class _$$MemoResultCancelCopyWith<$Res> {
+  factory _$$MemoResultCancelCopyWith(
+          _$MemoResultCancel value, $Res Function(_$MemoResultCancel) then) =
+      __$$MemoResultCancelCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MemoResultCanecelCopyWithImpl<$Res>
-    extends _$MemoResultCopyWithImpl<$Res, _$_MemoResultCanecel>
-    implements _$$_MemoResultCanecelCopyWith<$Res> {
-  __$$_MemoResultCanecelCopyWithImpl(
-      _$_MemoResultCanecel _value, $Res Function(_$_MemoResultCanecel) _then)
+class __$$MemoResultCancelCopyWithImpl<$Res>
+    extends _$MemoResultCopyWithImpl<$Res, _$MemoResultCancel>
+    implements _$$MemoResultCancelCopyWith<$Res> {
+  __$$MemoResultCancelCopyWithImpl(
+      _$MemoResultCancel _value, $Res Function(_$MemoResultCancel) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_MemoResultCanecel
+class _$MemoResultCancel
     with DiagnosticableTreeMixin
-    implements _MemoResultCanecel {
-  const _$_MemoResultCanecel();
+    implements MemoResultCancel {
+  const _$MemoResultCancel();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -252,75 +154,13 @@ class _$_MemoResultCanecel
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MemoResultCanecel);
+        (other.runtimeType == runtimeType && other is _$MemoResultCancel);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String memo) $default, {
-    required TResult Function() cancel,
-  }) {
-    return cancel();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String memo)? $default, {
-    TResult? Function()? cancel,
-  }) {
-    return cancel?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String memo)? $default, {
-    TResult Function()? cancel,
-    required TResult orElse(),
-  }) {
-    if (cancel != null) {
-      return cancel();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_MemoResult value) $default, {
-    required TResult Function(_MemoResultCanecel value) cancel,
-  }) {
-    return cancel(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_MemoResult value)? $default, {
-    TResult? Function(_MemoResultCanecel value)? cancel,
-  }) {
-    return cancel?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_MemoResult value)? $default, {
-    TResult Function(_MemoResultCanecel value)? cancel,
-    required TResult orElse(),
-  }) {
-    if (cancel != null) {
-      return cancel(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _MemoResultCanecel implements MemoResult {
-  const factory _MemoResultCanecel() = _$_MemoResultCanecel;
+abstract class MemoResultCancel implements MemoResult {
+  const factory MemoResultCancel() = _$MemoResultCancel;
 }

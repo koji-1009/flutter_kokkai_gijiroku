@@ -24,7 +24,7 @@ class SearchSpeechScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final margin = MediaQuery.of(context).breakpointMargin;
+    final margin = context.breakpointMargin;
     final dataSource = ref.watch(
       dataSourceSpeechProvider(
         params: params,

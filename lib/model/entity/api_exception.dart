@@ -5,7 +5,7 @@ part 'api_exception.freezed.dart';
 part 'api_exception.g.dart';
 
 @freezed
-class ApiException with _$ApiException implements Exception {
+sealed class ApiException with _$ApiException implements Exception {
   const factory ApiException.error({
     required String message,
     @Default([]) List<String> details,

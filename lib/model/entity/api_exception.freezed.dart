@@ -29,44 +29,6 @@ ApiException _$ApiExceptionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiException {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message, List<String> details) error,
-    required TResult Function() other,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message, List<String> details)? error,
-    TResult? Function()? other,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message, List<String> details)? error,
-    TResult Function()? other,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApiExceptionError value) error,
-    required TResult Function(ApiExceptionOther value) other,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiExceptionError value)? error,
-    TResult? Function(ApiExceptionOther value)? other,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiExceptionError value)? error,
-    TResult Function(ApiExceptionOther value)? other,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -188,68 +150,6 @@ class _$ApiExceptionError
       __$$ApiExceptionErrorCopyWithImpl<_$ApiExceptionError>(this, _$identity);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message, List<String> details) error,
-    required TResult Function() other,
-  }) {
-    return error(message, details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message, List<String> details)? error,
-    TResult? Function()? other,
-  }) {
-    return error?.call(message, details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message, List<String> details)? error,
-    TResult Function()? other,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message, details);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApiExceptionError value) error,
-    required TResult Function(ApiExceptionOther value) other,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiExceptionError value)? error,
-    TResult? Function(ApiExceptionOther value)? other,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiExceptionError value)? error,
-    TResult Function(ApiExceptionOther value)? other,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
   Map<String, dynamic> toJson() {
     return _$$ApiExceptionErrorToJson(
       this,
@@ -321,68 +221,6 @@ class _$ApiExceptionOther
   @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message, List<String> details) error,
-    required TResult Function() other,
-  }) {
-    return other();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message, List<String> details)? error,
-    TResult? Function()? other,
-  }) {
-    return other?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message, List<String> details)? error,
-    TResult Function()? other,
-    required TResult orElse(),
-  }) {
-    if (other != null) {
-      return other();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApiExceptionError value) error,
-    required TResult Function(ApiExceptionOther value) other,
-  }) {
-    return other(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiExceptionError value)? error,
-    TResult? Function(ApiExceptionOther value)? other,
-  }) {
-    return other?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiExceptionError value)? error,
-    TResult Function(ApiExceptionOther value)? other,
-    required TResult orElse(),
-  }) {
-    if (other != null) {
-      return other(this);
-    }
-    return orElse();
-  }
 
   @override
   Map<String, dynamic> toJson() {

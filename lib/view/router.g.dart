@@ -74,6 +74,8 @@ extension $SimpleRouteExtension on SimpleRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
@@ -95,6 +97,8 @@ extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
@@ -116,6 +120,8 @@ extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SearchSpeechRouteExtension on SearchSpeechRoute {
@@ -136,6 +142,8 @@ extension $SearchSpeechRouteExtension on SearchSpeechRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SpeechDetailRouteExtension on SpeechDetailRoute {
@@ -153,6 +161,8 @@ extension $SpeechDetailRouteExtension on SpeechDetailRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $IssueDetailRouteExtension on IssueDetailRoute {
@@ -170,6 +180,8 @@ extension $IssueDetailRouteExtension on IssueDetailRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $FullRouteExtension on FullRoute {
@@ -185,6 +197,8 @@ extension $FullRouteExtension on FullRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $HistoryRouteExtension on HistoryRoute {
@@ -200,6 +214,8 @@ extension $HistoryRouteExtension on HistoryRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 // **************************************************************************
