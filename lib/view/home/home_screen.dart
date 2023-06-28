@@ -29,7 +29,7 @@ class HomeScreen extends ConsumerWidget {
 
   /// get current HomeMode from path
   HomeMode _getHomeMode(BuildContext context) {
-    final path = GoRouter.of(context).location;
+    final path = GoRouterState.of(context).location;
     return HomeMode.values.lastWhere(
       (e) => path.startsWith(e.path),
       orElse: () => HomeMode.simple,
@@ -38,7 +38,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final screenSize = MediaQuery.of(context).breakpointScreenSize;
+    final screenSize = context.breakpointScreenSize;
     final mode = _getHomeMode(context);
     final index = HomeMode.values.indexOf(mode);
 

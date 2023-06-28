@@ -17,7 +17,7 @@ class HistoryWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final margin = MediaQuery.of(context).breakpointMargin;
+    final margin = context.breakpointMargin;
     final box = ref.watch(searchHistoryBoxProvider);
 
     return ValueListenableBuilder(
@@ -102,19 +102,18 @@ class HistoryWidget extends ConsumerWidget {
                                 return;
                               }
 
-                              await result.when(
-                                (memo) async {
-                                  final newHistory = SearchHistory(
-                                    updatedAt: DateTime.now(),
-                                    memo: memo,
-                                    params: history.params,
-                                  );
-                                  await box.putAt(index, newHistory);
-                                },
-                                cancel: () {
-                                  // nop
-                                },
-                              );
+                              return switch (result) {
+                                MemoResultSuccess(memo: final memo) =>
+                                  await box.putAt(
+                                    index,
+                                    SearchHistory(
+                                      updatedAt: DateTime.now(),
+                                      memo: memo,
+                                      params: history.params,
+                                    ),
+                                  ),
+                                MemoResultCancel() => null,
+                              };
                             },
                             icon: const Icon(Icons.edit),
                           ),

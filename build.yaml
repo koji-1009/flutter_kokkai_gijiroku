@@ -15,4 +15,11 @@ targets:
           include_if_null: false
       freezed:
         options:
-          maybe_when: false
+          map:
+            map: false
+            map_or_null: false
+            maybe_map: false
+          when:
+            when: false
+            when_or_null: false
+            maybe_when: false

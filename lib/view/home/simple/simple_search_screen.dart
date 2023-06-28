@@ -11,7 +11,7 @@ class SimpleSearchWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final margin = MediaQuery.of(context).breakpointMargin;
+    final margin = context.breakpointMargin;
 
     final any = ref.watch(
       searchStateManagerProvider.select((value) => value.any),

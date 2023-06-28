@@ -47,7 +47,7 @@ class SpeechDetailScreen extends ConsumerWidget {
       );
     }
 
-    final margin = MediaQuery.of(context).breakpointMargin;
+    final margin = context.breakpointMargin;
 
     return Scaffold(
       appBar: AppBar(
