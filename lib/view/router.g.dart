@@ -11,8 +11,8 @@ List<RouteBase> get $appRoutes => [
     ];
 
 RouteBase get $homeShellRoute => ShellRouteData.$route(
-      factory: $HomeShellRouteExtension._fromState,
       navigatorKey: HomeShellRoute.$navigatorKey,
+      factory: $HomeShellRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
           path: '/',
@@ -20,28 +20,28 @@ RouteBase get $homeShellRoute => ShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: 'search/detail',
-              factory: $SearchMeetingDetailRouteExtension._fromState,
               parentNavigatorKey: SearchMeetingDetailRoute.$parentNavigatorKey,
+              factory: $SearchMeetingDetailRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'search/summary',
-              factory: $SearchMeetingSummaryRouteExtension._fromState,
               parentNavigatorKey: SearchMeetingSummaryRoute.$parentNavigatorKey,
+              factory: $SearchMeetingSummaryRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'search/speech',
-              factory: $SearchSpeechRouteExtension._fromState,
               parentNavigatorKey: SearchSpeechRoute.$parentNavigatorKey,
+              factory: $SearchSpeechRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'speech/:speechID',
-              factory: $SpeechDetailRouteExtension._fromState,
               parentNavigatorKey: SpeechDetailRoute.$parentNavigatorKey,
+              factory: $SpeechDetailRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'issue/:issueID',
-              factory: $IssueDetailRouteExtension._fromState,
               parentNavigatorKey: IssueDetailRoute.$parentNavigatorKey,
+              factory: $IssueDetailRouteExtension._fromState,
             ),
           ],
         ),
@@ -81,7 +81,7 @@ extension $SimpleRouteExtension on SimpleRoute {
 extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
   static SearchMeetingDetailRoute _fromState(GoRouterState state) =>
       SearchMeetingDetailRoute(
-        q: state.queryParameters['q'] ?? '',
+        q: state.uri.queryParameters['q'] ?? '',
       );
 
   String get location => GoRouteData.$location(
@@ -104,7 +104,7 @@ extension $SearchMeetingDetailRouteExtension on SearchMeetingDetailRoute {
 extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
   static SearchMeetingSummaryRoute _fromState(GoRouterState state) =>
       SearchMeetingSummaryRoute(
-        q: state.queryParameters['q'] ?? '',
+        q: state.uri.queryParameters['q'] ?? '',
       );
 
   String get location => GoRouteData.$location(
@@ -126,7 +126,7 @@ extension $SearchMeetingSummaryRouteExtension on SearchMeetingSummaryRoute {
 
 extension $SearchSpeechRouteExtension on SearchSpeechRoute {
   static SearchSpeechRoute _fromState(GoRouterState state) => SearchSpeechRoute(
-        q: state.queryParameters['q'] ?? '',
+        q: state.uri.queryParameters['q'] ?? '',
       );
 
   String get location => GoRouteData.$location(
@@ -236,4 +236,5 @@ final routerProvider = AutoDisposeProvider<GoRouter>.internal(
 );
 
 typedef RouterRef = AutoDisposeProviderRef<GoRouter>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
