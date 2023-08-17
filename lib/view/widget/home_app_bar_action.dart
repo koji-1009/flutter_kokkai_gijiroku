@@ -51,40 +51,42 @@ class HomeAppBarAction extends StatelessWidget {
           case _HomeAction.ndl:
             await launchUrlString(_ndlApiDocUrl);
           case _HomeAction.about:
-            final body = [
-              const Text(
-                '国立国会図書館が提供する、国会会議録検索システムを利用しています。',
-              ),
-              Linkify(
-                text: _ndlApiDocUrl,
-                onOpen: (link) => launchUrlString(link.url),
-              ),
-              const Divider(),
-              Text(
-                '注意',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const Text(
-                '本サイトを利用した成果を公表する、'
-                'もしくは営利目的で利用する場合には、'
-                '国会会議録検索システム　検索用APIの仕様にある'
-                '「4. 利用条件・免責事項」をご確認ください。',
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              const Text(
-                'アプリケーションへの機能要望などは、GitHub Issueまでお寄せください。',
-              ),
-              Linkify(
-                text: '$_repositoryUrl/issues',
-                onOpen: (link) => launchUrlString(link.url),
-              ),
-            ];
+            if (!context.mounted) {
+              return;
+            }
 
             showAboutDialog(
               context: context,
-              children: body,
+              children: [
+                const Text(
+                  '国立国会図書館が提供する、国会会議録検索システムを利用しています。',
+                ),
+                Linkify(
+                  text: _ndlApiDocUrl,
+                  onOpen: (link) => launchUrlString(link.url),
+                ),
+                const Divider(),
+                Text(
+                  '注意',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const Text(
+                  '本サイトを利用した成果を公表する、'
+                  'もしくは営利目的で利用する場合には、'
+                  '国会会議録検索システム　検索用APIの仕様にある'
+                  '「4. 利用条件・免責事項」をご確認ください。',
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Text(
+                  'アプリケーションへの機能要望などは、GitHub Issueまでお寄せください。',
+                ),
+                Linkify(
+                  text: '$_repositoryUrl/issues',
+                  onOpen: (link) => launchUrlString(link.url),
+                ),
+              ],
             );
         }
       },

@@ -29,9 +29,9 @@ class HomeScreen extends ConsumerWidget {
 
   /// get current HomeMode from path
   HomeMode _getHomeMode(BuildContext context) {
-    final path = GoRouterState.of(context).location;
+    final path = GoRouterState.of(context).uri;
     return HomeMode.values.lastWhere(
-      (e) => path.startsWith(e.path),
+      (e) => '/${path.pathSegments.firstOrNull ?? ''}' == e.path,
       orElse: () => HomeMode.simple,
     );
   }
