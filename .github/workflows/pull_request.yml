@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: subosito/flutter-action@v2
         with:
@@ -17,14 +17,14 @@ jobs:
           cache: true
       - name: Install dependencies
         run: flutter pub get
-      - uses: invertase/github-action-dart-analyzer@v1
+      - uses: invertase/github-action-dart-analyzer@v2.0.0
 
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: subosito/flutter-action@v2
         with:
