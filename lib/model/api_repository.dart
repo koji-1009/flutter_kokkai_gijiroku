@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter_kokkai_gijiroku/model/api_config.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/api_exception.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/meeting_record.dart';
@@ -210,7 +210,7 @@ class ApiRepository {
 
         return error;
       } on FormatException catch (e) {
-        debugPrint(e.toString());
+        log(e.toString());
 
         try {
           // json形式で返ってこないため、xmlとしてハンドリングする
@@ -221,7 +221,7 @@ class ApiRepository {
             message: messageList.nodes.first.innerText,
           );
         } on Exception catch (e) {
-          debugPrint(e.toString());
+          log(e.toString());
         }
       }
     }

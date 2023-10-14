@@ -7,12 +7,8 @@ part 'search_state_manager.g.dart';
 
 @riverpod
 class SearchStateManager extends _$SearchStateManager {
-  SearchStateManager();
-
   @override
-  SearchState build() {
-    return const SearchState();
-  }
+  SearchState build() => const SearchState();
 
   void updateMode(SearchMode? value) {
     state = state.copyWith(

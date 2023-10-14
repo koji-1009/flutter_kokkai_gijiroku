@@ -9,11 +9,18 @@ part 'data_source_issue.g.dart';
 DataSourceIssue dataSourceIssue(
   DataSourceIssueRef ref, {
   required String issueID,
-}) =>
-    DataSourceIssue(
-      repository: ref.watch(apiRepositoryProvider),
-      issueID: issueID,
-    );
+}) {
+  final dataSource = DataSourceIssue(
+    repository: ref.watch(apiRepositoryProvider),
+    issueID: issueID,
+  );
+
+  ref.onDispose(() {
+    dataSource.dispose();
+  });
+
+  return dataSource;
+}
 
 final class DataSourceIssue extends DataSource<int, SpeechRecord> {
   DataSourceIssue({

@@ -7,7 +7,7 @@ part of 'search_state_manager.dart';
 // **************************************************************************
 
 String _$searchStateManagerHash() =>
-    r'5d631e83e766a52920f93622efddca1bed02f343';
+    r'e4b0c5a2c532a3f69f6ca3f01f89accc5dc33942';
 
 /// See also [SearchStateManager].
 @ProviderFor(SearchStateManager)

@@ -10,11 +10,18 @@ part 'data_source_meeting_detail.g.dart';
 DataSourceMeetingDetail dataSourceMeetingDetail(
   DataSourceMeetingDetailRef ref, {
   required SearchParams params,
-}) =>
-    DataSourceMeetingDetail(
-      repository: ref.watch(apiRepositoryProvider),
-      searchParams: params,
-    );
+}) {
+  final dataSource = DataSourceMeetingDetail(
+    repository: ref.watch(apiRepositoryProvider),
+    searchParams: params,
+  );
+
+  ref.onDispose(() {
+    dataSource.dispose();
+  });
+
+  return dataSource;
+}
 
 final class DataSourceMeetingDetail
     extends DataSource<int, MeetingRecordDetail> {

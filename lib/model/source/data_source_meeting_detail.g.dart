@@ -7,7 +7,7 @@ part of 'data_source_meeting_detail.dart';
 // **************************************************************************
 
 String _$dataSourceMeetingDetailHash() =>
-    r'779305aa0979d1c2bf7eae7bc3f876c96c615426';
+    r'61ba6ce720b6745a79fc70841a5311103435a4f0';
 
 /// Copied from Dart SDK
 class _SystemHash {

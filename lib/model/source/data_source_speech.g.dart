@@ -6,7 +6,7 @@ part of 'data_source_speech.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dataSourceSpeechHash() => r'c99dd8d0df003aee6f8ac172fdfe904d9b663b99';
+String _$dataSourceSpeechHash() => r'28a51d1083e21cb1a6e0294dbd61ce06c7e6fa98';
 
 /// Copied from Dart SDK
 class _SystemHash {
