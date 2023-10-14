@@ -57,22 +57,22 @@ class _$SearchResultCopyWithImpl<$Res, $Val extends SearchResult>
 }
 
 /// @nodoc
-abstract class _$$_SearchResultCopyWith<$Res>
+abstract class _$$SearchResultImplCopyWith<$Res>
     implements $SearchResultCopyWith<$Res> {
-  factory _$$_SearchResultCopyWith(
-          _$_SearchResult value, $Res Function(_$_SearchResult) then) =
-      __$$_SearchResultCopyWithImpl<$Res>;
+  factory _$$SearchResultImplCopyWith(
+          _$SearchResultImpl value, $Res Function(_$SearchResultImpl) then) =
+      __$$SearchResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int numberOfRecords});
 }
 
 /// @nodoc
-class __$$_SearchResultCopyWithImpl<$Res>
-    extends _$SearchResultCopyWithImpl<$Res, _$_SearchResult>
-    implements _$$_SearchResultCopyWith<$Res> {
-  __$$_SearchResultCopyWithImpl(
-      _$_SearchResult _value, $Res Function(_$_SearchResult) _then)
+class __$$SearchResultImplCopyWithImpl<$Res>
+    extends _$SearchResultCopyWithImpl<$Res, _$SearchResultImpl>
+    implements _$$SearchResultImplCopyWith<$Res> {
+  __$$SearchResultImplCopyWithImpl(
+      _$SearchResultImpl _value, $Res Function(_$SearchResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_SearchResultCopyWithImpl<$Res>
   $Res call({
     Object? numberOfRecords = null,
   }) {
-    return _then(_$_SearchResult(
+    return _then(_$SearchResultImpl(
       numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_SearchResultCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchResult with DiagnosticableTreeMixin implements _SearchResult {
-  const _$_SearchResult({required this.numberOfRecords});
+class _$SearchResultImpl with DiagnosticableTreeMixin implements _SearchResult {
+  const _$SearchResultImpl({required this.numberOfRecords});
 
   @override
   final int numberOfRecords;
@@ -114,7 +114,7 @@ class _$_SearchResult with DiagnosticableTreeMixin implements _SearchResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchResult &&
+            other is _$SearchResultImpl &&
             (identical(other.numberOfRecords, numberOfRecords) ||
                 other.numberOfRecords == numberOfRecords));
   }
@@ -125,18 +125,18 @@ class _$_SearchResult with DiagnosticableTreeMixin implements _SearchResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchResultCopyWith<_$_SearchResult> get copyWith =>
-      __$$_SearchResultCopyWithImpl<_$_SearchResult>(this, _$identity);
+  _$$SearchResultImplCopyWith<_$SearchResultImpl> get copyWith =>
+      __$$SearchResultImplCopyWithImpl<_$SearchResultImpl>(this, _$identity);
 }
 
 abstract class _SearchResult implements SearchResult {
   const factory _SearchResult({required final int numberOfRecords}) =
-      _$_SearchResult;
+      _$SearchResultImpl;
 
   @override
   int get numberOfRecords;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchResultCopyWith<_$_SearchResult> get copyWith =>
+  _$$SearchResultImplCopyWith<_$SearchResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

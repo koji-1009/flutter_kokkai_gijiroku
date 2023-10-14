@@ -6,12 +6,13 @@ part of 'api_exception.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ApiExceptionError _$$ApiExceptionErrorFromJson(Map<String, dynamic> json) =>
+_$ApiExceptionErrorImpl _$$ApiExceptionErrorImplFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$ApiExceptionError',
+      r'_$ApiExceptionErrorImpl',
       json,
       ($checkedConvert) {
-        final val = _$ApiExceptionError(
+        final val = _$ApiExceptionErrorImpl(
           message: $checkedConvert('message', (v) => v as String),
           details: $checkedConvert(
               'details',
@@ -25,19 +26,21 @@ _$ApiExceptionError _$$ApiExceptionErrorFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {r'$type': 'runtimeType'},
     );
 
-Map<String, dynamic> _$$ApiExceptionErrorToJson(_$ApiExceptionError instance) =>
+Map<String, dynamic> _$$ApiExceptionErrorImplToJson(
+        _$ApiExceptionErrorImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'details': instance.details,
       'runtimeType': instance.$type,
     };
 
-_$ApiExceptionOther _$$ApiExceptionOtherFromJson(Map<String, dynamic> json) =>
+_$ApiExceptionOtherImpl _$$ApiExceptionOtherImplFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$ApiExceptionOther',
+      r'_$ApiExceptionOtherImpl',
       json,
       ($checkedConvert) {
-        final val = _$ApiExceptionOther(
+        final val = _$ApiExceptionOtherImpl(
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
@@ -45,7 +48,8 @@ _$ApiExceptionOther _$$ApiExceptionOtherFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {r'$type': 'runtimeType'},
     );
 
-Map<String, dynamic> _$$ApiExceptionOtherToJson(_$ApiExceptionOther instance) =>
+Map<String, dynamic> _$$ApiExceptionOtherImplToJson(
+        _$ApiExceptionOtherImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };

@@ -29,8 +29,6 @@ class _SystemHash {
   }
 }
 
-typedef DataSourceIssueRef = AutoDisposeProviderRef<DataSourceIssue>;
-
 /// See also [dataSourceIssue].
 @ProviderFor(dataSourceIssue)
 const dataSourceIssueProvider = DataSourceIssueFamily();
@@ -77,10 +75,10 @@ class DataSourceIssueFamily extends Family<DataSourceIssue> {
 class DataSourceIssueProvider extends AutoDisposeProvider<DataSourceIssue> {
   /// See also [dataSourceIssue].
   DataSourceIssueProvider({
-    required this.issueID,
-  }) : super.internal(
+    required String issueID,
+  }) : this._internal(
           (ref) => dataSourceIssue(
-            ref,
+            ref as DataSourceIssueRef,
             issueID: issueID,
           ),
           from: dataSourceIssueProvider,
@@ -92,9 +90,43 @@ class DataSourceIssueProvider extends AutoDisposeProvider<DataSourceIssue> {
           dependencies: DataSourceIssueFamily._dependencies,
           allTransitiveDependencies:
               DataSourceIssueFamily._allTransitiveDependencies,
+          issueID: issueID,
         );
 
+  DataSourceIssueProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.issueID,
+  }) : super.internal();
+
   final String issueID;
+
+  @override
+  Override overrideWith(
+    DataSourceIssue Function(DataSourceIssueRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: DataSourceIssueProvider._internal(
+        (ref) => create(ref as DataSourceIssueRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        issueID: issueID,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<DataSourceIssue> createElement() {
+    return _DataSourceIssueProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -109,5 +141,19 @@ class DataSourceIssueProvider extends AutoDisposeProvider<DataSourceIssue> {
     return _SystemHash.finish(hash);
   }
 }
+
+mixin DataSourceIssueRef on AutoDisposeProviderRef<DataSourceIssue> {
+  /// The parameter `issueID` of this provider.
+  String get issueID;
+}
+
+class _DataSourceIssueProviderElement
+    extends AutoDisposeProviderElement<DataSourceIssue>
+    with DataSourceIssueRef {
+  _DataSourceIssueProviderElement(super.provider);
+
+  @override
+  String get issueID => (origin as DataSourceIssueProvider).issueID;
+}
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

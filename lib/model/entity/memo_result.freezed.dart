@@ -36,20 +36,20 @@ class _$MemoResultCopyWithImpl<$Res, $Val extends MemoResult>
 }
 
 /// @nodoc
-abstract class _$$MemoResultSuccessCopyWith<$Res> {
-  factory _$$MemoResultSuccessCopyWith(
-          _$MemoResultSuccess value, $Res Function(_$MemoResultSuccess) then) =
-      __$$MemoResultSuccessCopyWithImpl<$Res>;
+abstract class _$$MemoResultSuccessImplCopyWith<$Res> {
+  factory _$$MemoResultSuccessImplCopyWith(_$MemoResultSuccessImpl value,
+          $Res Function(_$MemoResultSuccessImpl) then) =
+      __$$MemoResultSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String memo});
 }
 
 /// @nodoc
-class __$$MemoResultSuccessCopyWithImpl<$Res>
-    extends _$MemoResultCopyWithImpl<$Res, _$MemoResultSuccess>
-    implements _$$MemoResultSuccessCopyWith<$Res> {
-  __$$MemoResultSuccessCopyWithImpl(
-      _$MemoResultSuccess _value, $Res Function(_$MemoResultSuccess) _then)
+class __$$MemoResultSuccessImplCopyWithImpl<$Res>
+    extends _$MemoResultCopyWithImpl<$Res, _$MemoResultSuccessImpl>
+    implements _$$MemoResultSuccessImplCopyWith<$Res> {
+  __$$MemoResultSuccessImplCopyWithImpl(_$MemoResultSuccessImpl _value,
+      $Res Function(_$MemoResultSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -57,7 +57,7 @@ class __$$MemoResultSuccessCopyWithImpl<$Res>
   $Res call({
     Object? memo = null,
   }) {
-    return _then(_$MemoResultSuccess(
+    return _then(_$MemoResultSuccessImpl(
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -68,10 +68,10 @@ class __$$MemoResultSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MemoResultSuccess
+class _$MemoResultSuccessImpl
     with DiagnosticableTreeMixin
     implements MemoResultSuccess {
-  const _$MemoResultSuccess({required this.memo});
+  const _$MemoResultSuccessImpl({required this.memo});
 
   @override
   final String memo;
@@ -93,7 +93,7 @@ class _$MemoResultSuccess
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MemoResultSuccess &&
+            other is _$MemoResultSuccessImpl &&
             (identical(other.memo, memo) || other.memo == memo));
   }
 
@@ -103,42 +103,43 @@ class _$MemoResultSuccess
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MemoResultSuccessCopyWith<_$MemoResultSuccess> get copyWith =>
-      __$$MemoResultSuccessCopyWithImpl<_$MemoResultSuccess>(this, _$identity);
+  _$$MemoResultSuccessImplCopyWith<_$MemoResultSuccessImpl> get copyWith =>
+      __$$MemoResultSuccessImplCopyWithImpl<_$MemoResultSuccessImpl>(
+          this, _$identity);
 }
 
 abstract class MemoResultSuccess implements MemoResult {
   const factory MemoResultSuccess({required final String memo}) =
-      _$MemoResultSuccess;
+      _$MemoResultSuccessImpl;
 
   String get memo;
   @JsonKey(ignore: true)
-  _$$MemoResultSuccessCopyWith<_$MemoResultSuccess> get copyWith =>
+  _$$MemoResultSuccessImplCopyWith<_$MemoResultSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MemoResultCancelCopyWith<$Res> {
-  factory _$$MemoResultCancelCopyWith(
-          _$MemoResultCancel value, $Res Function(_$MemoResultCancel) then) =
-      __$$MemoResultCancelCopyWithImpl<$Res>;
+abstract class _$$MemoResultCancelImplCopyWith<$Res> {
+  factory _$$MemoResultCancelImplCopyWith(_$MemoResultCancelImpl value,
+          $Res Function(_$MemoResultCancelImpl) then) =
+      __$$MemoResultCancelImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MemoResultCancelCopyWithImpl<$Res>
-    extends _$MemoResultCopyWithImpl<$Res, _$MemoResultCancel>
-    implements _$$MemoResultCancelCopyWith<$Res> {
-  __$$MemoResultCancelCopyWithImpl(
-      _$MemoResultCancel _value, $Res Function(_$MemoResultCancel) _then)
+class __$$MemoResultCancelImplCopyWithImpl<$Res>
+    extends _$MemoResultCopyWithImpl<$Res, _$MemoResultCancelImpl>
+    implements _$$MemoResultCancelImplCopyWith<$Res> {
+  __$$MemoResultCancelImplCopyWithImpl(_$MemoResultCancelImpl _value,
+      $Res Function(_$MemoResultCancelImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$MemoResultCancel
+class _$MemoResultCancelImpl
     with DiagnosticableTreeMixin
     implements MemoResultCancel {
-  const _$MemoResultCancel();
+  const _$MemoResultCancelImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -154,7 +155,7 @@ class _$MemoResultCancel
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MemoResultCancel);
+        (other.runtimeType == runtimeType && other is _$MemoResultCancelImpl);
   }
 
   @override
@@ -162,5 +163,5 @@ class _$MemoResultCancel
 }
 
 abstract class MemoResultCancel implements MemoResult {
-  const factory MemoResultCancel() = _$MemoResultCancel;
+  const factory MemoResultCancel() = _$MemoResultCancelImpl;
 }

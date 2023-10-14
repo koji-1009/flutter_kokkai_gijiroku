@@ -29,8 +29,6 @@ class _SystemHash {
   }
 }
 
-typedef SpeechDetailRef = AutoDisposeFutureProviderRef<SpeechRecordResponse>;
-
 /// See also [speechDetail].
 @ProviderFor(speechDetail)
 const speechDetailProvider = SpeechDetailFamily();
@@ -78,10 +76,10 @@ class SpeechDetailProvider
     extends AutoDisposeFutureProvider<SpeechRecordResponse> {
   /// See also [speechDetail].
   SpeechDetailProvider({
-    required this.speechID,
-  }) : super.internal(
+    required String speechID,
+  }) : this._internal(
           (ref) => speechDetail(
-            ref,
+            ref as SpeechDetailRef,
             speechID: speechID,
           ),
           from: speechDetailProvider,
@@ -93,9 +91,43 @@ class SpeechDetailProvider
           dependencies: SpeechDetailFamily._dependencies,
           allTransitiveDependencies:
               SpeechDetailFamily._allTransitiveDependencies,
+          speechID: speechID,
         );
 
+  SpeechDetailProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.speechID,
+  }) : super.internal();
+
   final String speechID;
+
+  @override
+  Override overrideWith(
+    FutureOr<SpeechRecordResponse> Function(SpeechDetailRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: SpeechDetailProvider._internal(
+        (ref) => create(ref as SpeechDetailRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        speechID: speechID,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<SpeechRecordResponse> createElement() {
+    return _SpeechDetailProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -111,8 +143,21 @@ class SpeechDetailProvider
   }
 }
 
+mixin SpeechDetailRef on AutoDisposeFutureProviderRef<SpeechRecordResponse> {
+  /// The parameter `speechID` of this provider.
+  String get speechID;
+}
+
+class _SpeechDetailProviderElement
+    extends AutoDisposeFutureProviderElement<SpeechRecordResponse>
+    with SpeechDetailRef {
+  _SpeechDetailProviderElement(super.provider);
+
+  @override
+  String get speechID => (origin as SpeechDetailProvider).speechID;
+}
+
 String _$speechInfoHash() => r'513ae80f5fa28c0690f44be03b4b7566c18537a6';
-typedef SpeechInfoRef = AutoDisposeFutureProviderRef<int>;
 
 /// See also [speechInfo].
 @ProviderFor(speechInfo)
@@ -160,10 +205,10 @@ class SpeechInfoFamily extends Family<AsyncValue<int>> {
 class SpeechInfoProvider extends AutoDisposeFutureProvider<int> {
   /// See also [speechInfo].
   SpeechInfoProvider({
-    required this.params,
-  }) : super.internal(
+    required SearchParams params,
+  }) : this._internal(
           (ref) => speechInfo(
-            ref,
+            ref as SpeechInfoRef,
             params: params,
           ),
           from: speechInfoProvider,
@@ -175,9 +220,43 @@ class SpeechInfoProvider extends AutoDisposeFutureProvider<int> {
           dependencies: SpeechInfoFamily._dependencies,
           allTransitiveDependencies:
               SpeechInfoFamily._allTransitiveDependencies,
+          params: params,
         );
 
+  SpeechInfoProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.params,
+  }) : super.internal();
+
   final SearchParams params;
+
+  @override
+  Override overrideWith(
+    FutureOr<int> Function(SpeechInfoRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: SpeechInfoProvider._internal(
+        (ref) => create(ref as SpeechInfoRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        params: params,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<int> createElement() {
+    return _SpeechInfoProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -193,9 +272,21 @@ class SpeechInfoProvider extends AutoDisposeFutureProvider<int> {
   }
 }
 
+mixin SpeechInfoRef on AutoDisposeFutureProviderRef<int> {
+  /// The parameter `params` of this provider.
+  SearchParams get params;
+}
+
+class _SpeechInfoProviderElement extends AutoDisposeFutureProviderElement<int>
+    with SpeechInfoRef {
+  _SpeechInfoProviderElement(super.provider);
+
+  @override
+  SearchParams get params => (origin as SpeechInfoProvider).params;
+}
+
 String _$meetingSummaryInfoHash() =>
     r'866b4282cb839190881b13a21f009b41f6c04aaa';
-typedef MeetingSummaryInfoRef = AutoDisposeFutureProviderRef<int>;
 
 /// See also [meetingSummaryInfo].
 @ProviderFor(meetingSummaryInfo)
@@ -243,10 +334,10 @@ class MeetingSummaryInfoFamily extends Family<AsyncValue<int>> {
 class MeetingSummaryInfoProvider extends AutoDisposeFutureProvider<int> {
   /// See also [meetingSummaryInfo].
   MeetingSummaryInfoProvider({
-    required this.params,
-  }) : super.internal(
+    required SearchParams params,
+  }) : this._internal(
           (ref) => meetingSummaryInfo(
-            ref,
+            ref as MeetingSummaryInfoRef,
             params: params,
           ),
           from: meetingSummaryInfoProvider,
@@ -258,9 +349,43 @@ class MeetingSummaryInfoProvider extends AutoDisposeFutureProvider<int> {
           dependencies: MeetingSummaryInfoFamily._dependencies,
           allTransitiveDependencies:
               MeetingSummaryInfoFamily._allTransitiveDependencies,
+          params: params,
         );
 
+  MeetingSummaryInfoProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.params,
+  }) : super.internal();
+
   final SearchParams params;
+
+  @override
+  Override overrideWith(
+    FutureOr<int> Function(MeetingSummaryInfoRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: MeetingSummaryInfoProvider._internal(
+        (ref) => create(ref as MeetingSummaryInfoRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        params: params,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<int> createElement() {
+    return _MeetingSummaryInfoProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -276,8 +401,20 @@ class MeetingSummaryInfoProvider extends AutoDisposeFutureProvider<int> {
   }
 }
 
+mixin MeetingSummaryInfoRef on AutoDisposeFutureProviderRef<int> {
+  /// The parameter `params` of this provider.
+  SearchParams get params;
+}
+
+class _MeetingSummaryInfoProviderElement
+    extends AutoDisposeFutureProviderElement<int> with MeetingSummaryInfoRef {
+  _MeetingSummaryInfoProviderElement(super.provider);
+
+  @override
+  SearchParams get params => (origin as MeetingSummaryInfoProvider).params;
+}
+
 String _$meetingDetailInfoHash() => r'7afa6fb418cc87d85dc458d2ecd12a1d7c8f36e9';
-typedef MeetingDetailInfoRef = AutoDisposeFutureProviderRef<int>;
 
 /// See also [meetingDetailInfo].
 @ProviderFor(meetingDetailInfo)
@@ -325,10 +462,10 @@ class MeetingDetailInfoFamily extends Family<AsyncValue<int>> {
 class MeetingDetailInfoProvider extends AutoDisposeFutureProvider<int> {
   /// See also [meetingDetailInfo].
   MeetingDetailInfoProvider({
-    required this.params,
-  }) : super.internal(
+    required SearchParams params,
+  }) : this._internal(
           (ref) => meetingDetailInfo(
-            ref,
+            ref as MeetingDetailInfoRef,
             params: params,
           ),
           from: meetingDetailInfoProvider,
@@ -340,9 +477,43 @@ class MeetingDetailInfoProvider extends AutoDisposeFutureProvider<int> {
           dependencies: MeetingDetailInfoFamily._dependencies,
           allTransitiveDependencies:
               MeetingDetailInfoFamily._allTransitiveDependencies,
+          params: params,
         );
 
+  MeetingDetailInfoProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.params,
+  }) : super.internal();
+
   final SearchParams params;
+
+  @override
+  Override overrideWith(
+    FutureOr<int> Function(MeetingDetailInfoRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: MeetingDetailInfoProvider._internal(
+        (ref) => create(ref as MeetingDetailInfoRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        params: params,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<int> createElement() {
+    return _MeetingDetailInfoProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -357,5 +528,18 @@ class MeetingDetailInfoProvider extends AutoDisposeFutureProvider<int> {
     return _SystemHash.finish(hash);
   }
 }
+
+mixin MeetingDetailInfoRef on AutoDisposeFutureProviderRef<int> {
+  /// The parameter `params` of this provider.
+  SearchParams get params;
+}
+
+class _MeetingDetailInfoProviderElement
+    extends AutoDisposeFutureProviderElement<int> with MeetingDetailInfoRef {
+  _MeetingDetailInfoProviderElement(super.provider);
+
+  @override
+  SearchParams get params => (origin as MeetingDetailInfoProvider).params;
+}
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

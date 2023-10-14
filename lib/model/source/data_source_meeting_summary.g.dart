@@ -30,9 +30,6 @@ class _SystemHash {
   }
 }
 
-typedef DataSourceMeetingSummaryRef
-    = AutoDisposeProviderRef<DataSourceMeetingSummary>;
-
 /// See also [dataSourceMeetingSummary].
 @ProviderFor(dataSourceMeetingSummary)
 const dataSourceMeetingSummaryProvider = DataSourceMeetingSummaryFamily();
@@ -80,10 +77,10 @@ class DataSourceMeetingSummaryProvider
     extends AutoDisposeProvider<DataSourceMeetingSummary> {
   /// See also [dataSourceMeetingSummary].
   DataSourceMeetingSummaryProvider({
-    required this.params,
-  }) : super.internal(
+    required SearchParams params,
+  }) : this._internal(
           (ref) => dataSourceMeetingSummary(
-            ref,
+            ref as DataSourceMeetingSummaryRef,
             params: params,
           ),
           from: dataSourceMeetingSummaryProvider,
@@ -95,9 +92,44 @@ class DataSourceMeetingSummaryProvider
           dependencies: DataSourceMeetingSummaryFamily._dependencies,
           allTransitiveDependencies:
               DataSourceMeetingSummaryFamily._allTransitiveDependencies,
+          params: params,
         );
 
+  DataSourceMeetingSummaryProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.params,
+  }) : super.internal();
+
   final SearchParams params;
+
+  @override
+  Override overrideWith(
+    DataSourceMeetingSummary Function(DataSourceMeetingSummaryRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: DataSourceMeetingSummaryProvider._internal(
+        (ref) => create(ref as DataSourceMeetingSummaryRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        params: params,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<DataSourceMeetingSummary> createElement() {
+    return _DataSourceMeetingSummaryProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -112,5 +144,21 @@ class DataSourceMeetingSummaryProvider
     return _SystemHash.finish(hash);
   }
 }
+
+mixin DataSourceMeetingSummaryRef
+    on AutoDisposeProviderRef<DataSourceMeetingSummary> {
+  /// The parameter `params` of this provider.
+  SearchParams get params;
+}
+
+class _DataSourceMeetingSummaryProviderElement
+    extends AutoDisposeProviderElement<DataSourceMeetingSummary>
+    with DataSourceMeetingSummaryRef {
+  _DataSourceMeetingSummaryProviderElement(super.provider);
+
+  @override
+  SearchParams get params =>
+      (origin as DataSourceMeetingSummaryProvider).params;
+}
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
