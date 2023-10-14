@@ -51,20 +51,20 @@ class _$ApiExceptionCopyWithImpl<$Res, $Val extends ApiException>
 }
 
 /// @nodoc
-abstract class _$$ApiExceptionErrorCopyWith<$Res> {
-  factory _$$ApiExceptionErrorCopyWith(
-          _$ApiExceptionError value, $Res Function(_$ApiExceptionError) then) =
-      __$$ApiExceptionErrorCopyWithImpl<$Res>;
+abstract class _$$ApiExceptionErrorImplCopyWith<$Res> {
+  factory _$$ApiExceptionErrorImplCopyWith(_$ApiExceptionErrorImpl value,
+          $Res Function(_$ApiExceptionErrorImpl) then) =
+      __$$ApiExceptionErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message, List<String> details});
 }
 
 /// @nodoc
-class __$$ApiExceptionErrorCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionError>
-    implements _$$ApiExceptionErrorCopyWith<$Res> {
-  __$$ApiExceptionErrorCopyWithImpl(
-      _$ApiExceptionError _value, $Res Function(_$ApiExceptionError) _then)
+class __$$ApiExceptionErrorImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionErrorImpl>
+    implements _$$ApiExceptionErrorImplCopyWith<$Res> {
+  __$$ApiExceptionErrorImplCopyWithImpl(_$ApiExceptionErrorImpl _value,
+      $Res Function(_$ApiExceptionErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -73,7 +73,7 @@ class __$$ApiExceptionErrorCopyWithImpl<$Res>
     Object? message = null,
     Object? details = null,
   }) {
-    return _then(_$ApiExceptionError(
+    return _then(_$ApiExceptionErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -88,18 +88,18 @@ class __$$ApiExceptionErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiExceptionError
+class _$ApiExceptionErrorImpl
     with DiagnosticableTreeMixin
     implements ApiExceptionError {
-  const _$ApiExceptionError(
+  const _$ApiExceptionErrorImpl(
       {required this.message,
       final List<String> details = const [],
       final String? $type})
       : _details = details,
         $type = $type ?? 'error';
 
-  factory _$ApiExceptionError.fromJson(Map<String, dynamic> json) =>
-      _$$ApiExceptionErrorFromJson(json);
+  factory _$ApiExceptionErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiExceptionErrorImplFromJson(json);
 
   @override
   final String message;
@@ -133,7 +133,7 @@ class _$ApiExceptionError
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApiExceptionError &&
+            other is _$ApiExceptionErrorImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._details, _details));
   }
@@ -146,12 +146,13 @@ class _$ApiExceptionError
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApiExceptionErrorCopyWith<_$ApiExceptionError> get copyWith =>
-      __$$ApiExceptionErrorCopyWithImpl<_$ApiExceptionError>(this, _$identity);
+  _$$ApiExceptionErrorImplCopyWith<_$ApiExceptionErrorImpl> get copyWith =>
+      __$$ApiExceptionErrorImplCopyWithImpl<_$ApiExceptionErrorImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ApiExceptionErrorToJson(
+    return _$$ApiExceptionErrorImplToJson(
       this,
     );
   }
@@ -160,43 +161,44 @@ class _$ApiExceptionError
 abstract class ApiExceptionError implements ApiException {
   const factory ApiExceptionError(
       {required final String message,
-      final List<String> details}) = _$ApiExceptionError;
+      final List<String> details}) = _$ApiExceptionErrorImpl;
 
   factory ApiExceptionError.fromJson(Map<String, dynamic> json) =
-      _$ApiExceptionError.fromJson;
+      _$ApiExceptionErrorImpl.fromJson;
 
   String get message;
   List<String> get details;
   @JsonKey(ignore: true)
-  _$$ApiExceptionErrorCopyWith<_$ApiExceptionError> get copyWith =>
+  _$$ApiExceptionErrorImplCopyWith<_$ApiExceptionErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApiExceptionOtherCopyWith<$Res> {
-  factory _$$ApiExceptionOtherCopyWith(
-          _$ApiExceptionOther value, $Res Function(_$ApiExceptionOther) then) =
-      __$$ApiExceptionOtherCopyWithImpl<$Res>;
+abstract class _$$ApiExceptionOtherImplCopyWith<$Res> {
+  factory _$$ApiExceptionOtherImplCopyWith(_$ApiExceptionOtherImpl value,
+          $Res Function(_$ApiExceptionOtherImpl) then) =
+      __$$ApiExceptionOtherImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ApiExceptionOtherCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionOther>
-    implements _$$ApiExceptionOtherCopyWith<$Res> {
-  __$$ApiExceptionOtherCopyWithImpl(
-      _$ApiExceptionOther _value, $Res Function(_$ApiExceptionOther) _then)
+class __$$ApiExceptionOtherImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionOtherImpl>
+    implements _$$ApiExceptionOtherImplCopyWith<$Res> {
+  __$$ApiExceptionOtherImplCopyWithImpl(_$ApiExceptionOtherImpl _value,
+      $Res Function(_$ApiExceptionOtherImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiExceptionOther
+class _$ApiExceptionOtherImpl
     with DiagnosticableTreeMixin
     implements ApiExceptionOther {
-  const _$ApiExceptionOther({final String? $type}) : $type = $type ?? 'other';
+  const _$ApiExceptionOtherImpl({final String? $type})
+      : $type = $type ?? 'other';
 
-  factory _$ApiExceptionOther.fromJson(Map<String, dynamic> json) =>
-      _$$ApiExceptionOtherFromJson(json);
+  factory _$ApiExceptionOtherImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiExceptionOtherImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -215,7 +217,7 @@ class _$ApiExceptionOther
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ApiExceptionOther);
+        (other.runtimeType == runtimeType && other is _$ApiExceptionOtherImpl);
   }
 
   @JsonKey(ignore: true)
@@ -224,15 +226,15 @@ class _$ApiExceptionOther
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ApiExceptionOtherToJson(
+    return _$$ApiExceptionOtherImplToJson(
       this,
     );
   }
 }
 
 abstract class ApiExceptionOther implements ApiException {
-  const factory ApiExceptionOther() = _$ApiExceptionOther;
+  const factory ApiExceptionOther() = _$ApiExceptionOtherImpl;
 
   factory ApiExceptionOther.fromJson(Map<String, dynamic> json) =
-      _$ApiExceptionOther.fromJson;
+      _$ApiExceptionOtherImpl.fromJson;
 }

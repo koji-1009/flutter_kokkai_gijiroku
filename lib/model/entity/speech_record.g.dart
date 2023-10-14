@@ -6,13 +6,13 @@ part of 'speech_record.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SpeechRecordResponsee _$$_SpeechRecordResponseeFromJson(
+_$SpeechRecordResponseeImpl _$$SpeechRecordResponseeImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_SpeechRecordResponsee',
+      r'_$SpeechRecordResponseeImpl',
       json,
       ($checkedConvert) {
-        final val = _$_SpeechRecordResponsee(
+        final val = _$SpeechRecordResponseeImpl(
           numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
           numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
           startRecord: $checkedConvert('startRecord', (v) => v as int),
@@ -31,8 +31,8 @@ _$_SpeechRecordResponsee _$$_SpeechRecordResponseeFromJson(
       },
     );
 
-Map<String, dynamic> _$$_SpeechRecordResponseeToJson(
-    _$_SpeechRecordResponsee instance) {
+Map<String, dynamic> _$$SpeechRecordResponseeImplToJson(
+    _$SpeechRecordResponseeImpl instance) {
   final val = <String, dynamic>{
     'numberOfRecords': instance.numberOfRecords,
     'numberOfReturn': instance.numberOfReturn,
@@ -50,12 +50,12 @@ Map<String, dynamic> _$$_SpeechRecordResponseeToJson(
   return val;
 }
 
-_$_SpeechRecord _$$_SpeechRecordFromJson(Map<String, dynamic> json) =>
+_$SpeechRecordImpl _$$SpeechRecordImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_SpeechRecord',
+      r'_$SpeechRecordImpl',
       json,
       ($checkedConvert) {
-        final val = _$_SpeechRecord(
+        final val = _$SpeechRecordImpl(
           speechID: $checkedConvert('speechID', (v) => v as String),
           issueID: $checkedConvert('issueID', (v) => v as String),
           imageKind: $checkedConvert('imageKind', (v) => v as String),
@@ -85,7 +85,7 @@ _$_SpeechRecord _$$_SpeechRecordFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_SpeechRecordToJson(_$_SpeechRecord instance) =>
+Map<String, dynamic> _$$SpeechRecordImplToJson(_$SpeechRecordImpl instance) =>
     <String, dynamic>{
       'speechID': instance.speechID,
       'issueID': instance.issueID,

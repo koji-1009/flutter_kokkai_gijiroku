@@ -105,12 +105,12 @@ class _$MeetingRecordDetailResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MeetingRecordResponseDetailCopyWith<$Res>
+abstract class _$$MeetingRecordResponseDetailImplCopyWith<$Res>
     implements $MeetingRecordDetailResponseCopyWith<$Res> {
-  factory _$$_MeetingRecordResponseDetailCopyWith(
-          _$_MeetingRecordResponseDetail value,
-          $Res Function(_$_MeetingRecordResponseDetail) then) =
-      __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>;
+  factory _$$MeetingRecordResponseDetailImplCopyWith(
+          _$MeetingRecordResponseDetailImpl value,
+          $Res Function(_$MeetingRecordResponseDetailImpl) then) =
+      __$$MeetingRecordResponseDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -122,13 +122,13 @@ abstract class _$$_MeetingRecordResponseDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>
+class __$$MeetingRecordResponseDetailImplCopyWithImpl<$Res>
     extends _$MeetingRecordDetailResponseCopyWithImpl<$Res,
-        _$_MeetingRecordResponseDetail>
-    implements _$$_MeetingRecordResponseDetailCopyWith<$Res> {
-  __$$_MeetingRecordResponseDetailCopyWithImpl(
-      _$_MeetingRecordResponseDetail _value,
-      $Res Function(_$_MeetingRecordResponseDetail) _then)
+        _$MeetingRecordResponseDetailImpl>
+    implements _$$MeetingRecordResponseDetailImplCopyWith<$Res> {
+  __$$MeetingRecordResponseDetailImplCopyWithImpl(
+      _$MeetingRecordResponseDetailImpl _value,
+      $Res Function(_$MeetingRecordResponseDetailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +140,7 @@ class __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>
     Object? nextRecordPosition = freezed,
     Object? meetingRecord = null,
   }) {
-    return _then(_$_MeetingRecordResponseDetail(
+    return _then(_$MeetingRecordResponseDetailImpl(
       numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
@@ -167,10 +167,10 @@ class __$$_MeetingRecordResponseDetailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MeetingRecordResponseDetail
+class _$MeetingRecordResponseDetailImpl
     with DiagnosticableTreeMixin
     implements _MeetingRecordResponseDetail {
-  const _$_MeetingRecordResponseDetail(
+  const _$MeetingRecordResponseDetailImpl(
       {required this.numberOfRecords,
       required this.numberOfReturn,
       required this.startRecord,
@@ -178,8 +178,9 @@ class _$_MeetingRecordResponseDetail
       final List<MeetingRecordDetail> meetingRecord = const []})
       : _meetingRecord = meetingRecord;
 
-  factory _$_MeetingRecordResponseDetail.fromJson(Map<String, dynamic> json) =>
-      _$$_MeetingRecordResponseDetailFromJson(json);
+  factory _$MeetingRecordResponseDetailImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MeetingRecordResponseDetailImplFromJson(json);
 
   /// 総結果件数
   @override
@@ -230,7 +231,7 @@ class _$_MeetingRecordResponseDetail
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MeetingRecordResponseDetail &&
+            other is _$MeetingRecordResponseDetailImpl &&
             (identical(other.numberOfRecords, numberOfRecords) ||
                 other.numberOfRecords == numberOfRecords) &&
             (identical(other.numberOfReturn, numberOfReturn) ||
@@ -256,13 +257,13 @@ class _$_MeetingRecordResponseDetail
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeetingRecordResponseDetailCopyWith<_$_MeetingRecordResponseDetail>
-      get copyWith => __$$_MeetingRecordResponseDetailCopyWithImpl<
-          _$_MeetingRecordResponseDetail>(this, _$identity);
+  _$$MeetingRecordResponseDetailImplCopyWith<_$MeetingRecordResponseDetailImpl>
+      get copyWith => __$$MeetingRecordResponseDetailImplCopyWithImpl<
+          _$MeetingRecordResponseDetailImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordResponseDetailToJson(
+    return _$$MeetingRecordResponseDetailImplToJson(
       this,
     );
   }
@@ -276,10 +277,10 @@ abstract class _MeetingRecordResponseDetail
           required final int startRecord,
           required final int? nextRecordPosition,
           final List<MeetingRecordDetail> meetingRecord}) =
-      _$_MeetingRecordResponseDetail;
+      _$MeetingRecordResponseDetailImpl;
 
   factory _MeetingRecordResponseDetail.fromJson(Map<String, dynamic> json) =
-      _$_MeetingRecordResponseDetail.fromJson;
+      _$MeetingRecordResponseDetailImpl.fromJson;
 
   @override
 
@@ -303,7 +304,7 @@ abstract class _MeetingRecordResponseDetail
   List<MeetingRecordDetail> get meetingRecord;
   @override
   @JsonKey(ignore: true)
-  _$$_MeetingRecordResponseDetailCopyWith<_$_MeetingRecordResponseDetail>
+  _$$MeetingRecordResponseDetailImplCopyWith<_$MeetingRecordResponseDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -457,11 +458,11 @@ class _$MeetingRecordDetailCopyWithImpl<$Res, $Val extends MeetingRecordDetail>
 }
 
 /// @nodoc
-abstract class _$$_MeetingRecordDetailCopyWith<$Res>
+abstract class _$$MeetingRecordDetailImplCopyWith<$Res>
     implements $MeetingRecordDetailCopyWith<$Res> {
-  factory _$$_MeetingRecordDetailCopyWith(_$_MeetingRecordDetail value,
-          $Res Function(_$_MeetingRecordDetail) then) =
-      __$$_MeetingRecordDetailCopyWithImpl<$Res>;
+  factory _$$MeetingRecordDetailImplCopyWith(_$MeetingRecordDetailImpl value,
+          $Res Function(_$MeetingRecordDetailImpl) then) =
+      __$$MeetingRecordDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -480,11 +481,11 @@ abstract class _$$_MeetingRecordDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MeetingRecordDetailCopyWithImpl<$Res>
-    extends _$MeetingRecordDetailCopyWithImpl<$Res, _$_MeetingRecordDetail>
-    implements _$$_MeetingRecordDetailCopyWith<$Res> {
-  __$$_MeetingRecordDetailCopyWithImpl(_$_MeetingRecordDetail _value,
-      $Res Function(_$_MeetingRecordDetail) _then)
+class __$$MeetingRecordDetailImplCopyWithImpl<$Res>
+    extends _$MeetingRecordDetailCopyWithImpl<$Res, _$MeetingRecordDetailImpl>
+    implements _$$MeetingRecordDetailImplCopyWith<$Res> {
+  __$$MeetingRecordDetailImplCopyWithImpl(_$MeetingRecordDetailImpl _value,
+      $Res Function(_$MeetingRecordDetailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -503,7 +504,7 @@ class __$$_MeetingRecordDetailCopyWithImpl<$Res>
     Object? meetingURL = null,
     Object? pdfURL = null,
   }) {
-    return _then(_$_MeetingRecordDetail(
+    return _then(_$MeetingRecordDetailImpl(
       issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
@@ -558,10 +559,10 @@ class __$$_MeetingRecordDetailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MeetingRecordDetail
+class _$MeetingRecordDetailImpl
     with DiagnosticableTreeMixin
     implements _MeetingRecordDetail {
-  const _$_MeetingRecordDetail(
+  const _$MeetingRecordDetailImpl(
       {required this.issueID,
       required this.imageKind,
       required this.searchObject,
@@ -576,8 +577,8 @@ class _$_MeetingRecordDetail
       this.pdfURL = ''})
       : _speechRecord = speechRecord;
 
-  factory _$_MeetingRecordDetail.fromJson(Map<String, dynamic> json) =>
-      _$$_MeetingRecordDetailFromJson(json);
+  factory _$MeetingRecordDetailImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MeetingRecordDetailImplFromJson(json);
 
   /// 会議録ID
   @override
@@ -665,7 +666,7 @@ class _$_MeetingRecordDetail
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MeetingRecordDetail &&
+            other is _$MeetingRecordDetailImpl &&
             (identical(other.issueID, issueID) || other.issueID == issueID) &&
             (identical(other.imageKind, imageKind) ||
                 other.imageKind == imageKind) &&
@@ -706,13 +707,13 @@ class _$_MeetingRecordDetail
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeetingRecordDetailCopyWith<_$_MeetingRecordDetail> get copyWith =>
-      __$$_MeetingRecordDetailCopyWithImpl<_$_MeetingRecordDetail>(
+  _$$MeetingRecordDetailImplCopyWith<_$MeetingRecordDetailImpl> get copyWith =>
+      __$$MeetingRecordDetailImplCopyWithImpl<_$MeetingRecordDetailImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordDetailToJson(
+    return _$$MeetingRecordDetailImplToJson(
       this,
     );
   }
@@ -731,10 +732,10 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
       final String closing,
       final List<MeetingRecordDetailSpeech> speechRecord,
       required final String meetingURL,
-      final String pdfURL}) = _$_MeetingRecordDetail;
+      final String pdfURL}) = _$MeetingRecordDetailImpl;
 
   factory _MeetingRecordDetail.fromJson(Map<String, dynamic> json) =
-      _$_MeetingRecordDetail.fromJson;
+      _$MeetingRecordDetailImpl.fromJson;
 
   @override
 
@@ -786,7 +787,7 @@ abstract class _MeetingRecordDetail implements MeetingRecordDetail {
   String get pdfURL;
   @override
   @JsonKey(ignore: true)
-  _$$_MeetingRecordDetailCopyWith<_$_MeetingRecordDetail> get copyWith =>
+  _$$MeetingRecordDetailImplCopyWith<_$MeetingRecordDetailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -941,12 +942,12 @@ class _$MeetingRecordDetailSpeechCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MeetingRecordDetailSpeechCopyWith<$Res>
+abstract class _$$MeetingRecordDetailSpeechImplCopyWith<$Res>
     implements $MeetingRecordDetailSpeechCopyWith<$Res> {
-  factory _$$_MeetingRecordDetailSpeechCopyWith(
-          _$_MeetingRecordDetailSpeech value,
-          $Res Function(_$_MeetingRecordDetailSpeech) then) =
-      __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>;
+  factory _$$MeetingRecordDetailSpeechImplCopyWith(
+          _$MeetingRecordDetailSpeechImpl value,
+          $Res Function(_$MeetingRecordDetailSpeechImpl) then) =
+      __$$MeetingRecordDetailSpeechImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -965,13 +966,13 @@ abstract class _$$_MeetingRecordDetailSpeechCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>
+class __$$MeetingRecordDetailSpeechImplCopyWithImpl<$Res>
     extends _$MeetingRecordDetailSpeechCopyWithImpl<$Res,
-        _$_MeetingRecordDetailSpeech>
-    implements _$$_MeetingRecordDetailSpeechCopyWith<$Res> {
-  __$$_MeetingRecordDetailSpeechCopyWithImpl(
-      _$_MeetingRecordDetailSpeech _value,
-      $Res Function(_$_MeetingRecordDetailSpeech) _then)
+        _$MeetingRecordDetailSpeechImpl>
+    implements _$$MeetingRecordDetailSpeechImplCopyWith<$Res> {
+  __$$MeetingRecordDetailSpeechImplCopyWithImpl(
+      _$MeetingRecordDetailSpeechImpl _value,
+      $Res Function(_$MeetingRecordDetailSpeechImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -990,7 +991,7 @@ class __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>
     Object? updateTime = null,
     Object? speechURL = null,
   }) {
-    return _then(_$_MeetingRecordDetailSpeech(
+    return _then(_$MeetingRecordDetailSpeechImpl(
       speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -1045,10 +1046,10 @@ class __$$_MeetingRecordDetailSpeechCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MeetingRecordDetailSpeech
+class _$MeetingRecordDetailSpeechImpl
     with DiagnosticableTreeMixin
     implements _MeetingRecordDetailSpeech {
-  const _$_MeetingRecordDetailSpeech(
+  const _$MeetingRecordDetailSpeechImpl(
       {required this.speechID,
       required this.speechOrder,
       required this.speaker,
@@ -1062,8 +1063,8 @@ class _$_MeetingRecordDetailSpeech
       required this.updateTime,
       required this.speechURL});
 
-  factory _$_MeetingRecordDetailSpeech.fromJson(Map<String, dynamic> json) =>
-      _$$_MeetingRecordDetailSpeechFromJson(json);
+  factory _$MeetingRecordDetailSpeechImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MeetingRecordDetailSpeechImplFromJson(json);
 
   /// 発言ID
   @override
@@ -1145,7 +1146,7 @@ class _$_MeetingRecordDetailSpeech
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MeetingRecordDetailSpeech &&
+            other is _$MeetingRecordDetailSpeechImpl &&
             (identical(other.speechID, speechID) ||
                 other.speechID == speechID) &&
             (identical(other.speechOrder, speechOrder) ||
@@ -1190,13 +1191,13 @@ class _$_MeetingRecordDetailSpeech
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeetingRecordDetailSpeechCopyWith<_$_MeetingRecordDetailSpeech>
-      get copyWith => __$$_MeetingRecordDetailSpeechCopyWithImpl<
-          _$_MeetingRecordDetailSpeech>(this, _$identity);
+  _$$MeetingRecordDetailSpeechImplCopyWith<_$MeetingRecordDetailSpeechImpl>
+      get copyWith => __$$MeetingRecordDetailSpeechImplCopyWithImpl<
+          _$MeetingRecordDetailSpeechImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordDetailSpeechToJson(
+    return _$$MeetingRecordDetailSpeechImplToJson(
       this,
     );
   }
@@ -1215,10 +1216,10 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
       required final int startPage,
       required final String createTime,
       required final String updateTime,
-      required final String speechURL}) = _$_MeetingRecordDetailSpeech;
+      required final String speechURL}) = _$MeetingRecordDetailSpeechImpl;
 
   factory _MeetingRecordDetailSpeech.fromJson(Map<String, dynamic> json) =
-      _$_MeetingRecordDetailSpeech.fromJson;
+      _$MeetingRecordDetailSpeechImpl.fromJson;
 
   @override
 
@@ -1270,7 +1271,7 @@ abstract class _MeetingRecordDetailSpeech implements MeetingRecordDetailSpeech {
   String get speechURL;
   @override
   @JsonKey(ignore: true)
-  _$$_MeetingRecordDetailSpeechCopyWith<_$_MeetingRecordDetailSpeech>
+  _$$MeetingRecordDetailSpeechImplCopyWith<_$MeetingRecordDetailSpeechImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1365,12 +1366,12 @@ class _$MeetingRecordSummaryResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MeetingRecordSummaryResponseCopyWith<$Res>
+abstract class _$$MeetingRecordSummaryResponseImplCopyWith<$Res>
     implements $MeetingRecordSummaryResponseCopyWith<$Res> {
-  factory _$$_MeetingRecordSummaryResponseCopyWith(
-          _$_MeetingRecordSummaryResponse value,
-          $Res Function(_$_MeetingRecordSummaryResponse) then) =
-      __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>;
+  factory _$$MeetingRecordSummaryResponseImplCopyWith(
+          _$MeetingRecordSummaryResponseImpl value,
+          $Res Function(_$MeetingRecordSummaryResponseImpl) then) =
+      __$$MeetingRecordSummaryResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1382,13 +1383,13 @@ abstract class _$$_MeetingRecordSummaryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>
+class __$$MeetingRecordSummaryResponseImplCopyWithImpl<$Res>
     extends _$MeetingRecordSummaryResponseCopyWithImpl<$Res,
-        _$_MeetingRecordSummaryResponse>
-    implements _$$_MeetingRecordSummaryResponseCopyWith<$Res> {
-  __$$_MeetingRecordSummaryResponseCopyWithImpl(
-      _$_MeetingRecordSummaryResponse _value,
-      $Res Function(_$_MeetingRecordSummaryResponse) _then)
+        _$MeetingRecordSummaryResponseImpl>
+    implements _$$MeetingRecordSummaryResponseImplCopyWith<$Res> {
+  __$$MeetingRecordSummaryResponseImplCopyWithImpl(
+      _$MeetingRecordSummaryResponseImpl _value,
+      $Res Function(_$MeetingRecordSummaryResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1400,7 +1401,7 @@ class __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>
     Object? nextRecordPosition = freezed,
     Object? meetingRecord = null,
   }) {
-    return _then(_$_MeetingRecordSummaryResponse(
+    return _then(_$MeetingRecordSummaryResponseImpl(
       numberOfRecords: null == numberOfRecords
           ? _value.numberOfRecords
           : numberOfRecords // ignore: cast_nullable_to_non_nullable
@@ -1427,10 +1428,10 @@ class __$$_MeetingRecordSummaryResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MeetingRecordSummaryResponse
+class _$MeetingRecordSummaryResponseImpl
     with DiagnosticableTreeMixin
     implements _MeetingRecordSummaryResponse {
-  const _$_MeetingRecordSummaryResponse(
+  const _$MeetingRecordSummaryResponseImpl(
       {required this.numberOfRecords,
       required this.numberOfReturn,
       required this.startRecord,
@@ -1438,8 +1439,9 @@ class _$_MeetingRecordSummaryResponse
       final List<MeetingRecordSummary> meetingRecord = const []})
       : _meetingRecord = meetingRecord;
 
-  factory _$_MeetingRecordSummaryResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_MeetingRecordSummaryResponseFromJson(json);
+  factory _$MeetingRecordSummaryResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MeetingRecordSummaryResponseImplFromJson(json);
 
   /// 総結果件数
   @override
@@ -1490,7 +1492,7 @@ class _$_MeetingRecordSummaryResponse
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MeetingRecordSummaryResponse &&
+            other is _$MeetingRecordSummaryResponseImpl &&
             (identical(other.numberOfRecords, numberOfRecords) ||
                 other.numberOfRecords == numberOfRecords) &&
             (identical(other.numberOfReturn, numberOfReturn) ||
@@ -1516,13 +1518,14 @@ class _$_MeetingRecordSummaryResponse
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeetingRecordSummaryResponseCopyWith<_$_MeetingRecordSummaryResponse>
-      get copyWith => __$$_MeetingRecordSummaryResponseCopyWithImpl<
-          _$_MeetingRecordSummaryResponse>(this, _$identity);
+  _$$MeetingRecordSummaryResponseImplCopyWith<
+          _$MeetingRecordSummaryResponseImpl>
+      get copyWith => __$$MeetingRecordSummaryResponseImplCopyWithImpl<
+          _$MeetingRecordSummaryResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordSummaryResponseToJson(
+    return _$$MeetingRecordSummaryResponseImplToJson(
       this,
     );
   }
@@ -1536,10 +1539,10 @@ abstract class _MeetingRecordSummaryResponse
           required final int startRecord,
           required final int? nextRecordPosition,
           final List<MeetingRecordSummary> meetingRecord}) =
-      _$_MeetingRecordSummaryResponse;
+      _$MeetingRecordSummaryResponseImpl;
 
   factory _MeetingRecordSummaryResponse.fromJson(Map<String, dynamic> json) =
-      _$_MeetingRecordSummaryResponse.fromJson;
+      _$MeetingRecordSummaryResponseImpl.fromJson;
 
   @override
 
@@ -1563,7 +1566,8 @@ abstract class _MeetingRecordSummaryResponse
   List<MeetingRecordSummary> get meetingRecord;
   @override
   @JsonKey(ignore: true)
-  _$$_MeetingRecordSummaryResponseCopyWith<_$_MeetingRecordSummaryResponse>
+  _$$MeetingRecordSummaryResponseImplCopyWith<
+          _$MeetingRecordSummaryResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1718,11 +1722,11 @@ class _$MeetingRecordSummaryCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MeetingRecordSummaryCopyWith<$Res>
+abstract class _$$MeetingRecordSummaryImplCopyWith<$Res>
     implements $MeetingRecordSummaryCopyWith<$Res> {
-  factory _$$_MeetingRecordSummaryCopyWith(_$_MeetingRecordSummary value,
-          $Res Function(_$_MeetingRecordSummary) then) =
-      __$$_MeetingRecordSummaryCopyWithImpl<$Res>;
+  factory _$$MeetingRecordSummaryImplCopyWith(_$MeetingRecordSummaryImpl value,
+          $Res Function(_$MeetingRecordSummaryImpl) then) =
+      __$$MeetingRecordSummaryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1741,11 +1745,11 @@ abstract class _$$_MeetingRecordSummaryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MeetingRecordSummaryCopyWithImpl<$Res>
-    extends _$MeetingRecordSummaryCopyWithImpl<$Res, _$_MeetingRecordSummary>
-    implements _$$_MeetingRecordSummaryCopyWith<$Res> {
-  __$$_MeetingRecordSummaryCopyWithImpl(_$_MeetingRecordSummary _value,
-      $Res Function(_$_MeetingRecordSummary) _then)
+class __$$MeetingRecordSummaryImplCopyWithImpl<$Res>
+    extends _$MeetingRecordSummaryCopyWithImpl<$Res, _$MeetingRecordSummaryImpl>
+    implements _$$MeetingRecordSummaryImplCopyWith<$Res> {
+  __$$MeetingRecordSummaryImplCopyWithImpl(_$MeetingRecordSummaryImpl _value,
+      $Res Function(_$MeetingRecordSummaryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1764,7 +1768,7 @@ class __$$_MeetingRecordSummaryCopyWithImpl<$Res>
     Object? meetingURL = null,
     Object? pdfURL = null,
   }) {
-    return _then(_$_MeetingRecordSummary(
+    return _then(_$MeetingRecordSummaryImpl(
       issueID: null == issueID
           ? _value.issueID
           : issueID // ignore: cast_nullable_to_non_nullable
@@ -1819,10 +1823,10 @@ class __$$_MeetingRecordSummaryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MeetingRecordSummary
+class _$MeetingRecordSummaryImpl
     with DiagnosticableTreeMixin
     implements _MeetingRecordSummary {
-  const _$_MeetingRecordSummary(
+  const _$MeetingRecordSummaryImpl(
       {required this.issueID,
       required this.imageKind,
       required this.searchObject,
@@ -1837,8 +1841,8 @@ class _$_MeetingRecordSummary
       this.pdfURL = ''})
       : _speechRecord = speechRecord;
 
-  factory _$_MeetingRecordSummary.fromJson(Map<String, dynamic> json) =>
-      _$$_MeetingRecordSummaryFromJson(json);
+  factory _$MeetingRecordSummaryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MeetingRecordSummaryImplFromJson(json);
 
   /// 会議録ID
   @override
@@ -1926,7 +1930,7 @@ class _$_MeetingRecordSummary
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MeetingRecordSummary &&
+            other is _$MeetingRecordSummaryImpl &&
             (identical(other.issueID, issueID) || other.issueID == issueID) &&
             (identical(other.imageKind, imageKind) ||
                 other.imageKind == imageKind) &&
@@ -1967,13 +1971,14 @@ class _$_MeetingRecordSummary
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeetingRecordSummaryCopyWith<_$_MeetingRecordSummary> get copyWith =>
-      __$$_MeetingRecordSummaryCopyWithImpl<_$_MeetingRecordSummary>(
-          this, _$identity);
+  _$$MeetingRecordSummaryImplCopyWith<_$MeetingRecordSummaryImpl>
+      get copyWith =>
+          __$$MeetingRecordSummaryImplCopyWithImpl<_$MeetingRecordSummaryImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordSummaryToJson(
+    return _$$MeetingRecordSummaryImplToJson(
       this,
     );
   }
@@ -1992,10 +1997,10 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
       final String closing,
       final List<MeetingRecordSummarySpeech> speechRecord,
       required final String meetingURL,
-      final String pdfURL}) = _$_MeetingRecordSummary;
+      final String pdfURL}) = _$MeetingRecordSummaryImpl;
 
   factory _MeetingRecordSummary.fromJson(Map<String, dynamic> json) =
-      _$_MeetingRecordSummary.fromJson;
+      _$MeetingRecordSummaryImpl.fromJson;
 
   @override
 
@@ -2047,8 +2052,8 @@ abstract class _MeetingRecordSummary implements MeetingRecordSummary {
   String get pdfURL;
   @override
   @JsonKey(ignore: true)
-  _$$_MeetingRecordSummaryCopyWith<_$_MeetingRecordSummary> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MeetingRecordSummaryImplCopyWith<_$MeetingRecordSummaryImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 MeetingRecordSummarySpeech _$MeetingRecordSummarySpeechFromJson(
@@ -2128,12 +2133,12 @@ class _$MeetingRecordSummarySpeechCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MeetingRecordSummarySpeechCopyWith<$Res>
+abstract class _$$MeetingRecordSummarySpeechImplCopyWith<$Res>
     implements $MeetingRecordSummarySpeechCopyWith<$Res> {
-  factory _$$_MeetingRecordSummarySpeechCopyWith(
-          _$_MeetingRecordSummarySpeech value,
-          $Res Function(_$_MeetingRecordSummarySpeech) then) =
-      __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>;
+  factory _$$MeetingRecordSummarySpeechImplCopyWith(
+          _$MeetingRecordSummarySpeechImpl value,
+          $Res Function(_$MeetingRecordSummarySpeechImpl) then) =
+      __$$MeetingRecordSummarySpeechImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2141,13 +2146,13 @@ abstract class _$$_MeetingRecordSummarySpeechCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>
+class __$$MeetingRecordSummarySpeechImplCopyWithImpl<$Res>
     extends _$MeetingRecordSummarySpeechCopyWithImpl<$Res,
-        _$_MeetingRecordSummarySpeech>
-    implements _$$_MeetingRecordSummarySpeechCopyWith<$Res> {
-  __$$_MeetingRecordSummarySpeechCopyWithImpl(
-      _$_MeetingRecordSummarySpeech _value,
-      $Res Function(_$_MeetingRecordSummarySpeech) _then)
+        _$MeetingRecordSummarySpeechImpl>
+    implements _$$MeetingRecordSummarySpeechImplCopyWith<$Res> {
+  __$$MeetingRecordSummarySpeechImplCopyWithImpl(
+      _$MeetingRecordSummarySpeechImpl _value,
+      $Res Function(_$MeetingRecordSummarySpeechImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2158,7 +2163,7 @@ class __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>
     Object? speaker = null,
     Object? speechURL = null,
   }) {
-    return _then(_$_MeetingRecordSummarySpeech(
+    return _then(_$MeetingRecordSummarySpeechImpl(
       speechID: null == speechID
           ? _value.speechID
           : speechID // ignore: cast_nullable_to_non_nullable
@@ -2181,17 +2186,18 @@ class __$$_MeetingRecordSummarySpeechCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MeetingRecordSummarySpeech
+class _$MeetingRecordSummarySpeechImpl
     with DiagnosticableTreeMixin
     implements _MeetingRecordSummarySpeech {
-  const _$_MeetingRecordSummarySpeech(
+  const _$MeetingRecordSummarySpeechImpl(
       {required this.speechID,
       required this.speechOrder,
       required this.speaker,
       required this.speechURL});
 
-  factory _$_MeetingRecordSummarySpeech.fromJson(Map<String, dynamic> json) =>
-      _$$_MeetingRecordSummarySpeechFromJson(json);
+  factory _$MeetingRecordSummarySpeechImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MeetingRecordSummarySpeechImplFromJson(json);
 
   /// 発言ID
   @override
@@ -2229,7 +2235,7 @@ class _$_MeetingRecordSummarySpeech
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MeetingRecordSummarySpeech &&
+            other is _$MeetingRecordSummarySpeechImpl &&
             (identical(other.speechID, speechID) ||
                 other.speechID == speechID) &&
             (identical(other.speechOrder, speechOrder) ||
@@ -2247,13 +2253,13 @@ class _$_MeetingRecordSummarySpeech
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeetingRecordSummarySpeechCopyWith<_$_MeetingRecordSummarySpeech>
-      get copyWith => __$$_MeetingRecordSummarySpeechCopyWithImpl<
-          _$_MeetingRecordSummarySpeech>(this, _$identity);
+  _$$MeetingRecordSummarySpeechImplCopyWith<_$MeetingRecordSummarySpeechImpl>
+      get copyWith => __$$MeetingRecordSummarySpeechImplCopyWithImpl<
+          _$MeetingRecordSummarySpeechImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeetingRecordSummarySpeechToJson(
+    return _$$MeetingRecordSummarySpeechImplToJson(
       this,
     );
   }
@@ -2265,10 +2271,10 @@ abstract class _MeetingRecordSummarySpeech
       {required final String speechID,
       required final int speechOrder,
       required final String speaker,
-      required final String speechURL}) = _$_MeetingRecordSummarySpeech;
+      required final String speechURL}) = _$MeetingRecordSummarySpeechImpl;
 
   factory _MeetingRecordSummarySpeech.fromJson(Map<String, dynamic> json) =
-      _$_MeetingRecordSummarySpeech.fromJson;
+      _$MeetingRecordSummarySpeechImpl.fromJson;
 
   @override
 
@@ -2288,6 +2294,6 @@ abstract class _MeetingRecordSummarySpeech
   String get speechURL;
   @override
   @JsonKey(ignore: true)
-  _$$_MeetingRecordSummarySpeechCopyWith<_$_MeetingRecordSummarySpeech>
+  _$$MeetingRecordSummarySpeechImplCopyWith<_$MeetingRecordSummarySpeechImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

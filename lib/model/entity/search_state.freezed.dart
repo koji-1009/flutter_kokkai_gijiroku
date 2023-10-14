@@ -198,11 +198,11 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
 }
 
 /// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res>
+abstract class _$$HomeStateImplCopyWith<$Res>
     implements $SearchStateCopyWith<$Res> {
-  factory _$$_HomeStateCopyWith(
-          _$_HomeState value, $Res Function(_$_HomeState) then) =
-      __$$_HomeStateCopyWithImpl<$Res>;
+  factory _$$HomeStateImplCopyWith(
+          _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
+      __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -230,11 +230,11 @@ abstract class _$$_HomeStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_HomeState>
-    implements _$$_HomeStateCopyWith<$Res> {
-  __$$_HomeStateCopyWithImpl(
-      _$_HomeState _value, $Res Function(_$_HomeState) _then)
+class __$$HomeStateImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$HomeStateImpl>
+    implements _$$HomeStateImplCopyWith<$Res> {
+  __$$HomeStateImplCopyWithImpl(
+      _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -262,7 +262,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
     Object? issueFrom = freezed,
     Object? issueTo = freezed,
   }) {
-    return _then(_$_HomeState(
+    return _then(_$HomeStateImpl(
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
@@ -353,8 +353,8 @@ class __$$_HomeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
-  const _$_HomeState(
+class _$HomeStateImpl with DiagnosticableTreeMixin implements _HomeState {
+  const _$HomeStateImpl(
       {this.mode = SearchMode.speech,
       this.nameOfHouse = NameOfHouse.none,
       this.nameOfMeeting = '',
@@ -471,7 +471,7 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeState &&
+            other is _$HomeStateImpl &&
             (identical(other.mode, mode) || other.mode == mode) &&
             (identical(other.nameOfHouse, nameOfHouse) ||
                 other.nameOfHouse == nameOfHouse) &&
@@ -537,8 +537,8 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
-      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
+      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
 }
 
 abstract class _HomeState implements SearchState {
@@ -563,7 +563,7 @@ abstract class _HomeState implements SearchState {
       final int? sessionFrom,
       final int? sessionTo,
       final int? issueFrom,
-      final int? issueTo}) = _$_HomeState;
+      final int? issueTo}) = _$HomeStateImpl;
 
   @override
   SearchMode get mode;
@@ -609,6 +609,6 @@ abstract class _HomeState implements SearchState {
   int? get issueTo;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

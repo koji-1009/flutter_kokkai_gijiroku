@@ -6,13 +6,13 @@ part of 'meeting_record.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MeetingRecordResponseDetail _$$_MeetingRecordResponseDetailFromJson(
+_$MeetingRecordResponseDetailImpl _$$MeetingRecordResponseDetailImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordResponseDetail',
+      r'_$MeetingRecordResponseDetailImpl',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordResponseDetail(
+        final val = _$MeetingRecordResponseDetailImpl(
           numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
           numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
           startRecord: $checkedConvert('startRecord', (v) => v as int),
@@ -31,8 +31,8 @@ _$_MeetingRecordResponseDetail _$$_MeetingRecordResponseDetailFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordResponseDetailToJson(
-    _$_MeetingRecordResponseDetail instance) {
+Map<String, dynamic> _$$MeetingRecordResponseDetailImplToJson(
+    _$MeetingRecordResponseDetailImpl instance) {
   final val = <String, dynamic>{
     'numberOfRecords': instance.numberOfRecords,
     'numberOfReturn': instance.numberOfReturn,
@@ -50,13 +50,13 @@ Map<String, dynamic> _$$_MeetingRecordResponseDetailToJson(
   return val;
 }
 
-_$_MeetingRecordDetail _$$_MeetingRecordDetailFromJson(
+_$MeetingRecordDetailImpl _$$MeetingRecordDetailImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordDetail',
+      r'_$MeetingRecordDetailImpl',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordDetail(
+        final val = _$MeetingRecordDetailImpl(
           issueID: $checkedConvert('issueID', (v) => v as String),
           imageKind: $checkedConvert('imageKind', (v) => v as String),
           searchObject: $checkedConvert('searchObject', (v) => v as int),
@@ -81,8 +81,8 @@ _$_MeetingRecordDetail _$$_MeetingRecordDetailFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordDetailToJson(
-        _$_MeetingRecordDetail instance) =>
+Map<String, dynamic> _$$MeetingRecordDetailImplToJson(
+        _$MeetingRecordDetailImpl instance) =>
     <String, dynamic>{
       'issueID': instance.issueID,
       'imageKind': instance.imageKind,
@@ -98,13 +98,13 @@ Map<String, dynamic> _$$_MeetingRecordDetailToJson(
       'pdfURL': instance.pdfURL,
     };
 
-_$_MeetingRecordDetailSpeech _$$_MeetingRecordDetailSpeechFromJson(
+_$MeetingRecordDetailSpeechImpl _$$MeetingRecordDetailSpeechImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordDetailSpeech',
+      r'_$MeetingRecordDetailSpeechImpl',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordDetailSpeech(
+        final val = _$MeetingRecordDetailSpeechImpl(
           speechID: $checkedConvert('speechID', (v) => v as String),
           speechOrder: $checkedConvert('speechOrder', (v) => v as int),
           speaker: $checkedConvert('speaker', (v) => v as String),
@@ -126,8 +126,8 @@ _$_MeetingRecordDetailSpeech _$$_MeetingRecordDetailSpeechFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordDetailSpeechToJson(
-        _$_MeetingRecordDetailSpeech instance) =>
+Map<String, dynamic> _$$MeetingRecordDetailSpeechImplToJson(
+        _$MeetingRecordDetailSpeechImpl instance) =>
     <String, dynamic>{
       'speechID': instance.speechID,
       'speechOrder': instance.speechOrder,
@@ -143,13 +143,13 @@ Map<String, dynamic> _$$_MeetingRecordDetailSpeechToJson(
       'speechURL': instance.speechURL,
     };
 
-_$_MeetingRecordSummaryResponse _$$_MeetingRecordSummaryResponseFromJson(
+_$MeetingRecordSummaryResponseImpl _$$MeetingRecordSummaryResponseImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordSummaryResponse',
+      r'_$MeetingRecordSummaryResponseImpl',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordSummaryResponse(
+        final val = _$MeetingRecordSummaryResponseImpl(
           numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
           numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
           startRecord: $checkedConvert('startRecord', (v) => v as int),
@@ -168,8 +168,8 @@ _$_MeetingRecordSummaryResponse _$$_MeetingRecordSummaryResponseFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordSummaryResponseToJson(
-    _$_MeetingRecordSummaryResponse instance) {
+Map<String, dynamic> _$$MeetingRecordSummaryResponseImplToJson(
+    _$MeetingRecordSummaryResponseImpl instance) {
   final val = <String, dynamic>{
     'numberOfRecords': instance.numberOfRecords,
     'numberOfReturn': instance.numberOfReturn,
@@ -187,13 +187,13 @@ Map<String, dynamic> _$$_MeetingRecordSummaryResponseToJson(
   return val;
 }
 
-_$_MeetingRecordSummary _$$_MeetingRecordSummaryFromJson(
+_$MeetingRecordSummaryImpl _$$MeetingRecordSummaryImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordSummary',
+      r'_$MeetingRecordSummaryImpl',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordSummary(
+        final val = _$MeetingRecordSummaryImpl(
           issueID: $checkedConvert('issueID', (v) => v as String),
           imageKind: $checkedConvert('imageKind', (v) => v as String),
           searchObject: $checkedConvert('searchObject', (v) => v as int),
@@ -218,8 +218,8 @@ _$_MeetingRecordSummary _$$_MeetingRecordSummaryFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordSummaryToJson(
-        _$_MeetingRecordSummary instance) =>
+Map<String, dynamic> _$$MeetingRecordSummaryImplToJson(
+        _$MeetingRecordSummaryImpl instance) =>
     <String, dynamic>{
       'issueID': instance.issueID,
       'imageKind': instance.imageKind,
@@ -235,13 +235,13 @@ Map<String, dynamic> _$$_MeetingRecordSummaryToJson(
       'pdfURL': instance.pdfURL,
     };
 
-_$_MeetingRecordSummarySpeech _$$_MeetingRecordSummarySpeechFromJson(
+_$MeetingRecordSummarySpeechImpl _$$MeetingRecordSummarySpeechImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_MeetingRecordSummarySpeech',
+      r'_$MeetingRecordSummarySpeechImpl',
       json,
       ($checkedConvert) {
-        final val = _$_MeetingRecordSummarySpeech(
+        final val = _$MeetingRecordSummarySpeechImpl(
           speechID: $checkedConvert('speechID', (v) => v as String),
           speechOrder: $checkedConvert('speechOrder', (v) => v as int),
           speaker: $checkedConvert('speaker', (v) => v as String),
@@ -251,8 +251,8 @@ _$_MeetingRecordSummarySpeech _$$_MeetingRecordSummarySpeechFromJson(
       },
     );
 
-Map<String, dynamic> _$$_MeetingRecordSummarySpeechToJson(
-        _$_MeetingRecordSummarySpeech instance) =>
+Map<String, dynamic> _$$MeetingRecordSummarySpeechImplToJson(
+        _$MeetingRecordSummarySpeechImpl instance) =>
     <String, dynamic>{
       'speechID': instance.speechID,
       'speechOrder': instance.speechOrder,

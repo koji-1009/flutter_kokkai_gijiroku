@@ -248,12 +248,12 @@ class SpeakerRoleAdapter extends TypeAdapter<SpeakerRole> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SearchParams _$$_SearchParamsFromJson(Map<String, dynamic> json) =>
+_$SearchParamsImpl _$$SearchParamsImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_SearchParams',
+      r'_$SearchParamsImpl',
       json,
       ($checkedConvert) {
-        final val = _$_SearchParams(
+        final val = _$SearchParamsImpl(
           nameOfHouse: $checkedConvert(
               'nameOfHouse',
               (v) =>
@@ -298,7 +298,7 @@ _$_SearchParams _$$_SearchParamsFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_SearchParamsToJson(_$_SearchParams instance) {
+Map<String, dynamic> _$$SearchParamsImplToJson(_$SearchParamsImpl instance) {
   final val = <String, dynamic>{
     'nameOfHouse': _$NameOfHouseEnumMap[instance.nameOfHouse]!,
     'nameOfMeeting': instance.nameOfMeeting,

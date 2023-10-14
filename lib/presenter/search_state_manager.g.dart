@@ -7,7 +7,7 @@ part of 'search_state_manager.dart';
 // **************************************************************************
 
 String _$searchStateManagerHash() =>
-    r'5d631e83e766a52920f93622efddca1bed02f343';
+    r'e4b0c5a2c532a3f69f6ca3f01f89accc5dc33942';
 
 /// See also [SearchStateManager].
 @ProviderFor(SearchStateManager)
@@ -24,4 +24,4 @@ final searchStateManagerProvider =
 
 typedef _$SearchStateManager = AutoDisposeNotifier<SearchState>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

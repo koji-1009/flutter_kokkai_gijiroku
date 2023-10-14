@@ -295,11 +295,11 @@ class _$SearchParamsCopyWithImpl<$Res, $Val extends SearchParams>
 }
 
 /// @nodoc
-abstract class _$$_SearchParamsCopyWith<$Res>
+abstract class _$$SearchParamsImplCopyWith<$Res>
     implements $SearchParamsCopyWith<$Res> {
-  factory _$$_SearchParamsCopyWith(
-          _$_SearchParams value, $Res Function(_$_SearchParams) then) =
-      __$$_SearchParamsCopyWithImpl<$Res>;
+  factory _$$SearchParamsImplCopyWith(
+          _$SearchParamsImpl value, $Res Function(_$SearchParamsImpl) then) =
+      __$$SearchParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -326,11 +326,11 @@ abstract class _$$_SearchParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchParamsCopyWithImpl<$Res>
-    extends _$SearchParamsCopyWithImpl<$Res, _$_SearchParams>
-    implements _$$_SearchParamsCopyWith<$Res> {
-  __$$_SearchParamsCopyWithImpl(
-      _$_SearchParams _value, $Res Function(_$_SearchParams) _then)
+class __$$SearchParamsImplCopyWithImpl<$Res>
+    extends _$SearchParamsCopyWithImpl<$Res, _$SearchParamsImpl>
+    implements _$$SearchParamsImplCopyWith<$Res> {
+  __$$SearchParamsImplCopyWithImpl(
+      _$SearchParamsImpl _value, $Res Function(_$SearchParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -357,7 +357,7 @@ class __$$_SearchParamsCopyWithImpl<$Res>
     Object? issueFrom = freezed,
     Object? issueTo = freezed,
   }) {
-    return _then(_$_SearchParams(
+    return _then(_$SearchParamsImpl(
       nameOfHouse: null == nameOfHouse
           ? _value.nameOfHouse
           : nameOfHouse // ignore: cast_nullable_to_non_nullable
@@ -444,8 +444,8 @@ class __$$_SearchParamsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
-  const _$_SearchParams(
+class _$SearchParamsImpl with DiagnosticableTreeMixin implements _SearchParams {
+  const _$SearchParamsImpl(
       {@HiveField(0) this.nameOfHouse = NameOfHouse.none,
       @HiveField(1) this.nameOfMeeting = '',
       @HiveField(2) this.any = '',
@@ -467,8 +467,8 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
       @HiveField(18) this.issueFrom,
       @HiveField(19) this.issueTo});
 
-  factory _$_SearchParams.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchParamsFromJson(json);
+  factory _$SearchParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SearchParamsImplFromJson(json);
 
   /// 院名
   /// 院名として「衆議院」「参議院」「両院」「両院協議会」のいずれかを指定可能。「両院」と「両院協議会」の結果は同じ。
@@ -659,7 +659,7 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchParams &&
+            other is _$SearchParamsImpl &&
             (identical(other.nameOfHouse, nameOfHouse) ||
                 other.nameOfHouse == nameOfHouse) &&
             (identical(other.nameOfMeeting, nameOfMeeting) ||
@@ -724,12 +724,12 @@ class _$_SearchParams with DiagnosticableTreeMixin implements _SearchParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
-      __$$_SearchParamsCopyWithImpl<_$_SearchParams>(this, _$identity);
+  _$$SearchParamsImplCopyWith<_$SearchParamsImpl> get copyWith =>
+      __$$SearchParamsImplCopyWithImpl<_$SearchParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchParamsToJson(
+    return _$$SearchParamsImplToJson(
       this,
     );
   }
@@ -756,10 +756,10 @@ abstract class _SearchParams implements SearchParams {
       @HiveField(16) final int? sessionFrom,
       @HiveField(17) final int? sessionTo,
       @HiveField(18) final int? issueFrom,
-      @HiveField(19) final int? issueTo}) = _$_SearchParams;
+      @HiveField(19) final int? issueTo}) = _$SearchParamsImpl;
 
   factory _SearchParams.fromJson(Map<String, dynamic> json) =
-      _$_SearchParams.fromJson;
+      _$SearchParamsImpl.fromJson;
 
   @override
 
@@ -903,6 +903,6 @@ abstract class _SearchParams implements SearchParams {
   int? get issueTo;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
+  _$$SearchParamsImplCopyWith<_$SearchParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

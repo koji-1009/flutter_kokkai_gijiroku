@@ -1,8 +1,10 @@
 enum SearchMode {
   /// 会議単位簡易出力
   meetingDetail,
+
   /// 会議単位簡易出力
   meetingSummary,
+
   /// 発言単位出力
   speech,
 }

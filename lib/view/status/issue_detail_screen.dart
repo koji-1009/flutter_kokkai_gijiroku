@@ -45,7 +45,7 @@ class IssueDetailScreen extends ConsumerWidget {
             onTap: () {
               SpeechDetailRoute(
                 speechID: element.speechID,
-              ).go(context);
+              ).push(context);
             },
           ),
           initialLoadingWidget: const Center(

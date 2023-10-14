@@ -10,11 +10,18 @@ part 'data_source_speech.g.dart';
 DataSourceSpeech dataSourceSpeech(
   DataSourceSpeechRef ref, {
   required SearchParams params,
-}) =>
-    DataSourceSpeech(
-      repository: ref.watch(apiRepositoryProvider),
-      searchParams: params,
-    );
+}) {
+  final dataSource = DataSourceSpeech(
+    repository: ref.watch(apiRepositoryProvider),
+    searchParams: params,
+  );
+
+  ref.onDispose(() {
+    dataSource.dispose();
+  });
+
+  return dataSource;
+}
 
 final class DataSourceSpeech extends DataSource<int, SpeechRecord> {
   DataSourceSpeech({

@@ -7,7 +7,7 @@ part of 'data_source_meeting_detail.dart';
 // **************************************************************************
 
 String _$dataSourceMeetingDetailHash() =>
-    r'779305aa0979d1c2bf7eae7bc3f876c96c615426';
+    r'61ba6ce720b6745a79fc70841a5311103435a4f0';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,9 +29,6 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
-
-typedef DataSourceMeetingDetailRef
-    = AutoDisposeProviderRef<DataSourceMeetingDetail>;
 
 /// See also [dataSourceMeetingDetail].
 @ProviderFor(dataSourceMeetingDetail)
@@ -80,10 +77,10 @@ class DataSourceMeetingDetailProvider
     extends AutoDisposeProvider<DataSourceMeetingDetail> {
   /// See also [dataSourceMeetingDetail].
   DataSourceMeetingDetailProvider({
-    required this.params,
-  }) : super.internal(
+    required SearchParams params,
+  }) : this._internal(
           (ref) => dataSourceMeetingDetail(
-            ref,
+            ref as DataSourceMeetingDetailRef,
             params: params,
           ),
           from: dataSourceMeetingDetailProvider,
@@ -95,9 +92,44 @@ class DataSourceMeetingDetailProvider
           dependencies: DataSourceMeetingDetailFamily._dependencies,
           allTransitiveDependencies:
               DataSourceMeetingDetailFamily._allTransitiveDependencies,
+          params: params,
         );
 
+  DataSourceMeetingDetailProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.params,
+  }) : super.internal();
+
   final SearchParams params;
+
+  @override
+  Override overrideWith(
+    DataSourceMeetingDetail Function(DataSourceMeetingDetailRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: DataSourceMeetingDetailProvider._internal(
+        (ref) => create(ref as DataSourceMeetingDetailRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        params: params,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<DataSourceMeetingDetail> createElement() {
+    return _DataSourceMeetingDetailProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -112,5 +144,20 @@ class DataSourceMeetingDetailProvider
     return _SystemHash.finish(hash);
   }
 }
+
+mixin DataSourceMeetingDetailRef
+    on AutoDisposeProviderRef<DataSourceMeetingDetail> {
+  /// The parameter `params` of this provider.
+  SearchParams get params;
+}
+
+class _DataSourceMeetingDetailProviderElement
+    extends AutoDisposeProviderElement<DataSourceMeetingDetail>
+    with DataSourceMeetingDetailRef {
+  _DataSourceMeetingDetailProviderElement(super.provider);
+
+  @override
+  SearchParams get params => (origin as DataSourceMeetingDetailProvider).params;
+}
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
