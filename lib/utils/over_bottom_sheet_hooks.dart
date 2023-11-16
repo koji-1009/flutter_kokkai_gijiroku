@@ -26,11 +26,11 @@ OverBottomSheetController useOverBottomSheetController({
 
 class _OverBottomSheetControllerHook extends Hook<OverBottomSheetController> {
   const _OverBottomSheetControllerHook({
+    super.keys,
     required this.ratio,
     required this.tick,
     required this.step,
-    List<Object?>? keys,
-  }) : super(keys: keys);
+  });
 
   final double ratio;
   final Duration tick;
