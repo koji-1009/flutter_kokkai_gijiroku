@@ -10,7 +10,7 @@ import 'package:http_hive_cache/http_hive_cache.dart';
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
-    yield const LicenseEntryWithLineBreaks(['google_fonts'], mPlus1License);
+    yield const LicenseEntryWithLineBreaks(['google_fonts'], bizUDGothic);
   });
 
   await Hive.initFlutter();
