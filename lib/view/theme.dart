@@ -9,7 +9,7 @@ ThemeData get lightTheme {
   );
 
   return base.copyWith(
-    textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
+    textTheme: GoogleFonts.bizUDGothicTextTheme(base.textTheme),
     bottomSheetTheme: base.bottomSheetTheme.copyWith(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -28,7 +28,7 @@ ThemeData get darkTheme {
   );
 
   return base.copyWith(
-    textTheme: GoogleFonts.mPlus1pTextTheme(base.textTheme),
+    textTheme: GoogleFonts.bizUDGothicTextTheme(base.textTheme),
     bottomSheetTheme: base.bottomSheetTheme.copyWith(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
