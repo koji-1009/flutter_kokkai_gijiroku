@@ -130,7 +130,7 @@ class _$ApiExceptionErrorImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiExceptionErrorImpl &&
@@ -215,7 +215,7 @@ class _$ApiExceptionOtherImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ApiExceptionOtherImpl);
   }

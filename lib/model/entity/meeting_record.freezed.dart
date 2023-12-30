@@ -228,7 +228,7 @@ class _$MeetingRecordResponseDetailImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeetingRecordResponseDetailImpl &&
@@ -663,7 +663,7 @@ class _$MeetingRecordDetailImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeetingRecordDetailImpl &&
@@ -1143,7 +1143,7 @@ class _$MeetingRecordDetailSpeechImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeetingRecordDetailSpeechImpl &&
@@ -1489,7 +1489,7 @@ class _$MeetingRecordSummaryResponseImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeetingRecordSummaryResponseImpl &&
@@ -1927,7 +1927,7 @@ class _$MeetingRecordSummaryImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeetingRecordSummaryImpl &&
@@ -2232,7 +2232,7 @@ class _$MeetingRecordSummarySpeechImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeetingRecordSummarySpeechImpl &&
