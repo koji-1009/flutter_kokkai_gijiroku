@@ -222,7 +222,7 @@ class _$SpeechRecordResponseeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeechRecordResponseeImpl &&
@@ -818,7 +818,7 @@ class _$SpeechRecordImpl with DiagnosticableTreeMixin implements _SpeechRecord {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeechRecordImpl &&
