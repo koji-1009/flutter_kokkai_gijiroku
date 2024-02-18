@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/search_params_list.dart';
+import 'package:gap/gap.dart';
 
 class SearchResultBottomContent extends StatelessWidget {
   const SearchResultBottomContent({
@@ -25,9 +26,7 @@ class SearchResultBottomContent extends StatelessWidget {
           ),
           const Divider(),
           Text('総結果件数: $numberOfRecords'),
-          const SizedBox(
-            height: 8,
-          ),
+          const Gap(8),
           SearchParamsList(
             params: params,
           ),

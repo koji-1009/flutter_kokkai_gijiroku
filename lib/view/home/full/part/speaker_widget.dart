@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SpeakerWidget extends HookConsumerWidget {
@@ -51,9 +52,7 @@ class SpeakerWidget extends HookConsumerWidget {
                   .updateSpeaker(value);
             },
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const Gap(8),
           TextField(
             controller: speakerPositionController,
             keyboardType: TextInputType.text,
@@ -68,9 +67,7 @@ class SpeakerWidget extends HookConsumerWidget {
                   .updateSpeakerPosition(value);
             },
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const Gap(8),
           TextField(
             controller: speakerGroupController,
             keyboardType: TextInputType.text,
@@ -85,9 +82,7 @@ class SpeakerWidget extends HookConsumerWidget {
                   .updateSpeakerGroup(value);
             },
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const Gap(8),
           Row(
             children: [
               Text(

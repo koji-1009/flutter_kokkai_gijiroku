@@ -50,6 +50,7 @@ class SearchMeetingDetailScreen extends HookConsumerWidget {
         ),
       ),
       body: SafeArea(
+        bottom: false,
         child: OverBottomSheet(
           sizeOption: bottomSheetSizeOption,
           header: const BottomSheetDivider(),

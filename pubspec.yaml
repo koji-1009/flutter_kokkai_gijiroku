@@ -32,6 +32,7 @@ dependencies:
 
   http_hive_cache: ^0.0.1
 
+  gap: ^3.0.0
   google_fonts: ^6.0.0
   quiver: ^3.0.0
   breakpoints_mq: ^3.0.0

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/cache_clear_dialog.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 enum _HomeAction {
@@ -76,9 +77,7 @@ class HomeAppBarAction extends StatelessWidget {
                   '国会会議録検索システム　検索用APIの仕様にある'
                   '「4. 利用条件・免責事項」をご確認ください。',
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
+                const Gap(16),
                 const Text(
                   'アプリケーションへの機能要望などは、GitHub Issueまでお寄せください。',
                 ),

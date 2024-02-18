@@ -28,6 +28,7 @@ class IssueDetailScreen extends ConsumerWidget {
         title: const Text('会議録詳細'),
       ),
       body: SafeArea(
+        bottom: false,
         child: PagingList<int, SpeechRecord>(
           dataSource: dataSource,
           builder: (context, element, index) => InkWell(

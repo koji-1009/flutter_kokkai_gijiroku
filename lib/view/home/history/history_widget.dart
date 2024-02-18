@@ -6,6 +6,7 @@ import 'package:flutter_kokkai_gijiroku/model/hive/search_history.dart';
 import 'package:flutter_kokkai_gijiroku/view/router.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/memo_edit_dialog.dart';
 import 'package:flutter_kokkai_gijiroku/view/widget/search_params_list.dart';
+import 'package:gap/gap.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -62,9 +63,7 @@ class HistoryWidget extends ConsumerWidget {
                             SearchParamsList(
                               params: history.params,
                             ),
-                            const SizedBox(
-                              height: 8,
-                            ),
+                            const Gap(8),
                             Text(
                               '検索日時',
                               style: Theme.of(context).textTheme.titleMedium,
@@ -73,9 +72,7 @@ class HistoryWidget extends ConsumerWidget {
                               _formatter.format(history.updatedAt),
                             ),
                             if (history.memo.isNotEmpty) ...[
-                              const SizedBox(
-                                height: 8,
-                              ),
+                              const Gap(8),
                               Text(
                                 'メモ',
                                 style: Theme.of(context).textTheme.titleMedium,
@@ -117,9 +114,7 @@ class HistoryWidget extends ConsumerWidget {
                             },
                             icon: const Icon(Icons.edit),
                           ),
-                          const SizedBox(
-                            height: 8,
-                          ),
+                          const Gap(8),
                           IconButton(
                             tooltip: '履歴の削除',
                             onPressed: () async {

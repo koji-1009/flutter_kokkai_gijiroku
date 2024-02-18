@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
 import 'package:flutter_kokkai_gijiroku/utils/date_formatter.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DateWidget extends ConsumerWidget {
@@ -55,9 +56,7 @@ class DateWidget extends ConsumerWidget {
                 .updateFrom(selectDate);
           },
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const Gap(8),
         InkWell(
           child: Padding(
             padding: EdgeInsets.symmetric(
