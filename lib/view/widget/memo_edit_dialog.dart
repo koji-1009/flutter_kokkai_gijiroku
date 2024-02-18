@@ -12,7 +12,7 @@ class MemoEditDialog extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTextEditingController.call(
+    final controller = useTextEditingController(
       text: memo,
     );
 

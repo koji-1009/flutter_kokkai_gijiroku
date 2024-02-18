@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http_hive_cache/http_hive_cache.dart';
 
-class CacheClearDialog extends StatefulWidget {
+class CacheClearDialog extends StatelessWidget {
   const CacheClearDialog({super.key});
 
-  @override
-  State<CacheClearDialog> createState() => _CacheClearDialogState();
-}
-
-class _CacheClearDialogState extends State<CacheClearDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -25,7 +20,7 @@ class _CacheClearDialogState extends State<CacheClearDialog> {
           onPressed: () async {
             await HttpHiveCache.clearAll();
 
-            if (!mounted) return;
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('キャッシュを削除しました'),

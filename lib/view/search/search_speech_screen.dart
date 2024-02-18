@@ -48,6 +48,7 @@ class SearchSpeechScreen extends ConsumerWidget {
         ),
       ),
       body: SafeArea(
+        bottom: false,
         child: OverBottomSheet(
           sizeOption: bottomSheetSizeOption,
           header: const BottomSheetDivider(),

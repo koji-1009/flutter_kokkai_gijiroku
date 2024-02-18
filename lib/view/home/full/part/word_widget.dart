@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/presenter/search_state_manager.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class WordWidget extends HookConsumerWidget {
@@ -40,9 +41,7 @@ class WordWidget extends HookConsumerWidget {
             },
           ),
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const Gap(8),
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: margin,
@@ -70,9 +69,7 @@ class WordWidget extends HookConsumerWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const Gap(8),
         SwitchListTile(
           title: const Text('追録・附録指定'),
           contentPadding: EdgeInsets.symmetric(

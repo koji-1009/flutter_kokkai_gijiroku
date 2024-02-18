@@ -1,4 +1,5 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_state.dart';
@@ -143,37 +144,54 @@ class HomeScreen extends ConsumerWidget {
           HomeAppBarAction(),
         ],
       ),
-      body: Row(
-        children: [
-          NavigationRail(
-            extended: isExtended,
-            labelType: isExtended ? null : NavigationRailLabelType.selected,
-            destinations: const [
-              NavigationRailDestination(
-                icon: Icon(Icons.search),
-                label: Text('キーワード'),
+      body: SafeArea(
+        bottom: false,
+        child: Row(
+          children: [
+            LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                primary: false,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: IntrinsicHeight(
+                    child: NavigationRail(
+                      extended: isExtended,
+                      labelType: isExtended
+                          ? NavigationRailLabelType.none
+                          : NavigationRailLabelType.selected,
+                      destinations: const [
+                        NavigationRailDestination(
+                          icon: Icon(Icons.search),
+                          label: Text('キーワード'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.manage_search),
+                          label: Text('条件'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.history),
+                          label: Text('検索'),
+                        ),
+                      ],
+                      selectedIndex: index,
+                      onDestinationSelected: (index) {
+                        _navigate(
+                          context: context,
+                          index: index,
+                        );
+                      },
+                    ),
+                  ),
+                ),
               ),
-              NavigationRailDestination(
-                icon: Icon(Icons.manage_search),
-                label: Text('条件'),
-              ),
-              NavigationRailDestination(
-                icon: Icon(Icons.history),
-                label: Text('検索'),
-              ),
-            ],
-            selectedIndex: index,
-            onDestinationSelected: (index) {
-              _navigate(
-                context: context,
-                index: index,
-              );
-            },
-          ),
-          Expanded(
-            child: child,
-          ),
-        ],
+            ),
+            Expanded(
+              child: child,
+            ),
+          ],
+        ),
       ),
       floatingActionButton: actionButton,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
