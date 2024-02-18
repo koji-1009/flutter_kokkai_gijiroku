@@ -8,7 +8,7 @@
 PRODUCT_NAME = flutter_kokkai_gijiroku
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.flutterKokkaiGijiroku
+PRODUCT_BUNDLE_IDENTIFIER = com.dr1009.app.flutterKokkaiGijiroku
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 com.dr1009.app. All rights reserved.
