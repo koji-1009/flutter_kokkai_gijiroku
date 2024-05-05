@@ -1,5 +1,4 @@
 import 'package:breakpoints_mq/breakpoints_mq.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_params.dart';
 import 'package:flutter_kokkai_gijiroku/model/entity/search_state.dart';
