@@ -13,11 +13,14 @@ _$MeetingRecordResponseDetailImpl _$$MeetingRecordResponseDetailImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$MeetingRecordResponseDetailImpl(
-          numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
-          numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
-          startRecord: $checkedConvert('startRecord', (v) => v as int),
-          nextRecordPosition:
-              $checkedConvert('nextRecordPosition', (v) => v as int?),
+          numberOfRecords:
+              $checkedConvert('numberOfRecords', (v) => (v as num).toInt()),
+          numberOfReturn:
+              $checkedConvert('numberOfReturn', (v) => (v as num).toInt()),
+          startRecord:
+              $checkedConvert('startRecord', (v) => (v as num).toInt()),
+          nextRecordPosition: $checkedConvert(
+              'nextRecordPosition', (v) => (v as num?)?.toInt()),
           meetingRecord: $checkedConvert(
               'meetingRecord',
               (v) =>
@@ -59,8 +62,9 @@ _$MeetingRecordDetailImpl _$$MeetingRecordDetailImplFromJson(
         final val = _$MeetingRecordDetailImpl(
           issueID: $checkedConvert('issueID', (v) => v as String),
           imageKind: $checkedConvert('imageKind', (v) => v as String),
-          searchObject: $checkedConvert('searchObject', (v) => v as int),
-          session: $checkedConvert('session', (v) => v as int),
+          searchObject:
+              $checkedConvert('searchObject', (v) => (v as num).toInt()),
+          session: $checkedConvert('session', (v) => (v as num).toInt()),
           nameOfHouse: $checkedConvert('nameOfHouse', (v) => v as String),
           nameOfMeeting: $checkedConvert('nameOfMeeting', (v) => v as String),
           issue: $checkedConvert('issue', (v) => v as String),
@@ -106,7 +110,8 @@ _$MeetingRecordDetailSpeechImpl _$$MeetingRecordDetailSpeechImplFromJson(
       ($checkedConvert) {
         final val = _$MeetingRecordDetailSpeechImpl(
           speechID: $checkedConvert('speechID', (v) => v as String),
-          speechOrder: $checkedConvert('speechOrder', (v) => v as int),
+          speechOrder:
+              $checkedConvert('speechOrder', (v) => (v as num).toInt()),
           speaker: $checkedConvert('speaker', (v) => v as String),
           speakerYomi:
               $checkedConvert('speakerYomi', (v) => v as String? ?? ''),
@@ -117,7 +122,7 @@ _$MeetingRecordDetailSpeechImpl _$$MeetingRecordDetailSpeechImplFromJson(
           speakerRole:
               $checkedConvert('speakerRole', (v) => v as String? ?? ''),
           speech: $checkedConvert('speech', (v) => v as String),
-          startPage: $checkedConvert('startPage', (v) => v as int),
+          startPage: $checkedConvert('startPage', (v) => (v as num).toInt()),
           createTime: $checkedConvert('createTime', (v) => v as String),
           updateTime: $checkedConvert('updateTime', (v) => v as String),
           speechURL: $checkedConvert('speechURL', (v) => v as String),
@@ -150,11 +155,14 @@ _$MeetingRecordSummaryResponseImpl _$$MeetingRecordSummaryResponseImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$MeetingRecordSummaryResponseImpl(
-          numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
-          numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
-          startRecord: $checkedConvert('startRecord', (v) => v as int),
-          nextRecordPosition:
-              $checkedConvert('nextRecordPosition', (v) => v as int?),
+          numberOfRecords:
+              $checkedConvert('numberOfRecords', (v) => (v as num).toInt()),
+          numberOfReturn:
+              $checkedConvert('numberOfReturn', (v) => (v as num).toInt()),
+          startRecord:
+              $checkedConvert('startRecord', (v) => (v as num).toInt()),
+          nextRecordPosition: $checkedConvert(
+              'nextRecordPosition', (v) => (v as num?)?.toInt()),
           meetingRecord: $checkedConvert(
               'meetingRecord',
               (v) =>
@@ -196,8 +204,9 @@ _$MeetingRecordSummaryImpl _$$MeetingRecordSummaryImplFromJson(
         final val = _$MeetingRecordSummaryImpl(
           issueID: $checkedConvert('issueID', (v) => v as String),
           imageKind: $checkedConvert('imageKind', (v) => v as String),
-          searchObject: $checkedConvert('searchObject', (v) => v as int),
-          session: $checkedConvert('session', (v) => v as int),
+          searchObject:
+              $checkedConvert('searchObject', (v) => (v as num).toInt()),
+          session: $checkedConvert('session', (v) => (v as num).toInt()),
           nameOfHouse: $checkedConvert('nameOfHouse', (v) => v as String),
           nameOfMeeting: $checkedConvert('nameOfMeeting', (v) => v as String),
           issue: $checkedConvert('issue', (v) => v as String),
@@ -243,7 +252,8 @@ _$MeetingRecordSummarySpeechImpl _$$MeetingRecordSummarySpeechImplFromJson(
       ($checkedConvert) {
         final val = _$MeetingRecordSummarySpeechImpl(
           speechID: $checkedConvert('speechID', (v) => v as String),
-          speechOrder: $checkedConvert('speechOrder', (v) => v as int),
+          speechOrder:
+              $checkedConvert('speechOrder', (v) => (v as num).toInt()),
           speaker: $checkedConvert('speaker', (v) => v as String),
           speechURL: $checkedConvert('speechURL', (v) => v as String),
         );
