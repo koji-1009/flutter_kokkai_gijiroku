@@ -13,11 +13,14 @@ _$SpeechRecordResponseeImpl _$$SpeechRecordResponseeImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$SpeechRecordResponseeImpl(
-          numberOfRecords: $checkedConvert('numberOfRecords', (v) => v as int),
-          numberOfReturn: $checkedConvert('numberOfReturn', (v) => v as int),
-          startRecord: $checkedConvert('startRecord', (v) => v as int),
-          nextRecordPosition:
-              $checkedConvert('nextRecordPosition', (v) => v as int?),
+          numberOfRecords:
+              $checkedConvert('numberOfRecords', (v) => (v as num).toInt()),
+          numberOfReturn:
+              $checkedConvert('numberOfReturn', (v) => (v as num).toInt()),
+          startRecord:
+              $checkedConvert('startRecord', (v) => (v as num).toInt()),
+          nextRecordPosition: $checkedConvert(
+              'nextRecordPosition', (v) => (v as num?)?.toInt()),
           speechRecord: $checkedConvert(
               'speechRecord',
               (v) =>
@@ -59,13 +62,15 @@ _$SpeechRecordImpl _$$SpeechRecordImplFromJson(Map<String, dynamic> json) =>
           speechID: $checkedConvert('speechID', (v) => v as String),
           issueID: $checkedConvert('issueID', (v) => v as String),
           imageKind: $checkedConvert('imageKind', (v) => v as String),
-          searchObject: $checkedConvert('searchObject', (v) => v as int),
-          session: $checkedConvert('session', (v) => v as int),
+          searchObject:
+              $checkedConvert('searchObject', (v) => (v as num).toInt()),
+          session: $checkedConvert('session', (v) => (v as num).toInt()),
           nameOfHouse: $checkedConvert('nameOfHouse', (v) => v as String),
           nameOfMeeting: $checkedConvert('nameOfMeeting', (v) => v as String),
           issue: $checkedConvert('issue', (v) => v as String),
           date: $checkedConvert('date', (v) => v as String),
-          speechOrder: $checkedConvert('speechOrder', (v) => v as int),
+          speechOrder:
+              $checkedConvert('speechOrder', (v) => (v as num).toInt()),
           speaker: $checkedConvert('speaker', (v) => v as String),
           speakerYomi:
               $checkedConvert('speakerYomi', (v) => v as String? ?? ''),
@@ -76,7 +81,7 @@ _$SpeechRecordImpl _$$SpeechRecordImplFromJson(Map<String, dynamic> json) =>
           speakerRole:
               $checkedConvert('speakerRole', (v) => v as String? ?? ''),
           speech: $checkedConvert('speech', (v) => v as String),
-          startPage: $checkedConvert('startPage', (v) => v as int),
+          startPage: $checkedConvert('startPage', (v) => (v as num).toInt()),
           speechURL: $checkedConvert('speechURL', (v) => v as String),
           meetingURL: $checkedConvert('meetingURL', (v) => v as String),
           pdfURL: $checkedConvert('pdfURL', (v) => v as String? ?? ''),

@@ -277,7 +277,8 @@ _$SearchParamsImpl _$$SearchParamsImplFromJson(Map<String, dynamic> json) =>
                   $enumDecodeNullable(_$SearchRangeEnumMap, v) ??
                   SearchRange.none),
           closing: $checkedConvert('closing', (v) => v as bool? ?? false),
-          speechNumber: $checkedConvert('speechNumber', (v) => v as int?),
+          speechNumber:
+              $checkedConvert('speechNumber', (v) => (v as num?)?.toInt()),
           speakerPosition:
               $checkedConvert('speakerPosition', (v) => v as String? ?? ''),
           speakerGroup:
@@ -289,10 +290,11 @@ _$SearchParamsImpl _$$SearchParamsImplFromJson(Map<String, dynamic> json) =>
                   SpeakerRole.none),
           speechID: $checkedConvert('speechID', (v) => v as String? ?? ''),
           issueID: $checkedConvert('issueID', (v) => v as String? ?? ''),
-          sessionFrom: $checkedConvert('sessionFrom', (v) => v as int?),
-          sessionTo: $checkedConvert('sessionTo', (v) => v as int?),
-          issueFrom: $checkedConvert('issueFrom', (v) => v as int?),
-          issueTo: $checkedConvert('issueTo', (v) => v as int?),
+          sessionFrom:
+              $checkedConvert('sessionFrom', (v) => (v as num?)?.toInt()),
+          sessionTo: $checkedConvert('sessionTo', (v) => (v as num?)?.toInt()),
+          issueFrom: $checkedConvert('issueFrom', (v) => (v as num?)?.toInt()),
+          issueTo: $checkedConvert('issueTo', (v) => (v as num?)?.toInt()),
         );
         return val;
       },
